@@ -33,11 +33,16 @@ function retrieveRecordsByIsoCode(isoCode) {
 
     //console.log("Starting to retrieve isoCode '" + isoCode + "'...");
     request(options, function (error, response, body) {
-        // TODO:  If we receive an "ExceptionMessage" object, display its contents in the console.
         if (error) { defer.reject(error); }
         else {
             try {
                 var data = JSON.parse(body);
+
+                // If we receive an "ExceptionMessage" object, display its contents in the console.
+                if (data.ExceptionMessages) {
+                    console.log("There were errors returned when retrieving records:\n" + JSON.stringify(data.ExceptionMessages, null, 2));
+                }
+
                 defer.resolve(JSON.stringify(data.Records));
             }
             catch (e) {
@@ -82,11 +87,13 @@ function getIndividualRecords(recordSets) {
 
                 var request = require("request");
                 request(options, function(error, response, body){
-                    // TODO:  If we receive an "ExceptionMessage" object, display its contents in the console.
-
                     // We have to make sure we are being given JSON data because EASTIN returns HTML errors at the moment.
                     try {
                         var data = JSON.parse(body);
+                        // If we receive an "ExceptionMessage" object, display its contents in the console.
+                        if (data.ExceptionMessages) {
+                            console.log("There were errors returned when retrieving records:\n" + JSON.stringify(data.ExceptionMessages, null, 2));
+                        }
 
                         if (error) { defer.reject(error); }
                         else { defer.resolve(JSON.stringify(data.Record)); }
