@@ -1,0 +1,30 @@
+{
+  "name": "unified-listing",
+  "version": "0.0.1",
+  "description": "The Unified Listing is a part of the GPII.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-t-in-rtf/unified-listing.git"
+  },
+  "author": "Tony Atkins <tony@raisingthefloor.org>",
+  "license": "See LICENSE file.",
+  "bugs": {
+    "url": "https://github.com/the-t-in-rtf/unified-listing/issues"
+  },
+  "homepage": "https://github.com/the-t-in-rtf/unified-listing",
+  "dependencies": {
+    "infusion": "git://github.com/fluid-project/infusion.git#",
+    "moment": "^2.8.3",
+    "request": "^2.47.0",
+    "stemmer": "^0.1.3",
+    "underscore-node": "^0.1.2",
+    "when": "^3.5.2"
+  },
+  "devDependencies": {
+    "jqUnit": "git://github.com/fluid-project/node-jqUnit.git#e9bf72445bd343a4f3aabe3ba96a1087d3498612"
+  }
+}
