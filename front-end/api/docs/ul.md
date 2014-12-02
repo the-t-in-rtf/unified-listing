@@ -265,6 +265,7 @@ Creates a new product record.  Regardless of the information provided, all recor
 
 + Request (application/json}
 
+    ```
     {
         "source":         "mydb",
         "sid":            "1234",
@@ -279,6 +280,7 @@ Creates a new product record.  Regardless of the information provided, all recor
         },
         "updated":        "2012-10-02T15:24:00+02:00"
     }
+    ```
 + Response 200 (application/record+json)
     + Headers
         + Content-Type: application/message+json; profile=https://registry.raisingthefloor.org/schema/record.json#
