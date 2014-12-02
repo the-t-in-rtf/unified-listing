@@ -20,8 +20,8 @@ All products in the Unified Listing have the following common fields:
 |uid|The unique identifier of this record in the Unified Listing.  For source records (see below), this is set to "source:sid".|Y|
 |name|The name of the product.|Y|
 |description|A description of the product.|Y|
-|manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#Manufacturers) below).|Y|
-|status|The status of this record.  Current supported values are listed below under ["Statuses"](#Statuses).|Y|
+|manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#manufacturers) below).|Y|
+|status|The status of this record.  Current supported values are listed below under ["Statuses"](#statuses).|Y|
 |language|The language used in the text of this record.  If this is not specified, US English is assumed.|N|
 |updated|The date at which the record was last updated.|Y|
 
@@ -31,7 +31,7 @@ All products in the Unified Listing have the following common fields:
 
 The Unified Listing contains source records pulled from vendors such as [EASTIN](http://www.eastin.eu/) and [GARI](http://www.gari.info/), represented as JSON objects.
 
-In addition to the fields described in ["Product Records"](#Product+Records), a source record includes the following additional fields:
+In addition to the fields described in ["Product Records"](#product-records), a source record includes the following additional fields:
 
 |Field|Description|Required?|
 | --- | --- | --- |
@@ -124,12 +124,12 @@ A JSON representation of a source record with all fields looks as follows:
 
 ## Unified Listing Records
 
-The Unified Listing also contains "unified" records, which are a summary in US English of one or more source records.  In addition to the fields mentioned in ["Product Records"](#Product+Records), a "unified" record supports the following additional fields:
+The Unified Listing also contains "unified" records, which are a summary in US English of one or more source records.  In addition to the fields mentioned in ["Product Records"](#product-records), a "unified" record supports the following additional fields:
 
 |Field|Description|Required?|
 | --- | --- | --- |
-|sources| An array containing a list of "source" records (see ["Source Records"](#Source+Records) above).|Y|
-|instances| A hash containing one or more "instances" of the product (see ["Instances"](#Instances) below).  At least one instance named "default" is required.|Y|
+|sources| An array containing a list of "source" records (see ["Source Records"](#source-records) above).|Y|
+|instances| A hash containing one or more "instances" of the product (see ["Instances"](#instances) below).  At least one instance named "default" is required.|Y|
 
 A full "unified" record in JSON format looks something like:
 
@@ -284,7 +284,7 @@ Creates a new product record.  Regardless of the information provided, all recor
         + Content-Type: application/message+json; profile=https://registry.raisingthefloor.org/schema/record.json#
         + Link: <https://registry.raisingthefloor.org/schema/record.json#>; rel="describedBy"
     + Body
-
+        ```
         {
             "ok":true,
             "message":"New product submitted."
@@ -304,6 +304,7 @@ Creates a new product record.  Regardless of the information provided, all recor
                 "updated":        "2012-10-02T15:24:00+02:00"
             }
         }
+        ```
 
 ## PUT /api/product
 Update an existing product. Partial records are allowed, but at a minimum you must provide a uniqueId and at least one other field.  If a partial record is submitted, only the supplied fields will be updated.  To clear the value for a field, you must explicitly pass "null" as the value.  Returns the updated product record.
@@ -325,7 +326,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
         + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/message.json#
         + Link: <https://registry.raisingthefloor.org/schema/message.json#>; rel="describedBy"
     + Body
-
+        ```
         {
             "ok":true,
             "message":"Product record updated."
@@ -345,6 +346,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
                 "updated":        "2014-12-02T15:24:00+02:00"
             }
         }
+        ```
 
 ## DELETE /api/product/{uid}
 Flags a record as deleted.  If an author is supplied, gives them credit, otherwise the current user is listed as the author.
@@ -357,10 +359,12 @@ Flags a record as deleted.  If an author is supplied, gives them credit, otherwi
         + Content-Type: application/message+json; profile=https://registry.raisingthefloor.org/schema/message.json#
         + Link: <https://registry.raisingthefloor.org/schema/message.json#>; rel="describedBy"
     + Body
+        ```
         {
             "ok": true,
             "message": "Record flagged as deleted."
         }
+        ```
 
 ## GET /api/product/{uid}{?versions,children}
 Returns a single product identified by its uid.  Only the latest published version is displayed by default.  For terms, child record data (aliases, etc.) is included by default.
@@ -374,7 +378,7 @@ Returns a single product identified by its uid.  Only the latest published versi
         + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/record.json#
         + Link: <https://registry.raisingthefloor.org/schema/record.json#>; rel="describedBy"
     + Body
-
+        ```
         {
             "source":           "ul",
             "uid":              "ul:com.maker.win7.sample",
@@ -404,6 +408,7 @@ Returns a single product identified by its uid.  Only the latest published versi
             }
             "updated":          "2014-11-30T22:04:15Z"
         }
+        ```
 
 
 ## GET /api/products{?source,status,updatedAfter,updatedBefore}
