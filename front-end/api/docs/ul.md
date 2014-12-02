@@ -291,7 +291,7 @@ Creates a new product record.  Regardless of the information provided, all recor
         {
             "ok":true,
             "message":"New product submitted."
-            "record": {
+            "product": {
                 "source":         "mydb",
                 "sid":            "1234",
                 "uid":            "mydb:1234",
@@ -310,7 +310,7 @@ Creates a new product record.  Regardless of the information provided, all recor
         ```
 
 ## PUT /api/product
-Update an existing product. Partial records are allowed, but at a minimum you must provide a uid and at least one other field.  If a partial record is submitted, only the supplied fields will be updated.  To clear the value for a field, you must explicitly pass "null" as the value.  Returns the updated product record.
+Update an existing product. Partial records are allowed, but at a minimum you must provide a uniqueId and at least one other field.  If a partial record is submitted, only the supplied fields will be updated.  To clear the value for a field, you must explicitly pass "null" as the value.  Returns the updated product record.
 
 Note: If you do not submit an "updated" field, the current date will be used.
 
@@ -334,7 +334,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
         {
             "ok":true,
             "message":"Product record updated."
-            "record": {
+            "product": {
                 "source":         "mydb",
                 "sid":            "1234",
                 "uid":            "mydb:1234",
@@ -371,8 +371,8 @@ Flags a record as deleted.  If an author is supplied, gives them credit, otherwi
         }
         ```
 
-## GET /api/product/{uid}{?versions,sources}
-Returns a single product identified by its uid.  Only the latest published version is displayed by default.  For ["unified" records](#unified-records), full source records are not included by default.
+## GET /api/product/{uid}{?versions,children}
+Returns a single product identified by its uid.  Only the latest published version is displayed by default.  For terms, child record data (aliases, etc.) is included by default.
 
 + Parameters
     + versions (optional, boolean) ... Whether or not to display the full version history for this record (including any unpublished drafts).  Defaults to "false".
@@ -386,221 +386,45 @@ Returns a single product identified by its uid.  Only the latest published versi
 
         ```
         {
-            "ok":true,
-            "message":"Draft published."
-            "record": {
-                {
-                    "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
-                    "sid":              "com.maker.win7.sample",
-                    "name":             "A Sample Unified Listing Record",
-                    "description":      "A record that combines 2-3 additional records' worth of information."
-                    "manufacturer":     {
-                        "name":             "Maker Software",
-                        "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
-                        "postalCode":       "27707",
-                        "cityTown":         "Durham",
-                        "provinceRegion":   "North Carolina",
-                        "country":          "United States",
-                        "phone":            "(704) 555-1212",
-                        "email":            "maker@maker.com",
-                        "url":              "http://www.maker.com/"
-                    },
-                    "status":           "active",
-                    "language:          "en_us",
-                    "sources":          [ "siva:2345" ],
-                    "instances": {
-                        "default": {
-                            "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
-                            "settingsHandlers": [],
-                            "lifeCycleManager": {}
-                        }
-                    }
-                    "updated":          "2014-11-30T22:04:15Z"
+            "source":           "ul",
+            "uid":              "ul:com.maker.win7.sample",
+            "sid":              "com.maker.win7.sample",
+            "name":             "A Sample Unified Listing Record",
+            "description":      "A record that combines 2-3 additional records' worth of information."
+            "manufacturer":     {
+                "name":             "Maker Software",
+                "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
+                "postalCode":       "27707",
+                "cityTown":         "Durham",
+                "provinceRegion":   "North Carolina",
+                "country":          "United States",
+                "phone":            "(704) 555-1212",
+                "email":            "maker@maker.com",
+                "url":              "http://www.maker.com/"
+            },
+            "status":           "active",
+            "language:          "en_us",
+            "sources":          [ "siva:2345" ],
+            "instances": {
+                "default": {
+                    "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
+                    "settingsHandlers": [],
+                    "lifeCycleManager": {}
                 }
             }
+            "updated":          "2014-11-30T22:04:15Z"
         }
         ```
 
 
-## GET /api/products{?source,status,updated,offset,limit,versions}
+## GET /api/products{?source,status,updatedAfter,updatedBefore}
 
 Return the list of products, optionally filtered by source, status, or date of last update.
 
-+ Parameters
-    + source (optional, string) ... Only display products from a particular source.  Can be repeated to return products from multiple sources.
-    + status (optional, string) ... The product statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
-    + updated (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only records updated at or after this time are returned.
-    + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
-    + limit (optional, string) ... The number of records to return.  Used for pagination.
-    + versions (optional, boolean) ... Whether or not to display the full version history for this record (including any unpublished drafts).  Defaults to "false".
+## GET /api/search{?q,status,updatedAfter,updatedBefore}
 
-+ Response 200 (application/headers+json)
-    + Headers
-        + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/records.json#
-        + Link: <https://registry.raisingthefloor.org/schema/records.json#>; rel="describedBy"
-    + Body
+Perform a full-text search on the list of records, and return the list of matching records.
 
-        ```
-        {
-            "ok": true,
-            "total_rows": 1,
-            "offset": 0,
-            "limit": 1,
-            "records": [
-                {
-                    "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
-                    "sid":              "com.maker.win7.sample",
-                    "name":             "A Sample Unified Listing Record",
-                    "description":      "A record that combines 2-3 additional records' worth of information."
-                    "manufacturer":     {
-                        "name":             "Maker Software",
-                        "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
-                        "postalCode":       "27707",
-                        "cityTown":         "Durham",
-                        "provinceRegion":   "North Carolina",
-                        "country":          "United States",
-                        "phone":            "(704) 555-1212",
-                        "email":            "maker@maker.com",
-                        "url":              "http://www.maker.com/"
-                    },
-                    "status":           "active",
-                    "language:          "en_us",
-                    "sources":          [ "siva:2345" ],
-                    "instances": {
-                        "default": {
-                            "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
-                            "settingsHandlers": [],
-                            "lifeCycleManager": {}
-                        }
-                    }
-                    "updated":          "2014-11-30T22:04:15Z"
-                }
-            ],
-            "retrievedAt": "2014-05-25T11:23:32.441Z"
-        }
-        ```
+## GET /api/unified{?status,updatedAfter,updatedBefore,sources}
 
-## GET /api/search{?q,source,status,sort,offset,limit,versions}
- Performs a full text search of all data, returns matching products.
-
- + Parameters
-    + q (required, string) ... The query string to match.  Can either consist of a word or phrase as plain text, or can use [lucene's query syntax][1] to construct more complex searches.
-    + source (optional, string) ... Only display products from a particular source.  Can be repeated to return products from multiple sources.
-    + status (optional, string) ... The record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
-    + sort (optional,string) ... The sort order to use when displaying records.  Conforms to [lucene's query syntax][1].
-    + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
-    + limit (optional, string) ... The number of records to return.  Used for pagination.
-    + versions (optional, boolean) ... Whether or not to display the full version history for each record (including any unpublished drafts).  Defaults to "false".
-
- + Response 200 (application/search+json)
-     + Headers
-         + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/search.json#
-         + Link: <https://registry.raisingthefloor.org/schema/search.json#>; rel="describedBy"
-     + Body
-
-         ```
-         {
-             "ok": true,
-             "total_rows": 1,
-             "offset": 0,
-             "limit": 1,
-             "q": "soundActive",
-             "sort": "uid ASC",
-             "records": [
-                {
-                    "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
-                    "sid":              "com.maker.win7.sample",
-                    "name":             "A Sample Unified Listing Record",
-                    "description":      "A record that combines 2-3 additional records' worth of information."
-                    "manufacturer":     {
-                        "name":             "Maker Software",
-                        "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
-                        "postalCode":       "27707",
-                        "cityTown":         "Durham",
-                        "provinceRegion":   "North Carolina",
-                        "country":          "United States",
-                        "phone":            "(704) 555-1212",
-                        "email":            "maker@maker.com",
-                        "url":              "http://www.maker.com/"
-                    },
-                    "status":           "active",
-                    "language:          "en_us",
-                    "sources":          [ "siva:2345" ],
-                    "instances": {
-                        "default": {
-                            "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
-                            "settingsHandlers": [],
-                            "lifeCycleManager": {}
-                        }
-                    }
-                    "updated":          "2014-11-30T22:04:15Z"
-                }
-             ],
-             "retrievedAt": "2014-05-25T11:23:32.441Z"
-         }
-         ```
-
- ## GET /api/suggest/{?q,source,status,sort,versions}
- Suggest a short list of related records.  Performs a search as in /api/search, but only returns 5 results and does not support paging.  Equivalent to `/api/search?q=search&results=5`.  Used to suggest related records when building a "unified" record.
-
- + Parameters
-     + q (required, string) ... The query string to match.  Can either consist of a word or phrase as plain text, or can use [lucene's query syntax][1] to construct more complex searches.
-     + source (optional, string) ... Only display products from a particular source.  Can be repeated to return products from multiple sources.  A record can be excluded by prepending an exclamation point in front of its name, as in ```source=!ul```.
-     + status (optional, string) ... The record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
-     + sort (optional,string) ... The sort order to use when displaying records.  Conforms to [lucene's query syntax][1].
-     + versions (optional, boolean) ... Whether or not to display the full version history for each record (including any unpublished drafts).  Defaults to "false".
-
- + Response 200 (application/search+json)
-     + Headers
-         + Content-Type: application/record+json; profile=https://terms.raisingthefloor.org/schema/search.json#
-         + Link: <https://terms.raisingthefloor.org/schema/search.json#>; rel="describedBy"
-     + Body
-
-         ```
-         {
-             "ok": true,
-             "total_rows": 1,
-             "params": {
-                 "offset": 0,
-                 "limit": 100,
-                 "updated": "2014-05-25T11:23:32.441Z",
-                 "statuses": [ "active" ]
-             },
-             "records": [
-                {
-                    "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
-                    "sid":              "com.maker.win7.sample",
-                    "name":             "A Sample Unified Listing Record",
-                    "description":      "A record that combines 2-3 additional records' worth of information."
-                    "manufacturer":     {
-                        "name":             "Maker Software",
-                        "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
-                        "postalCode":       "27707",
-                        "cityTown":         "Durham",
-                        "provinceRegion":   "North Carolina",
-                        "country":          "United States",
-                        "phone":            "(704) 555-1212",
-                        "email":            "maker@maker.com",
-                        "url":              "http://www.maker.com/"
-                    },
-                    "status":           "active",
-                    "language:          "en_us",
-                    "sources":          [ "siva:2345" ],
-                    "instances": {
-                        "default": {
-                            "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
-                            "settingsHandlers": [],
-                            "lifeCycleManager": {}
-                        }
-                    }
-                    "updated":          "2014-11-30T22:04:15Z"
-                }
-             ],
-             "retrievedAt": "2014-05-25T11:23:32.441Z"
-         }
-         ```
-
+Return the list of "unified" records, optionally including all source records.
