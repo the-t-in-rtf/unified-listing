@@ -284,6 +284,7 @@ Creates a new product record.  Regardless of the information provided, all recor
         + Content-Type: application/message+json; profile=https://registry.raisingthefloor.org/schema/record.json#
         + Link: <https://registry.raisingthefloor.org/schema/record.json#>; rel="describedBy"
     + Body
+
         ```
         {
             "ok":true,
@@ -326,6 +327,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
         + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/message.json#
         + Link: <https://registry.raisingthefloor.org/schema/message.json#>; rel="describedBy"
     + Body
+
         ```
         {
             "ok":true,
@@ -359,6 +361,7 @@ Flags a record as deleted.  If an author is supplied, gives them credit, otherwi
         + Content-Type: application/message+json; profile=https://registry.raisingthefloor.org/schema/message.json#
         + Link: <https://registry.raisingthefloor.org/schema/message.json#>; rel="describedBy"
     + Body
+
         ```
         {
             "ok": true,
@@ -378,6 +381,7 @@ Returns a single product identified by its uid.  Only the latest published versi
         + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/record.json#
         + Link: <https://registry.raisingthefloor.org/schema/record.json#>; rel="describedBy"
     + Body
+
         ```
         {
             "source":           "ul",
