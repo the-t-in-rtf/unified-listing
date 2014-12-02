@@ -130,6 +130,7 @@ The Unified Listing also contains "unified" records, which are a summary in US E
 | --- | --- | --- |
 |sources| An array containing a list of "source" records (see ["Source Records"](#source-records) above).|Y|
 |instances| A hash containing one or more "instances" of the product (see ["Instances"](#instances) below).  At least one instance named "default" is required.|Y|
+|ontologies| A hash containing one or more "ontologies", or ways of classifying the product (see ["Ontologies"](#ontologies) below.)|
 
 A full "unified" record in JSON format looks something like:
 
@@ -159,7 +160,13 @@ A full "unified" record in JSON format looks something like:
                 "settingsHandlers": [],
                 "lifeCycleManager": {}
             }
-        }
+        },
+        "ontologies": {
+            "iso9999": {
+                "primaryCode": "22.39.12",
+                "secondaryCodes": [ "22.39.07" ]
+            }
+        },
         "updated":          "2014-11-30T22:04:15Z"
     }
 
@@ -212,6 +219,18 @@ The company or individual that produces a product is called a "manufacturer" in 
 
 [View JSON Schema for manufacturers](../../schema/manufacturer.json)
 
+## Ontologies
+
+There are many ways of classifying products and product features.  In the Unified Listing, we provide support for multiple ontologies without proscribing a set format.  The only thing that is required is that the ontology itself have a key which is unique within the given record.
+
+Here is an example of the ontologies section of a product represented in JSON format (based on the data we have from EASTIN):
+
+    "ontologies": {
+        "iso9999": {
+            "primaryCode": "22.39.12",
+            "secondaryCodes": [ "22.39.07" ]
+        }
+    }
 
 ## Instances
 
@@ -415,7 +434,13 @@ Returns a single product identified by its uid.  Only the latest published versi
                             "settingsHandlers": [],
                             "lifeCycleManager": {}
                         }
-                    }
+                    },
+                    "ontologies": {
+                        "iso9999": {
+                            "primaryCode": "22.39.12",
+                            "secondaryCodes": [ "22.39.07" ]
+                        }
+                    },
                     "updated":          "2014-11-30T22:04:15Z"
                 }
             }
