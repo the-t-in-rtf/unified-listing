@@ -302,8 +302,8 @@ Creates a new product record.  Regardless of the information provided, all recor
     ```
 + Response 200 (application/record+json)
     + Headers
-        + Content-Type: application/message+json; profile=https://registry.raisingthefloor.org/schema/record.json#
-        + Link: <https://registry.raisingthefloor.org/schema/record.json#>; rel="describedBy"
+        + Content-Type: application/message+json; profile=https://registry.gpii.net/schema/record.json#
+        + Link: <https://registry.gpii.net/schema/record.json#>; rel="describedBy"
     + Body
 
         ```
@@ -345,8 +345,8 @@ Note: If you do not submit an "updated" field, the current date will be used.
 
 + Response 200 (application/record+json)
     + Headers
-        + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/message.json#
-        + Link: <https://registry.raisingthefloor.org/schema/message.json#>; rel="describedBy"
+        + Content-Type: application/record+json; profile=https://registry.gpii.net/schema/message.json#
+        + Link: <https://registry.gpii.net/schema/message.json#>; rel="describedBy"
     + Body
 
         ```
@@ -379,8 +379,8 @@ Flags a record as deleted.  If an author is supplied, gives them credit, otherwi
 
 + Response 200 (application/json)
     + Headers
-        + Content-Type: application/message+json; profile=https://registry.raisingthefloor.org/schema/message.json#
-        + Link: <https://registry.raisingthefloor.org/schema/message.json#>; rel="describedBy"
+        + Content-Type: application/message+json; profile=https://registry.gpii.net/schema/message.json#
+        + Link: <https://registry.gpii.net/schema/message.json#>; rel="describedBy"
     + Body
 
         ```
@@ -399,8 +399,8 @@ Returns a single product identified by its uid.  Only the latest published versi
 
 + Response 200 (application/record+json)
     + Headers
-        + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/record.json#
-        + Link: <https://registry.raisingthefloor.org/schema/record.json#>; rel="describedBy"
+        + Content-Type: application/record+json; profile=https://registry.gpii.net/schema/record.json#
+        + Link: <https://registry.gpii.net/schema/record.json#>; rel="describedBy"
     + Body
 
         ```
@@ -462,8 +462,8 @@ Return the list of products, optionally filtered by source, status, or date of l
 
 + Response 200 (application/headers+json)
     + Headers
-        + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/records.json#
-        + Link: <https://registry.raisingthefloor.org/schema/records.json#>; rel="describedBy"
+        + Content-Type: application/record+json; profile=https://registry.gpii.net/schema/records.json#
+        + Link: <https://registry.gpii.net/schema/records.json#>; rel="describedBy"
     + Body
 
         ```
@@ -521,8 +521,8 @@ Return the list of products, optionally filtered by source, status, or date of l
 
  + Response 200 (application/search+json)
      + Headers
-         + Content-Type: application/record+json; profile=https://registry.raisingthefloor.org/schema/search.json#
-         + Link: <https://registry.raisingthefloor.org/schema/search.json#>; rel="describedBy"
+         + Content-Type: application/record+json; profile=https://registry.gpii.net/schema/search.json#
+         + Link: <https://registry.gpii.net/schema/search.json#>; rel="describedBy"
      + Body
 
          ```
