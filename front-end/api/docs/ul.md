@@ -11,13 +11,15 @@ This section describes the data objects which are accepted by and returned by th
 
 ## Product Records
 
+A product is a distinct piece of software or equipment.  Products may have more than one version or edition, which may provide different features.  For more information about editions (versions or models of a product), see the ["Instances"](#instances) section.
+
 All products in the Unified Listing have the following common fields:
 
 |Field|Description|Required?|
 | --- | --- | --- |
 |source|The source of this record.  If the record is provided by a database vendor, this field will be set to a unique string identifying the vendor.  If this record is unique to the Unified Listing, this field will be set to "ul".|Y|
 |sid|The unique identifier used by the source of this record.|Y|
-|uid|The unified identifier of this record in the Unified Listing.  This is assigned by the Unified Listing when the record is created, and is unique.|Y|
+|uid|The Universal ID ("uid") is an id that is unique in the Unified listing and which is constant for different editions of a product (see ["editions"](#editions)).|Y|
 |name|The name of the product.|Y|
 |description|A description of the product.|Y|
 |manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#manufacturers) below).|Y|
