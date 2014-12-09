@@ -16,8 +16,8 @@ All products in the Unified Listing have the following common fields:
 |Field|Description|Required?|
 | --- | --- | --- |
 |source|The source of this record.  If the record is provided by a database vendor, this field will be set to a unique string identifying the vendor.  If this record is unique to the Unified Listing, this field will be set to "ul".|Y|
-|sid|The unique identifier used by the vendor to identify this record.|Y|
-|uid|The unique identifier of this record in the Unified Listing.  This is assigned by the Unified Listing when the record is created.|Y|
+|sid|The unique identifier used by the source of this record.|Y|
+|uid|The unified identifier of this record in the Unified Listing.  This is assigned by the Unified Listing when the record is created, and is unique.|Y|
 |name|The name of the product.|Y|
 |description|A description of the product.|Y|
 |manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#manufacturers) below).|Y|
@@ -129,7 +129,7 @@ The Unified Listing also contains "unified" records, which are a summary in US E
 |Field|Description|Required?|
 | --- | --- | --- |
 |sources| An array containing a list of "source" records (see ["Source Records"](#source-records) above).|Y|
-|instances| A hash containing one or more "instances" of the product (see ["Instances"](#instances) below).  At least one instance named "default" is required.|Y|
+|editions| A hash containing one or more "editions" of the product (see ["Editions"](#editions) below).  At least one instance named "default" is required.|Y|
 |ontologies| A hash containing one or more "ontologies", or ways of classifying the product (see ["Ontologies"](#ontologies) below.)|
 
 A full "unified" record in JSON format looks something like:
@@ -154,7 +154,7 @@ A full "unified" record in JSON format looks something like:
         "status":           "active",
         "language:          "en_us",
         "sources":          [ "siva:2345" ],
-        "instances": {
+        "editions": {
             "default": {
                 "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
                 "settingsHandlers": [],
@@ -240,9 +240,9 @@ Each variation on the product that has different features is an "instance" of th
 
 An instance is required to have a unique key.  There must be at least one instance, called "default" which is used when the version or variation is otherwise unknown.
 
-The simplest set of instances represented in JSON format looks something like the following:
+The simplest set of editions represented in JSON format looks something like the following:
 
-    instances: {
+    editions: {
         "default": {
             "contexts": {
                 "OS": [{
@@ -274,7 +274,7 @@ The simplest set of instances represented in JSON format looks something like th
         }
     }
 
-[View JSON Schema for instances](../../schema/instance.json)
+[View JSON Schema for editions](../../schema/instance.json)
 
 
 # API REST endpoints
@@ -378,7 +378,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
 Flags a record as deleted.  If an author is supplied, gives them credit, otherwise the current user is listed as the author.
 
 + Parameters
-    + uid (required, string) ... The unique identifier of a single record.
+    + uid (required, string) ... The unified identifier of a single record.
 
 + Response 200 (application/json)
     + Headers
@@ -431,7 +431,7 @@ Returns a single product identified by its uid.  Only the latest published versi
                     "status":           "active",
                     "language:          "en_us",
                     "sources":          [ "siva:2345" ],
-                    "instances": {
+                    "editions": {
                         "default": {
                             "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
                             "settingsHandlers": [],
@@ -496,7 +496,7 @@ Return the list of products, optionally filtered by source, status, or date of l
                     "status":           "active",
                     "language:          "en_us",
                     "sources":          [ "siva:2345" ],
-                    "instances": {
+                    "editions": {
                         "default": {
                             "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
                             "settingsHandlers": [],
@@ -557,7 +557,7 @@ Return the list of products, optionally filtered by source, status, or date of l
                     "status":           "active",
                     "language:          "en_us",
                     "sources":          [ "siva:2345" ],
-                    "instances": {
+                    "editions": {
                         "default": {
                             "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
                             "settingsHandlers": [],
@@ -618,7 +618,7 @@ Return the list of products, optionally filtered by source, status, or date of l
                     "status":           "active",
                     "language:          "en_us",
                     "sources":          [ "siva:2345" ],
-                    "instances": {
+                    "editions": {
                         "default": {
                             "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
                             "settingsHandlers": [],
