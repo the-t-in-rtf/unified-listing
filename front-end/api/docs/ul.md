@@ -17,7 +17,7 @@ All products in the Unified Listing have the following common fields:
 | --- | --- | --- |
 |source|The source of this record.  If the record is provided by a database vendor, this field will be set to a unique string identifying the vendor.  If this record is unique to the Unified Listing, this field will be set to "ul".|Y|
 |sid|The unique identifier used by the vendor to identify this record.|Y|
-|uid|The unique identifier of this record in the Unified Listing.  For source records (see below), this is set to "source:sid".|Y|
+|uid|The unique identifier of this record in the Unified Listing.  This is assigned by the Unified Listing when the record is created.|Y|
 |name|The name of the product.|Y|
 |description|A description of the product.|Y|
 |manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#manufacturers) below).|Y|
@@ -329,12 +329,14 @@ Creates a new product record.  Regardless of the information provided, all recor
         ```
 
 ## PUT /api/product
-Update an existing product. Partial records are allowed, but at a minimum you must provide a uid and at least one other field.  If a partial record is submitted, only the supplied fields will be updated.  To clear the value for a field, you must explicitly pass "null" as the value.  Returns the updated product record.
+
+Update an existing product.  You must provide a complete record in JSON format.  Returns the updated product record.
 
 Note: If you do not submit an "updated" field, the current date will be used.
 
 + Request (application/json}
 
+    ```
     {
         "uid":        "ul:12345",
         "definition": "This existing record needs to be updated.",
@@ -342,6 +344,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
             "price": "$20.00"
         }
      }
+    ```
 
 + Response 200 (application/record+json)
     + Headers
