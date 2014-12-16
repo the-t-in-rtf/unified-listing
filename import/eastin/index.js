@@ -39,7 +39,7 @@ function retrieveRecordsByIsoCode(isoCode) {
                 var data = JSON.parse(body);
 
                 // If we receive an "ExceptionMessage" object, display its contents in the console.
-                if (data.ExceptionMessages) {
+                if (!data.Ok && data.ExceptionMessages) {
                     console.log("There were errors returned when retrieving records:\n" + JSON.stringify(data.ExceptionMessages, null, 2));
                 }
 
