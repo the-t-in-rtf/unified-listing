@@ -17,27 +17,27 @@ All products in the Unified Listing have the following common fields:
 
 |Field|Description|Required?|
 | --- | --- | --- |
-|source|The source of this record.  If the record is provided by a database vendor, this field will be set to a unique string identifying the vendor.  If this record is unique to the Unified Listing, this field will be set to "ul".|Y|
-|sid|The unique identifier used by the source of this record.|Y|
-|uid|The Universal ID ("uid") is an id that is unique in the Unified listing and which is constant for different editions of a product (see ["editions"](#editions)).|Y|
+|source|The source of this record.  If the record is provided by a source database, this field will be set to a unique string identifying the source.  If this record is unique to the Unified Listing, this field will be set to "ul".|Y|
+|sid|The unique identifier to identify this record in the source database.|Y|
+|uid|The Universal ID ("uid") is an id that is unique in the Unified listing and which is constant for different editions of a product (see ["editions"](#editions)).  "Source" records use this field to indicate which "unified" record they are associated with (if any).|N|
 |name|The name of the product.|Y|
 |description|A description of the product.|Y|
 |manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#manufacturers) below).|Y|
 |status|The status of this record.  Current supported values are listed below under ["Statuses"](#statuses).|Y|
-|language|The language used in the text of this record.  If this is not specified, US English is assumed.|N|
+|language|The language used in the text of this record, expressed using a two letter language, code, an underscore, and a two letter country code, as in `en_us` or `it_it`.  If this is not specified, `en_us` is assumed.|N|
 |updated|The date at which the record was last updated.|Y|
 
 [View JSON Schema for all products](../../schema/product.json)
 
 ## Source Records
 
-The Unified Listing contains source records pulled from vendors such as [EASTIN](http://www.eastin.eu/) and [GARI](http://www.gari.info/), represented as JSON objects.
+The Unified Listing contains source records pulled from sources such as [EASTIN](http://www.eastin.eu/) and [GARI](http://www.gari.info/), represented as JSON objects.
 
 In addition to the fields described in ["Product Records"](#product-records), a source record includes the following additional fields:
 
 |Field|Description|Required?|
 | --- | --- | --- |
-|sourceData|The original vendor record represented as a JSON object.  As a vendor may have any fields they like, so there are no other restrictions on this field.|Y|
+|sourceData|The original source record represented as a JSON object.  As a source database may have any fields they like, so there are no other restrictions on this field.|Y|
 
 
 A JSON representation of a source record with all fields looks as follows:
@@ -340,10 +340,17 @@ Note: If you do not submit an "updated" field, the current date will be used.
 
     ```
     {
-        "uid":        "ul:12345",
-        "definition": "This existing record needs to be updated.",
-        "sourceData": {
-            "price": "$20.00"
+        "source":         "mydb",
+        "sid":            "1234",
+        "uid":            "mydb:1234",
+        "name":           "My Product",
+        "description":    "This existing record needs to be updated.",
+        "manufacturer":     {
+            "name":       "Me, Inc."
+        },
+        "status":         "new",
+        "sourceData":     {
+            "price":  "$20.00"
         }
      }
     ```
@@ -363,7 +370,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
                 "sid":            "1234",
                 "uid":            "mydb:1234",
                 "name":           "My Product",
-                "description":    "My Description",
+                "description":    "This existing record needs to be updated.",
                 "manufacturer":     {
                     "name":       "Me, Inc."
                 },
