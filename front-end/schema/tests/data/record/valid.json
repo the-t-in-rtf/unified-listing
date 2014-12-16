@@ -1,0 +1,13 @@
+{
+    "all fields": {
+        "source":       "siva",
+        "sid":          "1234",
+        "uid":          "com.example.program",
+        "name":         "Example Product",
+        "description":   "This is a sample term created for test purposes.",
+        "manufacturer":  { "name": "Sample Company"},
+        "status":        "new",
+        "language":      "it_it",
+        "updated":      "2014-05-22T10:01:33.655Z"
+    }
+}

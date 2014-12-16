@@ -145,5 +145,13 @@
         "worldwide"
       ]
     }
- }
+ },
+  "schemas": {
+    "names": [
+      "record",
+      "message",
+      "records",
+      "search"
+    ]
+  }
 }

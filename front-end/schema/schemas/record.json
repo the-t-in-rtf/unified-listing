@@ -1,0 +1,103 @@
+{
+    "type": "object",
+    "id": "record",
+
+    "definitions": {
+        "source": {
+            "type": "string",
+            "description": "The source of this record.  If the record is provided by a source database, this field will be set to a unique string identifying the source.  If this record is unique to the Unified Listing, this field will be set to 'ul'."
+        },
+        "sid": {
+            "type": "string",
+            "description": "The unique identifier to identify this record in the source database."
+        },
+        "uid": {
+            "type": "string",
+            "description": "The Universal ID ('uid') is an id that is unique in the Unified listing and which is constant for different editions of a product.  'Source' records use this field to indicate which 'unified' record they are associated with (if any)."
+        },
+        "name": {
+            "type": "string",
+            "description": "The name of the product."
+        },
+        "description": {
+            "type": "string",
+            "description": "A description of the product."
+        },
+        "manufacturer": {
+            "type": "object",
+            "description": "A JSON object describing the manufacturer.",
+            "properties": {
+                "name":           { "type": "string", "description": "The name of the manufacturer."},
+                "address":        { "type": "string", "description": "The street address of the manufacturer (may also be used for the complete address)."},
+                "postalCode":     { "type": "string", "description": "The postal code (ZIP code, etc.) of the manufacturer."},
+                "cityTown":       { "type": "string", "description": "The city/town in which the manufacturer is located."},
+                "provinceRegion": { "type": "string", "description": "The province/region in which the manufacturer is located."},
+                "country":        { "type": "string", "description": "The country in which the manufacturer is located."},
+                "phone":          { "type": "string", "description": "The phone number of the manufacturer."},
+                "email":          { "type": "string", "description": "An email address at which the manufacturer can be contacted."},
+                "url":            { "type": "string", "description": "The manufacturer's web site."}
+            },
+            "required": ["name"]
+        },
+        "status": {
+            "enum": ["new", "active", "discontinued", "deleted"],
+            "description": "The status of this record. Current supported values are: 'new', 'active', 'discontinued', 'deleted'."
+        },
+        "language": {
+            "$ref": "record#/definitions/languagePattern",
+            "description": "The language used in the text of this record, expressed using a two letter language, code, an underscore, and a two letter country code, as in `en_us` or `it_it`.  If this is not specified, `en_us` is assumed."
+        },
+        "languagePattern": {
+            "type": "string",
+            "pattern": "^[a-zA-Z]{2}_[A-Za-z]{2}$"
+        },
+        "sourceData": {
+            "type": "object",
+            "description": "The original source record represented as a JSON object."
+        },
+        "sources": {
+            "type": "array",
+            "description": "A list of records that are associated with this one.  Only used by 'unified' records.",
+            "items": {"type": "string"}
+        },
+        "updated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date at which the record was last updated."
+        }
+    },
+
+    "properties": {
+        "source": {
+            "$ref": "record#/definitions/source"
+        },
+        "sid": {
+            "$ref": "record#/definitions/sid"
+        },
+        "uid": {
+            "$ref": "record#/definitions/uid"
+        },
+        "name": {
+            "$ref": "record#/definitions/name"
+        },
+        "description": {
+            "$ref": "record#/definitions/description"
+        },
+        "manufacturer": {
+            "$ref": "record#/definitions/manufacturer"
+        },
+        "status": {
+            "$ref": "record#/definitions/status"
+        },
+        "language": {
+            "$ref": "record#/definitions/language"
+        },
+        "sourceData": {
+            "$ref": "record#/definitions/sourceData"
+        },
+        "updated": {
+            "$ref": "record#/definitions/updated"
+        }
+    },
+   "required": ["source","sid","name","description", "manufacturer", "status", "updated"]
+}

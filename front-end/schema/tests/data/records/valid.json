@@ -1,0 +1,36 @@
+{
+    "results": {
+        "retrievedAt": "2014-05-22T10:01:33.655Z",
+        "updated":     "2014-05-22T10:01:33.655Z",
+        "filters":     {
+            "updated":     "2014-05-22T10:01:33.655Z",
+            "statuses":    ["new"],
+            "sources": ["siva"]
+        },
+        "records":     [{
+            "source":       "siva",
+            "sid":          "1234",
+            "uid":          "com.example.program",
+            "name":         "Example Product",
+            "description":   "This is a sample term created for test purposes.",
+            "manufacturer":  { "name": "Sample Company"},
+            "status":        "new",
+            "language":      "it_it",
+            "updated":      "2014-05-22T10:01:33.655Z"
+        }],
+        "offset":      0,
+        "limit":       100,
+        "total_rows":  1,
+        "ok":          true
+    },
+    "no results": {
+        "retrievedAt": "2014-05-22T10:01:33.655Z",
+        "updated":     "2014-05-22T10:01:33.655Z",
+        "filters":     {},
+        "records":     [],
+        "offset":      0,
+        "limit":       100,
+        "total_rows":  0,
+        "ok":          true
+    }
+}

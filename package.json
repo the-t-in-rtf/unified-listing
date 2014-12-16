@@ -25,6 +25,7 @@
     "when": "^3.5.2"
   },
   "devDependencies": {
-    "jqUnit": "git://github.com/fluid-project/node-jqUnit.git#e9bf72445bd343a4f3aabe3ba96a1087d3498612"
+    "jqUnit": "git://github.com/fluid-project/node-jqUnit.git#e9bf72445bd343a4f3aabe3ba96a1087d3498612",
+    "z-schema": "^3.2.0"
   }
 }
