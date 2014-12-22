@@ -31,18 +31,18 @@ scorerTests.runTests = function() {
     });
 
     jqUnit.test("Test scoring records by date field...", function() {
-        var date1  = new Date();
-        var field1 = "foo";
-        var a1     = { "foo": date1 };
-        var b1     = { "foo": date1 };
-        var score1 = scorer.compareByDate(a1, b1, field1);
+        var date1     = new Date();
+        var field1    = "foo";
+        var a1        = { "foo": date1 };
+        var b1        = { "foo": date1 };
+        var score1    = scorer.compareByDate(a1, b1, field1);
         jqUnit.assertEquals("The same date should return 1", 1, score1);
 
-        var date2  = new Date(0);
-        var field2 = "foo";
-        var a2     = { "foo": date1 };
-        var b2     = { "foo": date2 };
-        var score2 = scorer.compareByDate(a2, b2, field2);
+        var date2     = new Date(0);
+        var field2    =  "foo";
+        var a2        = { "foo": date1 };
+        var b2        = { "foo": date2 };
+        var score2    = scorer.compareByDate(a2, b2, field2);
         jqUnit.assertEquals("Today and the beginning of time should be different enough to return 0...", 0, score2);
 
         var score3 = scorer.compareByDate(b2, a2, field2);
@@ -50,10 +50,10 @@ scorerTests.runTests = function() {
     });
 
     jqUnit.test("Test scoring records by value...", function() {
-        var field = "foo";
-        var a     = { "foo": "bar" };
-        var b     = { "foo": "bar" };
-        var c     = { "foo": "baz" };
+        var field    = "foo";
+        var a        = { "foo": "bar" };
+        var b        = { "foo": "bar" };
+        var c        = { "foo": "baz" };
 
         var score1 = scorer.compareByValue(a, b, field);
         jqUnit.assertEquals("Equal values should return 1", 1, score1);
@@ -63,37 +63,37 @@ scorerTests.runTests = function() {
     });
 
     jqUnit.test("Test scoring records by token...", function() {
-        var field = "foo";
+        var settings = {"field": "foo"};
 
         // These two should return 1 when compared, only the order is different
         var a     = { "foo": "one two"};
         var b     = { "foo": "two one"};
-        jqUnit.assertEquals("The same tokens in a different order should still return 1...", 1, scorer.compareByToken(a, b, field));
+        jqUnit.assertEquals("The same tokens in a different order should still return 1...", 1, scorer.compareByToken(a, b, settings));
 
         // Should match a and b at 0.5
         var c     = { "foo": "one three"};
-        jqUnit.assertEquals("2-item sets with 1 token in common should return 0.5...", 0.5, scorer.compareByToken(a, c, field));
-        jqUnit.assertEquals("2-item sets with 1 token in common should return 0.5...", 0.5, scorer.compareByToken(b, c, field));
+        jqUnit.assertEquals("2-item sets with 1 token in common should return 0.5...", 0.5, scorer.compareByToken(a, c, settings));
+        jqUnit.assertEquals("2-item sets with 1 token in common should return 0.5...", 0.5, scorer.compareByToken(b, c, settings));
 
         // should match a and b at 0.5, and should return 0 for c
         var d     = { "foo": "two four"};
-        jqUnit.assertEquals("Sets with no tokens in common should return 0...", 0, scorer.compareByToken(c, d, field));
+        jqUnit.assertEquals("Sets with no tokens in common should return 0...", 0, scorer.compareByToken(c, d, settings));
 
         // Everything should match this, as its tokens are a superset of all records
         var e     = { "foo": "one two three four" };
-        jqUnit.assertEquals("Comparing to a superset should return 1 (a->e)...", 1, scorer.compareByToken(a, e, field));
-        jqUnit.assertEquals("Comparing to a superset should return 1 (b->e)...", 1, scorer.compareByToken(b, e, field));
-        jqUnit.assertEquals("Comparing to a superset should return 1 (c->e)...", 1, scorer.compareByToken(c, e, field));
-        jqUnit.assertEquals("Comparing to a superset should return 1 (d->e)...", 1, scorer.compareByToken(d, e, field));
+        jqUnit.assertEquals("Comparing to a superset should return 1 (a->e)...", 1, scorer.compareByToken(a, e, settings));
+        jqUnit.assertEquals("Comparing to a superset should return 1 (b->e)...", 1, scorer.compareByToken(b, e, settings));
+        jqUnit.assertEquals("Comparing to a superset should return 1 (c->e)...", 1, scorer.compareByToken(c, e, settings));
+        jqUnit.assertEquals("Comparing to a superset should return 1 (d->e)...", 1, scorer.compareByToken(d, e, settings));
 
         // TODO:  Make tests just for the tokenizer and move this kind of check there.
         // Check to make sure that extra white space is not a problem
         var f     = { "foo": " one  two "};
-        jqUnit.assertEquals("Whitespace should be safely stripped...", 1, scorer.compareByToken(a, f, field));
+        jqUnit.assertEquals("Whitespace should be safely stripped...", 1, scorer.compareByToken(a, f, settings));
 
         var g     = { "foo": "one  two two one"};
-        jqUnit.assertEquals("Duplicate tokens should be counted correctly...", 1, scorer.compareByToken(a, g, field));
-        jqUnit.assertEquals("Duplicate tokens should be counted correctly (reverse order)...", 1, scorer.compareByToken(g, a, field));
+        jqUnit.assertEquals("Duplicate tokens should be counted correctly...", 1, scorer.compareByToken(a, g, settings));
+        jqUnit.assertEquals("Duplicate tokens should be counted correctly (reverse order)...", 1, scorer.compareByToken(g, a, settings));
     });
 
     jqUnit.test("Test scoring records by set...", function() {

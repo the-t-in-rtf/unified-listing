@@ -7,24 +7,29 @@ module.exports = function(config) {
 
     var tokenizer = require("../tokenizer")(config);
     var sanitizer = require("../sanitizer")(config);
+    var resolver  = require("../resolver")(config);
 
     scorer.compareByToken = function (a, b, settings) {
         var field = settings.field;
 
-        var setA = sanitizer.toLowerCase(tokenizer.tokenize(a[field]));
+        var aValue = resolver.resolve(a, field);
+        var setA = sanitizer.toLowerCase(tokenizer.tokenize(aValue));
         setA = sanitizer.stripStopWords(setA);
         setA = sanitizer.stripDuplicates(setA);
 
-        var setB = sanitizer.toLowerCase(tokenizer.tokenize(b[field]));
+        var bValue = resolver.resolve(b, field);
+        var setB = sanitizer.toLowerCase(tokenizer.tokenize(bValue));
         setB = sanitizer.stripStopWords(setB);
         setB = sanitizer.stripDuplicates(setB);
 
         if (settings.includeField) {
-            var includesA = sanitizer.toLowerCase(tokenizer.tokenize(a[settings.includeField]));
+            var aIncludeValue = resolver.resolve(a, settings.includeField);
+            var includesA = sanitizer.toLowerCase(tokenizer.tokenize(aIncludeValue));
             includesA = sanitizer.stripStopWords(includesA);
             var setA = setA.concat(includesA);
 
-            var includesB = sanitizer.toLowerCase(tokenizer.tokenize(b[settings.includeField]));
+            var bIncludeValue = resolver.resolve(b, settings.includeField);
+            var includesB = sanitizer.toLowerCase(tokenizer.tokenize(bIncludeValue));
             includesB = sanitizer.stripStopWords(includesB);
             var setB = setB.concat(includesB);
         }
@@ -32,23 +37,19 @@ module.exports = function(config) {
         // Exclude words that already in the excluded field
         if (settings.excludeField) {
             // TODO:  Move this series of actions to a separate function
-            var excludesA = sanitizer.toLowerCase(tokenizer.tokenize(a[settings.excludeField]));
+            var aExcludeValue = resolver.resolve(a, settings.excludeField);
+            var excludesA = sanitizer.toLowerCase(tokenizer.tokenize(aExcludeValue));
             excludesA = sanitizer.stripStopWords(excludesA);
             var prunedSetA = sanitizer.stripArray(setA, excludesA);
 
-            var excludesB = sanitizer.toLowerCase(tokenizer.tokenize(b[settings.excludeField]));
+            var bExcludeValue = resolver.resolve(b, settings.excludeField);
+            var excludesB = sanitizer.toLowerCase(tokenizer.tokenize(bExcludeValue));
             excludesB = sanitizer.stripStopWords(excludesB);
             var prunedSetB = sanitizer.stripArray(setB, excludesB);
-
-            if (a[field].toLowerCase() === "nvda") {
-                debugger;
-            }
 
             // We cannot prune away all possible matches.  If we've done so, then use the original
             if (prunedSetA.length > 0) setA = prunedSetA;
             if (prunedSetB.length > 0) setB = prunedSetB;
-
-
         }
 
         return scorer.compareBySet(setA, setB);
@@ -57,13 +58,17 @@ module.exports = function(config) {
     scorer.compareByValue = function(a, b, field) {
         if (a === undefined || a === null || b === undefined || b === null) return 0;
 
-        return a[field] && b[field] && (a[field] === b[field]) ? 1 : 0;
+        var aValue = resolver.resolve(a, field);
+        var bValue = resolver.resolve(b, field);
+        return aValue && bValue && (aValue === bValue) ? 1 : 0;
     };
 
     scorer.compareByDate = function(a, b, field) {
         var millisPerYear = 1000 * 60 * 60 * 24 * 365.25;
-        var yearsA = Date.parse(a[field]) / millisPerYear;
-        var yearsB = Date.parse(b[field]) / millisPerYear;
+        var aValue = resolver.resolve(a, field);
+        var yearsA = Date.parse(aValue) / millisPerYear;
+        var bValue = resolver.resolve(b, field);
+        var yearsB = Date.parse(bValue) / millisPerYear;
         var diffYears = Math.abs(yearsA - yearsB);
 
         if (diffYears < 2) return 1;
