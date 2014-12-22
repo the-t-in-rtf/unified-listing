@@ -23,27 +23,27 @@
     "compareFields": {
         "byTokens": {
           "name": {
-            "field":        "CommercialName",
-            "excludeField": "ManufacturerOriginalFullName"
+            "field":        "name",
+            "excludeField": "manufacturer.name"
           },
           "company": {
-            "field":        "ManufacturerOriginalFullName"
+            "field":        "manufacturer.name"
           }
         },
-        "byValue":  ["ManufacturerCountry"],
-        "byDate":   ["InsertDate"],
+        "byValue":  ["manufacturer.country"],
+        "byDate":   ["updated"],
         "bySet":    {
           "isoCode": {
-            "fields": [ "IsoCodePrimary", "IsoCodesOptional" ],
+            "fields": [ "ontologies.iso9999.IsoCodePrimary", "ontologies.iso9999.IsoCodesOptional" ],
             "funcName": "compareByIsoFields"
           }
         }
     },
     "fieldWeights": {
-      "CommercialName":               0.62,
-      "ManufacturerOriginalFullName": 0.266,
-      "ManufacturerCountry":          0.014,
-      "InsertDate":                   0.02
+      "name":                 0.62,
+      "manufacturer.name":    0.266,
+      "manufacturer.country": 0.014,
+      "updated":              0.02
     },
     "setWeights": {
       "isoCode":                      0.08
