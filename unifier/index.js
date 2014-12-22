@@ -3,100 +3,45 @@
     http://wiki.gpii.net/w/Algorithm_for_product_similarity
 
  */
+"use strict";
+var fluid                 = require("infusion");
+var unifier               = fluid.registerNamespace("gpii.ul.unifier");
 
 // TODO:  Make this work with something other than EASTIN once we have multiple data sources
-var loader            = require("../config/lib/config-loader");
-var config            = loader.loadConfig({});
+var loader                = require("../config/lib/config-loader");
+unifier.config            = loader.loadConfig({});
 
-// We are not currently using stemming, but here is the library we use
-//var stemmer           = require("stemmer");
-var fs                = require('fs');
+var when = require("when");
 
-var scorer            = require("./scorer")(config);
-var sanitizer         = require("./sanitizer")(config);
-var tokenizer         = require("./tokenizer")(config);
-var grouper           = require("./grouper")(config);
+unifier.scorer            = require("./scorer")(unifier.config);
+unifier.sanitizer         = require("./sanitizer")(unifier.config);
+unifier.tokenizer         = require("./tokenizer")(unifier.config);
+unifier.grouper           = require("./grouper")(unifier.config);
+unifier.resolver          = require("./resolver")(unifier.config);
 
-// TODO: Throw a meaningful error message if the cache doesn't exist
-var data              = require(config.eastin.cacheFile);
-var dataById          = mapDataById(data);
+// TODO:  Talk with Antranig about kettle-less server-side FLUID components and refactor to use those instead of this.
 
-var timestamp         = new Date().getTime();
-
-var optimizedCombos   = generateOptimizedCombos(dataById);
-saveOutput("unifier_" + timestamp + "_pairs.json", optimizedCombos);
-
-var optimizedScores   = scoreByPairs(optimizedCombos, dataById);
-saveOutput("unifier_" + timestamp + "_scores.json", optimizedScores);
-
-var optimizedClusters = grouper.groupBySimilarityThreshold(Object.keys(dataById), optimizedScores, 0.75);
-saveOutput("unifier_" + timestamp + "_optimized.json", optimizedClusters);
-
-var clusteredData = [];
-optimizedClusters.forEach(function(cluster){
-    var singleClusterData = [];
-
-    cluster.forEach(function(id){
-        singleClusterData.push(dataById[id]);
-    });
-
-    clusteredData.push(singleClusterData);
-});
-
-saveOutput("unifier-" + timestamp + "-clusters.json", clusteredData);
-
-// TODO: Currently we string anything above the threshold together with anything else.  A second pass may be needed to get rid of oddballs.
-
-// Visualize the clustered data to assist in evaluating quality
-var clusterCountBySize = {};
-var clustersBySize     = {};
-var minSize            = 100;
-var maxSize            = 0;
-
-optimizedClusters.forEach(function(cluster){
-    clusterCountBySize[cluster.length] ? clusterCountBySize[cluster.length]++ : clusterCountBySize[cluster.length] = 1;
-    minSize = Math.min(minSize, cluster.length);
-    maxSize = Math.max(maxSize, cluster.length);
-    clustersBySize[cluster.length] ? clustersBySize[cluster.length].push(cluster) : clustersBySize[cluster.length] = [cluster];
-});
-
-for (var a = maxSize; a >= minSize; a--) {
-    var count = clusterCountBySize[a] ? clusterCountBySize[a] : 0;
-    console.log(a + ": " + count);
-}
-
-console.log("The biggest single clusters are:");
-for (var a = maxSize; a >= minSize; a--) {
-    if (clustersBySize[a] && clustersBySize[a].length === 1) {
-        var cluster = clustersBySize[a][0];
-        console.log("(" + a + " members)...");
-        console.log(JSON.stringify(cluster, null, 2));
-    }
-}
-
-function saveOutput(filename, data) {
-    fs.writeFileSync(config.unifier.outputDir + "/" + filename, JSON.stringify(data, null, 2));
-};
 
 // Build a list of record combinations that share at least one word, so that we can exclude totally unique records up front.
 // Checking the company and product names up front takes care of over 90% of the similarity matching and requires only 1% of the computing effort
-function generateOptimizedCombos(dataMap) {
+unifier.generateOptimizedCombos = function() {
     var wordMap = {};
-    Object.keys(config.eastin.compareFields.byTokens).forEach(function(key){
-        var settings = config.eastin.compareFields.byTokens[key];
+    Object.keys(unifier.config.eastin.compareFields.byTokens).forEach(function(key){
+        var settings = unifier.config.eastin.compareFields.byTokens[key];
         if (wordMap[settings.field] === undefined) { wordMap[settings.field] = {};}
 
-        Object.keys(dataMap).forEach(function(key){
-            var record = dataMap[key];
+        Object.keys(unifier.dataById).forEach(function(id){
+            var record = unifier.dataById[id];
 
             // Tokenize the field and convert to lower case
-            var tokens = sanitizer.toLowerCase(tokenizer.tokenize(record[settings.field]));
+            var value  = unifier.resolver.resolve(record, settings.field);
+            var tokens = unifier.sanitizer.toLowerCase(unifier.tokenizer.tokenize(value));
 
             // Iterate through and build a map of all records with common tokens
             tokens.forEach(function(token){
                 if (wordMap[settings.field][token] === undefined) { wordMap[settings.field][token] = [];}
-                if (wordMap[settings.field][token].indexOf(key) === -1 ) {
-                    wordMap[settings.field][token].push(key);
+                if (wordMap[settings.field][token].indexOf(id) === -1 ) {
+                    wordMap[settings.field][token].push(id);
                 }
             });
         });
@@ -110,14 +55,14 @@ function generateOptimizedCombos(dataMap) {
             if (records.length > 1) {
                 for (var a = 0; a < records.length - 1; a++) {
                     for (var b = a +1; b < records.length; b++) {
-                        comboMap[records[a] + config.unifier.fieldSeparator + records[b]] = true;
+                        comboMap[records[a] + unifier.config.unifier.fieldSeparator + records[b]] = true;
                     }
                 }
             }
         });
     });
 
-    return Object.keys(comboMap);
+    unifier.optimizedCombos = Object.keys(comboMap);
 };
 
 
@@ -125,93 +70,249 @@ function generateOptimizedCombos(dataMap) {
 //
 // Return a map of non-zero scores by combination, as in:
 // results["idA;idB"] = 0.75;
-function scoreByPairs(comboArray, dataMap) {
+unifier.scoreByPairs = function() {
     var resultsMap = {};
 
-    comboArray.forEach(function(combination){
+    unifier.optimizedCombos.forEach(function(combination){
         var fieldScore = {};
         // split the combination code into its parts
-        var pair = combination.split(config.unifier.fieldSeparator);
-        if (pair.length == 2) {
-            var record1 = dataMap[pair[0]];
-            var record2 = dataMap[pair[1]];
+        var pair = combination.split(unifier.config.unifier.fieldSeparator);
+        if (pair.length === 2) {
+            var record1 = unifier.dataById[pair[0]];
+            var record2 = unifier.dataById[pair[1]];
 
             // calculate each field value in config.{source}.compareFields.byTokens
-            Object.keys(config.eastin.compareFields.byTokens).forEach(function(key){
-                var settings = config.eastin.compareFields.byTokens[key];
-                fieldScore[settings.field] = scorer.compareByToken(record1, record2, settings);
+            Object.keys(unifier.config.eastin.compareFields.byTokens).forEach(function(key){
+                var settings = unifier.config.eastin.compareFields.byTokens[key];
+                fieldScore[settings.field] = unifier.scorer.compareByToken(record1, record2, settings);
             });
 
             // calculate each field value in config.{source}.compareFields.byValue
-            config.eastin.compareFields.byValue.forEach(function(field){
-                fieldScore[field] = scorer.compareByValue(record1, record2, field);
+            unifier.config.eastin.compareFields.byValue.forEach(function(field){
+                fieldScore[field] = unifier.scorer.compareByValue(record1, record2, field);
             });
 
 
             // calculate each field value in config.{source}.compareFields.byDate
-            config.eastin.compareFields.byDate.forEach(function(field){
-                fieldScore[field] = scorer.compareByDate(record1, record2, field);
+            unifier.config.eastin.compareFields.byDate.forEach(function(field){
+                fieldScore[field] = unifier.scorer.compareByDate(record1, record2, field);
             });
 
             // calculate each field value in config.{source}.compareFields.bySet
-            Object.keys(config.eastin.compareFields.bySet).forEach(function(setKey){
+            Object.keys(unifier.config.eastin.compareFields.bySet).forEach(function(setKey){
 
                 // TODO:  Generalize this beyond ISO Codes and use the supplied funcName
-                fieldScore[setKey] = scorer.compareByIsoFields(record1, record2, config.eastin.compareFields.bySet[setKey].fields);
+                fieldScore[setKey] = unifier.scorer.compareByIsoFields(record1, record2, unifier.config.eastin.compareFields.bySet[setKey].fields);
             });
 
             // TODO:  Break this out into a "weighter" module
             var weightedTotal = 0;
 
             var tokenFields = [];
-            Object.keys(config.eastin.compareFields.byTokens).forEach(function(key){
-                tokenFields.push(config.eastin.compareFields.byTokens[key].field);
+            Object.keys(unifier.config.eastin.compareFields.byTokens).forEach(function(key){
+                tokenFields.push(unifier.config.eastin.compareFields.byTokens[key].field);
             });
-            var singleFields = config.eastin.compareFields.byValue.concat(tokenFields, config.eastin.compareFields.byDate);
+            var singleFields = unifier.config.eastin.compareFields.byValue.concat(tokenFields, unifier.config.eastin.compareFields.byDate);
 
             singleFields.forEach(function(field){
-                var weight = config.eastin.fieldWeights[field];
+                var weight = unifier.config.eastin.fieldWeights[field];
+                if (isNaN(weight)) {
+                    console.error("You have not entered a weight for field '" + field + "', cannot use this field in the overall weighted totals. Check your configuration.");
+                    weight = 0;
+                }
                 if (fieldScore[field] > 0) {
                     weightedTotal += fieldScore[field] * weight;
                 }
             });
 
-            var setFieldKeys    = Object.keys(config.eastin.compareFields.bySet);
+            var setFieldKeys    = Object.keys(unifier.config.eastin.compareFields.bySet);
             setFieldKeys.forEach(function(setKey) {
-                var weight = config.eastin.setWeights[setKey];
+                var weight = unifier.config.eastin.setWeights[setKey];
                 if (fieldScore[setKey] > 0) {
                     weightedTotal += fieldScore[setKey] * weight;
                 }
             });
 
-            if (weightedTotal > 0) resultsMap[combination] = weightedTotal;
+            if (weightedTotal > 0) {
+                resultsMap[combination] = weightedTotal;
+            }
         }
         else {
             console.log("Invalid combination '" + combination + "', can't compare original records...");
         }
     });
 
-    return resultsMap;
-}
-
-function mapDataById(data) {
-    var mappedData = {};
-    data.forEach(function(record) {
-        var id = "eastin-" + record.Database + record.ProductCode;
-        mappedData[id] = record;
-    });
-
-    return mappedData;
-}
+    unifier.optimizedScores = resultsMap;
+};
 
 // Generate the full list of paired combinations
-function generateFullCombos(dataMap) {
+unifier.generateFullCombos = function() {
     var combinations = [];
-    var keys = Object.keys(dataMap);
+    var keys = Object.keys(unifier.dataById);
     for (var a = 0; a < keys.length - 1; a++) {
         for (var b = a + 1; b < keys.length; b++) {
-            combinations.push(keys[a] + config.unifier.fieldSeparator + keys[b]);
+            combinations.push(keys[a] + unifier.config.unifier.fieldSeparator + keys[b]);
         }
     }
     return combinations;
 };
+
+unifier.loadData = function(results) {
+    var deferred = when.defer();
+
+    var options = { "url": unifier.config.couch.url + "_design/ul/_view/records"};
+    var request = require("request");
+    request(options,function(error, response, body){
+        if (error) {
+            console.error(error);
+        }
+
+        var jsonData = JSON.parse(body);
+        unifier.dataById = {};
+        jsonData.rows.forEach(function(row){
+            var record = row.value;
+            unifier.dataById[record.source + ":" + record.sid] = record;
+        });
+
+        deferred.resolve(results);
+    });
+
+    return deferred.promise;
+};
+
+unifier.buildComboMap = function() {
+    return when.try(unifier.generateOptimizedCombos);
+};
+
+unifier.scorePairs    = function() {
+    return when.try(unifier.scoreByPairs);
+};
+
+unifier.clusterByThreshold = function(results) {
+    var deferred = when.defer();
+
+    unifier.optimizedClusterIds = unifier.grouper.groupBySimilarityThreshold(Object.keys(unifier.dataById), unifier.optimizedScores, 0.75);
+    unifier.optimizedClusters = [];
+    unifier.optimizedClusterIds.forEach(function(clusterIds){
+        var cluster = [];
+        clusterIds.forEach(function(id){
+            cluster.push(unifier.dataById[id]);
+        });
+        unifier.optimizedClusters.push(cluster);
+    });
+
+    deferred.resolve(results);
+    return deferred.promise;
+};
+
+unifier.getUnifiedId = function(array) {
+    array.forEach(function(entry){
+        if (entry.source === "unified") { return entry.uid; }
+    });
+
+    return null;
+};
+
+unifier.saveUnifiedRecords = function(results) {
+    // TODO:  Throttle this as we did with the EASTIN import
+    var deferreds = [];
+
+    unifier.optimizedClusters.forEach(function(cluster){
+        var uid = unifier.getUnifiedId(cluster);
+        if (!uid && cluster.length > 1) {
+            // Create a new unified record that we will update.
+            var now = new Date();
+            var tempUid = (now).getTime() + "-" + Math.round(Math.random() * 1000);
+
+            var ulRecord = {
+                "source": "unified",
+                "sid": tempUid,
+                "uid": tempUid,
+                "status": "new",
+                "name": "New Unified Record...",
+                "description": "Please review the descriptions of the source records and clean up the data there...",
+                "manufacturer": { "name": "unknown, see source records..." },
+                "updated": now
+            };
+
+            // Add the record to the stack for the next step (associations)...
+            cluster.push(ulRecord);
+            unifier.dataById["unified:" + tempUid] = ulRecord;
+
+            // Save the record
+            var deferred = when.defer();
+            deferreds.push(deferred);
+
+            var options = { "url": unifier.config.couch.url, "method": "POST", "json": true, "body": ulRecord};
+            var request = require("request");
+            request(options,function(error,response,body){
+                if (error) { console.error(error); }
+
+                deferred.resolve(body);
+            });
+        }
+    });
+
+    return when.all(deferreds);
+};
+
+unifier.associateSourceRecords = function(results) {
+    // TODO: throttle this as we did in the EASTIN import
+    var deferreds = [];
+
+    unifier.optimizedClusters.forEach(function(cluster){
+        var uid = unifier.getUnifiedId(cluster);
+        if (uid) {
+            cluster.forEach(function(record){
+                // Only update source records that are not already clustered correctly...
+                if (record.source !== "unified" && record.uid !== uid) {
+                    var deferred = when.defer();
+                    deferreds.push(deferred);
+                    record.uid  = uid;
+                    var options = { "url": unifier.config.couch.url, "method": "PUT", "json": true, "body": record };
+                    var request = require("request");
+                    request(options,function (error, response, body){
+                        if (error) { console.error(error); }
+                        deferred.resolve(body);
+                    });
+                }
+            });
+        }
+        else {
+            debugger;
+            console.error("Something is very wrong, I should always have a uid at this stage...");
+        }
+    });
+
+    return when.all(deferreds);
+};
+
+unifier.displayStats = function(results) {
+    var deferred = when.defer();
+
+    console.log("Started with " + Object.keys(unifier.dataById).length + " records...");
+    console.log("Detected " + unifier.optimizedCombos.length + " optimized pairings to test...");
+    console.log("Calculated " + Object.keys(unifier.optimizedScores).length + " scores...");
+    console.log("Grouped records into " + unifier.optimizedClusterIds.length + " sets of clustered IDs...");
+    console.log("Built " + unifier.optimizedClusters.length + " complete clusters from the list of IDs ...");
+    debugger;
+
+    deferred.resolve(results);
+    return deferred.promise;
+};
+
+unifier.loadData().then(unifier.buildComboMap).then(unifier.scorePairs).then(unifier.clusterByThreshold).then(unifier.saveUnifiedRecords).then(unifier.associateSourceRecords).done(unifier.displayStats);
+
+// load Data from couch
+// build a data map by Id for later lookups
+// build the list of optimized combos to test
+// score the list of optimized combos
+// build the list of optimized clusters based on the threshold
+
+// Save the clusters
+// associate clusters that include a ul record with the record
+// create a new ul record for clusters that do not include a ul record
+
+// Display stats
+
+
