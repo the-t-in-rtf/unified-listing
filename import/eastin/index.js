@@ -189,7 +189,7 @@ function processRecords(results) {
                 "ontologies": {
                     "iso9999": {
                         "IsoCodePrimary": record.IsoCodePrimary,
-                        "IsoCodesSecondary": record.IsoCodesSecondary
+                        "IsoCodesOptional": record.IsoCodesOptional
                     }
                 },
                 "sourceData": record,
@@ -246,7 +246,7 @@ function generateStoreRecordFunction(recordString) {
             });
 
         } catch (e) {
-            console.log("Can't store invalid record '" + recordString.substring(0,20) + "...'...\n");
+            console.log("Can't store invalid record '" + recordString + "...'...\n");
             console.error(e);
             defer.resolve();
         }
@@ -296,7 +296,7 @@ function loadExistingRecords(results) {
     var defer = when.defer();
 
     var request = require("request");
-    var options = { url: eastin.config.couch.url + "_design/ul/_view/source", method: "GET" };
+    var options = { url: eastin.config.couch.url + "_design/ul/_view/records", method: "GET" };
     request(options, function(error, response, body) {
         if (error) {
             console.error(error);
@@ -359,7 +359,7 @@ function displayStats(results) {
                 }
                 if (record.ontologies.iso9999.IsoCodesOptional && record.ontologies.iso9999.IsoCodesOptional.length > 0) {
                     // Only track canonical codes for now
-                    record.IsoCodesOptional.forEach(function (isoCode) {
+                    record.ontologies.iso9999.IsoCodesOptional.forEach(function (isoCode) {
                         if (isoCode.Code) {
                             var code = standardizeIsoCode(isoCode.Code);
                             if (eastin.config.eastin.isoCodes.indexOf(code) !== -1) {
