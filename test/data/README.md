@@ -1,0 +1,1 @@
+This directory contains sample records for use in unit and functional tests.
