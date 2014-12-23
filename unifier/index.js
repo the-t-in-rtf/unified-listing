@@ -12,6 +12,7 @@ var loader                = require("../config/lib/config-loader");
 unifier.config            = loader.loadConfig({});
 
 var when = require("when");
+var sequence = require("when/sequence");
 
 unifier.scorer            = require("./scorer")(unifier.config);
 unifier.sanitizer         = require("./sanitizer")(unifier.config);
@@ -206,85 +207,89 @@ unifier.clusterByThreshold = function(results) {
 };
 
 unifier.getUnifiedId = function(array) {
+    var uid = null;
     array.forEach(function(entry){
-        if (entry.source === "unified") { return entry.uid; }
+        if (entry.source === "unified") {
+            uid = entry.uid;
+        }
     });
 
-    return null;
+    return uid;
+};
+
+unifier.generateUpdateFunction = function(record) {
+    return function() {
+        var deferred = when.defer();
+        var options = { "url": unifier.config.couch.url, "method": "PUT", "json": true, "body": record };
+        var request = require("request");
+        request(options,function (error, response, body){
+            if (error) { console.error(error); }
+            deferred.resolve(body);
+        });
+
+        return deferred.promise;
+    };
 };
 
 unifier.saveUnifiedRecords = function(results) {
-    // TODO:  Throttle this as we did with the EASTIN import
     var deferreds = [];
 
     unifier.optimizedClusters.forEach(function(cluster){
-        var uid = unifier.getUnifiedId(cluster);
-        if (!uid && cluster.length > 1) {
-            // Create a new unified record that we will update.
-            var now = new Date();
-            var tempUid = (now).getTime() + "-" + Math.round(Math.random() * 1000);
+        if (cluster.length > 1) {
+            var uid = unifier.getUnifiedId(cluster);
+            if (!uid) {
+                // Create a new unified record that we will update.
+                var now = new Date();
+                var tempUid = (now).getTime() + "-" + Math.round(Math.random() * 1000);
 
-            var ulRecord = {
-                "source": "unified",
-                "sid": tempUid,
-                "uid": tempUid,
-                "status": "new",
-                "name": "New Unified Record...",
-                "description": "Please review the descriptions of the source records and clean up the data there...",
-                "manufacturer": { "name": "unknown, see source records..." },
-                "updated": now
-            };
+                // For now, just clone the first record to guarantee that this record will be part of the cluster if we rerun the analysis.
+                // TODO:  Do a better job of combining source values for this record...
+                var ulRecord = {
+                    "source":       "unified",
+                    "sid":          tempUid,
+                    "uid":          tempUid,
+                    "status":       "new",
+                    "name":         cluster[0].name,
+                    "description":  cluster[0].description,
+                    "manufacturer": cluster[0].manufacturer,
+                    "updated":      now
+                };
 
-            // Add the record to the stack for the next step (associations)...
-            cluster.push(ulRecord);
-            unifier.dataById["unified:" + tempUid] = ulRecord;
+                // Add the record to the stack for the next step (associations)...
+                cluster.push(ulRecord);
+                unifier.dataById["unified:" + tempUid] = ulRecord;
 
-            // Save the record
-            var deferred = when.defer();
-            deferreds.push(deferred);
-
-            var options = { "url": unifier.config.couch.url, "method": "POST", "json": true, "body": ulRecord};
-            var request = require("request");
-            request(options,function(error,response,body){
-                if (error) { console.error(error); }
-
-                deferred.resolve(body);
-            });
+                deferreds.push(when(ulRecord, unifier.generateUpdateFunction));
+            }
         }
     });
 
-    return when.all(deferreds);
+    return sequence(deferreds);
 };
 
 unifier.associateSourceRecords = function(results) {
-    // TODO: throttle this as we did in the EASTIN import
     var deferreds = [];
 
     unifier.optimizedClusters.forEach(function(cluster){
-        var uid = unifier.getUnifiedId(cluster);
-        if (uid) {
-            cluster.forEach(function(record){
-                // Only update source records that are not already clustered correctly...
-                if (record.source !== "unified" && record.uid !== uid) {
-                    var deferred = when.defer();
-                    deferreds.push(deferred);
-                    record.uid  = uid;
-                    var options = { "url": unifier.config.couch.url, "method": "PUT", "json": true, "body": record };
-                    var request = require("request");
-                    request(options,function (error, response, body){
-                        if (error) { console.error(error); }
-                        deferred.resolve(body);
-                    });
-                }
-            });
-        }
-        else {
-            debugger;
-            console.error("Something is very wrong, I should always have a uid at this stage...");
+        if (cluster.length > 1) {
+            var uid = unifier.getUnifiedId(cluster);
+            if (uid) {
+                cluster.forEach(function(record){
+                    // Only update source records that are not already clustered correctly...
+                    if (record.source !== "unified" && record.uid !== uid) {
+                        record.uid  = uid;
+
+                        deferreds.push(when(record, unifier.generateUpdateFunction));
+                    }
+                });
+            }
+            else {
+                console.error("Something is very wrong, I should always have a uid at this stage...");
+            }
         }
     });
 
-    return when.all(deferreds);
+    return sequence(deferreds);
 };
 
 unifier.displayStats = function(results) {
@@ -295,24 +300,22 @@ unifier.displayStats = function(results) {
     console.log("Calculated " + Object.keys(unifier.optimizedScores).length + " scores...");
     console.log("Grouped records into " + unifier.optimizedClusterIds.length + " sets of clustered IDs...");
     console.log("Built " + unifier.optimizedClusters.length + " complete clusters from the list of IDs ...");
-    debugger;
 
     deferred.resolve(results);
     return deferred.promise;
 };
 
+// Build the associations between similar records step-by-step:
+//
+// 1. Load existing record data from couch and build a data map keyed by source:sid to use in later lookups.
+// 3. Build the list of optimized combos to test, based on having at least one non-stopword in commmon.
+// 4. Score the list of optimized combos.
+// 5. Build the list of optimized clusters based on a threshold.
+// 6. Generate and save any new unified records that are required to complete a cluster.
+// 7. Associate clusters of more than one record with a unified record.
+// 8. Display stats.
+
 unifier.loadData().then(unifier.buildComboMap).then(unifier.scorePairs).then(unifier.clusterByThreshold).then(unifier.saveUnifiedRecords).then(unifier.associateSourceRecords).done(unifier.displayStats);
 
-// load Data from couch
-// build a data map by Id for later lookups
-// build the list of optimized combos to test
-// score the list of optimized combos
-// build the list of optimized clusters based on the threshold
-
-// Save the clusters
-// associate clusters that include a ul record with the record
-// create a new ul record for clusters that do not include a ul record
-
-// Display stats
 
 
