@@ -62,5 +62,5 @@ function(head, req) {
         }
     }
 
-    send(JSON.stringify(dataMap, null, 2));
+    send(JSON.stringify(Object.keys(dataMap).map(function(key){ return dataMap[key]; }), null, 2));
 }
