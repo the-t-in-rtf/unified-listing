@@ -1,0 +1,143 @@
+{
+  "source": "unified",
+  "sid": "com.freedomscientific.jaws",
+  "uid": "com.freedomscientific.jaws",
+  "status": "new",
+  "name": "Jaws For Windows",
+  "description": "<br /><br />Screen reader software.  Comprises: supports standard Windows office applications, Internet Explorer, Firefox, MSN Messenger, and Adobe Acrobat Reader, Lotus Symphony/Notes and others; outputs to refreshable Braille displays; multilingual synthesizer; supports Internet Explorer including links lists, frames lists, forms mode, reading HTML tables and graphic labels; supports dual monitors; interactive talking installation and basic training tutorial. Options include: standard edition for 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems; professional edition for all 32-bit or 64-bit versions of Windows 7, Windows Vista, and Windows Server 2008 and 32-bit versions of Windows XP and Windows Server 2003. \n  Note: voice synthesizer requires a sound card compatible with the users version of Windows.<br /><br />Price from (&pound;): 659<br /><br /><br /><br />Software<br />Adjust voice pitch: Standard <br />Adjust voice speed: Standard <br />Braille output: Standard <br />CD-Rom; USB Pen; Download: CD-Rom <br />Pronunciation correction: Standard <br />Read text with mouse over: Feature not available <br />Screen Zoom: Feature not available <br />Talking installation: Standard <br />Windows operating system: XP, Vista and 7",
+  "manufacturer": {
+    "name": "Freedom Scientific",
+    "address": null,
+    "postalCode": null,
+    "cityTown": null,
+    "country": null,
+    "phone": null,
+    "email": null,
+    "url": null
+  },
+  "updated": "2014-12-23T09:03:52.847Z",
+  "sources": [
+    {
+      "status": "new",
+      "language": "nl_be",
+      "name": "Jaws 14",
+      "description": "-Machine translation-",
+      "source": "Vlibank",
+      "sid": "B812",
+      "manufacturer": {
+        "name": "Freedom Scientific USA",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=B812&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=B812",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=B812",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "B812",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Jaws 14",
+        "ManufacturerOriginalFullName": "Freedom Scientific USA",
+        "InsertDate": "1999-09-17T00:00:00+02:00",
+        "LastUpdateDate": "2013-04-22T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=B812&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-04-22T00:00:00+02:00",
+      "uid": "com.freedomscientific.jaws"
+    },
+    {
+      "status": "new",
+      "language": "de_de",
+      "name": "JAWS",
+      "description": "Screen Reader<br />The screen reader JAWS (Job Access With Speech) enables blind and visually impaired people to gain access to the PC through the issue of the screen contents via a speech synthesizer or a braille display<br />Features / Components:<br />functionality.<br />- Special Internet features such as: Navigation shortcuts , link and frame lists, form, mode, and reading HTML tables<br />- labels, both for the language and for Braille assigned or changed<br />speech synthesizer compatibility<br />languages ??<br />German, English (American and British), Finnish, French ( French and Canadian), Italian, Spanish (Castilian and South American), Brazilian Portuguese<br />voice<br />on popular sound cards with integrated speech synthesis Eloquence (from JAWS version 8.0 with SAPI5 speech synthesis RealSpeak Solo)<br />other supported language editions:<br />Apollo 2, Braillen Speak, DECtalk, Double Talk, Talk Flex, Juno, Keynote (PC, SA and PCMCIA), infovox 500/700/220/230/330, Sound Blaster with Text Assist, Speak & Win and other<br />Braille Compatibility:<br />- Braille Monitor<br />- Output to all standard Braille<br />JAWS supports braille displays the following manufacturers:<br />- ALVA, Blazie, engineering, Handy Tech, Tiemann (not all features supported)<br />- Telesensory, Pape Meier (does not support all functions), B & M (not all functions supported)<br />Software Compatibility:<br />- Windows start functions controlled with voice output and Braille display<br />- Registration in network possible<br />- programs from the desktop start possible<br />- Using the Taskbar and Task Manager disabled<br />- automatically detects blank data areas of a Application<br />- access to the context menu and elements of the system menu<br />- File Management with Windows Explorer possible<br />- System messages are controllable<br />- allows to read PDF documents (including documents protected from Acrobat 6.0)<br />- supports MS Internet Explorer 7 and Mozilla Firefox and other Internet programs<br />- supports all Windows standard programs and other popular applications<br />- individual adaptation to different PC applications via scripts possible<br />Other: - Talking installation process<br />- Manual and Help documentation online, on disk and Braille available (from version 8.0 with daisy audio book)<br />System Requirements for JAWS:<br />- operating system for JAWS 14.0 Private: Microsoft Windows XP, Vista, Win 7 and Win 8, 32 or 64 bit<br />- operating system for JAWS 14.0 Pro: Microsoft Windows XP Pro, Vista Pro, Win 7 Pro and Win 8 Pro, 32 or 64 bit<br />Price (no guarantee):<br />Retail price plus VAT<br />1677.90 EUR - JAWS 11.0 Standard single license for Microsoft Windows XP, Vista and Windows 7<br />3011.89 EUR - JAWS 11.0 Pro, single user license for Microsoft Windows XP Pro , Vista Pro and Windows 7 Pro<br />1204.71 EUR - JAWS 11.0 for pupils / students<br />97.46 EUR - Surcharge for a license dongle<br />Review of the DIAS GmbH<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "source": "Rehadat",
+      "sid": "C/00505",
+      "manufacturer": {
+        "name": "Freedom Scientific Blind/Low Vision Group and Corporate Offices",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "",
+        "EnglishDescription": "Screen Reader<br />The screen reader JAWS (Job Access With Speech) enables blind and visually impaired people to gain access to the PC through the issue of the screen contents via a speech synthesizer or a braille display<br />Features / Components:<br />functionality.<br />- Special Internet features such as: Navigation shortcuts , link and frame lists, form, mode, and reading HTML tables<br />- labels, both for the language and for Braille assigned or changed<br />speech synthesizer compatibility<br />languages ??<br />German, English (American and British), Finnish, French ( French and Canadian), Italian, Spanish (Castilian and South American), Brazilian Portuguese<br />voice<br />on popular sound cards with integrated speech synthesis Eloquence (from JAWS version 8.0 with SAPI5 speech synthesis RealSpeak Solo)<br />other supported language editions:<br />Apollo 2, Braillen Speak, DECtalk, Double Talk, Talk Flex, Juno, Keynote (PC, SA and PCMCIA), infovox 500/700/220/230/330, Sound Blaster with Text Assist, Speak & Win and other<br />Braille Compatibility:<br />- Braille Monitor<br />- Output to all standard Braille<br />JAWS supports braille displays the following manufacturers:<br />- ALVA, Blazie, engineering, Handy Tech, Tiemann (not all features supported)<br />- Telesensory, Pape Meier (does not support all functions), B & M (not all functions supported)<br />Software Compatibility:<br />- Windows start functions controlled with voice output and Braille display<br />- Registration in network possible<br />- programs from the desktop start possible<br />- Using the Taskbar and Task Manager disabled<br />- automatically detects blank data areas of a Application<br />- access to the context menu and elements of the system menu<br />- File Management with Windows Explorer possible<br />- System messages are controllable<br />- allows to read PDF documents (including documents protected from Acrobat 6.0)<br />- supports MS Internet Explorer 7 and Mozilla Firefox and other Internet programs<br />- supports all Windows standard programs and other popular applications<br />- individual adaptation to different PC applications via scripts possible<br />Other: - Talking installation process<br />- Manual and Help documentation online, on disk and Braille available (from version 8.0 with daisy audio book)<br />System Requirements for JAWS:<br />- operating system for JAWS 14.0 Private: Microsoft Windows XP, Vista, Win 7 and Win 8, 32 or 64 bit<br />- operating system for JAWS 14.0 Pro: Microsoft Windows XP Pro, Vista Pro, Win 7 Pro and Win 8 Pro, 32 or 64 bit<br />Price (no guarantee):<br />Retail price plus VAT<br />1677.90 EUR - JAWS 11.0 Standard single license for Microsoft Windows XP, Vista and Windows 7<br />3011.89 EUR - JAWS 11.0 Pro, single user license for Microsoft Windows XP Pro , Vista Pro and Windows 7 Pro<br />1204.71 EUR - JAWS 11.0 for pupils / students<br />97.46 EUR - Surcharge for a license dongle<br />Review of the DIAS GmbH<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+        "OriginalUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/00505",
+        "EnglishUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/00505",
+        "Features": [],
+        "Database": "Rehadat",
+        "ProductCode": "C/00505",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39",
+            "Name": "Output devices for computers"
+          }
+        ],
+        "CommercialName": "JAWS",
+        "ManufacturerOriginalFullName": "Freedom Scientific Blind/Low Vision Group and Corporate Offices",
+        "InsertDate": "1996-12-30T00:00:00+01:00",
+        "LastUpdateDate": "2013-03-27T00:00:00+01:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-03-27T00:00:00+01:00",
+      "uid": "com.freedomscientific.jaws"
+    }
+  ]
+}
