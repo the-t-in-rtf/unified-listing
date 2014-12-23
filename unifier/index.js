@@ -220,7 +220,13 @@ unifier.getUnifiedId = function(array) {
 unifier.generateUpdateFunction = function(record) {
     return function() {
         var deferred = when.defer();
-        var options = { "url": unifier.config.couch.url, "method": "PUT", "json": true, "body": record };
+        var options = { "url": unifier.config.couch.url, "method": "POST", "json": true, "body": record };
+
+        if (record._id) {
+            options.method = "PUT";
+            options.url += "/" + record._id;
+        }
+
         var request = require("request");
         request(options,function (error, response, body){
             if (error) { console.error(error); }
@@ -231,7 +237,7 @@ unifier.generateUpdateFunction = function(record) {
     };
 };
 
-unifier.saveUnifiedRecords = function(results) {
+unifier.saveUnifiedRecords = function() {
     var deferreds = [];
 
     unifier.optimizedClusters.forEach(function(cluster){
@@ -252,6 +258,7 @@ unifier.saveUnifiedRecords = function(results) {
                     "name":         cluster[0].name,
                     "description":  cluster[0].description,
                     "manufacturer": cluster[0].manufacturer,
+                    "ontologies":   cluster[0].ontologies,
                     "updated":      now
                 };
 
@@ -267,7 +274,7 @@ unifier.saveUnifiedRecords = function(results) {
     return sequence(deferreds);
 };
 
-unifier.associateSourceRecords = function(results) {
+unifier.associateSourceRecords = function() {
     var deferreds = [];
 
     unifier.optimizedClusters.forEach(function(cluster){
