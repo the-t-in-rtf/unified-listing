@@ -7,10 +7,16 @@ function(keys, values, rereduce) {
 
         if (existingRecord) {
             if (newRecord.source === "unified") {
-                if (existingRecord.sources) {
-                    newRecord.sources = JSON.parse(JSON.stringify(existingRecord.sources));
-                }
                 combinedRecord = JSON.parse(JSON.stringify(newRecord));
+                if (!combinedRecord.sources) {
+                    combinedRecord.sources = [];
+                }
+
+                if (existingRecord.sources) {
+                    existingRecord.sources.forEach(function(source){
+                        combinedRecord.sources.push(JSON.parse(JSON.stringify(source)));
+                    });
+                }
             }
             else if (newRecord.sources) {
                 if (!combinedRecord.sources) { combinedRecord.sources = []; }
