@@ -417,44 +417,40 @@ Returns a single product identified by its uid.  Only the latest published versi
 
         ```
         {
-            "ok":true,
-            "message":"Draft published."
-            "record": {
-                {
-                    "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
-                    "sid":              "com.maker.win7.sample",
-                    "name":             "A Sample Unified Listing Record",
-                    "description":      "A record that combines 2-3 additional records' worth of information."
-                    "manufacturer":     {
-                        "name":             "Maker Software",
-                        "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
-                        "postalCode":       "27707",
-                        "cityTown":         "Durham",
-                        "provinceRegion":   "North Carolina",
-                        "country":          "United States",
-                        "phone":            "(704) 555-1212",
-                        "email":            "maker@maker.com",
-                        "url":              "http://www.maker.com/"
-                    },
-                    "status":           "active",
-                    "language:          "en_us",
-                    "sources":          [ "siva:2345" ],
-                    "editions": {
-                        "default": {
-                            "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
-                            "settingsHandlers": [],
-                            "lifeCycleManager": {}
-                        }
-                    },
-                    "ontologies": {
-                        "iso9999": {
-                            "primaryCode": "22.39.12",
-                            "secondaryCodes": [ "22.39.07" ]
-                        }
-                    },
-                    "updated":          "2014-11-30T22:04:15Z"
-                }
+            {
+                "source":           "ul",
+                "uid":              "ul:com.maker.win7.sample",
+                "sid":              "com.maker.win7.sample",
+                "name":             "A Sample Unified Listing Record",
+                "description":      "A record that combines 2-3 additional records' worth of information."
+                "manufacturer":     {
+                    "name":             "Maker Software",
+                    "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
+                    "postalCode":       "27707",
+                    "cityTown":         "Durham",
+                    "provinceRegion":   "North Carolina",
+                    "country":          "United States",
+                    "phone":            "(704) 555-1212",
+                    "email":            "maker@maker.com",
+                    "url":              "http://www.maker.com/"
+                },
+                "status":           "active",
+                "language:          "en_us",
+                "sources":          [ "siva:2345" ],
+                "editions": {
+                    "default": {
+                        "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
+                        "settingsHandlers": [],
+                        "lifeCycleManager": {}
+                    }
+                },
+                "ontologies": {
+                    "iso9999": {
+                        "primaryCode": "22.39.12",
+                        "secondaryCodes": [ "22.39.07" ]
+                    }
+                },
+                "updated":          "2014-11-30T22:04:15Z"
             }
         }
         ```
@@ -482,8 +478,10 @@ Return the list of products, optionally filtered by source, status, or date of l
         {
             "ok": true,
             "total_rows": 1,
-            "offset": 0,
-            "limit": 1,
+            "params": {
+                "offset": 0,
+                "limit": 1
+            },
             "records": [
                 {
                     "source":           "ul",
@@ -541,9 +539,13 @@ Return the list of products, optionally filtered by source, status, or date of l
          {
              "ok": true,
              "total_rows": 1,
-             "offset": 0,
-             "limit": 1,
-             "q": "soundActive",
+             "params": {
+                  "q": "jaws",
+                  "offset": 0,
+                  "limit": 100,
+                  "updated": "2014-05-25T11:23:32.441Z",
+                  "statuses": [ "active" ]
+             },
              "sort": "uid ASC",
              "records": [
                 {
@@ -601,10 +603,9 @@ Return the list of products, optionally filtered by source, status, or date of l
              "ok": true,
              "total_rows": 1,
              "params": {
-                 "offset": 0,
-                 "limit": 100,
-                 "updated": "2014-05-25T11:23:32.441Z",
-                 "statuses": [ "active" ]
+                  "q": "jaws",
+                  "updated": "2014-05-25T11:23:32.441Z",
+                  "statuses": [ "active" ]
              },
              "records": [
                 {
