@@ -303,12 +303,17 @@ function loadExistingRecords(results) {
         }
 
         var jsonData = JSON.parse(body);
-        jsonData.rows.forEach(function(row){
-            var record = row.value;
-            if (record && record.source && record.sid) {
-                eastin.existingRecords[record.source + ":" + record.sid] = record;
-            }
-        });
+        if (jsonData.rows) {
+            jsonData.rows.forEach(function(row){
+                var record = row.value;
+                if (record && record.source && record.sid) {
+                    eastin.existingRecords[record.source + ":" + record.sid] = record;
+                }
+            });
+        }
+        else {
+            console.error("Could not load existing records: " + JSON.stringify(body));
+        }
 
         // Pass what we received through in case we want to chain the function later...
         defer.resolve(results);
