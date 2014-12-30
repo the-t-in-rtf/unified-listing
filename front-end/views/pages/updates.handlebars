@@ -1,0 +1,29 @@
+<div class="body ptd-down-gradient">
+    <div class="row">
+        <p>This form allows you to see records in the Unified Listing that have been updated after one or more source records.</p>
+
+        <form action="#" class="ul-updates-controls">
+        </form>
+
+        <!-- TODO:  Generate the data based on any query parameters -->
+        <div class="ul-updates-output">
+        </div>
+    </div>
+</div>
+
+<script src="/js/components/updates.js"></script>
+
+<script type="text/javascript">
+    {{>json-data}}
+
+    var root = ul.config.root({
+        serverConfig: ul.config.server,
+        components: {
+            updates: {
+                type:      "ul.components.updates",
+                container: "body"
+            }
+        }
+    });
+    root.updates.init();
+</script>

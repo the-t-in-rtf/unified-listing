@@ -1,0 +1,9 @@
+<!-- date picker -->
+Show records updated since:
+<input type="date" name="updated" class="ul-updates-updated-control"/>
+
+<!-- choose databases -->
+Show differences between unified record and the following sources:
+<select multiple="true" name="source" class="ul-updates-source-control">
+    {{#each sources}}<option value="{{.}}" selected="true">{{.}}</option>{{/each}}
+</select>

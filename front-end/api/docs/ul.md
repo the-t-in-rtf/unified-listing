@@ -638,12 +638,13 @@ Return the list of products, optionally filtered by source, status, or date of l
          ```
 
  ## GET /api/updates/{?source,updated,status,offset,limit}
+
 Return a list of unified records that contain newer information than the record provided by the given source.
 
  + Parameters
-     + source (required, string) ... Only display products from a particular source.  Can be repeated to return products from multiple sources.  A record can be excluded by prepending an exclamation point in front of its name, as in ```source=!ul```.
-     + updated (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only updates at or after this time are included in the comparison.
-     + status (optional, string) ... The record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
+     + source (required, string) ... Only display products from a particular source.  Can be repeated to return products from multiple sources.
+     + updated (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only unified records updated at or after this time are included in the comparison.
+     + status (optional, string) ... The unified record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
      + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
      + limit (optional, string) ... The number of records to return.  Used for pagination.  Set to `-1` to return all records.  Defaults to `-1`
 

@@ -20,7 +20,12 @@ else {
     app.use(logger("dev"));
 }
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+config.viewTemplateDir   = path.join(__dirname, "views");
+
+var data     = require("./lib/data-helper")(config);
+var hbHelper = require("./lib/hb-helper")(config);
+
+app.engine("handlebars", exphbs({defaultLayout: "main", helpers: hbHelper.getHelpers()}));
 app.set("view engine", "handlebars");
 app.set("port", config.express.port || process.env.PORT || 4896);
 app.set("views", path.join(__dirname, "views"));
@@ -36,8 +41,10 @@ app.use("/api",api);
 app.use(express.static(path.join(__dirname, "public")));  // jshint ignore:line
 
 // The infusion client-side libraries
-app.use("/infusion", express.static(__dirname + "../node_modules/infusion/src")); // jshint ignore:line
+app.use("/infusion", express.static(__dirname + "/../node_modules/infusion/src")); // jshint ignore:line
 
+// Mount the handlebars templates as a single dynamically generated source file
+app.use("/hbs",require("./views/client.js")(config));
 
 // Most static content including root page
 app.use(express.static(__dirname + "/public")); // jshint ignore:line
@@ -49,7 +56,9 @@ app.use(express.static(__dirname + "/public")); // jshint ignore:line
 app.use("/",function(req,res) {
     var fs = require("fs");
 
-    var options = {};
+    var options = { config: { "baseUrl": config.express.baseUrl, "sources": config.sources}};
+    data.exposeRequestData(req,options);
+
     var path = req.path === "/" ? "index" : req.path.substring(1);
     if (fs.existsSync(__dirname + "/views/pages/" + path + ".handlebars")) {
         options.layout = fs.existsSync(__dirname + "/views/layouts/" + path + ".handlebars") ? path : "main";
