@@ -45,7 +45,6 @@ A JSON representation of a source record with all fields looks as follows:
     {
         "source":         "siva",
         "sid":            "19449",
-        "uid":            "siva:19449",
         "name":           "ANS - SET PUNTATORI ANS",
         "description":    "",
 
@@ -138,7 +137,7 @@ A full "unified" record in JSON format looks something like:
 
     {
         "source":           "ul",
-        "uid":              "ul:com.maker.win7.sample",
+        "uid":              "com.maker.win7.sample",
         "sid":              "com.maker.win7.sample",
         "name":             "A Sample Unified Listing Record",
         "description":      "A record that combines 2-3 additional records' worth of information."
@@ -290,7 +289,6 @@ Creates a new product record.  Regardless of the information provided, all recor
     {
         "source":         "mydb",
         "sid":            "1234",
-        "uid":            "mydb:1234",
         "name":           "My Product",
         "description":    "My Description",
         "manufacturer":     {
@@ -315,7 +313,6 @@ Creates a new product record.  Regardless of the information provided, all recor
             "record": {
                 "source":         "mydb",
                 "sid":            "1234",
-                "uid":            "mydb:1234",
                 "name":           "My Product",
                 "description":    "My Description",
                 "manufacturer":     {
@@ -336,13 +333,12 @@ Update an existing product.  You must provide a complete record in JSON format. 
 
 Note: If you do not submit an "updated" field, the current date will be used.
 
-+ Request (application/json}
++ Request (application/json)
 
     ```
     {
         "source":         "mydb",
         "sid":            "1234",
-        "uid":            "mydb:1234",
         "name":           "My Product",
         "description":    "This existing record needs to be updated.",
         "manufacturer":     {
@@ -368,7 +364,6 @@ Note: If you do not submit an "updated" field, the current date will be used.
             "record": {
                 "source":         "mydb",
                 "sid":            "1234",
-                "uid":            "mydb:1234",
                 "name":           "My Product",
                 "description":    "This existing record needs to be updated.",
                 "manufacturer":     {
@@ -383,8 +378,8 @@ Note: If you do not submit an "updated" field, the current date will be used.
         }
         ```
 
-## DELETE /api/product/{uid}
-Flags a record as deleted.  If an author is supplied, gives them credit, otherwise the current user is listed as the author.
+## DELETE /api/product/{source}/{sid}
+Flags the record with `source` and `sid` as deleted.  If an author is supplied, gives them credit, otherwise the current user is listed as the author.
 
 + Parameters
     + uid (required, string) ... The unified identifier of a single record.
@@ -402,8 +397,8 @@ Flags a record as deleted.  If an author is supplied, gives them credit, otherwi
         }
         ```
 
-## GET /api/product/{uid}{?versions,sources}
-Returns a single product identified by its uid.  Only the latest published version is displayed by default.  For ["unified" records](#unified-records), full source records are not included by default.
+## GET /api/product/{source}/{sid}{?versions,sources}
+Returns a single product identified by its `source` and `sid`.  Only the latest published version is displayed by default.  For ["unified" records](#unified-records), full source records are not included by default.
 
 + Parameters
     + versions (optional, boolean) ... Whether or not to display the full version history for this record (including any unpublished drafts).  Defaults to "false".
@@ -419,7 +414,7 @@ Returns a single product identified by its uid.  Only the latest published versi
         {
             {
                 "source":           "ul",
-                "uid":              "ul:com.maker.win7.sample",
+                "uid":              "com.maker.win7.sample",
                 "sid":              "com.maker.win7.sample",
                 "name":             "A Sample Unified Listing Record",
                 "description":      "A record that combines 2-3 additional records' worth of information."
@@ -485,7 +480,7 @@ Return the list of products, optionally filtered by source, status, or date of l
             "records": [
                 {
                     "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
+                    "uid":              "com.maker.win7.sample",
                     "sid":              "com.maker.win7.sample",
                     "name":             "A Sample Unified Listing Record",
                     "description":      "A record that combines 2-3 additional records' worth of information."
@@ -550,7 +545,7 @@ Return the list of products, optionally filtered by source, status, or date of l
              "records": [
                 {
                     "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
+                    "uid":              "com.maker.win7.sample",
                     "sid":              "com.maker.win7.sample",
                     "name":             "A Sample Unified Listing Record",
                     "description":      "A record that combines 2-3 additional records' worth of information."
@@ -594,8 +589,8 @@ Return the list of products, optionally filtered by source, status, or date of l
 
  + Response 200 (application/search+json)
      + Headers
-         + Content-Type: application/record+json; profile=https://terms.raisingthefloor.org/schema/search.json#
-         + Link: <https://terms.raisingthefloor.org/schema/search.json#>; rel="describedBy"
+         + Content-Type: application/record+json; profile=https://registry.gpii.net/schema/search.json#
+         + Link: <https://registry.gpii.net/schema/search.json#>; rel="describedBy"
      + Body
 
          ```
