@@ -4,9 +4,9 @@
   },
   "express": {
     "port" :           4896,
-    "base.url":        "https://registry.gpii.net"
+    "baseUrl":        "https://registry.gpii.net"
   },
-  "sources": [ "eastin" ],
+  "sources": [ "Handicat", "Vlibank", "Siva", "EASTIN Admin", "Hjælpemiddelbasen","Rehadat","Hulpmiddelenwijzer", "Oaeg", "Dlf data" ],
   "eastin": {
     "databases": {
       "Handicat":           { "language": "es_es"},
