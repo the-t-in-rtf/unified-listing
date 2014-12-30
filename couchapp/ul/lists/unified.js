@@ -1,6 +1,6 @@
 // Reduce all the records with the same "parent" ID to a single structure using a list function...
-function(head, req) {
-    function combine(existingRecord, newRecord) {
+function(head, req) { // jshint ignore:line
+    function combine(existingRecord, newRecord) { // jshint ignore:line
         var combinedRecord = existingRecord ? JSON.parse(JSON.stringify(existingRecord)) : {};
 
         if (existingRecord) {
@@ -52,7 +52,7 @@ function(head, req) {
     var dataMap = {};
 
     var row;
-    while (row = getRow()) {
+    while (row = getRow()) { // jshint ignore: line
         var record = row.value;
         if (record.uid) {
             dataMap[record.uid] = combine(dataMap[record.uid], record);
@@ -62,5 +62,5 @@ function(head, req) {
         }
     }
 
-    send(JSON.stringify(Object.keys(dataMap).map(function(key){ return dataMap[key]; }), null, 2));
+    send(JSON.stringify(Object.keys(dataMap).map(function(key){ return dataMap[key]; }), null, 2)); // jshint ignore:line
 }
