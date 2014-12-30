@@ -1,0 +1,80 @@
+{
+    "type": "object",
+    "id": "updates",
+
+    "definitions": {
+        "ok": {
+            "type": "boolean"
+        },
+        "total_rows": {
+            "type": "number"
+        },
+        "offset": {
+            "type": "number"
+        },
+        "limit": {
+            "type": "number"
+        },
+        "statuses": {
+            "type": "array",
+            "items": {
+                "$ref": "record#/definitions/status"
+            }
+        },
+        "sources": {
+            "type": "array",
+            "items": {
+                "$ref": "record#/definitions/source"
+            }
+        },
+        "filters": {
+            "type": "object",
+            "properties": {
+                "updated": {
+                    "$ref": "record#/definitions/updated"
+                },
+                "statuses": {
+                    "$ref": "search#/definitions/statuses"
+                },
+                "sources": {
+                    "$ref": "search#/definitions/sources"
+                }
+            }
+        },
+        "records": {
+            "type": "array",
+            "items": {
+                "$ref": "record"
+            }
+        },
+        "retrievedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+
+    "properties": {
+        "ok": {
+            "$ref": "search#/definitions/ok"
+        },
+        "total_rows": {
+            "$ref": "search#/definitions/total_rows"
+        },
+        "offset": {
+            "$ref": "search#/definitions/offset"
+        },
+        "limit": {
+            "$ref": "search#/definitions/limit"
+        },
+        "filters": {
+            "$ref": "search#/definitions/filters"
+        },
+        "records": {
+            "$ref": "search#/definitions/records"
+        },
+        "retrievedAt": {
+            "$ref": "search#/definitions/retrievedAt"
+        }
+    },
+    "required": ["ok", "total_rows", "offset", "limit", "filters", "records", "retrievedAt"]
+}

@@ -610,7 +610,67 @@ Return the list of products, optionally filtered by source, status, or date of l
              "records": [
                 {
                     "source":           "ul",
-                    "uid":              "ul:com.maker.win7.sample",
+                    "uid":              "com.maker.win7.sample",
+                    "sid":              "com.maker.win7.sample",
+                    "name":             "A Sample Unified Listing Record",
+                    "description":      "A record that combines 2-3 additional records' worth of information."
+                    "manufacturer":     {
+                        "name":             "Maker Software",
+                        "address":          "4806 Hope Valley Road\nDurham, NC, 27707\nUnited States",
+                        "postalCode":       "27707",
+                        "cityTown":         "Durham",
+                        "provinceRegion":   "North Carolina",
+                        "country":          "United States",
+                        "phone":            "(704) 555-1212",
+                        "email":            "maker@maker.com",
+                        "url":              "http://www.maker.com/"
+                    },
+                    "status":           "active",
+                    "language:          "en_us",
+                    "sources":          [ "siva:2345" ],
+                    "editions": {
+                        "default": {
+                            "contexts":         { "OS": { "id": "android", "version": ">=0.1" } },
+                            "settingsHandlers": [],
+                            "lifeCycleManager": {}
+                        }
+                    }
+                    "updated":          "2014-11-30T22:04:15Z"
+                }
+             ],
+             "retrievedAt": "2014-05-25T11:23:32.441Z"
+         }
+         ```
+
+ ## GET /api/updates/{?source,updated,status,offset,limit}
+Return a list of unified records that contain newer information than the record provided by the given source.
+
+ + Parameters
+     + source (required, string) ... Only display products from a particular source.  Can be repeated to return products from multiple sources.  A record can be excluded by prepending an exclamation point in front of its name, as in ```source=!ul```.
+     + updated (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only updates at or after this time are included in the comparison.
+     + status (optional, string) ... The record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
+     + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
+     + limit (optional, string) ... The number of records to return.  Used for pagination.  Set to `-1` to return all records.  Defaults to `-1`
+
+ + Response 200 (application/search+json)
+     + Headers
+         + Content-Type: application/record+json; profile=https://registry.gpii.net/schema/updates.json#
+         + Link: <https://registry.gpii.net/schema/updates.json#>; rel="describedBy"
+     + Body
+
+         ```
+         {
+             "ok": true,
+             "total_rows": 1,
+             "params": {
+                  "sources": ["Vlibank"]
+                  "updated": "2014-05-25T11:23:32.441Z",
+                  "statuses": [ "active" ]
+             },
+             "records": [
+                {
+                    "source":           "ul",
+                    "uid":              "com.maker.win7.sample",
                     "sid":              "com.maker.win7.sample",
                     "name":             "A Sample Unified Listing Record",
                     "description":      "A record that combines 2-3 additional records' worth of information."
