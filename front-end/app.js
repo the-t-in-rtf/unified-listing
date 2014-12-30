@@ -36,7 +36,7 @@ app.use("/api",api);
 app.use(express.static(path.join(__dirname, "public")));  // jshint ignore:line
 
 // The infusion client-side libraries
-app.use("/infusion", express.static(__dirname + "/node_modules/infusion/src")); // jshint ignore:line
+app.use("/infusion", express.static(__dirname + "../node_modules/infusion/src")); // jshint ignore:line
 
 
 // Most static content including root page
