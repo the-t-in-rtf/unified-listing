@@ -421,6 +421,5 @@ if (cacheExists()) {
     loadDataFromCache().then(loadExistingRecords).then(storeRecords).then(displayStats).catch(showErrors).done(allDone);
 }
 else {
-    /* jshint -W024 */
-    retrieveData().then(getIndividualRecords).then(processRecords).then(loadExistingRecords).then(storeRecords).then(storeRecordFile).then(displayStats).catch(showErrors).done(allDone);
+    retrieveData().then(getIndividualRecords).then(processRecords).then(loadExistingRecords).then(storeRecords).then(storeRecordFile).then(displayStats).catch(showErrors).done(allDone); // jshint ignore:line
 }
