@@ -382,7 +382,7 @@ Note: If you do not submit an "updated" field, the current date will be used.
 Flags the record with `source` and `sid` as deleted.  If an author is supplied, gives them credit, otherwise the current user is listed as the author.
 
 + Parameters
-    + uid (required, string) ... The unified identifier of a single record.
+    + uid (required, string) ... The universal identifier of a single record.
 
 + Response 200 (application/json)
     + Headers
