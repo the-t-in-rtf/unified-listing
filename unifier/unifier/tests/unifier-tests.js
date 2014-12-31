@@ -44,6 +44,20 @@ unifierTests.runTests = function() {
 
         jqUnit.assertDeepEq("The most recent update should be detected...", new Date("2014-12-29T15:55:29.057Z"), updated);
     });
+
+    jqUnit.test("Test getting the date of first update (strings)...", function() {
+        var cluster = [{"updated": "2014-12-26T15:55:29.057Z"}, {"updated": "2014-12-29T15:55:29.057Z"}, {"updated": "2014-12-28T15:55:29.057Z"}];
+        var updated = unifier.getDateFirstUpdated(cluster);
+
+        jqUnit.assertDeepEq("The least recent update should be detected...", new Date("2014-12-26T15:55:29.057Z"), updated);
+    });
+
+    jqUnit.test("Test getting the date of first update (dates)...", function() {
+        var cluster = [{"updated": new Date("2014-12-26T15:55:29.057Z")}, {"updated": new Date("2014-12-29T15:55:29.057Z")}, {"updated": new Date("2014-12-28T15:55:29.057Z")}];
+        var updated = unifier.getDateFirstUpdated(cluster);
+
+        jqUnit.assertDeepEq("The least recent update should be detected...", new Date("2014-12-26T15:55:29.057Z"), updated);
+    });
 };
 
 unifierTests.runTests();

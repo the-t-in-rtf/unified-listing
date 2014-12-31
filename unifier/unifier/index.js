@@ -246,8 +246,23 @@ module.exports = function(config) {
     unifier.getDateLastUpdated = function(array) {
         var date = null;
         array.forEach(function(entry){
-            var entryDate = isNaN(entry.updated) ? new Date(entry.updated) : entry.updated;
-            if (!isNaN(entryDate.getTime()) && (!date || entryDate > date)) { date = entryDate; }
+            if (entry.updated) {
+                var entryDate = new Date(entry.updated);
+                if (!isNaN(entryDate.getTime()) && (!date || entryDate > date)) { date = entryDate; }
+            }
+        });
+
+        return date;
+    };
+
+    // Return the date of first update for a given cluster of records...
+    unifier.getDateFirstUpdated = function(array) {
+        var date = null;
+        array.forEach(function(entry){
+            if (entry.updated) {
+                var entryDate = new Date(entry.updated);
+                if (!isNaN(entryDate.getTime()) && (!date || entryDate < date)) { date = entryDate; }
+            }
         });
 
         return date;
@@ -298,7 +313,7 @@ module.exports = function(config) {
                         "description":  cluster[0].description,
                         "manufacturer": cluster[0].manufacturer,
                         "ontologies":   cluster[0].ontologies,
-                        "updated":      unifier.getDateLastUpdated(cluster)
+                        "updated":      unifier.getDateFirstUpdated(cluster)
                     };
 
                     //Add the record to the stack for the next step (associations)...
