@@ -8,6 +8,7 @@
     var templates = fluid.registerNamespace("ul.components.templates");
     templates.compiled = {};
 
+    // TODO:  Figure out how to cleanly reuse helper functions between the client and server
     templates.mdHelper = function(options) {
         if (Markdown && Markdown.getSanitizingConverter) {
             var converter = Markdown.getSanitizingConverter();
@@ -22,11 +23,15 @@
         // If we can't evolve the output, we just pass it through.
         return options.fn(this);
     };
-
     Handlebars.registerHelper("md", templates.mdHelper);
 
-    templates.jsonify = function(context) { return JSON.stringify(context); };
+    // Output a date or date-like string using a particular format
+    templates.formatHelper = function(context, format) {
+        return moment(context).format(format);
+    };
+    Handlebars.registerHelper("format", templates.formatHelper);
 
+    templates.jsonify = function(context) { return JSON.stringify(context); };
     Handlebars.registerHelper("jsonify", templates.jsonify);
 
     templates.render = function(key,context) {

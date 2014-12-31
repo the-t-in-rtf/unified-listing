@@ -46,6 +46,8 @@
 //  }
 //
 // Once you have done this, model changes should be passed to form controls and vice versa.
+//
+// Requires: jQuery, moment.js
 
 (function ($) {
     "use strict";
@@ -63,6 +65,12 @@
         });
     };
 
+    // HTML5 "date" inputs expect YYYY-MM-DD format.  We need to convert the date to that format before setting the value of the form element
+    binder.setDateValue = function (element, dateOrString) {
+        var myMoment = moment(dateOrString);
+        element.val(myMoment.format("YYYY-MM-DD"));
+    };
+
     binder.applyBinding = function (that) {
         var bindings = that.options.bindings;
         fluid.each(bindings, function (binding) {
@@ -73,6 +81,9 @@
             // initial sync, model overwrites values
             if (binding.elementType === "radio") {
                 binder.setRadioValue(element,value);
+            }
+            else if (binding.elementType === "date") {
+                binder.setDateValue(element, value);
             }
             else {
                 element.val(value);
