@@ -279,7 +279,7 @@ module.exports = function(config) {
 
         unifier.optimizedClusters.forEach(function(cluster){
             // Only cluster groups of more than 1 record....
-            if (cluster.length > 1) {
+            if (cluster.length > 0) {
                 var uid = unifier.getUnifiedId(cluster);
                 if (!uid) {
                     var now = new Date();
@@ -317,7 +317,7 @@ module.exports = function(config) {
         var deferreds = [];
 
         unifier.optimizedClusters.forEach(function(cluster){
-            if (cluster.length > 1) {
+            if (cluster.length > 0) {
                 var uid = unifier.getUnifiedId(cluster);
 
                 if (uid) {
