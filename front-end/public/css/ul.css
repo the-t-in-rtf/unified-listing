@@ -1,0 +1,41 @@
+.row {
+    max-width: 90rem;
+}
+
+.loading {
+    border:     1px solid #cccccc;
+    opacity:    .25;
+    text-align: center;
+    vertical-align: middle;
+    font-size:  2em;
+    min-height: 10em;
+    padding-top: 10%;
+}
+.ul-updates-output.loading {
+    padding-top: 10%;
+}
+
+.ul-updates-records:nth-child(even) {
+    background-color: #cccccc;
+}
+
+.ul-updates-records:nth-child(even) .ul-updates-record {
+    background-color: #cccccc;
+    border-color: white;
+}
+
+.ul-updates-record {
+    padding-left: .5em;
+    margin-top: .25em;
+    border:1px solid #cccccc;
+}
+
+.accordion {
+    background-color: inherit;
+    border:1px solid #cccccc;
+    margin-top: .5em;
+}
+
+.accordion:first-of-type {
+    margin-top: 0px;
+}
