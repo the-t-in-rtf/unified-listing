@@ -1,24 +1,37 @@
-<div class="ptd-records ptd-scroll">
+<div class="ul-updates-output">
     {{#each records}}
-            <div class="ptd-search-record">
-                <div class="row">
-                    <div class="column small-4">
-                        <div class="ptd-icon-link ptd-search-copy-link" title="Copy link location"></div>
-                        <div class="ptd-search-title-block">
-                            <span class="ptd-search-title">{{uniqueId}}</span>
-                            <a href="/details/{{uniqueId}}" class="ptd-search-show-edit-link">Show{{#if user}}/Edit{{/if}}</a>
-                            {{#if termLabel}}
-                                <p>{{termLabel}}</p>
-                            {{/if}}
-                        </div>
-                    </div>
-                    <div class="column small-4">
-                        {{>search-aliases}}
-                    </div>
-                    <div class="column small-4">
-                        {{>common-version}}
-                    </div>
+        <dl class="accordion" data-accordion>
+            <dd class="accordion-navigation">
+                <a href="#unified-accordion-{{@index}}">
+                    <h3>Unified Record {{uid}} (click to view federated records)</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="15%">Name</th><th width="55%">Description</th><th width="15%">Manufacturer</th><th width="15%">Updated</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{>updates-unified-record}}
+                        </tbody>
+                    </table>
+                </a>
+                <div id="unified-accordion-{{@index}}" class="content">
+                    <h3>Federated Records for UID {{uid}}</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="15%">Source/ID</th><th width="15%">Name</th><th width="40%">Description</th><th width="15%">Manufacturer</th><th width="15%">Updated</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{#each sources}}
+                                {{>updates-source-record}}
+                            {{/each}}
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            </dd>
+        </dl>
     {{/each}}
 </div>
+

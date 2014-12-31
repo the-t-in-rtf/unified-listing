@@ -2,6 +2,10 @@ fluid.defaults("ul.config.root", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
     distributeOptions: [
         {
+            target: "{that queryAware}.options.query",
+            source: "{that}.options.query"
+        },
+        {
             target: "{that baseUrlAware}.options.baseUrl",
             source: "{that}.options.serverConfig.baseUrl"
         },

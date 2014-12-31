@@ -12,22 +12,54 @@
     };
 
     updates.applySettingsChanges = function(that) {
+        var output = that.locate("output");
+        output.html("Loading...");
+        output.addClass("loading");
 
-        // TODO:  Update to pull from the "updates" API
         var settings = {
-            url:     that.options.baseUrl + "/",
+            url:     that.options.baseUrl + "/api/updates",
             success: that.displayResults,
             error:   that.displayError,
             data:    {
-                updated: that.model.settings.updated,
-                source:  that.model.settings.source
+                source:  that.model.settings.sources
             }
         };
+
+        var updated = moment(that.model.settings.updated).toDate();
+        if (!isNaN(updated.getTime)) {
+            settings.data.updated = updated;
+        }
+
+        // Update the browser location bar so that bookmarking and reloads will work as expected
+        var queryString = "";
+        if (that.model.settings.sources || !isNaN(updated)) {
+            queryString += "?";
+            if (that.model.settings.sources) {
+                that.model.settings.sources.forEach(function(source){
+                    queryString += "source=" + escape(source) + "&";
+                });
+            }
+
+            if (!isNaN(updated)) {
+                queryString += "updated=" + updated.toISOString();
+            }
+        }
+
+        history.pushState(null, null, that.options.baseUrl + "/updates" + queryString);
 
         $.ajax(settings);
     };
 
+    // We use the foundation "accordion" control, which needs to be rebound when the markup is reloaded...
+    updates.rebindFoundation = function(that) {
+        $(document).foundation();
+        $(document).foundation("accordion", "reflow");
+    };
+
     updates.displayError = function(that, jqXHR, textStatus, errorThrown) {
+        var output = that.locate("output");
+        output.removeClass("loading");
+
         var message = errorThrown;
         try {
             var jsonData = JSON.parse(jqXHR.responseText);
@@ -37,19 +69,30 @@
             console.log("jQuery.ajax call returned meaningless jqXHR.responseText payload. Using 'errorThrown' instead.");
         }
 
-
-        var output = that.locate("output");
-        output.show();
         templates.prepend(output,"common-error", message);
         that.events.markupLoaded.fire();
     };
 
+    updates.loadQueryData = function(that) {
+        // TODO:  Queue up changes and only fire one update...
+
+        if (that.data.options.query) {
+            var updated = that.data.options.query.updated;
+            if (updated) {
+                that.applier.change("settings.updated", updated);
+            }
+
+            var sources = Array.isArray(that.data.options.query.source) ? that.data.options.query.source : [that.data.options.query.source];
+            if (sources) {
+                that.applier.change("settings.sources", sources);
+            }
+        }
+    };
+
     updates.displayResults = function(that, data, textStatus, jqXHR) {
         var output = that.locate("output");
-        output.show();
         if (data && data.records && data.records.length > 0) {
-            // TODO:  Update the template to work with the output of the "update" API and load the content here.
-            output.html("do something!");
+            templates.replaceWith(output, "updates-records", data);
         }
         else {
             templates.replaceWith(output, "updates-norecord");
@@ -59,6 +102,7 @@
 
     // We have to do this because templates need to be loaded before we initialize our own code.
     updates.init = function(that) {
+        updates.loadQueryData(that);
         templates.loadTemplates(function() { updates.loadControls(that); });
     };
 
@@ -106,6 +150,14 @@
                 funcName: "ul.components.updates.init",
                 args: ["{that}"]
             },
+            "loadQueryData": {
+                funcName: "ul.components.updates.loadQueryData",
+                args: ["{that}"]
+            },
+            "rebindFoundation": {
+                funcName: "ul.components.updates.rebindFoundation",
+                args: ["{that}"]
+            },
             "displayError": {
                 funcName: "ul.components.updates.displayError",
                 args: ["{that}", "{arguments}.0", "{arguments}.1", "{arguments}.2"]
@@ -141,6 +193,10 @@
             markupLoaded: [
                 {
                     "funcName": "ul.components.binder.applyBinding",
+                    "args":     "{that}"
+                },
+                {
+                    "funcName": "ul.components.updates.rebindFoundation",
                     "args":     "{that}"
                 }
             ]

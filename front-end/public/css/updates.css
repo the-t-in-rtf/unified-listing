@@ -1,2 +1,9 @@
-.ul-updates-output { display: none; }
-.ul-updates-source-control { height: 10em; }
+.ul-updates-source-control { height: 12em; }
+.ul-updates-output {
+    padding: .5em;
+    width:99%;
+}
+
+.ul-updates-output table tr {
+    vertical-align: top;
+}
