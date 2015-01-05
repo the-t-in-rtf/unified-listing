@@ -59,7 +59,16 @@ module.exports=function(config){
             });
 
             // TODO:  Add support for paging
-            myRes.status(200).send({ "ok": "true", "records": matchingClusters});
+
+            // TODO:  Display the selected statuses in the params list
+            var params = {
+                "sources": matchingSources
+            };
+            if (updatedSince) {
+                params.updated = updatedSince;
+            }
+
+            myRes.status(200).send({ "ok": "true", "total_rows": matchingClusters.length, "params": params, "records": matchingClusters});
         });
 
 
