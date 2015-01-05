@@ -1,0 +1,6 @@
+{
+  "express": {
+    "port" :           4896,
+    "baseUrl":        "http://localhost:4896"
+  }
+}
