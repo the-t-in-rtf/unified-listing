@@ -11,7 +11,7 @@ This section describes the data objects which are accepted by and returned by th
 
 ## Product Records
 
-A product is a distinct piece of software or equipment.  Products may have more than one version or edition, which may provide different features.  For more information about editions (versions or models of a product), see the ["Instances"](#instances) section.
+A product is a distinct piece of software or equipment.  Products may have more than one version or edition, which may provide different features.  For more information about editions (versions or models of a product), see the ["Editions"](#editions) section.
 
 All products in the Unified Listing have the following common fields:
 
@@ -130,7 +130,7 @@ The Unified Listing also contains "unified" records, which are a summary in US E
 |Field|Description|Required?|
 | --- | --- | --- |
 |sources| An array containing a list of "source" records (see ["Source Records"](#source-records) above).|Y|
-|editions| A hash containing one or more "editions" of the product (see ["Editions"](#editions) below).  At least one instance named "default" is required.|Y|
+|editions| A hash containing one or more "editions" of the product (see ["Editions"](#editions) below).  At least one edition named "default" is required.|Y|
 |ontologies| A hash containing one or more "ontologies", or ways of classifying the product (see ["Ontologies"](#ontologies) below.)|
 
 A full "unified" record in JSON format looks something like:
@@ -233,13 +233,13 @@ Here is an example of the ontologies section of a product represented in JSON fo
         }
     }
 
-## Instances
+## Editions
 
 A software product may have various versions or editions that operate on different platforms.  A physical device may have multiple editions that provide different features.
 
-Each variation on the product that has different features is an "instance" of the product.  Variations that are only cosmetically different (such as different colors) should not need to have more than one instance.
+Each variation on the product that has different features is an "edition" of the product.  Variations that are only cosmetically different (such as different colors) should not need to have more than one edition.
 
-An instance is required to have a unique key.  There must be at least one instance, called "default" which is used when the version or variation is otherwise unknown.
+An edition is required to have a unique key.  There must be at least one edition, called "default" which is used when the version or variation is otherwise unknown.
 
 The simplest set of editions represented in JSON format looks something like the following:
 
@@ -275,7 +275,7 @@ The simplest set of editions represented in JSON format looks something like the
         }
     }
 
-[View JSON Schema for editions](../../schema/instance.json)
+[View JSON Schema for editions](../../schema/edition.json)
 
 
 # API REST endpoints
