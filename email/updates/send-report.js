@@ -4,12 +4,14 @@ var updates    = fluid.registerNamespace("gpii.ul.email.updates");
 updates.loader = require("../../config/lib/config-loader");
 updates.config = updates.loader.loadConfig(require("../../config/local.json"));
 
-var path             = require("path");
-var emailTemplates   = require("email-templates");
-updates.templatesDir = path.join(__dirname, "templates");
+var path              = require("path");
+var emailTemplates    = require("email-templates");
+updates.templatesDir  = path.join(__dirname, "templates");
 
-var when             = require("when");
-var moment           = require("moment");
+var when              = require("when");
+var moment            = require("moment");
+updates.updatedMoment = moment();
+updates.updated       = updates.updatedMoment.subtract(1, 'week').toDate();
 
 // TODO:  Add support for command line arguments regarding frequency, etc.
 
@@ -25,15 +27,12 @@ updates.helpers = {
 updates.getUpdates = function(){
     var defer = when.defer();
 
-    var myMoment = moment();
-    var lastWeek = myMoment.subtract(1, 'week').toDate();
-
     var getOptions = {
         url:     updates.config.express.baseUrl + "/api/updates",
         method: "GET",
         qs:    {
             source:  updates.config.sources,
-            updated: lastWeek
+            updated: updates.updated
         }
     };
 
@@ -50,6 +49,9 @@ updates.getUpdates = function(){
 
 // TODO:  Prepare a summary from the email template
 updates.generateReport = function(apiDataString) {
+
+    // TODO:  Update the template to display a more appropriate message when there are no updates.
+    
     var defer = when.defer();
     var data = JSON.parse(apiDataString);
     debugger;
@@ -70,9 +72,23 @@ updates.generateReport = function(apiDataString) {
 // TODO:  Send the email
 updates.sendEmail = function(templateOutput) {
     var data = JSON.parse(templateOutput);
-    console.log(data.text);
 
-    return when("Promise not implemented.");
+    // TODO:  Investigate async libraries for mail handling
+    var nodemailer    = require('nodemailer');
+    var smtpTransport = require('nodemailer-smtp-transport');
+    var transporter   = nodemailer.createTransport(smtpTransport());
+
+    // TODO: Pull this from the configuration
+    transporter.sendMail({
+        from:    "updates@localhost",
+        to:      "tony@raisingthefloor.org",
+        subject: "Unified Listing updates since " + updates.updatedMoment.format("L") + " ...",
+        text:    data.text,
+        html:    data.html
+    });
+
+    // We have nothing new to contribute, so act as a promise passthrough...
+    return when(templateOutput);
 };
 
 updates.getUpdates().then(updates.generateReport).then(updates.sendEmail);

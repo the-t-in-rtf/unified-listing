@@ -1,7 +1,48 @@
-This will eventually output the report for database source vendors.
+<div style="padding:1em; border: 1px solid #cccccc">
+    <p>Greetings.</p>
 
-Filters:
+    <p>
+        You are receiving this because you have been identified as the owner of one or more sources of data that are included
+        in the Unified Listing.
+    </p>
 
-{{#each filters.source}}
-    Source: {{.}}
-{{/each}}
+    <p>
+        This email is to inform you about updates to the Unified Listing that are related to records in your database(s), so
+        that you can update your records if needed.
+    </p>
+
+
+    <p>
+        {{#if params.sources}}
+            This report includes updates related to records contained in the following databases:
+
+            <ul>
+                {{#each params.sources}}
+                    <li>{{.}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </p>
+
+    <p>
+        {{#if params.updated}}
+            This report covers updates that have been made since {{format params.updated "LLLL"}}.
+        {{/if}}
+    </p>
+
+
+    <p>The Unified Listing contains updated information for {{total_rows}} records contained in the database(s) you maintain.</p>
+
+    <p>For full details about any updates contained in the Unified Listing, please visit the following URL:</p>
+
+    <a href="http://registry.gpii.net/updates?{{#each params.sources}}source={{.}}&{{/each}}{{#if params.updated}}updated={{params.updated}}{{/if}}">http://registry.gpii.net/updates?{{#each params.sources}}source={{.}}&{{/each}}{{#if params.updated}}updated={{params.updated}}{{/if}}</a>
+
+    <p>If you feel you have received this email in error or have any other questions or concerns, please contact:</p>
+
+    <p>tony@raisingthefloor.org</p>
+
+    <p>Best Regards,</p>
+
+
+    <p>The Unified Listing Team</p>
+</div>
