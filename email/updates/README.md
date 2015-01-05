@@ -1,0 +1,1 @@
+This directory contains a script that will email database source vendors a period (i.e. weekly) summary of updates to the Unified Listing that are relevant to them.

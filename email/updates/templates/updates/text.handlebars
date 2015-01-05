@@ -1,0 +1,34 @@
+Greetings.
+
+You are receiving this because you have been identified as the owner of one or more sources of data that are included
+in the Unified Listing.
+
+This email is to inform you about updates to the Unified Listing that are related to records in your database(s), so
+that you can update your records if needed.
+
+
+{{#if params.sources}}
+This report includes updates related to records contained in the following databases:
+    {{#each params.sources}}
+        * {{.}}
+    {{/each}}
+{{/if}}
+
+{{#if params.updated}}
+This report covers updates that have been made since {{format params.updated "LLLL"}}.
+{{/if}}
+
+The Unified Listing contains updated information for {{total_rows}} records contained in the database(s) you maintain.
+
+For full details about any updates contained in the Unified Listing, please visit the following URL:
+
+http://registry.gpii.net/updates?{{#each params.sources}}source={{.}}&{{/each}}{{#if params.updated}}updated={{params.updated}}{{/if}}
+
+If you feel you have received this email in error or have any other questions or concerns, please contact:
+
+tony@raisingthefloor.org
+
+Best Regards,
+
+
+The Unified Listing Team

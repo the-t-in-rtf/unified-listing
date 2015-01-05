@@ -1,0 +1,1 @@
+This directory contains email handling libraries, including scripts used to send change reports to source database vendors.
