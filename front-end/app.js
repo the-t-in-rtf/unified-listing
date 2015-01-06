@@ -35,7 +35,7 @@ app.use("/schema",express.static(__dirname + "/schema/schemas")); // jshint igno
 
 // REST APIs
 var api = require("./api")(config);
-app.use("/api",api);
+app.use("/api", api.router);
 
 
 app.use(express.static(path.join(__dirname, "public")));  // jshint ignore:line

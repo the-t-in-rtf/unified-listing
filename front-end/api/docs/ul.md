@@ -578,7 +578,7 @@ Return the list of products, optionally filtered by source, status, or date of l
          ```
 
  ## GET /api/suggest/{?q,source,status,sort,versions}
- Suggest a short list of related records.  Performs a search as in /api/search, but only returns 5 results and does not support paging.  Equivalent to `/api/search?q=search&results=5`.  Used to suggest related records when building a "unified" record.
+ Suggest a short list of records matching the search terms.  Performs a search as in /api/search, but only returns 5 results and does not support paging.  Equivalent to `/api/search?q=search&results=5`.  Used to suggest related records when building a "unified" record.
 
  + Parameters
      + q (required, string) ... The query string to match.  Can either consist of a word or phrase as plain text, or can use [lucene's query syntax][1] to construct more complex searches.

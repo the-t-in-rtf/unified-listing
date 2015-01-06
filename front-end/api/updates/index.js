@@ -1,13 +1,17 @@
 // API support for "update" detection, where one or more sources are compared to the "unified" record.
 "use strict";
 module.exports=function(config){
+    var fluid     = require("infusion");
+    var namespace = "gpii.ul.api.updates";
+    var updates   = fluid.registerNamespace(namespace);
+
     var express = require("express");
-    var router = express.Router();
+    updates.router = express.Router();
 
     // TODO: add support for filtering by statuses
     // TODO: default to filtering out new and deleted records once we have more data
 
-    router.use("/",function(req, res) {
+    updates.router.use("/",function(req, res) {
         var myRes = res;
         if (!req.query.source) {
             res.status(400).send({ "ok": false, "message": "Cannot continue with at least one &quot;source&quot; parameter.  Check the API documentation for full details."});
@@ -73,5 +77,5 @@ module.exports=function(config){
 
 
     });
-    return router;
+    return updates;
 };

@@ -1,10 +1,14 @@
 // Display the API docs for the Unified Listing
 "use strict";
 module.exports = function(config) {
-    var express = require("express");
-    var router = express.Router();
+    var fluid = require("infusion");
+    var namespace    = "gpii.ul.docs";
+    var docs         = fluid.registerNamespace(namespace);
 
-    router.use("/",function(req, res) {
+    var express = require("express");
+    docs.router = express.Router();
+
+    docs.router.use("/",function(req, res) {
         if (req.path === "/") {
             var marked = require("marked");
             var markdown = "";
@@ -27,5 +31,6 @@ module.exports = function(config) {
             res.status(404).render("pages/error", {message: "The page you requested was not found."});
         }
     });
-    return router;
+
+    return docs;
 };

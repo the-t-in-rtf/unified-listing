@@ -1,11 +1,21 @@
 "use strict";
 module.exports = function(config) {
+    var fluid = require("infusion");
+    var namespace    = "gpii.ul.api";
+    var api         = fluid.registerNamespace(namespace);
+
     var express = require("express");
-    var router = express.Router();
+    api.router = express.Router();
 
-    router.use("/updates", require("./updates")(config));
-    router.use("/docs",    require("./docs")(config));
+    var updates = require("./updates")(config);
+    api.router.use("/updates", updates.router);
 
-    return router;
+    var products = require("./products")(config);
+    api.router.use("/products", products.router);
+
+    var docs = require("./docs")(config);
+    api.router.use("/docs", docs.router);
+
+    return api;
 };
 
