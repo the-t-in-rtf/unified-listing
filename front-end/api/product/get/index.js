@@ -10,14 +10,12 @@ module.exports=function(config){
     get.queryHelper = require("../../lib/query-helper")(config);
 
     // TODO: add support for versions
-    // TODO: add support for sources
-
-    get.router.use("/:source/:sid",function(req, res) {
+    get.router.use("/",function(req, res) {
         var myRes = res;
 
         var params = {};
 
-        var simpleFields  = ["source", "sid"];
+        var simpleFields  = ["q", "sort"];
         get.queryHelper.parseSimpleFields(params, req, simpleFields);
 
         if (!params.source && !params.sid) {

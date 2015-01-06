@@ -527,6 +527,7 @@ Return the list of products, optionally filtered by source, status, or date of l
     + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
     + limit (optional, string) ... The number of records to return.  Used for pagination.
     + versions (optional, boolean) ... Whether or not to display the full version history for each record (including any unpublished drafts).  Defaults to "false".
+    + sources (optional, boolean) ... If this is set to true, combine all search results according to their "unified" grouping.  Defaults to "false".
 
  + Response 200 (application/search+json)
      + Headers

@@ -1,6 +1,7 @@
 {
   "couch": {
-    "url": "http://admin:admin@localhost:5984/ul/"
+    "url":       "http://admin:admin@localhost:5984/ul/",
+    "luceneUrl": "http://admin:admin@localhost:5984/_fti/local/ul/_design/lucene/by_content?q=sara&sort=source,name"
   },
   "express": {
     "port" :           4896,
