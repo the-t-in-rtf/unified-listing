@@ -8,8 +8,6 @@ module.exports=function(config){
     var express          = require("express");
     products.router      = express.Router();
     products.queryHelper = require("../lib/query-helper")(config);
-    products.params      = {};
-
 
     // TODO: default to filtering out new and deleted records once we have more data
     // TODO: add support for paging (offset, limit)
@@ -19,10 +17,9 @@ module.exports=function(config){
     products.router.use("/",function(req, res) {
         var myRes = res;
 
-        var arrayFields  = ["source", "status"];
-
         var params = {};
 
+        var arrayFields  = ["source", "status"];
         products.queryHelper.parseArrayFields(params, req, arrayFields);
 
         var dateFields    = ["updated"];
@@ -34,10 +31,8 @@ module.exports=function(config){
         var numberFields  = ["offset", "limit"];
         products.queryHelper.parseNumberFields(params, req, numberFields);
 
-
-        // TODO: Make this configurable when it's meaningful, i.e. when someone can reasonably change what is done with the records using the configuration
         var options = {
-            url: config.couch.url + "/_design/ul/_view/records",
+            url: config.couch.url + "/_design/ul/_view/records"
         };
 
         var request = require("request");

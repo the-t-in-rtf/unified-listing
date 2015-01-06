@@ -13,6 +13,9 @@ module.exports = function(config) {
     var products = require("./products")(config);
     api.router.use("/products", products.router);
 
+    var product = require("./product")(config);
+    api.router.use("/product", product.router);
+
     var docs = require("./docs")(config);
     api.router.use("/docs", docs.router);
 
