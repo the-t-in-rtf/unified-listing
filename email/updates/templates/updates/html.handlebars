@@ -33,13 +33,9 @@
 
     <p>The Unified Listing contains updated information for {{total_rows}} records contained in the database(s) you maintain.</p>
 
-    <p>For full details about any updates contained in the Unified Listing, please visit the following URL:</p>
+    <p>For full details, <a href="http://registry.gpii.net/updates?{{#each params.sources}}source={{.}}&{{/each}}{{#if params.updated}}updated={{params.updated}}{{/if}}">view the full report online</a>.
 
-    <a href="http://registry.gpii.net/updates?{{#each params.sources}}source={{.}}&{{/each}}{{#if params.updated}}updated={{params.updated}}{{/if}}">http://registry.gpii.net/updates?{{#each params.sources}}source={{.}}&{{/each}}{{#if params.updated}}updated={{params.updated}}{{/if}}</a>
-
-    <p>If you feel you have received this email in error or have any other questions or concerns, please contact:</p>
-
-    <p>tony@raisingthefloor.org</p>
+    <p>If you feel you have received this email in error or have any other questions or concerns, please contact tony@raisingthefloor.org.</p>
 
     <p>Best Regards,</p>
 
