@@ -51,7 +51,7 @@ updates.getUpdates = function(){
 updates.generateReport = function(apiDataString) {
 
     // TODO:  Update the template to display a more appropriate message when there are no updates.
-    
+
     var defer = when.defer();
     var data = JSON.parse(apiDataString);
     debugger;
