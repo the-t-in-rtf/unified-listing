@@ -13,4 +13,5 @@ Once you have those, you will need to:
 
 1.  Create a database (preferably called "ul") in your local Couch instance.
 2.  Deploy the views in the couchapp directory (see the README.md file there).
-3.  Navigate to the "front-end" directory and follow the instructions there to install the client-side dependencies and start the server.
+3.  Run ``npm install`` in this directory.
+4.  Navigate to the "front-end" directory and follow the instructions there to install the client-side dependencies and start the server.
