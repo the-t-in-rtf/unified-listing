@@ -543,10 +543,10 @@ Return the list of products, optionally filtered by source, status, or date of l
                   "q": "jaws",
                   "offset": 0,
                   "limit": 100,
+                  "sort": "uid ASC",
                   "updated": "2014-05-25T11:23:32.441Z",
                   "statuses": [ "active" ]
              },
-             "sort": "uid ASC",
              "records": [
                 {
                     "source":           "ul",

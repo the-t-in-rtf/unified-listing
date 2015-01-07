@@ -10,8 +10,8 @@ module.exports=function(config){
     search.queryHelper = require("../lib/query-helper")(config);
 
     // TODO: add support for versions
-    // TODO: add support for paging
     // TODO: add support for mounting in "suggest" mode
+    // TODO: test and fix sorting for "sources=true"
 
     search.router.use("/",function(req, res) {
         var myRes = res;
@@ -66,8 +66,43 @@ module.exports=function(config){
 
             var data = JSON.parse(body);
 
-            // TODO:  Get the list of full records, unified or otherwise
-            myRes.status(200).send(data);
+            if (params.sources) {
+                var uids = data.rows.map(function(value){
+                    return value.fields.uid;
+                });
+                var sourcesOptions =  {
+                    url:  config.couch.url + "/_design/ul/_list/unified/unified",
+                    qs: { "keys": JSON.stringify(uids) }
+                };
+                var sourceRequest = require("request");
+                sourceRequest(sourcesOptions, function(error, response, body){
+                    if (error) {
+                        myRes.status(500).send({ "ok": false, "message": body.error});
+                        return;
+                    }
+                    var records = JSON.parse(body);
+                    myRes.status(200).send({ "ok": true, params: params, total_rows: records.length, records: records });
+                });
+            }
+            else {
+                var keys = data.rows.map(function(value){
+                    return [value.fields.source, value.fields.sid];
+                });
+                var sourcesOptions =  {
+                    url:  config.couch.url + "/_design/ul/_view/records",
+                    qs: { "keys": JSON.stringify(keys) }
+                };
+                var sourceRequest = require("request");
+                sourceRequest(sourcesOptions, function(error, response, body){
+                    if (error) {
+                        myRes.status(500).send({ "ok": false, "message": body.error});
+                        return;
+                    }
+                    var data = JSON.parse(body);
+                    var records = data.rows.map(function(row){ return row.value; });
+                    myRes.status(200).send({ "ok": true, params: params, total_rows: records.length, records: records });
+                });
+            }
         });
     });
 
