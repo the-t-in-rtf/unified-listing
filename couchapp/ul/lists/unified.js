@@ -1,5 +1,8 @@
-// Reduce all the records with the same "parent" ID to a single structure using a list function...
 function(head, req) { // jshint ignore:line
+    // WARNING:  Pouch will fail horribly if the first line of your list function is a comment.  The next line
+    // had to be moved down to avoid spurious messages about things "not evaluating to a function"
+    //
+    // Reduce all the records with the same "parent" ID to a single structure using a list function...
     function combine(existingRecord, newRecord) { // jshint ignore:line
         var combinedRecord = existingRecord ? JSON.parse(JSON.stringify(existingRecord)) : {};
 
