@@ -15,14 +15,24 @@
 function loadCouchappViews(path) {
     var fs = require("fs");
 
-    var json = { "_id": "_design/ul", "views": {}};
+    var json = { "_id": "_design/ul", "views": {}, "lists": {}};
 
-    // read the couchapp parent directory
+    // load the views
     fs.readdirSync(path + "/views").forEach(function(file){
         var filename = path + "/views/" + file + "/map.js";
         if (fs.existsSync(filename)) {
             var mapContent = fs.readFileSync(filename, {"encoding": "utf8"});
             json.views[file] = {"map": mapContent};
+        }
+    });
+
+    // load the lists
+    fs.readdirSync(path + "/lists").forEach(function(file){
+        var filename = path + "/lists/" + file;
+        var listName = file.replace(".js","");
+        if (fs.existsSync(filename)) {
+            var listContent = fs.readFileSync(filename, {"encoding": "utf8"});
+            json.lists[listName] = listContent;
         }
     });
 
