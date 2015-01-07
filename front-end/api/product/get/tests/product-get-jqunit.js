@@ -87,34 +87,40 @@ get.runTests = function() {
             var jsonData = JSON.parse(body);
 
             jqUnit.assertNotUndefined("A record should have been returned...", jsonData.record);
-            jqUnit.assertUndefined("There should not be any 'sources' data for the record...", jsonData.record.sources);
+            if (jsonData.record) {
+              jqUnit.assertUndefined("There should notbe 'sources' data for the record...", jsonData.record.sources);
+            }
         });
     });
 
-    //jqUnit.asyncTest("Retrieving a unified record with sources=true ...", function() {
-    //    request.get(get.config.express.baseUrl + "product/unified/1420467546923-229?sources=true", function(error, response, body) {
-    //        jqUnit.start();
-    //
-    //        testUtils.isSaneResponse(jqUnit, error, response, body);
-    //        var jsonData = JSON.parse(body);
-    //
-    //        debugger;
-    //        jqUnit.assertNotUndefined("A record should have been returned...", jsonData.record);
-    //        jqUnit.assertNotUndefined("There should be 'sources' data for the record...", jsonData.record.sources);
-    //    });
-    //});
+    jqUnit.asyncTest("Retrieving a unified record with sources=true ...", function() {
+        request.get(get.config.express.baseUrl + "product/unified/1420467546923-229?sources=true", function(error, response, body) {
+            jqUnit.start();
 
-    //jqUnit.asyncTest("Retrieving a source record with sources=true ...", function() {
-    //    request.get(get.config.express.baseUrl + "product/Vlibank/E31163?sources=true", function(error, response, body) {
-    //        jqUnit.start();
-    //
-    //        testUtils.isSaneResponse(jqUnit, error, response, body);
-    //        var jsonData = JSON.parse(body);
-    //
-    //        jqUnit.assertNotUndefined("A record should have been returned...", jsonData.record);
-    //        jqUnit.assertUndefined("There should not be any 'sources' data for the record...", jsonData.record.sources);
-    //    });
-    //});
+            testUtils.isSaneResponse(jqUnit, error, response, body);
+            var jsonData = JSON.parse(body);
+
+            debugger;
+            jqUnit.assertNotUndefined("A record should have been returned...", jsonData.record);
+            if (jsonData.record) {
+              jqUnit.assertNotUndefined("There should be 'sources' data for the record...", jsonData.record.sources);
+            }
+        });
+    });
+
+    jqUnit.asyncTest("Retrieving a source record with sources=true ...", function() {
+        request.get(get.config.express.baseUrl + "product/Vlibank/B812?sources=true", function(error, response, body) {
+            jqUnit.start();
+
+            testUtils.isSaneResponse(jqUnit, error, response, body);
+            var jsonData = JSON.parse(body);
+
+            jqUnit.assertNotUndefined("A record should have been returned...", jsonData.record);
+            if (jsonData.record) {
+                jqUnit.assertUndefined("There should not be any 'sources' data for the record...", jsonData.record.sources);
+            }
+        });
+    });
 
     jqUnit.asyncTest("Retrieving a source record with a space in the source name ...", function() {
         request.get(get.config.express.baseUrl + "product/Dlf data/0110283", function(error, response, body) {

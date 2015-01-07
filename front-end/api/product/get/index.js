@@ -65,10 +65,12 @@ module.exports=function(config){
                 var sourceRequest = require("request");
                 // http://localhost:5984/ul/_design/ul/_list/unified/unified?key=%221420467546922-336%22
                 var sourceOptions = {
-                    url: config.couch.url + "/_design/ul/_list/unified/unified",
+                    url: config.couch.url + "_design/ul/_list/unified/unified",
                     qs: { "key": JSON.stringify(record.uid) }
                 };
+                debugger;
                 sourceRequest(sourceOptions, function(error, response, body) {
+                    debugger;
                     if (error) {
                         get.schemaHelper.setHeaders(myRes, "message");
                         myRes.status(500).send({ "ok": false, "message": body.error});
