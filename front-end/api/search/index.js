@@ -1,8 +1,9 @@
 // API Support for GET /api/product/:source:/:id
 "use strict";
-module.exports=function(config){
+module.exports=function(config, quick){
     var fluid          = require("infusion");
-    var namespace      = "gpii.ul.api.search";
+    var mode           = quick ? "suggest" : "search";
+    var namespace      = "gpii.ul.api." + mode;
     var search         = fluid.registerNamespace(namespace);
 
     var express        = require("express");
@@ -10,7 +11,6 @@ module.exports=function(config){
     search.queryHelper = require("../lib/query-helper")(config);
 
     // TODO: add support for versions
-    // TODO: add support for mounting in "suggest" mode
     // TODO: test and fix sorting for "sources=true"
 
     search.router.use("/",function(req, res) {
@@ -24,8 +24,14 @@ module.exports=function(config){
         var arrayFields  = ["status", "source"];
         search.queryHelper.parseArrayFields(params, req, arrayFields);
 
-        var numberFields  = ["offset", "limit"];
-        search.queryHelper.parseNumberFields(params, req, numberFields);
+        if (quick) {
+            params.offset = 0;
+            params.limit  = 5;
+        }
+        else {
+            var numberFields  = ["offset", "limit"];
+            search.queryHelper.parseNumberFields(params, req, numberFields);
+        }
 
         var booleanFields = ["versions", "sources"];
         search.queryHelper.parseBooleanFields(params, req, booleanFields);

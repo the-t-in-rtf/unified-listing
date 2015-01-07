@@ -19,6 +19,10 @@ module.exports = function(config) {
     var search = require("./search")(config);
     api.router.use("/search", search.router);
 
+
+    var suggest = require("./search")(config, true);
+    api.router.use("/suggest", suggest.router);
+
     var docs = require("./docs")(config);
     api.router.use("/docs", docs.router);
 
