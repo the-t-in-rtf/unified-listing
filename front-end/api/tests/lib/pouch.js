@@ -8,9 +8,6 @@ module.exports = function(config) {
     pouch.start = function(callback) {
         var PouchDB    = require("pouchdb");
 
-        // We need support for lists to use our "unified" list
-        PouchDB.plugin(require("pouchdb-list"));
-
         var MemPouchDB = PouchDB.defaults({db: require("memdown")});
         var ul         = new MemPouchDB("ul");
         var _users     = new MemPouchDB("_users");

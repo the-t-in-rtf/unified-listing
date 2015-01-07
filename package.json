@@ -39,7 +39,6 @@
     "jqUnit": "git://github.com/fluid-project/node-jqUnit.git#e9bf72445bd343a4f3aabe3ba96a1087d3498612",
     "memdown": "^1.0.0",
     "pouchdb": "3.0.5",
-    "pouchdb-list": "^1.0.4",
     "z-schema": "^3.2.0"
   }
 }
