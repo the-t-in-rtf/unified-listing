@@ -1,0 +1,792 @@
+{
+  "docs": [
+    {
+      "_id": "cd2caee2936c5424f1a293df0a1436a6",
+      "_rev": "2-4c308a2af1a6090c8d183c2e90e24fcc",
+      "status": "new",
+      "language": "en_gb",
+      "name": "Speakeasy",
+      "description": "Text-to-speech application for reading back text from the computer clipboard.",
+      "source": "Dlf data",
+      "sid": "0110283",
+      "manufacturer": {
+        "name": "Fx software",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.30.03",
+            "Name": "Reading materials with audible output"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/med/0110283-0110141-25308.jpg",
+        "EnglishDescription": "Text-to-speech application for reading back text from the computer clipboard.",
+        "OriginalUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110283",
+        "EnglishUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110283",
+        "Features": [],
+        "Database": "Dlf data",
+        "ProductCode": "0110283",
+        "IsoCodePrimary": {
+          "Code": "22.30.03",
+          "Name": "Reading materials with audible output"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Speakeasy",
+        "ManufacturerOriginalFullName": "Fx software",
+        "InsertDate": "2012-03-19T13:31:41+01:00",
+        "LastUpdateDate": "2014-05-28T13:46:09+02:00",
+        "ThumbnailImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/thumb/0110283-0110141-25308.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-05-28T13:46:09+02:00",
+      "uid": "1420467546924-851"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a2d270f",
+      "_rev": "2-712387beca43343b3f1f946f0e22bc0e",
+      "status": "new",
+      "language": "es_es",
+      "name": "NVDA",
+      "description": "",
+      "source": "Handicat",
+      "sid": "23077",
+      "manufacturer": {
+        "name": "NVDA",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.36.12",
+            "Name": "Alternate input devices"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.handicat.com/image/23077.jpg",
+        "EnglishDescription": "",
+        "OriginalUrl": "http://www.handicat.com/at-num-23077.html",
+        "EnglishUrl": "http://www.handicat.com/at-num-23077.html",
+        "Features": [],
+        "Database": "Handicat",
+        "ProductCode": "23077",
+        "IsoCodePrimary": {
+          "Code": "22.36.12",
+          "Name": "Alternate input devices"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "NVDA",
+        "ManufacturerOriginalFullName": "NVDA",
+        "InsertDate": "2009-09-21T00:00:00+02:00",
+        "LastUpdateDate": "2013-02-28T00:00:00+01:00",
+        "ThumbnailImageUrl": "http://www.handicat.com/thumb/23077.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-02-28T00:00:00+01:00",
+      "uid": "1420467546927-366"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a49864c",
+      "_rev": "2-d5bbcc6612621a978422556befe7d618",
+      "status": "new",
+      "language": "en_gb",
+      "name": "Jaws For Windows",
+      "description": "<br /><br />Screen reader software.  Comprises: supports standard Windows office applications, Internet Explorer, Firefox, MSN Messenger, and Adobe Acrobat Reader, Lotus Symphony/Notes and others; outputs to refreshable Braille displays; multilingual synthesizer; supports Internet Explorer including links lists, frames lists, forms mode, reading HTML tables and graphic labels; supports dual monitors; interactive talking installation and basic training tutorial. Options include: standard edition for 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems; professional edition for all 32-bit or 64-bit versions of Windows 7, Windows Vista, and Windows Server 2008 and 32-bit versions of Windows XP and Windows Server 2003. \n  Note: voice synthesizer requires a sound card compatible with the users version of Windows.<br /><br />Price from (&pound;): 659<br /><br /><br /><br />Software<br />Adjust voice pitch: Standard <br />Adjust voice speed: Standard <br />Braille output: Standard <br />CD-Rom; USB Pen; Download: CD-Rom <br />Pronunciation correction: Standard <br />Read text with mouse over: Feature not available <br />Screen Zoom: Feature not available <br />Talking installation: Standard <br />Windows operating system: XP, Vista and 7",
+      "source": "Dlf data",
+      "sid": "0109982",
+      "manufacturer": {
+        "name": "Freedom Scientific",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/med/0109982-0038862-24782.jpg",
+        "EnglishDescription": "<br /><br />Screen reader software.  Comprises: supports standard Windows office applications, Internet Explorer, Firefox, MSN Messenger, and Adobe Acrobat Reader, Lotus Symphony/Notes and others; outputs to refreshable Braille displays; multilingual synthesizer; supports Internet Explorer including links lists, frames lists, forms mode, reading HTML tables and graphic labels; supports dual monitors; interactive talking installation and basic training tutorial. Options include: standard edition for 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems; professional edition for all 32-bit or 64-bit versions of Windows 7, Windows Vista, and Windows Server 2008 and 32-bit versions of Windows XP and Windows Server 2003. \n  Note: voice synthesizer requires a sound card compatible with the users version of Windows.<br /><br />Price from (&pound;): 659<br /><br /><br /><br />Software<br />Adjust voice pitch: Standard <br />Adjust voice speed: Standard <br />Braille output: Standard <br />CD-Rom; USB Pen; Download: CD-Rom <br />Pronunciation correction: Standard <br />Read text with mouse over: Feature not available <br />Screen Zoom: Feature not available <br />Talking installation: Standard <br />Windows operating system: XP, Vista and 7",
+        "OriginalUrl": "http://www.dlf-data.org.uk/product.php?product_id=0109982",
+        "EnglishUrl": "http://www.dlf-data.org.uk/product.php?product_id=0109982",
+        "Features": [],
+        "Database": "Dlf data",
+        "ProductCode": "0109982",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Jaws For Windows",
+        "ManufacturerOriginalFullName": "Freedom Scientific",
+        "InsertDate": "2012-01-31T18:43:15+01:00",
+        "LastUpdateDate": "2014-12-03T12:31:25+01:00",
+        "ThumbnailImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/thumb/0109982-0038862-24782.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-12-03T12:31:25+01:00",
+      "uid": "1420467546923-229"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a49c419",
+      "_rev": "2-8bf2b7e9ed17da1a048de4e47ee4215c",
+      "status": "new",
+      "language": "da_dk",
+      "name": "JAWS",
+      "description": "Screenreader software for Windows platform.<table border='0'><tr><td colspan='3'>The following specifications may only comply to some variants.</td></tr><tr><td colspan='3'><strong>Can be used with synthetic speech</strong></td></tr><tr><td colspan='3'><strong>Can be used with digitalized speech</strong></td></tr><tr><td colspan='3'><strong>Reads out selected text at clipboard</strong></td></tr><tr><td colspan='3'><strong>Reading out while typing</strong></td></tr><tr><td colspan='3'><strong>Features of the screen reader</strong></td></tr><tr><td colspan='3'><strong>All functions by keyboard</strong></td></tr><tr><td colspan='3'><strong>All functions by mouse</strong></td></tr></table>",
+      "source": "Hjælpemiddelbasen",
+      "sid": "4169",
+      "manufacturer": {
+        "name": "Freedom Scientific",
+        "address": "11800 31st Court North",
+        "postalCode": "FL 33716",
+        "cityTown": "St. Petersburg",
+        "country": "UNITED STATES MINOR OUTLYING ISLANDS",
+        "phone": "+1727-803-8000",
+        "email": "",
+        "url": "www.freedomsci.com"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "11800 31st Court North",
+        "ManufacturerPostalCode": "FL 33716",
+        "ManufacturerTown": "St. Petersburg",
+        "ManufacturerCountry": "UNITED STATES MINOR OUTLYING ISLANDS",
+        "ManufacturerPhone": "+1727-803-8000",
+        "ManufacturerEmail": "",
+        "ManufacturerWebSiteUrl": "www.freedomsci.com",
+        "ImageUrl": "",
+        "EnglishDescription": "Screenreader software for Windows platform.<table border='0'><tr><td colspan='3'>The following specifications may only comply to some variants.</td></tr><tr><td colspan='3'><strong>Can be used with synthetic speech</strong></td></tr><tr><td colspan='3'><strong>Can be used with digitalized speech</strong></td></tr><tr><td colspan='3'><strong>Reads out selected text at clipboard</strong></td></tr><tr><td colspan='3'><strong>Reading out while typing</strong></td></tr><tr><td colspan='3'><strong>Features of the screen reader</strong></td></tr><tr><td colspan='3'><strong>All functions by keyboard</strong></td></tr><tr><td colspan='3'><strong>All functions by mouse</strong></td></tr></table>",
+        "OriginalUrl": "http://www.hmi-basen.dk/r11x.asp?linkinfo=4169",
+        "EnglishUrl": "http://www.hmi-basen.dk/en/r11x.asp?linkinfo=4169",
+        "Features": [],
+        "Database": "Hjælpemiddelbasen",
+        "ProductCode": "4169",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "JAWS",
+        "ManufacturerOriginalFullName": "Freedom Scientific",
+        "InsertDate": "1999-06-01T00:00:00+02:00",
+        "LastUpdateDate": "2014-10-14T11:23:12+02:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-10-14T11:23:12+02:00",
+      "uid": "1420467546923-229"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a4ab296",
+      "_rev": "2-3fef42ec8a558f452f7e5120d653abb4",
+      "status": "new",
+      "language": "es_es",
+      "name": "Jaws 14",
+      "description": "",
+      "source": "Handicat",
+      "sid": "12011",
+      "manufacturer": {
+        "name": "Freedom Scientifics corporate",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.handicat.com/image/12011.jpg",
+        "EnglishDescription": "",
+        "OriginalUrl": "http://www.handicat.com/at-num-12011.html",
+        "EnglishUrl": "http://www.handicat.com/at-num-12011.html",
+        "Features": [],
+        "Database": "Handicat",
+        "ProductCode": "12011",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Jaws 14",
+        "ManufacturerOriginalFullName": "Freedom Scientifics corporate",
+        "InsertDate": "2004-11-10T00:00:00+01:00",
+        "LastUpdateDate": "2014-06-20T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.handicat.com/thumb/12011.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-06-20T00:00:00+02:00",
+      "uid": "1420467546923-229"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a4c03e9",
+      "_rev": "2-378530f97cab0fd042154729740ec9f9",
+      "status": "new",
+      "language": "nl_nl",
+      "name": "Jaws Jaws",
+      "description": "Dutch-screen reading program.<br/><br/>Provided with:<br/><br/>speaking installer;<br/><br/>online help system;<br/><br/>Dutch RealSpeak spraaksyntesizer, which supports the orderly display of links and frames when using Internet Explorer.<br/><br/>Suitable for:<br/><br/>Windows XP;<br/><br/>Windows 2000;<br/><br/>Windows NT;<br/><br/>Windows Me;<br/><br/>Windows 98;<br/><br/>Vista.<br/><br/>Can work with the Focus braille Freedom Scientific Benelux used.",
+      "source": "Hulpmiddelenwijzer",
+      "sid": "124665",
+      "manufacturer": {
+        "name": "Freedom Scientific Benelux, Optelec Nederland B.V.",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "",
+        "EnglishDescription": "Dutch-screen reading program.<br/><br/>Provided with:<br/><br/>speaking installer;<br/><br/>online help system;<br/><br/>Dutch RealSpeak spraaksyntesizer, which supports the orderly display of links and frames when using Internet Explorer.<br/><br/>Suitable for:<br/><br/>Windows XP;<br/><br/>Windows 2000;<br/><br/>Windows NT;<br/><br/>Windows Me;<br/><br/>Windows 98;<br/><br/>Vista.<br/><br/>Can work with the Focus braille Freedom Scientific Benelux used.",
+        "OriginalUrl": "http://www.hulpmiddelenwijzer.nl/jaws-jaws",
+        "EnglishUrl": "http://www.hulpmiddelenwijzer.nl/jaws-jaws",
+        "Features": [],
+        "Database": "Hulpmiddelenwijzer",
+        "ProductCode": "124665",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Jaws Jaws",
+        "ManufacturerOriginalFullName": "Freedom Scientific Benelux, Optelec Nederland B.V.",
+        "InsertDate": "1998-01-15T00:00:00+01:00",
+        "LastUpdateDate": "2013-11-25T16:54:38+01:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-11-25T16:54:38+01:00",
+      "uid": "1420467546923-229"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a4d6bb7",
+      "_rev": "2-202808ca46edf91d9277a2286cc2d085",
+      "status": "new",
+      "language": "nl_be",
+      "name": "Jaws 14",
+      "description": "-Machine translation-",
+      "source": "Vlibank",
+      "sid": "B812",
+      "manufacturer": {
+        "name": "Freedom Scientific USA",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=B812&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=B812",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=B812",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "B812",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Jaws 14",
+        "ManufacturerOriginalFullName": "Freedom Scientific USA",
+        "InsertDate": "1999-09-17T00:00:00+02:00",
+        "LastUpdateDate": "2013-04-22T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=B812&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-04-22T00:00:00+02:00",
+      "uid": "1420467546923-229"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a4d88b2",
+      "_rev": "2-0a9cd61e9cec4583b24d1ea4171849d4",
+      "status": "new",
+      "language": "de_de",
+      "name": "JAWS",
+      "description": "Screen Reader<br />The screen reader JAWS (Job Access With Speech) enables blind and visually impaired people to gain access to the PC through the issue of the screen contents via a speech synthesizer or a braille display<br />Features / Components:<br />functionality.<br />- Special Internet features such as: Navigation shortcuts , link and frame lists, form, mode, and reading HTML tables<br />- labels, both for the language and for Braille assigned or changed<br />speech synthesizer compatibility<br />languages ??<br />German, English (American and British), Finnish, French ( French and Canadian), Italian, Spanish (Castilian and South American), Brazilian Portuguese<br />voice<br />on popular sound cards with integrated speech synthesis Eloquence (from JAWS version 8.0 with SAPI5 speech synthesis RealSpeak Solo)<br />other supported language editions:<br />Apollo 2, Braillen Speak, DECtalk, Double Talk, Talk Flex, Juno, Keynote (PC, SA and PCMCIA), infovox 500/700/220/230/330, Sound Blaster with Text Assist, Speak & Win and other<br />Braille Compatibility:<br />- Braille Monitor<br />- Output to all standard Braille<br />JAWS supports braille displays the following manufacturers:<br />- ALVA, Blazie, engineering, Handy Tech, Tiemann (not all features supported)<br />- Telesensory, Pape Meier (does not support all functions), B & M (not all functions supported)<br />Software Compatibility:<br />- Windows start functions controlled with voice output and Braille display<br />- Registration in network possible<br />- programs from the desktop start possible<br />- Using the Taskbar and Task Manager disabled<br />- automatically detects blank data areas of a Application<br />- access to the context menu and elements of the system menu<br />- File Management with Windows Explorer possible<br />- System messages are controllable<br />- allows to read PDF documents (including documents protected from Acrobat 6.0)<br />- supports MS Internet Explorer 7 and Mozilla Firefox and other Internet programs<br />- supports all Windows standard programs and other popular applications<br />- individual adaptation to different PC applications via scripts possible<br />Other: - Talking installation process<br />- Manual and Help documentation online, on disk and Braille available (from version 8.0 with daisy audio book)<br />System Requirements for JAWS:<br />- operating system for JAWS 14.0 Private: Microsoft Windows XP, Vista, Win 7 and Win 8, 32 or 64 bit<br />- operating system for JAWS 14.0 Pro: Microsoft Windows XP Pro, Vista Pro, Win 7 Pro and Win 8 Pro, 32 or 64 bit<br />Price (no guarantee):<br />Retail price plus VAT<br />1677.90 EUR - JAWS 11.0 Standard single license for Microsoft Windows XP, Vista and Windows 7<br />3011.89 EUR - JAWS 11.0 Pro, single user license for Microsoft Windows XP Pro , Vista Pro and Windows 7 Pro<br />1204.71 EUR - JAWS 11.0 for pupils / students<br />97.46 EUR - Surcharge for a license dongle<br />Review of the DIAS GmbH<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "source": "Rehadat",
+      "sid": "C/00505",
+      "manufacturer": {
+        "name": "Freedom Scientific Blind/Low Vision Group and Corporate Offices",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "",
+        "EnglishDescription": "Screen Reader<br />The screen reader JAWS (Job Access With Speech) enables blind and visually impaired people to gain access to the PC through the issue of the screen contents via a speech synthesizer or a braille display<br />Features / Components:<br />functionality.<br />- Special Internet features such as: Navigation shortcuts , link and frame lists, form, mode, and reading HTML tables<br />- labels, both for the language and for Braille assigned or changed<br />speech synthesizer compatibility<br />languages ??<br />German, English (American and British), Finnish, French ( French and Canadian), Italian, Spanish (Castilian and South American), Brazilian Portuguese<br />voice<br />on popular sound cards with integrated speech synthesis Eloquence (from JAWS version 8.0 with SAPI5 speech synthesis RealSpeak Solo)<br />other supported language editions:<br />Apollo 2, Braillen Speak, DECtalk, Double Talk, Talk Flex, Juno, Keynote (PC, SA and PCMCIA), infovox 500/700/220/230/330, Sound Blaster with Text Assist, Speak & Win and other<br />Braille Compatibility:<br />- Braille Monitor<br />- Output to all standard Braille<br />JAWS supports braille displays the following manufacturers:<br />- ALVA, Blazie, engineering, Handy Tech, Tiemann (not all features supported)<br />- Telesensory, Pape Meier (does not support all functions), B & M (not all functions supported)<br />Software Compatibility:<br />- Windows start functions controlled with voice output and Braille display<br />- Registration in network possible<br />- programs from the desktop start possible<br />- Using the Taskbar and Task Manager disabled<br />- automatically detects blank data areas of a Application<br />- access to the context menu and elements of the system menu<br />- File Management with Windows Explorer possible<br />- System messages are controllable<br />- allows to read PDF documents (including documents protected from Acrobat 6.0)<br />- supports MS Internet Explorer 7 and Mozilla Firefox and other Internet programs<br />- supports all Windows standard programs and other popular applications<br />- individual adaptation to different PC applications via scripts possible<br />Other: - Talking installation process<br />- Manual and Help documentation online, on disk and Braille available (from version 8.0 with daisy audio book)<br />System Requirements for JAWS:<br />- operating system for JAWS 14.0 Private: Microsoft Windows XP, Vista, Win 7 and Win 8, 32 or 64 bit<br />- operating system for JAWS 14.0 Pro: Microsoft Windows XP Pro, Vista Pro, Win 7 Pro and Win 8 Pro, 32 or 64 bit<br />Price (no guarantee):<br />Retail price plus VAT<br />1677.90 EUR - JAWS 11.0 Standard single license for Microsoft Windows XP, Vista and Windows 7<br />3011.89 EUR - JAWS 11.0 Pro, single user license for Microsoft Windows XP Pro , Vista Pro and Windows 7 Pro<br />1204.71 EUR - JAWS 11.0 for pupils / students<br />97.46 EUR - Surcharge for a license dongle<br />Review of the DIAS GmbH<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+        "OriginalUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/00505",
+        "EnglishUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/00505",
+        "Features": [],
+        "Database": "Rehadat",
+        "ProductCode": "C/00505",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39",
+            "Name": "Output devices for computers"
+          }
+        ],
+        "CommercialName": "JAWS",
+        "ManufacturerOriginalFullName": "Freedom Scientific Blind/Low Vision Group and Corporate Offices",
+        "InsertDate": "1996-12-30T00:00:00+01:00",
+        "LastUpdateDate": "2013-03-27T00:00:00+01:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-03-27T00:00:00+01:00",
+      "uid": "1420467546923-229"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a5102f0",
+      "_rev": "2-b53b5bd6e030c5c4032ef373515791ea",
+      "status": "new",
+      "language": "en_us",
+      "name": "NVDA",
+      "description": "NonVisual Desktop Access (NVDA) is a free and open-source screen reader for the Windows Operating System, enabling blind and vision impaired people to use their computers for no more cost than the computer and Operating System itself.",
+      "source": "Oaeg",
+      "sid": "38",
+      "manufacturer": {
+        "name": "NVAccess",
+        "address": "",
+        "postalCode": "",
+        "cityTown": "",
+        "country": "UNKNOWN",
+        "phone": "",
+        "email": "mick@kulgan.net",
+        "url": ""
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "",
+        "ManufacturerPostalCode": "",
+        "ManufacturerTown": "",
+        "ManufacturerCountry": "UNKNOWN",
+        "ManufacturerPhone": "",
+        "ManufacturerEmail": "mick@kulgan.net",
+        "ManufacturerWebSiteUrl": "",
+        "ImageUrl": "",
+        "EnglishDescription": "NonVisual Desktop Access (NVDA) is a free and open-source screen reader for the Windows Operating System, enabling blind and vision impaired people to use their computers for no more cost than the computer and Operating System itself.",
+        "OriginalUrl": "http://www.oaeg.eu/index.php?option=com_jumi&fileid=79&Itemid=32",
+        "EnglishUrl": "http://www.oaeg.eu/index.php?option=com_jumi&fileid=79&Itemid=32",
+        "Features": [],
+        "Database": "Oaeg",
+        "ProductCode": "38",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "NVDA",
+        "ManufacturerOriginalFullName": "NVAccess",
+        "InsertDate": "2011-01-14T23:00:00+01:00",
+        "LastUpdateDate": "2011-01-14T23:00:00+01:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2011-01-14T23:00:00+01:00",
+      "uid": "1420467546930-288"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a52e6b2",
+      "_rev": "2-40812ab225713c2acf3f8e5120a9dc76",
+      "status": "new",
+      "language": "it_it",
+      "name": "FREEDOM SCIENTIFIC - JAWS PER WINDOWS",
+      "description": "Screen reading software  for Windows trhought speech synthesisers and Braille displays. Compatible with most of the speech and Braille displays on the market. Thanks to this program, a blind user is able to navigate throught the Windows enviroment moving either icon by icon or window by window, getting the feedback according the context where is located throught a speech synthesiser and/or a Braille display.\r\nJaws is available in two different version: Jaws Standard (for Windows 9x, Me, XP H.E.) and Jaws Professional (also for Windows NT4, 2000, XP Pro).\r\n<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+      "source": "Siva",
+      "sid": "13614",
+      "manufacturer": {
+        "name": "FREEDOM SCIENTIFIC",
+        "address": "11800 31st Court North",
+        "postalCode": "FL 33716",
+        "cityTown": "ST. PETERSBURG",
+        "country": "UNITED STATES",
+        "phone": "+1-7278038000",
+        "email": "info@freedomscientific.com",
+        "url": "http://www.freedomscientific.com"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "11800 31st Court North",
+        "ManufacturerPostalCode": "FL 33716",
+        "ManufacturerTown": "ST. PETERSBURG",
+        "ManufacturerCountry": "UNITED STATES",
+        "ManufacturerPhone": "+1-7278038000",
+        "ManufacturerEmail": "info@freedomscientific.com",
+        "ManufacturerWebSiteUrl": "http://www.freedomscientific.com",
+        "ImageUrl": "http://portale.siva.it/files/images/product/full/13614_b.jpg",
+        "EnglishDescription": "Screen reading software  for Windows trhought speech synthesisers and Braille displays. Compatible with most of the speech and Braille displays on the market. Thanks to this program, a blind user is able to navigate throught the Windows enviroment moving either icon by icon or window by window, getting the feedback according the context where is located throught a speech synthesiser and/or a Braille display.\r\nJaws is available in two different version: Jaws Standard (for Windows 9x, Me, XP H.E.) and Jaws Professional (also for Windows NT4, 2000, XP Pro).\r\n<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+        "OriginalUrl": "http://portale.siva.it/it-IT/databases/products/detail/id-13614",
+        "EnglishUrl": "http://portale.siva.it/en-GB/databases/products/detail/id-13614",
+        "Features": [
+          {
+            "FeatureId": 66,
+            "FeatureName": "English",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 64,
+            "FeatureName": "Danish",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 65,
+            "FeatureName": "Dutch",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 67,
+            "FeatureName": "French",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 68,
+            "FeatureName": "German",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 297,
+            "FeatureName": "Spanish",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 295,
+            "FeatureName": "Italian",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 316,
+            "FeatureName": "Windows",
+            "FeatureParentName": "Operating systems",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 83,
+            "FeatureName": "Tactile display",
+            "FeatureParentName": "Output devices",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 85,
+            "FeatureName": "Voice synthesis",
+            "FeatureParentName": "Output devices",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 279,
+            "FeatureName": "Screen reader software",
+            "FeatureParentName": "Subdivision",
+            "ValueMin": 0,
+            "ValueMax": 0
+          }
+        ],
+        "Database": "Siva",
+        "ProductCode": "13614",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "FREEDOM SCIENTIFIC - JAWS PER WINDOWS",
+        "ManufacturerOriginalFullName": "FREEDOM SCIENTIFIC",
+        "InsertDate": "1999-06-15T00:00:00+02:00",
+        "LastUpdateDate": "2006-01-19T08:39:00+01:00",
+        "ThumbnailImageUrl": "http://portale.siva.it/files/images/product/thumbs/13614_s.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2006-01-19T08:39:00+01:00",
+      "uid": "1420467546923-229"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a5498fc",
+      "_rev": "3-78e3887e25c01e172cf93d8ae0ae0ed0",
+      "source": "unified",
+      "sid": "1420467546923-229",
+      "uid": "1420467546923-229",
+      "status": "new",
+      "name": "Jaws For Windows",
+      "description": "Screen reader software.  Comprises: supports standard Windows office applications, Internet Explorer, Firefox, MSN Messenger, and Adobe Acrobat Reader, Lotus Symphony/Notes and others; outputs to refreshable Braille displays; multilingual synthesizer; supports Internet Explorer including links lists, frames lists, forms mode, reading HTML tables and graphic labels; supports dual monitors; interactive talking installation and basic training tutorial. Options include: standard edition for 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems; professional edition for all 32-bit or 64-bit versions of Windows 7, Windows Vista, and Windows Server 2008 and 32-bit versions of Windows XP and Windows Server 2003. \n  Note: voice synthesizer requires a sound card compatible with the users version of Windows.<br /><br />Price from (&pound;): 659<br /><br /><br /><br />Software<br />Adjust voice pitch: Standard <br />Adjust voice speed: Standard <br />Braille output: Standard <br />CD-Rom; USB Pen; Download: CD-Rom <br />Pronunciation correction: Standard <br />Read text with mouse over: Feature not available <br />Screen Zoom: Feature not available <br />Talking installation: Standard <br />Windows operating system: XP, Vista and 7",
+      "manufacturer": {
+        "name": "Freedom Scientific",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "updated": "2015-01-05T14:36:37.785Z"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a55f284",
+      "_rev": "4-ca333e425f2f62d38cd77d845e5dfe5b",
+      "source": "unified",
+      "sid": "1420467546924-851",
+      "uid": "1420467546924-851",
+      "status": "new",
+      "name": "Speakeasy",
+      "description": "Text-to-speech application for reading back text from the computer clipboard.",
+      "manufacturer": {
+        "name": "Fx software",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.30.03",
+            "Name": "Reading materials with audible output"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "updated": "2000-01-01T12:57:09+02:00"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a6027a8",
+      "_rev": "4-1db8a737ca9180f48a1209df0bbbe85d",
+      "source": "unified",
+      "sid": "1420467546927-366",
+      "uid": "1420467546927-366",
+      "status": "new",
+      "name": "NVDA",
+      "description": "",
+      "manufacturer": {
+        "name": "NVDA",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.36.12",
+            "Name": "Alternate input devices"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "updated": "2000-01-01T12:57:09+02:00"
+    },
+    {
+      "_id": "cd2caee2936c5424f1a293df0a7865c3",
+      "_rev": "4-6e27e11911466bceda0c5dfcb0ed9267",
+      "source": "unified",
+      "sid": "1420467546930-288",
+      "uid": "1420467546930-288",
+      "status": "new",
+      "name": "NVDA",
+      "description": "NonVisual Desktop Access (NVDA) is a free and open-source screen reader for the Windows Operating System, enabling blind and vision impaired people to use their computers for no more cost than the computer and Operating System itself.",
+      "manufacturer": {
+        "name": "NVAccess",
+        "address": "",
+        "postalCode": "",
+        "cityTown": "",
+        "country": "UNKNOWN",
+        "phone": "",
+        "email": "mick@kulgan.net",
+        "url": ""
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "updated": "2000-01-01T12:57:09+02:00"
+    }
+  ]
+}

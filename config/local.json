@@ -1,6 +1,9 @@
 {
   "express": {
     "port" :           4896,
-    "baseUrl":        "http://localhost:4896"
+    "baseUrl":        "http://localhost:4896",
+    "session": {
+      "secret": "Printer, printer take a hint-ter."
+    }
   }
 }

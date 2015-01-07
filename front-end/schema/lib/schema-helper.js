@@ -1,7 +1,8 @@
 "use strict";
 module.exports = function(config) {
-    var fluid = require('infusion');
-    var helper = fluid.registerNamespace("gpii.ctr.schema.helper");
+    var fluid = require("infusion");
+    var helper = fluid.registerNamespace("gpii.ul.schema.helper");
+    helper.config = config;
 
     var ZSchema   = require("z-schema");
     var options   = {
@@ -10,20 +11,20 @@ module.exports = function(config) {
 
     // We load the schemas on instantiation, as they are common to all requests and should not change in real time.
     helper.schemaContents = {};
-    config.schemas.names.forEach(function(schemaName){
+    helper.config.schemas.names.forEach(function(schemaName){
         var schemaContent = require("../schemas/" + schemaName + ".json");
         helper.schemaContents[schemaName] = schemaContent;
     });
 
-    helper.setHeaders = function setHeaders (res, key) {
-        var schemaUrl = config["base.url"] + "/schema/" + key + ".json";
+    helper.setHeaders = function setHeaders (res, schemaKey) {
+        var schemaUrl = helper.config.express.baseUrl + "/schema/" + schemaKey + ".json#";
 
         if (res.headersSent) {
             console.error("Can't set headers, they have already been sent.");
         }
         else {
-            res.set('Content-Type', 'application/' + key + '+json; profile=' + schemaUrl);
-            res.set('Link', schemaUrl + '#; rel="describedBy"');
+            res.type("application/" + schemaKey + "+json; profile=\"" + schemaUrl + "\"");
+            res.set("Link", schemaUrl + "; rel=\"describedBy\"");
         }
     };
 

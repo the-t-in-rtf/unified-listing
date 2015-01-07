@@ -1,0 +1,15 @@
+{
+  "couch": {
+    "port":      2795,
+    "url":       "http://localhost:2795/ul/",
+    "users":     "http://localhost:2795/_users/",
+    "luceneUrl": "TODO:  Replace with file:// URL or other mechanism"
+  },
+  "express": {
+    "port" :           5972,
+    "baseUrl":        "http://localhost:5972/",
+    "session": {
+      "secret": "Printer, printer take a hint-ter."
+    }
+  }
+}
