@@ -11,10 +11,9 @@ module.exports = function(config) {
     // These are required for all permission checks and user management calls
     var cookieParser = require("cookie-parser");
     express.app.use(cookieParser());
-    // Causes problems with pouch...
-    //// Required for session storage, must be called before session()
-    //var session = require("express-session");
-    //express.app.use(session({ secret: config.express.session.secret}));
+    // Required for session storage, must be called before session()
+    var session = require("express-session");
+    express.app.use(session({ secret: config.express.session.secret}));
 
 
     express.start = function(callback) {
