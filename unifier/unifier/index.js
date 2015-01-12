@@ -300,7 +300,7 @@ module.exports = function(config) {
                     var now = new Date();
 
                     //Create a new unified record that we will update.
-                    var tempUid = (now).getTime() + "-" + Math.round(Math.random() * 1000);
+                    var tempUid = (now).getTime() + "-" + Math.round(Math.random() * 1000000000);
 
                     //For now, just clone the first record to guarantee that this record will be part of the cluster if we rerun the analysis.
                     //TODO:  Do a better job of combining source values for this record...
