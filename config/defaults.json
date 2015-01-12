@@ -1,11 +1,11 @@
 {
   "couch": {
     "url":       "http://localhost:5984/ul/",
-    "luceneUrl": "http://localhost:5984/_fti/local/ul/_design/lucene/by_content?q=sara&sort=source,name"
+    "luceneUrl": "http://localhost:5984/_fti/local/ul/_design/lucene/by_content"
   },
   "express": {
     "port" :           4896,
-    "baseUrl":        "https://registry.gpii.net",
+    "baseUrl":        "https://ul.gpii.net",
     "session": {
       "secret": "Printer, printer take a hint-ter."
     }

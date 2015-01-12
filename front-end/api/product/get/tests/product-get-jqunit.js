@@ -80,7 +80,7 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Looking for a unified record without sources ...", function() {
-        request.get(get.config.express.baseUrl + "product/unified/1420467546923-229", function(error, response, body) {
+        request.get(get.config.express.baseUrl + "product/unified/1421059432812-144583330", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -94,7 +94,7 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Retrieving a unified record with sources=true ...", function() {
-        request.get(get.config.express.baseUrl + "product/unified/1420467546923-229?sources=true", function(error, response, body) {
+        request.get(get.config.express.baseUrl + "product/unified/1421059432812-144583330?sources=true", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -123,7 +123,7 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Retrieving a source record with a space in the source name ...", function() {
-        request.get(get.config.express.baseUrl + "product/Dlf data/0110283", function(error, response, body) {
+        request.get(get.config.express.baseUrl + "product/Dlf data/0110204", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);

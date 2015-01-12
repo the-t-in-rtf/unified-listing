@@ -3,7 +3,7 @@
     "port":      2795,
     "url":       "http://localhost:2795/ul/",
     "users":     "http://localhost:2795/_users/",
-    "luceneUrl": "TODO:  Replace with file:// URL or other mechanism"
+    "luceneUrl": "http://nock-handles-this/search"
   },
   "express": {
     "port" :           5972,

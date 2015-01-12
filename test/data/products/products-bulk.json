@@ -1,16 +1,16 @@
 {
   "docs": [
     {
-      "_id": "cd2caee2936c5424f1a293df0a1436a6",
-      "_rev": "2-4c308a2af1a6090c8d183c2e90e24fcc",
+      "_id": "fbdd0dc173069786223f628b652ce132",
+      "_rev": "2-480c35559e893a70260111ab2ba30634",
       "status": "new",
-      "language": "en_gb",
-      "name": "Speakeasy",
-      "description": "Text-to-speech application for reading back text from the computer clipboard.",
-      "source": "Dlf data",
-      "sid": "0110283",
+      "language": "nl_be",
+      "name": "Esys 40",
+      "description": "-Machine translation-\nesys 40 is a portable Braille reading line by 40 cells and integrated Braille keyboard. Multifunction and a design for desktop and for portable use. Has a slot for an SD card for more text files to save. Thanks to Bluetooth technology and communications software, the device also connected to a mobile phone or PDA. You can esys 40 to your IT equipment to fill.\nThe Braille keyboard with 10 keys, gives you the ability to reproduce all the standard keyboard shortcuts for both types and navigate to your computer, Windows applications, mobile phone and PDA just to use.\nUse two joysticks to easily through menus to navigate Microsoft Windows. Use the scroll wheel for faster scrolling through information.\nThanks to the automatic sleep mode esys 40, the autonomy of the battery several days.\n\nTECHNICAL CHARACTERISTICS:\n- 40 Braille cells\n- 40 cursor routing keys\n- Braille keyboard with 10 keys\n- 2 navigatiejoysticks\n- 4 scroll wheels\n- Mini USB\n- Bluetooth\n- Slot for mini SD card\n- Lithium-ion battery\n- 20 hours autonomy\n- Also rechargeable via compatible Nokia phone charger (5.7 V)\n- Bag\n- Size: 32.5 cm x 8.6 cm x 2 cm\n- Weight: 500 g\n\nAPPLICATIONS\n* Bluetooth\nConnect your esys 40 with any PC, mobile phone and pocket PC equipped with a Bluetooth adapter. In the Bluetooth main menu you can set connection parameters and the device name and PIN change.\n\n* USB\nConnect your esys 40 with any PC with a USB port and screen reader. Activate the esys 40 USB mode for the first connection. Make sure the external device a corresponding driver is installed. Scroll through your mini SD card as a removable disk.\n\n* Notepad\nCreate and edit simple text files. Use basic functions such as &quot;find and replace&quot;. Maintain your documents and create an advanced tree of folders. Use the &quot;read&quot; a book or document to read more.\n\n* Calculator\nFor simple operations and accounting currency. Use the memory to store results.\n\n* Alarm clock\nSet different weker sin for each day of the week\n\n* Agenda\nPlan meetings, check your schedule in your Week, select a date or event you want bewerken.Informatie will be stored in a text file that you can transfer to your PC.\n\n* Tools\nCheck the correct operation of your esys 40, test the battery level, the keyboard and braillcelstatus, select an additional language for the software interface, update to the latest software version, ...\n\nCOMPATIBILITY\n- Jaws for Windows\n- Supernova\n- Windows Eyes\n- BRLTTY - Linux (Bluetooth only)\n- Mobile Speak\n- Mobile Speak Pocket\n- Talks\n- Pocket Hal",
+      "source": "Vlibank",
+      "sid": "E26024",
       "manufacturer": {
-        "name": "Fx software",
+        "name": "Eurobraille",
         "address": null,
         "postalCode": null,
         "cityTown": null,
@@ -22,10 +22,23 @@
       "ontologies": {
         "iso9999": {
           "IsoCodePrimary": {
-            "Code": "22.30.03",
-            "Name": "Reading materials with audible output"
+            "Code": "22.12.21",
+            "Name": "Portable note-taking devices for Braille"
           },
-          "IsoCodesOptional": []
+          "IsoCodesOptional": [
+            {
+              "Code": "22.24.21",
+              "Name": "Accessories for telephoning"
+            },
+            {
+              "Code": "22.36.03",
+              "Name": "Keyboards"
+            },
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
         }
       },
       "sourceData": {
@@ -36,39 +49,52 @@
         "ManufacturerPhone": null,
         "ManufacturerEmail": null,
         "ManufacturerWebSiteUrl": null,
-        "ImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/med/0110283-0110141-25308.jpg",
-        "EnglishDescription": "Text-to-speech application for reading back text from the computer clipboard.",
-        "OriginalUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110283",
-        "EnglishUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110283",
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=E26024&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nesys 40 is a portable Braille reading line by 40 cells and integrated Braille keyboard. Multifunction and a design for desktop and for portable use. Has a slot for an SD card for more text files to save. Thanks to Bluetooth technology and communications software, the device also connected to a mobile phone or PDA. You can esys 40 to your IT equipment to fill.\nThe Braille keyboard with 10 keys, gives you the ability to reproduce all the standard keyboard shortcuts for both types and navigate to your computer, Windows applications, mobile phone and PDA just to use.\nUse two joysticks to easily through menus to navigate Microsoft Windows. Use the scroll wheel for faster scrolling through information.\nThanks to the automatic sleep mode esys 40, the autonomy of the battery several days.\n\nTECHNICAL CHARACTERISTICS:\n- 40 Braille cells\n- 40 cursor routing keys\n- Braille keyboard with 10 keys\n- 2 navigatiejoysticks\n- 4 scroll wheels\n- Mini USB\n- Bluetooth\n- Slot for mini SD card\n- Lithium-ion battery\n- 20 hours autonomy\n- Also rechargeable via compatible Nokia phone charger (5.7 V)\n- Bag\n- Size: 32.5 cm x 8.6 cm x 2 cm\n- Weight: 500 g\n\nAPPLICATIONS\n* Bluetooth\nConnect your esys 40 with any PC, mobile phone and pocket PC equipped with a Bluetooth adapter. In the Bluetooth main menu you can set connection parameters and the device name and PIN change.\n\n* USB\nConnect your esys 40 with any PC with a USB port and screen reader. Activate the esys 40 USB mode for the first connection. Make sure the external device a corresponding driver is installed. Scroll through your mini SD card as a removable disk.\n\n* Notepad\nCreate and edit simple text files. Use basic functions such as &quot;find and replace&quot;. Maintain your documents and create an advanced tree of folders. Use the &quot;read&quot; a book or document to read more.\n\n* Calculator\nFor simple operations and accounting currency. Use the memory to store results.\n\n* Alarm clock\nSet different weker sin for each day of the week\n\n* Agenda\nPlan meetings, check your schedule in your Week, select a date or event you want bewerken.Informatie will be stored in a text file that you can transfer to your PC.\n\n* Tools\nCheck the correct operation of your esys 40, test the battery level, the keyboard and braillcelstatus, select an additional language for the software interface, update to the latest software version, ...\n\nCOMPATIBILITY\n- Jaws for Windows\n- Supernova\n- Windows Eyes\n- BRLTTY - Linux (Bluetooth only)\n- Mobile Speak\n- Mobile Speak Pocket\n- Talks\n- Pocket Hal",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E26024",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E26024",
         "Features": [],
-        "Database": "Dlf data",
-        "ProductCode": "0110283",
+        "Database": "Vlibank",
+        "ProductCode": "E26024",
         "IsoCodePrimary": {
-          "Code": "22.30.03",
-          "Name": "Reading materials with audible output"
+          "Code": "22.12.21",
+          "Name": "Portable note-taking devices for Braille"
         },
-        "IsoCodesOptional": [],
-        "CommercialName": "Speakeasy",
-        "ManufacturerOriginalFullName": "Fx software",
-        "InsertDate": "2012-03-19T13:31:41+01:00",
-        "LastUpdateDate": "2014-05-28T13:46:09+02:00",
-        "ThumbnailImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/thumb/0110283-0110141-25308.jpg",
+        "IsoCodesOptional": [
+          {
+            "Code": "22.24.21",
+            "Name": "Accessories for telephoning"
+          },
+          {
+            "Code": "22.36.03",
+            "Name": "Keyboards"
+          },
+          {
+            "Code": "22.39.05",
+            "Name": "Tactile computer displays"
+          }
+        ],
+        "CommercialName": "Esys 40",
+        "ManufacturerOriginalFullName": "Eurobraille",
+        "InsertDate": "2009-03-25T00:00:00+01:00",
+        "LastUpdateDate": "2013-10-17T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=E26024&TYPE=jpg&RANG=A&SIZE=mini",
         "SimilarityLevel": 0
       },
-      "updated": "2014-05-28T13:46:09+02:00",
-      "uid": "1420467546924-851"
+      "updated": "2013-10-17T00:00:00+02:00",
+      "uid": "1421059432814-552781295"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a2d270f",
-      "_rev": "2-712387beca43343b3f1f946f0e22bc0e",
+      "_id": "fbdd0dc173069786223f628b65386105",
+      "_rev": "2-10e814b1d424fceca90f1611596d5a55",
       "status": "new",
-      "language": "es_es",
-      "name": "NVDA",
-      "description": "",
-      "source": "Handicat",
-      "sid": "23077",
+      "language": "de_de",
+      "name": "Lesephon USB",
+      "description": "PRODUCT<br />- reader with voice output<br />- reader with automatic text recognition<br />- Reading System with Scanner<br />Computer Complete System<br /><br />APPLICATION<br />- blind people<br />- visually impaired persons<br />- Stationary use<br /><br />DESCRIPTION<br />- hardware components: memory stick / MP3 Player 2 GB<br />with USB port,<br />headphone jack and built-in speaker, screen reader NVDA,<br />Cases with clip headphones - Used Scanner: No scanner<br />- Used OCR: not specified<br />- default used speech: AT & T Natural Voices Klara<br />- Page Detection : page orientation detection, column detection<br />- All components in one casing: no<br />- Dimensions Overall device in cm (W x D x H): no overall device<br /><br />PRICE (NO GUARANTEE)<br />(basic) model 499,00 EUR including VAT (recommended retail price)<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "source": "Rehadat",
+      "sid": "DIAS/126455",
       "manufacturer": {
-        "name": "NVDA",
+        "name": "Novotech GmbH\r\n     Intelligente Kommunikations- u. Informationssysteme",
         "address": null,
         "postalCode": null,
         "cityTown": null,
@@ -76,6 +102,420 @@
         "phone": null,
         "email": null,
         "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.30.21",
+            "Name": "Character-reading machines"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.30",
+              "Name": "Assistive products for reading"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://db1.rehadat.de/rehadat/bilder/TC047000/tc047589.jpg",
+        "EnglishDescription": "PRODUCT<br />- reader with voice output<br />- reader with automatic text recognition<br />- Reading System with Scanner<br />Computer Complete System<br /><br />APPLICATION<br />- blind people<br />- visually impaired persons<br />- Stationary use<br /><br />DESCRIPTION<br />- hardware components: memory stick / MP3 Player 2 GB<br />with USB port,<br />headphone jack and built-in speaker, screen reader NVDA,<br />Cases with clip headphones - Used Scanner: No scanner<br />- Used OCR: not specified<br />- default used speech: AT & T Natural Voices Klara<br />- Page Detection : page orientation detection, column detection<br />- All components in one casing: no<br />- Dimensions Overall device in cm (W x D x H): no overall device<br /><br />PRICE (NO GUARANTEE)<br />(basic) model 499,00 EUR including VAT (recommended retail price)<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+        "OriginalUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=DIAS/126455",
+        "EnglishUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=DIAS/126455",
+        "Features": [],
+        "Database": "Rehadat",
+        "ProductCode": "DIAS/126455",
+        "IsoCodePrimary": {
+          "Code": "22.30.21",
+          "Name": "Character-reading machines"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.30",
+            "Name": "Assistive products for reading"
+          }
+        ],
+        "CommercialName": "Lesephon USB",
+        "ManufacturerOriginalFullName": "Novotech GmbH\r\n     Intelligente Kommunikations- u. Informationssysteme",
+        "InsertDate": "2011-02-24T00:00:00+01:00",
+        "LastUpdateDate": "2011-02-24T00:00:00+01:00",
+        "ThumbnailImageUrl": "http://db1.rehadat.de/rehadat/tn/TC047000/tc047589.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2011-02-24T00:00:00+01:00",
+      "uid": "1421059432812-507336420"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b653c2c7f",
+      "_rev": "2-ed031eb061343cf8c9c75e9f0cf8a2c6",
+      "status": "new",
+      "language": "da_dk",
+      "name": "MAGic Tastatur",
+      "description": "<table border='0'><tr><td colspan='3'>The following specifications may only comply to some variants.</td></tr><tr><td><strong>Length:</strong> </td><td>51</td><td>cm</td></tr><tr><td><strong>Width:</strong> </td><td>22</td><td>cm</td></tr></table>",
+      "source": "Hjælpemiddelbasen",
+      "sid": "39820",
+      "manufacturer": {
+        "name": "Freedom Scientific",
+        "address": "11800 31st Court North",
+        "postalCode": "FL 33716",
+        "cityTown": "St. Petersburg",
+        "country": "UNITED STATES MINOR OUTLYING ISLANDS",
+        "phone": "+1727-803-8000",
+        "email": "",
+        "url": "www.freedomsci.com"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.36.03",
+            "Name": "Keyboards"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "11800 31st Court North",
+        "ManufacturerPostalCode": "FL 33716",
+        "ManufacturerTown": "St. Petersburg",
+        "ManufacturerCountry": "UNITED STATES MINOR OUTLYING ISLANDS",
+        "ManufacturerPhone": "+1727-803-8000",
+        "ManufacturerEmail": "",
+        "ManufacturerWebSiteUrl": "www.freedomsci.com",
+        "ImageUrl": "",
+        "EnglishDescription": "<table border='0'><tr><td colspan='3'>The following specifications may only comply to some variants.</td></tr><tr><td><strong>Length:</strong> </td><td>51</td><td>cm</td></tr><tr><td><strong>Width:</strong> </td><td>22</td><td>cm</td></tr></table>",
+        "OriginalUrl": "http://www.hmi-basen.dk/r11x.asp?linkinfo=39820",
+        "EnglishUrl": "http://www.hmi-basen.dk/en/r11x.asp?linkinfo=39820",
+        "Features": [],
+        "Database": "Hjælpemiddelbasen",
+        "ProductCode": "39820",
+        "IsoCodePrimary": {
+          "Code": "22.36.03",
+          "Name": "Keyboards"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "MAGic Tastatur",
+        "ManufacturerOriginalFullName": "Freedom Scientific",
+        "InsertDate": "2013-07-22T15:10:06+02:00",
+        "LastUpdateDate": "2014-10-07T08:12:45+02:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-10-07T08:12:45+02:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b653e7337",
+      "_rev": "2-1db9e7fd6b33fd78643e4976e32561ed",
+      "status": "new",
+      "language": "nl_be",
+      "name": "BraillePen 12 Touch/Easylink 12 Touch",
+      "description": "-Machine translation-\nBasic Features:\n- Number of braille cells : 12\n- Area under braille cells : flat\n- Braille Keyboard: yes\n- Battery operation: yes\n- Bluetooth: yes\n\nAdditional Information :\n- The BraillePen 12 Touch is a compact Braille display with 12 Braille cells and a 6 - point Braille keyboard .\n- This compact Braille is known by two names : BraillePen ( manufacturer & Integra ) and EasyLink ( Optelec ) .\n- The BraillePen 12 Touch has touch-sensitive cursor routing (Active Touch) .\n- In the middle is a mini - joystick for navigation .\n- The connection to the laptop , tablet or smartphone is realized via a wireless Bluetooth connection .\n- The BraillePen 12 Touch is compatible with various control software for various operating systems: Mobile Peak , Talks & Zoom, Mobile Accessibility , Braille Back, VoiceOver in OS X 10.6 ( Snow Leopard ) and above, VoiceOver in iOS version 4 and higher , Dolphin Pen , Supernova , Window-Eyes and Jaws .\n- In addition to the Braille keys and mini - joystick there are various control buttons on the top: shift , space , control and 2 round keys ( keys Pan ) left and right of the Braille cells .\n- The device has a built-in rechargeable battery that provides approximately 12 hours of autonomy .\n- The BraillePen 12 Touch comes with leather case and battery charger.\n- Dimensions : 151 x 96 x 21 mm\n- Weight : 260 g",
+      "source": "Vlibank",
+      "sid": "E30714",
+      "manufacturer": {
+        "name": "Harpo Sp.z o.o.",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.36.03",
+            "Name": "Keyboards"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=E30714&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nBasic Features:\n- Number of braille cells : 12\n- Area under braille cells : flat\n- Braille Keyboard: yes\n- Battery operation: yes\n- Bluetooth: yes\n\nAdditional Information :\n- The BraillePen 12 Touch is a compact Braille display with 12 Braille cells and a 6 - point Braille keyboard .\n- This compact Braille is known by two names : BraillePen ( manufacturer & Integra ) and EasyLink ( Optelec ) .\n- The BraillePen 12 Touch has touch-sensitive cursor routing (Active Touch) .\n- In the middle is a mini - joystick for navigation .\n- The connection to the laptop , tablet or smartphone is realized via a wireless Bluetooth connection .\n- The BraillePen 12 Touch is compatible with various control software for various operating systems: Mobile Peak , Talks & Zoom, Mobile Accessibility , Braille Back, VoiceOver in OS X 10.6 ( Snow Leopard ) and above, VoiceOver in iOS version 4 and higher , Dolphin Pen , Supernova , Window-Eyes and Jaws .\n- In addition to the Braille keys and mini - joystick there are various control buttons on the top: shift , space , control and 2 round keys ( keys Pan ) left and right of the Braille cells .\n- The device has a built-in rechargeable battery that provides approximately 12 hours of autonomy .\n- The BraillePen 12 Touch comes with leather case and battery charger.\n- Dimensions : 151 x 96 x 21 mm\n- Weight : 260 g",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E30714",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E30714",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "E30714",
+        "IsoCodePrimary": {
+          "Code": "22.36.03",
+          "Name": "Keyboards"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39.05",
+            "Name": "Tactile computer displays"
+          }
+        ],
+        "CommercialName": "BraillePen 12 Touch/Easylink 12 Touch",
+        "ManufacturerOriginalFullName": "Harpo Sp.z o.o.",
+        "InsertDate": "2013-10-21T00:00:00+02:00",
+        "LastUpdateDate": "2013-10-21T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=E30714&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-10-21T00:00:00+02:00",
+      "uid": "1421059432814-622816753"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b653e7f4a",
+      "_rev": "2-bcc2a1bb244cf7a77608a5836afaa4f7",
+      "status": "new",
+      "language": "nl_be",
+      "name": "BraillePen 12",
+      "description": "-Machine translation-\nBasic Features:\n- Number of braille cells : 12\n- Area under braille cells : flat\n- Braille Keyboard: yes\n- Battery operation: yes\n- Bluetooth: yes\n\nAdditional Information :\n- The BraillePen 12 is a compact Braille display with 12 Braille cells and a 6 - point Braille keyboard .\n- In the middle is a mini - joystick for navigation .\n- The connection to the laptop , tablet or smartphone is realized via a wireless Bluetooth connection .\n- The BraillePen 12 is compatible with various control software for various operating systems: Mobile Peak , Talks & Zoom, Mobile Accessibility , Braille Back, VoiceOver in OS X 10.6 ( Snow Leopard ) and above, VoiceOver in iOS version 4 and higher , Dolphin Pen , Supernova , Window-Eyes and Jaws .\n- In addition to the Braille keys and mini - joystick there are various control buttons on the top: shift , space , control and 2 round keys ( keys Pan ) left and right of the Braille cells .\n- The device has a built-in rechargeable battery that provides approximately 12 hours of autonomy .\n- The BraillePen 12 comes with leather case and battery charger.\n- Dimensions : 151 x 96 x 21 mm\n- Weight : 260 g",
+      "source": "Vlibank",
+      "sid": "E30713",
+      "manufacturer": {
+        "name": "Harpo Sp.z o.o.",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.36.03",
+            "Name": "Keyboards"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=E30713&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nBasic Features:\n- Number of braille cells : 12\n- Area under braille cells : flat\n- Braille Keyboard: yes\n- Battery operation: yes\n- Bluetooth: yes\n\nAdditional Information :\n- The BraillePen 12 is a compact Braille display with 12 Braille cells and a 6 - point Braille keyboard .\n- In the middle is a mini - joystick for navigation .\n- The connection to the laptop , tablet or smartphone is realized via a wireless Bluetooth connection .\n- The BraillePen 12 is compatible with various control software for various operating systems: Mobile Peak , Talks & Zoom, Mobile Accessibility , Braille Back, VoiceOver in OS X 10.6 ( Snow Leopard ) and above, VoiceOver in iOS version 4 and higher , Dolphin Pen , Supernova , Window-Eyes and Jaws .\n- In addition to the Braille keys and mini - joystick there are various control buttons on the top: shift , space , control and 2 round keys ( keys Pan ) left and right of the Braille cells .\n- The device has a built-in rechargeable battery that provides approximately 12 hours of autonomy .\n- The BraillePen 12 comes with leather case and battery charger.\n- Dimensions : 151 x 96 x 21 mm\n- Weight : 260 g",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E30713",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E30713",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "E30713",
+        "IsoCodePrimary": {
+          "Code": "22.36.03",
+          "Name": "Keyboards"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39.05",
+            "Name": "Tactile computer displays"
+          }
+        ],
+        "CommercialName": "BraillePen 12",
+        "ManufacturerOriginalFullName": "Harpo Sp.z o.o.",
+        "InsertDate": "2013-10-21T00:00:00+02:00",
+        "LastUpdateDate": "2013-10-21T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=E30713&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2013-10-21T00:00:00+02:00",
+      "uid": "1421059432814-622816753"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b654212ae",
+      "_rev": "2-08513b5316a954e7cf4ca12bfa967710",
+      "status": "new",
+      "language": "nl_be",
+      "name": "Euroscope Apex QT",
+      "description": "-Machine translation-\nBasic Features\n-Voice Playback: Dutch, French, English and German\n-Braille Display: 0, 18 or 32 Braille cells\n-Keyboard: QWERTY layout\n-Braille display for PC: yes (for QT18 & QT32)\n-Voice Playback for PC: Yes\nAdditional information\n-The Euroscope Apex is the successor to the Euroscope CE. The QT version always has a standard keyboard and is available in three versions: without braille cells, with 18 Braille cells or with 32 Braille cells.\n-The Euroscope Apex uses Microsoft Windows CE 6.0 operating system.\n-The following applications are provided: word processing, file management, scientific calculator, clock, calendar, database, address book, e-mail, web browser, media player, audio recorder, player and daisy contextual help function.\n-Bluetooth & WiFi built in for wireless connection to peripherals and the Internet.\n-Speed ??and volume of speech output are adjustable.\n-The Euroscope Apex has built-in stereo speakers and omnidirectional microphone.\n-The QT18 and QT32 are useful as Braille with screen reader's Jaws, Supernova and VoiceOver.\n-The system settings are user adjustable.\n-The device has a cursor routing and navigation buttons for faster operation.\n-Memory: 8 GB hard drive, three USB ports and a SDHC port for memory cards.\n-Besides the standard built-in languages ??and voices (Nuance Vocalizer) additional languages ??and voices are optional.\n-The device has a real-time clock with 30 days battery backup.\n-Optional LCD display (109 x 65 x 20 mm) available so that a sighted can watch (4 lines of 20 characters).\n-Connections: Ethernet network, USB, SD memory slot, external speakers, headphones or earphones (3.5 mm)\n-Power supply: rechargeable and user replaceable lithium-ion battery and charger / adapter\n-Dimensions: 244 x 143 x 19 mm\n-Weight: 612 to 812 gr",
+      "source": "Vlibank",
+      "sid": "E29631",
+      "manufacturer": {
+        "name": "Sensotec NV",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.12.21",
+            "Name": "Portable note-taking devices for Braille"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.36.03",
+              "Name": "Keyboards"
+            },
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=E29631&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nBasic Features\n-Voice Playback: Dutch, French, English and German\n-Braille Display: 0, 18 or 32 Braille cells\n-Keyboard: QWERTY layout\n-Braille display for PC: yes (for QT18 & QT32)\n-Voice Playback for PC: Yes\nAdditional information\n-The Euroscope Apex is the successor to the Euroscope CE. The QT version always has a standard keyboard and is available in three versions: without braille cells, with 18 Braille cells or with 32 Braille cells.\n-The Euroscope Apex uses Microsoft Windows CE 6.0 operating system.\n-The following applications are provided: word processing, file management, scientific calculator, clock, calendar, database, address book, e-mail, web browser, media player, audio recorder, player and daisy contextual help function.\n-Bluetooth & WiFi built in for wireless connection to peripherals and the Internet.\n-Speed ??and volume of speech output are adjustable.\n-The Euroscope Apex has built-in stereo speakers and omnidirectional microphone.\n-The QT18 and QT32 are useful as Braille with screen reader's Jaws, Supernova and VoiceOver.\n-The system settings are user adjustable.\n-The device has a cursor routing and navigation buttons for faster operation.\n-Memory: 8 GB hard drive, three USB ports and a SDHC port for memory cards.\n-Besides the standard built-in languages ??and voices (Nuance Vocalizer) additional languages ??and voices are optional.\n-The device has a real-time clock with 30 days battery backup.\n-Optional LCD display (109 x 65 x 20 mm) available so that a sighted can watch (4 lines of 20 characters).\n-Connections: Ethernet network, USB, SD memory slot, external speakers, headphones or earphones (3.5 mm)\n-Power supply: rechargeable and user replaceable lithium-ion battery and charger / adapter\n-Dimensions: 244 x 143 x 19 mm\n-Weight: 612 to 812 gr",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E29631",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E29631",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "E29631",
+        "IsoCodePrimary": {
+          "Code": "22.12.21",
+          "Name": "Portable note-taking devices for Braille"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.36.03",
+            "Name": "Keyboards"
+          },
+          {
+            "Code": "22.39.05",
+            "Name": "Tactile computer displays"
+          }
+        ],
+        "CommercialName": "Euroscope Apex QT",
+        "ManufacturerOriginalFullName": "Sensotec NV",
+        "InsertDate": "2012-06-18T00:00:00+02:00",
+        "LastUpdateDate": "2012-06-20T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=E29631&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2012-06-20T00:00:00+02:00",
+      "uid": "1421059432814-712184219"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65421dd0",
+      "_rev": "2-216d64ed4f8ab928ee0042e9962ac463",
+      "status": "new",
+      "language": "nl_be",
+      "name": "Euroscope Apex BT",
+      "description": "-Machine translation-\nBasic Features\n-Voice Playback: Dutch, French, English and German\n-Braille Display: 0, 18 or 32 Braille cells\n-Keyboard: braille\n-Braille display for PC: yes (for BT18 & BT32)\n-Voice Playback for PC: Yes\nAdditional information\n-The Euroscope Apex is the successor to the Euroscope CE. The BT version always has a Braille keyboard and is available in three versions: without braille cells, with 18 Braille cells or with 32 Braille cells.\n-The Euroscope Apex uses Microsoft Windows CE 6.0 operating system.\n-The Braille keyboard can both six-and eight-point braille written.\n-The following applications are provided: word processing, file management, scientific calculator, clock, calendar, database, address book, e-mail, web browser, media player, audio recorder, player and daisy contextual help function.\n-Bluetooth & WiFi built in for wireless connection to peripherals and the Internet.\n-Speed ??and volume of speech output are adjustable.\n-The Euroscope Apex has built-in stereo speakers and omnidirectional microphone.\n-The BT18 and BT32 are useful as Braille with screen reader's Jaws, Supernova and VoiceOver.\n-The system settings are user adjustable.\n-The device has a cursor routing and navigation buttons for faster operation, the BT has topped a navigation wheel to quickly browse lists and menus.\n-Memory: 8 GB hard drive, three USB ports and a SDHC port for memory cards.\n-Besides the standard built-in languages ??and voices (Nuance Vocalizer) additional languages ??and voices are optional.\n-The device has a real-time clock with 30 days battery backup.\n-Optional LCD display (109 x 65 x 20 mm) is available so that a sighted can watch (4 lines of 20 characters).\n-Connections: Ethernet network, USB, SD memory slot, external speakers, headphones or earphones (3.5 mm)\n-Power supply: rechargeable and user replaceable lithium-ion battery and charger / adapter\n-Dimensions: 244 x 143 x 19 mm\n-Weight: 612 to 812 gr",
+      "source": "Vlibank",
+      "sid": "E29630",
+      "manufacturer": {
+        "name": "Sensotec NV",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.12.21",
+            "Name": "Portable note-taking devices for Braille"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.36.03",
+              "Name": "Keyboards"
+            },
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=E29630&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nBasic Features\n-Voice Playback: Dutch, French, English and German\n-Braille Display: 0, 18 or 32 Braille cells\n-Keyboard: braille\n-Braille display for PC: yes (for BT18 & BT32)\n-Voice Playback for PC: Yes\nAdditional information\n-The Euroscope Apex is the successor to the Euroscope CE. The BT version always has a Braille keyboard and is available in three versions: without braille cells, with 18 Braille cells or with 32 Braille cells.\n-The Euroscope Apex uses Microsoft Windows CE 6.0 operating system.\n-The Braille keyboard can both six-and eight-point braille written.\n-The following applications are provided: word processing, file management, scientific calculator, clock, calendar, database, address book, e-mail, web browser, media player, audio recorder, player and daisy contextual help function.\n-Bluetooth & WiFi built in for wireless connection to peripherals and the Internet.\n-Speed ??and volume of speech output are adjustable.\n-The Euroscope Apex has built-in stereo speakers and omnidirectional microphone.\n-The BT18 and BT32 are useful as Braille with screen reader's Jaws, Supernova and VoiceOver.\n-The system settings are user adjustable.\n-The device has a cursor routing and navigation buttons for faster operation, the BT has topped a navigation wheel to quickly browse lists and menus.\n-Memory: 8 GB hard drive, three USB ports and a SDHC port for memory cards.\n-Besides the standard built-in languages ??and voices (Nuance Vocalizer) additional languages ??and voices are optional.\n-The device has a real-time clock with 30 days battery backup.\n-Optional LCD display (109 x 65 x 20 mm) is available so that a sighted can watch (4 lines of 20 characters).\n-Connections: Ethernet network, USB, SD memory slot, external speakers, headphones or earphones (3.5 mm)\n-Power supply: rechargeable and user replaceable lithium-ion battery and charger / adapter\n-Dimensions: 244 x 143 x 19 mm\n-Weight: 612 to 812 gr",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E29630",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E29630",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "E29630",
+        "IsoCodePrimary": {
+          "Code": "22.12.21",
+          "Name": "Portable note-taking devices for Braille"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.36.03",
+            "Name": "Keyboards"
+          },
+          {
+            "Code": "22.39.05",
+            "Name": "Tactile computer displays"
+          }
+        ],
+        "CommercialName": "Euroscope Apex BT",
+        "ManufacturerOriginalFullName": "Sensotec NV",
+        "InsertDate": "2012-06-18T00:00:00+02:00",
+        "LastUpdateDate": "2012-06-20T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=E29630&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2012-06-20T00:00:00+02:00",
+      "uid": "1421059432814-124551522"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65491c26",
+      "_rev": "2-fa2b0665055db37db87806f3c2b10b89",
+      "status": "new",
+      "language": "it_it",
+      "name": "NGT - J-SAY",
+      "description": "J-Say Pro brings together Dragon NaturallySpeaking Professional version 11, from Nuance, and JAWS For Windows version 12, from Freedom Scientific. This product enables users of JAWS for Windows to talk to the computer and obtain speech feedback of their dictation and other related on-screen activity.<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+      "source": "Siva",
+      "sid": "19321",
+      "manufacturer": {
+        "name": "NEXT GENERATION TECHNOLOGIES INC",
+        "address": "",
+        "postalCode": "",
+        "cityTown": "Lynnwood",
+        "country": "UNITED STATES",
+        "phone": "",
+        "email": "edward@ngtvoice.com",
+        "url": "http://www.ngtvoice.com"
       },
       "ontologies": {
         "iso9999": {
@@ -87,6 +527,98 @@
         }
       },
       "sourceData": {
+        "ManufacturerAddress": "",
+        "ManufacturerPostalCode": "",
+        "ManufacturerTown": "Lynnwood",
+        "ManufacturerCountry": "UNITED STATES",
+        "ManufacturerPhone": "",
+        "ManufacturerEmail": "edward@ngtvoice.com",
+        "ManufacturerWebSiteUrl": "http://www.ngtvoice.com",
+        "ImageUrl": "",
+        "EnglishDescription": "J-Say Pro brings together Dragon NaturallySpeaking Professional version 11, from Nuance, and JAWS For Windows version 12, from Freedom Scientific. This product enables users of JAWS for Windows to talk to the computer and obtain speech feedback of their dictation and other related on-screen activity.<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+        "OriginalUrl": "http://portale.siva.it/it-IT/databases/products/detail/id-19321",
+        "EnglishUrl": "http://portale.siva.it/en-GB/databases/products/detail/id-19321",
+        "Features": [
+          {
+            "FeatureId": 66,
+            "FeatureName": "English",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 316,
+            "FeatureName": "Windows",
+            "FeatureParentName": "Operating systems",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 22,
+            "FeatureName": "Speech Recognition",
+            "FeatureParentName": "Activation methods",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 248,
+            "FeatureName": "Speech recognition software",
+            "FeatureParentName": "Subdivision",
+            "ValueMin": 0,
+            "ValueMax": 0
+          }
+        ],
+        "Database": "Siva",
+        "ProductCode": "19321",
+        "IsoCodePrimary": {
+          "Code": "22.36.12",
+          "Name": "Alternate input devices"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "NGT - J-SAY",
+        "ManufacturerOriginalFullName": "NEXT GENERATION TECHNOLOGIES INC",
+        "InsertDate": "2012-04-23T13:45:00+02:00",
+        "LastUpdateDate": "2012-04-23T13:55:00+02:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2012-04-23T13:55:00+02:00",
+      "uid": "1421059432813-866596636"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b655f0fa8",
+      "_rev": "2-4103749b8b8f6f64157f3cac390301ac",
+      "status": "new",
+      "language": "de_de",
+      "name": "Text-To-Speech",
+      "description": "Speech synthesizer<br />ELeX Speak & Win ® is a speech full Synthesis of 6 Generation, based on a new technology (corpus based synthesis with Non-Uniform Units Acapela Speech) reached an unprecedented quality with the well-kept since 1993 lexicons of ELeX.<br />Mispronunciations, there is hardly even anglicisms are pronounced correctly Speed ??and pitch can be set independently of each other<br />Features / Components<br />- deviations of the pronunciation of individual words in exceptional encyclopedias accumulable<br />- Integrated editor for exception lexicons<br />- speed adjustable<br />- pitch adjustable<br />- Technology: diphone-based<br />software compatibility:<br />- SSIL interface for other popular screen reader<br />- Compatible with Microsoft Speech API (SAPI 4.0)<br />- Compatible with Elan API<br />- remote configuration is possible for: JAWS, Open Book, Supernova, ZoomText<br />Available languages ??and voices:<br />- German (Dagmar & Thomas )<br />- U.S. English (Mary, Paul & William)<br />- UK English (Vicky & Gordon)<br />- French (Cathy & Robert)<br />- Spanish (Veronica & Rafael)<br />- Italian (Sofia & Massimo)<br />- South-American Spanish ( Andres)<br />- Brazilian Portuguese (Joana & Pedro)<br />- Dutch (Maarten)<br />- Polish (Radek)<br />System Requirements:<br />- IBM-compatible PC with 200 MHz CPU and 32 MB RAM<br />- Windows 95/98/NT4 / ME/2000/XP (OS / 2, DOS, Win3.x on request)<br />- Sound card<br />Price (no guarantee):<br />Price including VAT: on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "source": "Rehadat",
+      "sid": "C/00867",
+      "manufacturer": {
+        "name": "ELeX-Sprachverarbeitung GmbH",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.07",
+            "Name": "Audible computer displays"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "sourceData": {
         "ManufacturerAddress": null,
         "ManufacturerPostalCode": null,
         "ManufacturerTown": null,
@@ -94,31 +626,162 @@
         "ManufacturerPhone": null,
         "ManufacturerEmail": null,
         "ManufacturerWebSiteUrl": null,
-        "ImageUrl": "http://www.handicat.com/image/23077.jpg",
-        "EnglishDescription": "",
-        "OriginalUrl": "http://www.handicat.com/at-num-23077.html",
-        "EnglishUrl": "http://www.handicat.com/at-num-23077.html",
+        "ImageUrl": "",
+        "EnglishDescription": "Speech synthesizer<br />ELeX Speak & Win ® is a speech full Synthesis of 6 Generation, based on a new technology (corpus based synthesis with Non-Uniform Units Acapela Speech) reached an unprecedented quality with the well-kept since 1993 lexicons of ELeX.<br />Mispronunciations, there is hardly even anglicisms are pronounced correctly Speed ??and pitch can be set independently of each other<br />Features / Components<br />- deviations of the pronunciation of individual words in exceptional encyclopedias accumulable<br />- Integrated editor for exception lexicons<br />- speed adjustable<br />- pitch adjustable<br />- Technology: diphone-based<br />software compatibility:<br />- SSIL interface for other popular screen reader<br />- Compatible with Microsoft Speech API (SAPI 4.0)<br />- Compatible with Elan API<br />- remote configuration is possible for: JAWS, Open Book, Supernova, ZoomText<br />Available languages ??and voices:<br />- German (Dagmar & Thomas )<br />- U.S. English (Mary, Paul & William)<br />- UK English (Vicky & Gordon)<br />- French (Cathy & Robert)<br />- Spanish (Veronica & Rafael)<br />- Italian (Sofia & Massimo)<br />- South-American Spanish ( Andres)<br />- Brazilian Portuguese (Joana & Pedro)<br />- Dutch (Maarten)<br />- Polish (Radek)<br />System Requirements:<br />- IBM-compatible PC with 200 MHz CPU and 32 MB RAM<br />- Windows 95/98/NT4 / ME/2000/XP (OS / 2, DOS, Win3.x on request)<br />- Sound card<br />Price (no guarantee):<br />Price including VAT: on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+        "OriginalUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/00867",
+        "EnglishUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/00867",
         "Features": [],
-        "Database": "Handicat",
-        "ProductCode": "23077",
+        "Database": "Rehadat",
+        "ProductCode": "C/00867",
         "IsoCodePrimary": {
-          "Code": "22.36.12",
-          "Name": "Alternate input devices"
+          "Code": "22.39.07",
+          "Name": "Audible computer displays"
         },
-        "IsoCodesOptional": [],
-        "CommercialName": "NVDA",
-        "ManufacturerOriginalFullName": "NVDA",
-        "InsertDate": "2009-09-21T00:00:00+02:00",
-        "LastUpdateDate": "2013-02-28T00:00:00+01:00",
-        "ThumbnailImageUrl": "http://www.handicat.com/thumb/23077.jpg",
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39",
+            "Name": "Output devices for computers"
+          }
+        ],
+        "CommercialName": "Text-To-Speech",
+        "ManufacturerOriginalFullName": "ELeX-Sprachverarbeitung GmbH",
+        "InsertDate": "1998-12-30T00:00:00+01:00",
+        "LastUpdateDate": "2013-04-03T00:00:00+02:00",
+        "ThumbnailImageUrl": "",
         "SimilarityLevel": 0
       },
-      "updated": "2013-02-28T00:00:00+01:00",
-      "uid": "1420467546927-366"
+      "updated": "2013-04-03T00:00:00+02:00",
+      "uid": "1421059432812-405818962"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a49864c",
-      "_rev": "2-d5bbcc6612621a978422556befe7d618",
+      "_id": "fbdd0dc173069786223f628b655f3b97",
+      "_rev": "2-29a60c8d9ef2952b684b904d05b5e80d",
+      "status": "new",
+      "language": "de_de",
+      "name": "Natural Voices",
+      "description": "Speech synthesizer<br />Natural Voices is a speech synthesis software, which allows it in conjunction with a sound card to convert a written text into speech (text-to-speech) and have them pronounced in German language with male or female voice.<br />Natural Voices is supported by some screen readers for visually impaired and blind people, by some software-based communication aids for non-speaking people as well as other programs<br />Features / Components<br />- as a software available<br />parameters:<br />- emphasis in the sentence reading mode (prosody)<br />- exception dictionary for special or different pronunciation<br />- built-name database for first and last name<br />- break the language even within words possible<br />- control codes for breaks, accents, DTMF tones, etc.<br />- Technology: diphone-based (rule-based, by a processor generated speech output) with further linkage algorithms<br /><br />Software Compatibility:<br />- supports Microsoft SAPI 4.0, 5.0, and 5.1<br />- supports SSML component of VoiceXML and SAPI interface standards<br />- SAPI interface and SSIL-compliant software<br />- * (eg for screen readers: ZoomText, Jaws, OutSpoken, Virgo, Window Eyes)<br />- supports the Speech Access Manager (SAM) of Dolphin<br />- * (eg for screen reader: HAL, Supernova, Lunar Plus)<br />Available languages:<br />German, U.S. & UK English , French, Spanish (Latin American)<br />delivery<br />- Natural Voices TTS, Reiner and Klara 16 kHz (SAM, JAWS), item number HSSP3111<br />Price (no guarantee):<br />Price including VAT: 160,00 EUR<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "source": "Rehadat",
+      "sid": "C/01072",
+      "manufacturer": {
+        "name": "AT&T\r\n     Shannon Labs",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.07",
+            "Name": "Audible computer displays"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://db1.rehadat.de/rehadat/bilder/TC045000/tc045971.jpg",
+        "EnglishDescription": "Speech synthesizer<br />Natural Voices is a speech synthesis software, which allows it in conjunction with a sound card to convert a written text into speech (text-to-speech) and have them pronounced in German language with male or female voice.<br />Natural Voices is supported by some screen readers for visually impaired and blind people, by some software-based communication aids for non-speaking people as well as other programs<br />Features / Components<br />- as a software available<br />parameters:<br />- emphasis in the sentence reading mode (prosody)<br />- exception dictionary for special or different pronunciation<br />- built-name database for first and last name<br />- break the language even within words possible<br />- control codes for breaks, accents, DTMF tones, etc.<br />- Technology: diphone-based (rule-based, by a processor generated speech output) with further linkage algorithms<br /><br />Software Compatibility:<br />- supports Microsoft SAPI 4.0, 5.0, and 5.1<br />- supports SSML component of VoiceXML and SAPI interface standards<br />- SAPI interface and SSIL-compliant software<br />- * (eg for screen readers: ZoomText, Jaws, OutSpoken, Virgo, Window Eyes)<br />- supports the Speech Access Manager (SAM) of Dolphin<br />- * (eg for screen reader: HAL, Supernova, Lunar Plus)<br />Available languages:<br />German, U.S. & UK English , French, Spanish (Latin American)<br />delivery<br />- Natural Voices TTS, Reiner and Klara 16 kHz (SAM, JAWS), item number HSSP3111<br />Price (no guarantee):<br />Price including VAT: 160,00 EUR<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+        "OriginalUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/01072",
+        "EnglishUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=C/01072",
+        "Features": [],
+        "Database": "Rehadat",
+        "ProductCode": "C/01072",
+        "IsoCodePrimary": {
+          "Code": "22.39.07",
+          "Name": "Audible computer displays"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39",
+            "Name": "Output devices for computers"
+          }
+        ],
+        "CommercialName": "Natural Voices",
+        "ManufacturerOriginalFullName": "AT&T\r\n     Shannon Labs",
+        "InsertDate": "2003-12-30T00:00:00+01:00",
+        "LastUpdateDate": "2011-03-01T00:00:00+01:00",
+        "ThumbnailImageUrl": "http://db1.rehadat.de/rehadat/tn/TC045000/tc045971.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2011-03-01T00:00:00+01:00",
+      "uid": "1421059432812-144583330"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b655f85ec",
+      "_rev": "2-50d48d1e7c1f83aa240efb00ff6b416e",
+      "status": "new",
+      "language": "en_gb",
+      "name": "Magic Screen Magnification Software",
+      "description": "<br /><br />Screen magnification software. Comprises: customizable magnified views, mouse and cursor enhancements with enhancement styles; options to change the colour of enhancements, apply transparency effects, and adjust their size; colour enhancements include options for user to view the screen as two colours (monochrome), invert brightness and colours and switch colours;  tracking features move the magnified area so the mouse pointer, cursor and highlighting remain visible. Options include: Professional version which can be used with all 32-bit or 64-bit versions of Windows 7, Windows Vista, Windows Server 2008, 32-bit versions of Windows XP operating systems and Windows Server 2003; Standard version which can be used with all 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems.<br /><br />Price from (&pound;): 295<br /><br /><br /><br />Software<br />Screen magnification range: -36 x<br />Windows: Standard <br />Windows operating system: Vista plus",
+      "source": "Dlf data",
+      "sid": "0110204",
+      "manufacturer": {
+        "name": "Freedom Scientific",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/med/0110204-0025429-25193.jpg",
+        "EnglishDescription": "<br /><br />Screen magnification software. Comprises: customizable magnified views, mouse and cursor enhancements with enhancement styles; options to change the colour of enhancements, apply transparency effects, and adjust their size; colour enhancements include options for user to view the screen as two colours (monochrome), invert brightness and colours and switch colours;  tracking features move the magnified area so the mouse pointer, cursor and highlighting remain visible. Options include: Professional version which can be used with all 32-bit or 64-bit versions of Windows 7, Windows Vista, Windows Server 2008, 32-bit versions of Windows XP operating systems and Windows Server 2003; Standard version which can be used with all 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems.<br /><br />Price from (&pound;): 295<br /><br /><br /><br />Software<br />Screen magnification range: -36 x<br />Windows: Standard <br />Windows operating system: Vista plus",
+        "OriginalUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110204",
+        "EnglishUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110204",
+        "Features": [],
+        "Database": "Dlf data",
+        "ProductCode": "0110204",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Magic Screen Magnification Software",
+        "ManufacturerOriginalFullName": "Freedom Scientific",
+        "InsertDate": "2012-03-08T12:31:27+01:00",
+        "LastUpdateDate": "2015-01-09T19:59:46+01:00",
+        "ThumbnailImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/thumb/0110204-0025429-25193.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2015-01-09T19:59:46+01:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b655f93c2",
+      "_rev": "2-3cf8cc1f5022e1958d6bc6bb346a2689",
       "status": "new",
       "language": "en_gb",
       "name": "Jaws For Windows",
@@ -167,16 +830,132 @@
         "CommercialName": "Jaws For Windows",
         "ManufacturerOriginalFullName": "Freedom Scientific",
         "InsertDate": "2012-01-31T18:43:15+01:00",
-        "LastUpdateDate": "2014-12-03T12:31:25+01:00",
+        "LastUpdateDate": "2015-01-09T19:36:43+01:00",
         "ThumbnailImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/thumb/0109982-0038862-24782.jpg",
         "SimilarityLevel": 0
       },
-      "updated": "2014-12-03T12:31:25+01:00",
-      "uid": "1420467546923-229"
+      "updated": "2015-01-09T19:36:43+01:00",
+      "uid": "1421059432806-826608318"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a49c419",
-      "_rev": "2-8bf2b7e9ed17da1a048de4e47ee4215c",
+      "_id": "fbdd0dc173069786223f628b655ffb9d",
+      "_rev": "2-a8fde08331ba682e76d992cd4a7a39aa",
+      "status": "new",
+      "language": "en_gb",
+      "name": "Magic With Speech",
+      "description": "<br /><br />Screen magnification and reader software. Comprises: user can use magnification and speech together, or independently; user can read text that they type or point to with the mouse, the software scrolls the screen and highlights words as it reads them aloud; tracking features move the magnified area so the mouse pointer, cursor and highlighting remain visible; customizable magnified views, mouse and cursor enhancements with enhancement styles; options to change the colour of enhancements, apply transparency effects, and adjust their size; colour enhancements include options for user to view the screen as two colours (monochrome), invert brightness and colours and switch colours; talking installation. Options include: Professional version which can be used with all 32-bit or 64-bit versions of Windows 7, Windows Vista, Windows Server 2008, 32-bit versions of Windows XP operating systems and Windows Server 2003; Standard version which can be used with all 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems.<br /><br />Price from (&pound;): 495<br /><br /><br /><br />Software<br />Screen magnification range: 1-16 x<br />Windows: Standard <br />Windows operating system: XP, Vista and 7",
+      "source": "Dlf data",
+      "sid": "0110005",
+      "manufacturer": {
+        "name": "Freedom Scientific",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/med/0110005-0011002-24843.jpg",
+        "EnglishDescription": "<br /><br />Screen magnification and reader software. Comprises: user can use magnification and speech together, or independently; user can read text that they type or point to with the mouse, the software scrolls the screen and highlights words as it reads them aloud; tracking features move the magnified area so the mouse pointer, cursor and highlighting remain visible; customizable magnified views, mouse and cursor enhancements with enhancement styles; options to change the colour of enhancements, apply transparency effects, and adjust their size; colour enhancements include options for user to view the screen as two colours (monochrome), invert brightness and colours and switch colours; talking installation. Options include: Professional version which can be used with all 32-bit or 64-bit versions of Windows 7, Windows Vista, Windows Server 2008, 32-bit versions of Windows XP operating systems and Windows Server 2003; Standard version which can be used with all 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems.<br /><br />Price from (&pound;): 495<br /><br /><br /><br />Software<br />Screen magnification range: 1-16 x<br />Windows: Standard <br />Windows operating system: XP, Vista and 7",
+        "OriginalUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110005",
+        "EnglishUrl": "http://www.dlf-data.org.uk/product.php?product_id=0110005",
+        "Features": [],
+        "Database": "Dlf data",
+        "ProductCode": "0110005",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Magic With Speech",
+        "ManufacturerOriginalFullName": "Freedom Scientific",
+        "InsertDate": "2012-02-03T16:49:48+01:00",
+        "LastUpdateDate": "2014-12-03T15:35:56+01:00",
+        "ThumbnailImageUrl": "http://liveimageserver.dlf.org.uk/mee/products/thumb/0110005-0011002-24843.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-12-03T15:35:56+01:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b656035d8",
+      "_rev": "2-8c800a3116b1ce54da474fa27d79fba7",
+      "status": "new",
+      "language": "da_dk",
+      "name": "MAGic",
+      "description": "<table border='0'><tr><td colspan='3'>The following specifications may only comply to some variants.</td></tr><tr><td colspan='3'><strong>Built-in reading function</strong></td></tr></table>",
+      "source": "Hjælpemiddelbasen",
+      "sid": "4174",
+      "manufacturer": {
+        "name": "Freedom Scientific",
+        "address": "11800 31st Court North",
+        "postalCode": "33716-1805",
+        "cityTown": "St. Petersburg, Fl",
+        "country": "UNITED STATES MINOR OUTLYING ISLANDS",
+        "phone": "+1727-803-8000",
+        "email": "Info@FreedomScientific.com.",
+        "url": "www.freedomscientific.com"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "11800 31st Court North",
+        "ManufacturerPostalCode": "33716-1805",
+        "ManufacturerTown": "St. Petersburg, Fl",
+        "ManufacturerCountry": "UNITED STATES MINOR OUTLYING ISLANDS",
+        "ManufacturerPhone": "+1727-803-8000",
+        "ManufacturerEmail": "Info@FreedomScientific.com.",
+        "ManufacturerWebSiteUrl": "www.freedomscientific.com",
+        "ImageUrl": "",
+        "EnglishDescription": "<table border='0'><tr><td colspan='3'>The following specifications may only comply to some variants.</td></tr><tr><td colspan='3'><strong>Built-in reading function</strong></td></tr></table>",
+        "OriginalUrl": "http://www.hmi-basen.dk/r11x.asp?linkinfo=4174",
+        "EnglishUrl": "http://www.hmi-basen.dk/en/r11x.asp?linkinfo=4174",
+        "Features": [],
+        "Database": "Hjælpemiddelbasen",
+        "ProductCode": "4174",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "MAGic",
+        "ManufacturerOriginalFullName": "Freedom Scientific",
+        "InsertDate": "1999-06-01T00:00:00+02:00",
+        "LastUpdateDate": "2014-11-25T10:12:25+01:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-11-25T10:12:25+01:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b656068ee",
+      "_rev": "2-7db33a96686bd1755ec91ab98b935490",
       "status": "new",
       "language": "da_dk",
       "name": "JAWS",
@@ -230,19 +1009,19 @@
         "SimilarityLevel": 0
       },
       "updated": "2014-10-14T11:23:12+02:00",
-      "uid": "1420467546923-229"
+      "uid": "1421059432806-826608318"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a4ab296",
-      "_rev": "2-3fef42ec8a558f452f7e5120d653abb4",
+      "_id": "fbdd0dc173069786223f628b656101d8",
+      "_rev": "2-1d9f0eb2b5106584b73b34b8fd56a299",
       "status": "new",
-      "language": "es_es",
-      "name": "Jaws 14",
-      "description": "",
-      "source": "Handicat",
-      "sid": "12011",
+      "language": "nl_be",
+      "name": "NVDA 2014.2",
+      "description": "-Machine translation-\nhttp://www.nvaccess.org/",
+      "source": "Vlibank",
+      "sid": "E27802",
       "manufacturer": {
-        "name": "Freedom Scientifics corporate",
+        "name": "NV Access Inc.",
         "address": null,
         "postalCode": null,
         "cityTown": null,
@@ -268,31 +1047,89 @@
         "ManufacturerPhone": null,
         "ManufacturerEmail": null,
         "ManufacturerWebSiteUrl": null,
-        "ImageUrl": "http://www.handicat.com/image/12011.jpg",
-        "EnglishDescription": "",
-        "OriginalUrl": "http://www.handicat.com/at-num-12011.html",
-        "EnglishUrl": "http://www.handicat.com/at-num-12011.html",
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=E27802&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nhttp://www.nvaccess.org/",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E27802",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E27802",
         "Features": [],
-        "Database": "Handicat",
-        "ProductCode": "12011",
+        "Database": "Vlibank",
+        "ProductCode": "E27802",
         "IsoCodePrimary": {
           "Code": "22.39.12",
           "Name": "Special output software"
         },
         "IsoCodesOptional": [],
-        "CommercialName": "Jaws 14",
-        "ManufacturerOriginalFullName": "Freedom Scientifics corporate",
-        "InsertDate": "2004-11-10T00:00:00+01:00",
-        "LastUpdateDate": "2014-06-20T00:00:00+02:00",
-        "ThumbnailImageUrl": "http://www.handicat.com/thumb/12011.jpg",
+        "CommercialName": "NVDA 2014.2",
+        "ManufacturerOriginalFullName": "NV Access Inc.",
+        "InsertDate": "2010-03-08T00:00:00+01:00",
+        "LastUpdateDate": "2014-07-09T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=E27802&TYPE=jpg&RANG=A&SIZE=mini",
         "SimilarityLevel": 0
       },
-      "updated": "2014-06-20T00:00:00+02:00",
-      "uid": "1420467546923-229"
+      "updated": "2014-07-09T00:00:00+02:00",
+      "uid": "1421059432813-789376486"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a4c03e9",
-      "_rev": "2-378530f97cab0fd042154729740ec9f9",
+      "_id": "fbdd0dc173069786223f628b6561556e",
+      "_rev": "2-bc47c3c9dbc8f442d1dfa465b71312f1",
+      "status": "new",
+      "language": "nl_nl",
+      "name": "Freedom Scientific Magic vergrotingssoftware",
+      "description": "Combines powerful magnification capabilities with synthesized speech to read the screen.<br/><br/>Between the magnification options 1 and 2 can be fractionally larger.<br/><br/>One can choose from several ways to adjust the magnification, thus both enlarged and non-enlarged portions of the screen.<br/><br/>Equipped with:<br/><br/>voice capabilities;<br/><br/>a Dutch RealSpeak voice synthesizer;<br/><br/>mouse and cursor settings that help determine the location on the screen;<br/><br/>color adjustment options so you can change the colors, the screen in 2 colors can set and adjust the brightness.<br/><br/>Voice Features:<br/><br/>text to speak while being typed or something is designated with the mouse;<br/><br/>full screen reading in which words are magnified and / or highlighted.<br/><br/>Mouse and cursor setting assist in determining the location on the screen. The color and size of the mouse and cursor can be set.",
+      "source": "Hulpmiddelenwijzer",
+      "sid": "132514",
+      "manufacturer": {
+        "name": "Freedom Scientific Benelux",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.hulpmiddelenwijzer.nl/files/159807/im40043a.jpg",
+        "EnglishDescription": "Combines powerful magnification capabilities with synthesized speech to read the screen.<br/><br/>Between the magnification options 1 and 2 can be fractionally larger.<br/><br/>One can choose from several ways to adjust the magnification, thus both enlarged and non-enlarged portions of the screen.<br/><br/>Equipped with:<br/><br/>voice capabilities;<br/><br/>a Dutch RealSpeak voice synthesizer;<br/><br/>mouse and cursor settings that help determine the location on the screen;<br/><br/>color adjustment options so you can change the colors, the screen in 2 colors can set and adjust the brightness.<br/><br/>Voice Features:<br/><br/>text to speak while being typed or something is designated with the mouse;<br/><br/>full screen reading in which words are magnified and / or highlighted.<br/><br/>Mouse and cursor setting assist in determining the location on the screen. The color and size of the mouse and cursor can be set.",
+        "OriginalUrl": "http://www.hulpmiddelenwijzer.nl/freedom-scientific-magic-vergrotingssoftware",
+        "EnglishUrl": "http://www.hulpmiddelenwijzer.nl/freedom-scientific-magic-vergrotingssoftware",
+        "Features": [],
+        "Database": "Hulpmiddelenwijzer",
+        "ProductCode": "132514",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Freedom Scientific Magic vergrotingssoftware",
+        "ManufacturerOriginalFullName": "Freedom Scientific Benelux",
+        "InsertDate": "2006-08-09T00:00:00+02:00",
+        "LastUpdateDate": "2014-06-10T07:53:23+02:00",
+        "ThumbnailImageUrl": "http://www.hulpmiddelenwijzer.nl/files/159807/w90h90b1/im40043a.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-06-10T07:53:23+02:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65621c28",
+      "_rev": "2-f37822e764f939cd9273d5166c780523",
       "status": "new",
       "language": "nl_nl",
       "name": "Jaws Jaws",
@@ -346,11 +1183,11 @@
         "SimilarityLevel": 0
       },
       "updated": "2013-11-25T16:54:38+01:00",
-      "uid": "1420467546923-229"
+      "uid": "1421059432806-826608318"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a4d6bb7",
-      "_rev": "2-202808ca46edf91d9277a2286cc2d085",
+      "_id": "fbdd0dc173069786223f628b65635419",
+      "_rev": "2-3dc9d2afe9456ba58d34c4d071ad0837",
       "status": "new",
       "language": "nl_be",
       "name": "Jaws 14",
@@ -404,11 +1241,11 @@
         "SimilarityLevel": 0
       },
       "updated": "2013-04-22T00:00:00+02:00",
-      "uid": "1420467546923-229"
+      "uid": "1421059432806-826608318"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a4d88b2",
-      "_rev": "2-0a9cd61e9cec4583b24d1ea4171849d4",
+      "_id": "fbdd0dc173069786223f628b65636cfd",
+      "_rev": "2-f84e945ae03d960f968f51e63fe56994",
       "status": "new",
       "language": "de_de",
       "name": "JAWS",
@@ -472,11 +1309,341 @@
         "SimilarityLevel": 0
       },
       "updated": "2013-03-27T00:00:00+01:00",
-      "uid": "1420467546923-229"
+      "uid": "1421059432806-826608318"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a5102f0",
-      "_rev": "2-b53b5bd6e030c5c4032ef373515791ea",
+      "_id": "fbdd0dc173069786223f628b65650a97",
+      "_rev": "2-8c0e2891eb142c8d5c9e6eaebb93a77b",
+      "status": "new",
+      "language": "nl_be",
+      "name": "Magic 11.0",
+      "description": "-Machine translation-\nMagic is the ideal software solution for visually impaired computer users. It combines powerful magnification capabilities with artificial voice to the screen to read. In Magic you can on the computer screen from 1 to 16 times. Between the increasing opportunities 1 and 2, you can even marginally increase. This means you can choose from increases of eg 1.3 or 1.6. Also you can choose from several ways to increase, so well enlarged and non-enlarged portions of the screen.\n\nThe voice capabilities of Magic will help you to process the information on your screen. You can speak text as you type or designates something with the mouse. Magic can also read the full screen where the words are enlarged and / or marked. Magic speech is delivered including the English Peak Real voice synthesizer. There is no separate voice synthesizer bijbesteld be.\n\nThe mouse and cursor settings help you to determine the position on the screen. They can choose from several options. This can include self-color and the size of the mouse and cursor set.\n\nWith the color settings, use the color on your screen to your own preferences. You can change the colors, your screen in 2 colors (monochrome) and brightness. All these options can even be combined to meet your specific needs are met.\n\nMagic 10.5 English (size: ca 61 Mb) Attention: Not suitable for Windows VISTA\n\nIf you have a valid license for Magic 10.5 has this version of Magic 10.5 fully functional. Inien you do not have valid license will serve as a demo version. You will have the full functionality for 40 minutes. If those 40 minutes have passed, you must restart your computer to before you can use Magic again.\n\nNote: This downloadable version contains no English voice synthesizer. If you have an English speech synthesizer, you can use it. Consult the documentation. When you buy Magic Voice is an English speech synthesizer included.\nThe installation is not translated. After installation, you have an English version of Magic.",
+      "source": "Vlibank",
+      "sid": "B855",
+      "manufacturer": {
+        "name": "Freedom Scientific USA",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=B855&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nMagic is the ideal software solution for visually impaired computer users. It combines powerful magnification capabilities with artificial voice to the screen to read. In Magic you can on the computer screen from 1 to 16 times. Between the increasing opportunities 1 and 2, you can even marginally increase. This means you can choose from increases of eg 1.3 or 1.6. Also you can choose from several ways to increase, so well enlarged and non-enlarged portions of the screen.\n\nThe voice capabilities of Magic will help you to process the information on your screen. You can speak text as you type or designates something with the mouse. Magic can also read the full screen where the words are enlarged and / or marked. Magic speech is delivered including the English Peak Real voice synthesizer. There is no separate voice synthesizer bijbesteld be.\n\nThe mouse and cursor settings help you to determine the position on the screen. They can choose from several options. This can include self-color and the size of the mouse and cursor set.\n\nWith the color settings, use the color on your screen to your own preferences. You can change the colors, your screen in 2 colors (monochrome) and brightness. All these options can even be combined to meet your specific needs are met.\n\nMagic 10.5 English (size: ca 61 Mb) Attention: Not suitable for Windows VISTA\n\nIf you have a valid license for Magic 10.5 has this version of Magic 10.5 fully functional. Inien you do not have valid license will serve as a demo version. You will have the full functionality for 40 minutes. If those 40 minutes have passed, you must restart your computer to before you can use Magic again.\n\nNote: This downloadable version contains no English voice synthesizer. If you have an English speech synthesizer, you can use it. Consult the documentation. When you buy Magic Voice is an English speech synthesizer included.\nThe installation is not translated. After installation, you have an English version of Magic.",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=B855",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=B855",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "B855",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Magic 11.0",
+        "ManufacturerOriginalFullName": "Freedom Scientific USA",
+        "InsertDate": "1994-05-20T00:00:00+02:00",
+        "LastUpdateDate": "2012-03-30T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=B855&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2012-03-30T00:00:00+02:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65654baf",
+      "_rev": "2-3d9b4f674388986c461c46519cddd8a5",
+      "status": "new",
+      "language": "it_it",
+      "name": "NV ACCESS - NVDA",
+      "description": "Open source screen reader for windows<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+      "source": "Siva",
+      "sid": "19246",
+      "manufacturer": {
+        "name": "NV ACCESS",
+        "address": "",
+        "postalCode": "",
+        "cityTown": "Robina",
+        "country": "AUSTRALIA",
+        "phone": "+61 7 5667 8372",
+        "email": "admin@nvaccess.org",
+        "url": "http://www.nvaccess.org"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "",
+        "ManufacturerPostalCode": "",
+        "ManufacturerTown": "Robina",
+        "ManufacturerCountry": "AUSTRALIA",
+        "ManufacturerPhone": "+61 7 5667 8372",
+        "ManufacturerEmail": "admin@nvaccess.org",
+        "ManufacturerWebSiteUrl": "http://www.nvaccess.org",
+        "ImageUrl": "http://portale.siva.it/files/images/product/full/19246_b.jpg",
+        "EnglishDescription": "Open source screen reader for windows<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+        "OriginalUrl": "http://portale.siva.it/it-IT/databases/products/detail/id-19246",
+        "EnglishUrl": "http://portale.siva.it/en-GB/databases/products/detail/id-19246",
+        "Features": [
+          {
+            "FeatureId": 66,
+            "FeatureName": "English",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 64,
+            "FeatureName": "Danish",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 65,
+            "FeatureName": "Dutch",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 67,
+            "FeatureName": "French",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 68,
+            "FeatureName": "German",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 297,
+            "FeatureName": "Spanish",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 295,
+            "FeatureName": "Italian",
+            "FeatureParentName": "Languages",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 316,
+            "FeatureName": "Windows",
+            "FeatureParentName": "Operating systems",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 161,
+            "FeatureName": "Free of charge",
+            "FeatureParentName": "Software price policy",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 85,
+            "FeatureName": "Voice synthesis",
+            "FeatureParentName": "Output devices",
+            "ValueMin": 0,
+            "ValueMax": 0
+          },
+          {
+            "FeatureId": 279,
+            "FeatureName": "Screen reader software",
+            "FeatureParentName": "Subdivision",
+            "ValueMin": 0,
+            "ValueMax": 0
+          }
+        ],
+        "Database": "Siva",
+        "ProductCode": "19246",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "NV ACCESS - NVDA",
+        "ManufacturerOriginalFullName": "NV ACCESS",
+        "InsertDate": "2012-03-12T16:01:00+01:00",
+        "LastUpdateDate": "2012-03-12T16:04:00+01:00",
+        "ThumbnailImageUrl": "http://portale.siva.it/files/images/product/thumbs/19246_s.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2012-03-12T16:04:00+01:00",
+      "uid": "1421059432813-789376486"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65665b90",
+      "_rev": "2-ad65d0f5bf4e7e530241af7de79765cf",
+      "status": "new",
+      "language": "de_de",
+      "name": "Vergrößerungssoftware MAGic",
+      "description": "PRODUCT<br />- Large Font Software<br /><br />APPLICATION<br />- for visually impaired persons<br />- enlarged representation of graphic<br />- enlarged representation of text<br /><br />CONTENTS<br />magnification up to 36x. Intermediates in smaller magnifications 1X to 2X in fine increments of 0.1. The PC users can access five different settings to display screen clippings in real or enlargement mode. Macic offers automatic focus tracking and a position indicator that indicates the current position in relation to unmagnified screen. Change the appearance of the screen possible. Coloring can be added or the screen two-color (monochrome) are presented. Invert, change colors or replace colors and brightness is possible. With voice output ETI-Eloquence. It supports all MS SAPI 4 and 5 compatible readers.<br /><br />SYSTEM REQUIREMENTS<br /><br />Operating System Windows 2000, XP, Vista and 7<br />- 512 MB RAM<br />- 100 MB free hard disk space<br />- Graphics card with 16 or 32 bit color depth<br />- A Windows-compatible sound card<br />- CD-ROM or DVD drive ( for installation)<br /><br />PRICE (NO GUARANTEE)<br />Price on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "source": "Rehadat",
+      "sid": "DIAS/005109",
+      "manufacturer": {
+        "name": "Freedom Scientific GmbH",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://db1.rehadat.de/rehadat/bilder/TC031000/tc031326.jpg",
+        "EnglishDescription": "PRODUCT<br />- Large Font Software<br /><br />APPLICATION<br />- for visually impaired persons<br />- enlarged representation of graphic<br />- enlarged representation of text<br /><br />CONTENTS<br />magnification up to 36x. Intermediates in smaller magnifications 1X to 2X in fine increments of 0.1. The PC users can access five different settings to display screen clippings in real or enlargement mode. Macic offers automatic focus tracking and a position indicator that indicates the current position in relation to unmagnified screen. Change the appearance of the screen possible. Coloring can be added or the screen two-color (monochrome) are presented. Invert, change colors or replace colors and brightness is possible. With voice output ETI-Eloquence. It supports all MS SAPI 4 and 5 compatible readers.<br /><br />SYSTEM REQUIREMENTS<br /><br />Operating System Windows 2000, XP, Vista and 7<br />- 512 MB RAM<br />- 100 MB free hard disk space<br />- Graphics card with 16 or 32 bit color depth<br />- A Windows-compatible sound card<br />- CD-ROM or DVD drive ( for installation)<br /><br />PRICE (NO GUARANTEE)<br />Price on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+        "OriginalUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=DIAS/005109",
+        "EnglishUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=DIAS/005109",
+        "Features": [],
+        "Database": "Rehadat",
+        "ProductCode": "DIAS/005109",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39",
+            "Name": "Output devices for computers"
+          }
+        ],
+        "CommercialName": "Vergrößerungssoftware MAGic",
+        "ManufacturerOriginalFullName": "Freedom Scientific GmbH",
+        "InsertDate": "2006-12-30T00:00:00+01:00",
+        "LastUpdateDate": "2011-07-29T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://db1.rehadat.de/rehadat/tn/TC031000/tc031326.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2011-07-29T00:00:00+02:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65667473",
+      "_rev": "2-080ffeebf9864c0564b9db7d3d216093",
+      "status": "new",
+      "language": "de_de",
+      "name": "Vergrößerungssoftware GTX 32",
+      "description": "PRODUCT<br />- Large Font Software<br /><br />APPLICATION<br />- for visually impaired persons<br />- enlarged representation of graphic<br />- enlarged representation of text<br /><br />CONTENTS<br />With the GTX 32 everything can be displayed on the computer 1-32 times larger. Intermediates times at smaller magnifications 1.5. There are four different ways. Full screen, field, Eckbild and slow play. The control is effected with a trackball or Trackman. Resolution 640 x 480, 800 x 600, 1024 x 768 256 colors, High Color or True Color. Font smoothing. The enlarged representation can be combined with speech output and / or Jaws.<br /><br />PRICE (NO GUARANTEE)<br />Price on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "source": "Rehadat",
+      "sid": "DIAS/005113",
+      "manufacturer": {
+        "name": "B&M Ingenieurbüro GmbH",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://db1.rehadat.de/rehadat/bilder/TC031000/tc031328.jpg",
+        "EnglishDescription": "PRODUCT<br />- Large Font Software<br /><br />APPLICATION<br />- for visually impaired persons<br />- enlarged representation of graphic<br />- enlarged representation of text<br /><br />CONTENTS<br />With the GTX 32 everything can be displayed on the computer 1-32 times larger. Intermediates times at smaller magnifications 1.5. There are four different ways. Full screen, field, Eckbild and slow play. The control is effected with a trackball or Trackman. Resolution 640 x 480, 800 x 600, 1024 x 768 256 colors, High Color or True Color. Font smoothing. The enlarged representation can be combined with speech output and / or Jaws.<br /><br />PRICE (NO GUARANTEE)<br />Price on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+        "OriginalUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=DIAS/005113",
+        "EnglishUrl": "http://www.rehadat-hilfsmittel.de/de/suche/index.html?connectdb=hilfsmittel_result&infobox=%2Finfobox1.html&serviceCounter=1&&wsdb=TEC&GIX=DIAS/005113",
+        "Features": [],
+        "Database": "Rehadat",
+        "ProductCode": "DIAS/005113",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [
+          {
+            "Code": "22.39",
+            "Name": "Output devices for computers"
+          }
+        ],
+        "CommercialName": "Vergrößerungssoftware GTX 32",
+        "ManufacturerOriginalFullName": "B&M Ingenieurbüro GmbH",
+        "InsertDate": "2006-12-30T00:00:00+01:00",
+        "LastUpdateDate": "2011-07-29T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://db1.rehadat.de/rehadat/tn/TC031000/tc031328.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2011-07-29T00:00:00+02:00",
+      "uid": "1421059432812-223498558"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b6566d3e1",
+      "_rev": "2-0b92e60f76c32a6f35552e159c4ef23e",
       "status": "new",
       "language": "en_us",
       "name": "NVDA",
@@ -530,11 +1697,201 @@
         "SimilarityLevel": 0
       },
       "updated": "2011-01-14T23:00:00+01:00",
-      "uid": "1420467546930-288"
+      "uid": "1421059432811-814124869"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a52e6b2",
-      "_rev": "2-40812ab225713c2acf3f8e5120a9dc76",
+      "_id": "fbdd0dc173069786223f628b6567b331",
+      "_rev": "2-14511eaa060ffa36aaa296f8f033216a",
+      "status": "new",
+      "language": "nl_be",
+      "name": "Magic Pro (Scripting Edition) 11",
+      "description": "-Machine translation-\nMagic Pro / Scripting Edition\n\nBasic Features\n- Version: 11.0\n- Designed for: Windows\n- Magnification: 1 to 36x\n- Texts with smooth edges (smooth fonts)\n- Adjustable Colors\n- Image invertible\n- Higher resolutions supported\n\nAdditional Information\n- Magic Pro is magnification software for Windows. There is a version with and without speech output.\n- Both 32 bit and 64 bit versions of Windows are supported.\n- There is also a special 'Scripting Edition' available to make non-current application programs more accessible and to optimise the performance performance in networks.\n- Between 1 and 2 are 9 selectable levels of magnification.\n- Connection of a second monitor is supported.\n- To enhance contrast, there are several options, choose front and background color and set a monochrome image.\n- Large text can be read.\n- The scripts for the screen reader Jaws and Magic are compatible with each other since Magic and Jaws are from the same manufacturer.\n- Magic Pro has different magnification modes meant for maintaining an overview and also to achieve a workable magnification.\n- The mouse pointer can be adjusted in size and color.\n\nManufacturer\nFREEDOM SCIENTIFIC\nUnited States\nWebsite: www.freedomscientific.com / products / lv / magic-bl-product page.asp\n\nSuppliers and prices\n- Belgium: Freedom Scientific (prices given), Sensotec\nMagic Pro without speech: € 583\nMagic Pro Voice: € 768.50\nMagic Pro Scripting Edition: € 995 (October 2010, including VAT)\n- Netherlands: Freedom Scientific: prices on request",
+      "source": "Vlibank",
+      "sid": "E28457",
+      "manufacturer": {
+        "name": "Freedom Scientific USA",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.vlibank.be/scan.jsp?PID=E28457&TYPE=jpg&RANG=A&SIZE=medium",
+        "EnglishDescription": "-Machine translation-\nMagic Pro / Scripting Edition\n\nBasic Features\n- Version: 11.0\n- Designed for: Windows\n- Magnification: 1 to 36x\n- Texts with smooth edges (smooth fonts)\n- Adjustable Colors\n- Image invertible\n- Higher resolutions supported\n\nAdditional Information\n- Magic Pro is magnification software for Windows. There is a version with and without speech output.\n- Both 32 bit and 64 bit versions of Windows are supported.\n- There is also a special 'Scripting Edition' available to make non-current application programs more accessible and to optimise the performance performance in networks.\n- Between 1 and 2 are 9 selectable levels of magnification.\n- Connection of a second monitor is supported.\n- To enhance contrast, there are several options, choose front and background color and set a monochrome image.\n- Large text can be read.\n- The scripts for the screen reader Jaws and Magic are compatible with each other since Magic and Jaws are from the same manufacturer.\n- Magic Pro has different magnification modes meant for maintaining an overview and also to achieve a workable magnification.\n- The mouse pointer can be adjusted in size and color.\n\nManufacturer\nFREEDOM SCIENTIFIC\nUnited States\nWebsite: www.freedomscientific.com / products / lv / magic-bl-product page.asp\n\nSuppliers and prices\n- Belgium: Freedom Scientific (prices given), Sensotec\nMagic Pro without speech: € 583\nMagic Pro Voice: € 768.50\nMagic Pro Scripting Edition: € 995 (October 2010, including VAT)\n- Netherlands: Freedom Scientific: prices on request",
+        "OriginalUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E28457",
+        "EnglishUrl": "http://www.vlibank.be/vlibank.jsp?COMMAND=PRINT&RECORD_ID=E28457",
+        "Features": [],
+        "Database": "Vlibank",
+        "ProductCode": "E28457",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Magic Pro (Scripting Edition) 11",
+        "ManufacturerOriginalFullName": "Freedom Scientific USA",
+        "InsertDate": "2010-12-23T00:00:00+01:00",
+        "LastUpdateDate": "2010-12-23T00:00:00+01:00",
+        "ThumbnailImageUrl": "http://www.vlibank.be/scan.jsp?PID=E28457&TYPE=jpg&RANG=A&SIZE=mini",
+        "SimilarityLevel": 0
+      },
+      "updated": "2010-12-23T00:00:00+01:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b6567e956",
+      "_rev": "2-727e7033cef318f206b295338f448984",
+      "status": "new",
+      "language": "it_it",
+      "name": "FREEDOM SCIENTIFIC - MAGIC",
+      "description": "(text automatically translated from Italian) Software of blowup of the content of the video that allows partially sighted persons to use a personal computer. Beyond to the blowup of the screen in order facilitating the acquisition of the necessary information it is possible to manage you counted and the background. Function in environment Windows 95/98/WE/NT/2000",
+      "source": "Siva",
+      "sid": "13615",
+      "manufacturer": {
+        "name": "FREEDOM SCIENTIFIC",
+        "address": "11800 31st Court North",
+        "postalCode": "FL 33716",
+        "cityTown": "ST. PETERSBURG",
+        "country": "UNITED STATES",
+        "phone": "+1-7278038000",
+        "email": "info@freedomscientific.com",
+        "url": "http://www.freedomscientific.com"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "11800 31st Court North",
+        "ManufacturerPostalCode": "FL 33716",
+        "ManufacturerTown": "ST. PETERSBURG",
+        "ManufacturerCountry": "UNITED STATES",
+        "ManufacturerPhone": "+1-7278038000",
+        "ManufacturerEmail": "info@freedomscientific.com",
+        "ManufacturerWebSiteUrl": "http://www.freedomscientific.com",
+        "ImageUrl": "",
+        "EnglishDescription": "(text automatically translated from Italian) Software of blowup of the content of the video that allows partially sighted persons to use a personal computer. Beyond to the blowup of the screen in order facilitating the acquisition of the necessary information it is possible to manage you counted and the background. Function in environment Windows 95/98/WE/NT/2000",
+        "OriginalUrl": "http://portale.siva.it/it-IT/databases/products/detail/id-13615",
+        "EnglishUrl": "http://portale.siva.it/en-GB/databases/products/detail/id-13615",
+        "Features": [
+          {
+            "FeatureId": 278,
+            "FeatureName": "Magnifying software",
+            "FeatureParentName": "Subdivision",
+            "ValueMin": 0,
+            "ValueMax": 0
+          }
+        ],
+        "Database": "Siva",
+        "ProductCode": "13615",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "FREEDOM SCIENTIFIC - MAGIC",
+        "ManufacturerOriginalFullName": "FREEDOM SCIENTIFIC",
+        "InsertDate": "1999-06-15T00:00:00+02:00",
+        "LastUpdateDate": "2009-10-21T21:15:00+02:00",
+        "ThumbnailImageUrl": "",
+        "SimilarityLevel": 0
+      },
+      "updated": "2009-10-21T21:15:00+02:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b6567ec5d",
+      "_rev": "2-f5fd2336876598a3e3616be279f46b1d",
+      "status": "new",
+      "language": "it_it",
+      "name": "FREEDOM SCIENTIFIC - MAGIC 11",
+      "description": "Magnification software for PC with Windows operating system (9.x, Me, NT4, 2000, XP). MAGic is available in 4 different versions: Standard (for Windows 9x/Me/XP H.E.), Standard with speech (for Windows 9x/Me/XP H.E., with Eloquence as multilingual solution and RealSpeak, for a better quality), Professional (also for Windows NT4, 2000 and XP Pro) and Professional with speech.",
+      "source": "Siva",
+      "sid": "16745",
+      "manufacturer": {
+        "name": "FREEDOM SCIENTIFIC",
+        "address": "11800 31st Court North",
+        "postalCode": "FL 33716",
+        "cityTown": "ST. PETERSBURG",
+        "country": "UNITED STATES",
+        "phone": "+1-7278038000",
+        "email": "info@freedomscientific.com",
+        "url": "http://www.freedomscientific.com"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": "11800 31st Court North",
+        "ManufacturerPostalCode": "FL 33716",
+        "ManufacturerTown": "ST. PETERSBURG",
+        "ManufacturerCountry": "UNITED STATES",
+        "ManufacturerPhone": "+1-7278038000",
+        "ManufacturerEmail": "info@freedomscientific.com",
+        "ManufacturerWebSiteUrl": "http://www.freedomscientific.com",
+        "ImageUrl": "http://portale.siva.it/files/images/product/full/16745_b.jpg",
+        "EnglishDescription": "Magnification software for PC with Windows operating system (9.x, Me, NT4, 2000, XP). MAGic is available in 4 different versions: Standard (for Windows 9x/Me/XP H.E.), Standard with speech (for Windows 9x/Me/XP H.E., with Eloquence as multilingual solution and RealSpeak, for a better quality), Professional (also for Windows NT4, 2000 and XP Pro) and Professional with speech.",
+        "OriginalUrl": "http://portale.siva.it/it-IT/databases/products/detail/id-16745",
+        "EnglishUrl": "http://portale.siva.it/en-GB/databases/products/detail/id-16745",
+        "Features": [
+          {
+            "FeatureId": 278,
+            "FeatureName": "Magnifying software",
+            "FeatureParentName": "Subdivision",
+            "ValueMin": 0,
+            "ValueMax": 0
+          }
+        ],
+        "Database": "Siva",
+        "ProductCode": "16745",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "FREEDOM SCIENTIFIC - MAGIC 11",
+        "ManufacturerOriginalFullName": "FREEDOM SCIENTIFIC",
+        "InsertDate": "2004-02-09T00:00:00+01:00",
+        "LastUpdateDate": "2009-10-21T21:14:00+02:00",
+        "ThumbnailImageUrl": "http://portale.siva.it/files/images/product/thumbs/16745_s.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2009-10-21T21:14:00+02:00",
+      "uid": "1421059432806-764399908"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65685fe0",
+      "_rev": "2-9c0a5be35e0b37413f75fe537a2e29d4",
       "status": "new",
       "language": "it_it",
       "name": "FREEDOM SCIENTIFIC - JAWS PER WINDOWS",
@@ -666,17 +2023,75 @@
         "SimilarityLevel": 0
       },
       "updated": "2006-01-19T08:39:00+01:00",
-      "uid": "1420467546923-229"
+      "uid": "1421059432806-826608318"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a5498fc",
-      "_rev": "3-78e3887e25c01e172cf93d8ae0ae0ed0",
+      "_id": "fbdd0dc173069786223f628b6568c08b",
+      "_rev": "2-b713e25640bdc0bb85e1251ba610a335",
+      "status": "new",
+      "language": "es_es",
+      "name": "Jaws 14",
+      "description": "",
+      "source": "Handicat",
+      "sid": "12011",
+      "manufacturer": {
+        "name": "Freedom Scientifics corporate",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "sourceData": {
+        "ManufacturerAddress": null,
+        "ManufacturerPostalCode": null,
+        "ManufacturerTown": null,
+        "ManufacturerCountry": null,
+        "ManufacturerPhone": null,
+        "ManufacturerEmail": null,
+        "ManufacturerWebSiteUrl": null,
+        "ImageUrl": "http://www.handicat.com/image/12011.jpg",
+        "EnglishDescription": "",
+        "OriginalUrl": "http://www.handicat.com/at-num-12011.html",
+        "EnglishUrl": "http://www.handicat.com/at-num-12011.html",
+        "Features": [],
+        "Database": "Handicat",
+        "ProductCode": "12011",
+        "IsoCodePrimary": {
+          "Code": "22.39.12",
+          "Name": "Special output software"
+        },
+        "IsoCodesOptional": [],
+        "CommercialName": "Jaws 14",
+        "ManufacturerOriginalFullName": "Freedom Scientifics corporate",
+        "InsertDate": "2004-11-10T00:00:00+01:00",
+        "LastUpdateDate": "2014-06-20T00:00:00+02:00",
+        "ThumbnailImageUrl": "http://www.handicat.com/thumb/12011.jpg",
+        "SimilarityLevel": 0
+      },
+      "updated": "2014-06-20T00:00:00+02:00",
+      "uid": "1421059432806-826608318"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b656d0767",
+      "_rev": "1-fa291c0d117fb989605e1943606fd7da",
       "source": "unified",
-      "sid": "1420467546923-229",
-      "uid": "1420467546923-229",
+      "sid": "1421059432806-826608318",
+      "uid": "1421059432806-826608318",
       "status": "new",
       "name": "Jaws For Windows",
-      "description": "Screen reader software.  Comprises: supports standard Windows office applications, Internet Explorer, Firefox, MSN Messenger, and Adobe Acrobat Reader, Lotus Symphony/Notes and others; outputs to refreshable Braille displays; multilingual synthesizer; supports Internet Explorer including links lists, frames lists, forms mode, reading HTML tables and graphic labels; supports dual monitors; interactive talking installation and basic training tutorial. Options include: standard edition for 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems; professional edition for all 32-bit or 64-bit versions of Windows 7, Windows Vista, and Windows Server 2008 and 32-bit versions of Windows XP and Windows Server 2003. \n  Note: voice synthesizer requires a sound card compatible with the users version of Windows.<br /><br />Price from (&pound;): 659<br /><br /><br /><br />Software<br />Adjust voice pitch: Standard <br />Adjust voice speed: Standard <br />Braille output: Standard <br />CD-Rom; USB Pen; Download: CD-Rom <br />Pronunciation correction: Standard <br />Read text with mouse over: Feature not available <br />Screen Zoom: Feature not available <br />Talking installation: Standard <br />Windows operating system: XP, Vista and 7",
+      "description": "<br /><br />Screen reader software.  Comprises: supports standard Windows office applications, Internet Explorer, Firefox, MSN Messenger, and Adobe Acrobat Reader, Lotus Symphony/Notes and others; outputs to refreshable Braille displays; multilingual synthesizer; supports Internet Explorer including links lists, frames lists, forms mode, reading HTML tables and graphic labels; supports dual monitors; interactive talking installation and basic training tutorial. Options include: standard edition for 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems; professional edition for all 32-bit or 64-bit versions of Windows 7, Windows Vista, and Windows Server 2008 and 32-bit versions of Windows XP and Windows Server 2003. \n  Note: voice synthesizer requires a sound card compatible with the users version of Windows.<br /><br />Price from (&pound;): 659<br /><br /><br /><br />Software<br />Adjust voice pitch: Standard <br />Adjust voice speed: Standard <br />Braille output: Standard <br />CD-Rom; USB Pen; Download: CD-Rom <br />Pronunciation correction: Standard <br />Read text with mouse over: Feature not available <br />Screen Zoom: Feature not available <br />Talking installation: Standard <br />Windows operating system: XP, Vista and 7",
       "manufacturer": {
         "name": "Freedom Scientific",
         "address": null,
@@ -696,19 +2111,19 @@
           "IsoCodesOptional": []
         }
       },
-      "updated": "2015-01-05T14:36:37.785Z"
+      "updated": "2006-01-19T07:39:00.000Z"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a55f284",
-      "_rev": "4-ca333e425f2f62d38cd77d845e5dfe5b",
+      "_id": "fbdd0dc173069786223f628b656d48d3",
+      "_rev": "1-6643b87fc150422f33d182a7c5780cda",
       "source": "unified",
-      "sid": "1420467546924-851",
-      "uid": "1420467546924-851",
+      "sid": "1421059432806-764399908",
+      "uid": "1421059432806-764399908",
       "status": "new",
-      "name": "Speakeasy",
-      "description": "Text-to-speech application for reading back text from the computer clipboard.",
+      "name": "Magic With Speech",
+      "description": "<br /><br />Screen magnification and reader software. Comprises: user can use magnification and speech together, or independently; user can read text that they type or point to with the mouse, the software scrolls the screen and highlights words as it reads them aloud; tracking features move the magnified area so the mouse pointer, cursor and highlighting remain visible; customizable magnified views, mouse and cursor enhancements with enhancement styles; options to change the colour of enhancements, apply transparency effects, and adjust their size; colour enhancements include options for user to view the screen as two colours (monochrome), invert brightness and colours and switch colours; talking installation. Options include: Professional version which can be used with all 32-bit or 64-bit versions of Windows 7, Windows Vista, Windows Server 2008, 32-bit versions of Windows XP operating systems and Windows Server 2003; Standard version which can be used with all 32-bit or 64-bit versions of Windows 7 Home Premium, Windows Vista Home Premium, Windows Vista Home Basic and 32-bit Windows XP Home operating systems.<br /><br />Price from (&pound;): 495<br /><br /><br /><br />Software<br />Screen magnification range: 1-16 x<br />Windows: Standard <br />Windows operating system: XP, Vista and 7",
       "manufacturer": {
-        "name": "Fx software",
+        "name": "Freedom Scientific",
         "address": null,
         "postalCode": null,
         "cityTown": null,
@@ -720,50 +2135,20 @@
       "ontologies": {
         "iso9999": {
           "IsoCodePrimary": {
-            "Code": "22.30.03",
-            "Name": "Reading materials with audible output"
+            "Code": "22.39.12",
+            "Name": "Special output software"
           },
           "IsoCodesOptional": []
         }
       },
-      "updated": "2000-01-01T12:57:09+02:00"
+      "updated": "2009-10-21T19:14:00.000Z"
     },
     {
-      "_id": "cd2caee2936c5424f1a293df0a6027a8",
-      "_rev": "4-1db8a737ca9180f48a1209df0bbbe85d",
+      "_id": "fbdd0dc173069786223f628b658664e8",
+      "_rev": "1-cdd100ddee3f4ef9fe1473c35293bcd3",
       "source": "unified",
-      "sid": "1420467546927-366",
-      "uid": "1420467546927-366",
-      "status": "new",
-      "name": "NVDA",
-      "description": "",
-      "manufacturer": {
-        "name": "NVDA",
-        "address": null,
-        "postalCode": null,
-        "cityTown": null,
-        "country": null,
-        "phone": null,
-        "email": null,
-        "url": null
-      },
-      "ontologies": {
-        "iso9999": {
-          "IsoCodePrimary": {
-            "Code": "22.36.12",
-            "Name": "Alternate input devices"
-          },
-          "IsoCodesOptional": []
-        }
-      },
-      "updated": "2000-01-01T12:57:09+02:00"
-    },
-    {
-      "_id": "cd2caee2936c5424f1a293df0a7865c3",
-      "_rev": "4-6e27e11911466bceda0c5dfcb0ed9267",
-      "source": "unified",
-      "sid": "1420467546930-288",
-      "uid": "1420467546930-288",
+      "sid": "1421059432811-814124869",
+      "uid": "1421059432811-814124869",
       "status": "new",
       "name": "NVDA",
       "description": "NonVisual Desktop Access (NVDA) is a free and open-source screen reader for the Windows Operating System, enabling blind and vision impaired people to use their computers for no more cost than the computer and Operating System itself.",
@@ -786,7 +2171,363 @@
           "IsoCodesOptional": []
         }
       },
-      "updated": "2000-01-01T12:57:09+02:00"
+      "updated": "2011-01-14T22:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b658975a0",
+      "_rev": "1-3f5d57b1bac82e0bea825d3096b4b431",
+      "source": "unified",
+      "sid": "1421059432812-405818962",
+      "uid": "1421059432812-405818962",
+      "status": "new",
+      "name": "Text-To-Speech",
+      "description": "Speech synthesizer<br />ELeX Speak & Win ® is a speech full Synthesis of 6 Generation, based on a new technology (corpus based synthesis with Non-Uniform Units Acapela Speech) reached an unprecedented quality with the well-kept since 1993 lexicons of ELeX.<br />Mispronunciations, there is hardly even anglicisms are pronounced correctly Speed ??and pitch can be set independently of each other<br />Features / Components<br />- deviations of the pronunciation of individual words in exceptional encyclopedias accumulable<br />- Integrated editor for exception lexicons<br />- speed adjustable<br />- pitch adjustable<br />- Technology: diphone-based<br />software compatibility:<br />- SSIL interface for other popular screen reader<br />- Compatible with Microsoft Speech API (SAPI 4.0)<br />- Compatible with Elan API<br />- remote configuration is possible for: JAWS, Open Book, Supernova, ZoomText<br />Available languages ??and voices:<br />- German (Dagmar & Thomas )<br />- U.S. English (Mary, Paul & William)<br />- UK English (Vicky & Gordon)<br />- French (Cathy & Robert)<br />- Spanish (Veronica & Rafael)<br />- Italian (Sofia & Massimo)<br />- South-American Spanish ( Andres)<br />- Brazilian Portuguese (Joana & Pedro)<br />- Dutch (Maarten)<br />- Polish (Radek)<br />System Requirements:<br />- IBM-compatible PC with 200 MHz CPU and 32 MB RAM<br />- Windows 95/98/NT4 / ME/2000/XP (OS / 2, DOS, Win3.x on request)<br />- Sound card<br />Price (no guarantee):<br />Price including VAT: on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "manufacturer": {
+        "name": "ELeX-Sprachverarbeitung GmbH",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.07",
+            "Name": "Audible computer displays"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "updated": "2013-04-02T22:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b658ab1ce",
+      "_rev": "1-2d2abe7afdee5ca302591a91ddc578ce",
+      "source": "unified",
+      "sid": "1421059432812-144583330",
+      "uid": "1421059432812-144583330",
+      "status": "new",
+      "name": "Natural Voices",
+      "description": "Speech synthesizer<br />Natural Voices is a speech synthesis software, which allows it in conjunction with a sound card to convert a written text into speech (text-to-speech) and have them pronounced in German language with male or female voice.<br />Natural Voices is supported by some screen readers for visually impaired and blind people, by some software-based communication aids for non-speaking people as well as other programs<br />Features / Components<br />- as a software available<br />parameters:<br />- emphasis in the sentence reading mode (prosody)<br />- exception dictionary for special or different pronunciation<br />- built-name database for first and last name<br />- break the language even within words possible<br />- control codes for breaks, accents, DTMF tones, etc.<br />- Technology: diphone-based (rule-based, by a processor generated speech output) with further linkage algorithms<br /><br />Software Compatibility:<br />- supports Microsoft SAPI 4.0, 5.0, and 5.1<br />- supports SSML component of VoiceXML and SAPI interface standards<br />- SAPI interface and SSIL-compliant software<br />- * (eg for screen readers: ZoomText, Jaws, OutSpoken, Virgo, Window Eyes)<br />- supports the Speech Access Manager (SAM) of Dolphin<br />- * (eg for screen reader: HAL, Supernova, Lunar Plus)<br />Available languages:<br />German, U.S. & UK English , French, Spanish (Latin American)<br />delivery<br />- Natural Voices TTS, Reiner and Klara 16 kHz (SAM, JAWS), item number HSSP3111<br />Price (no guarantee):<br />Price including VAT: 160,00 EUR<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "manufacturer": {
+        "name": "AT&T\r\n     Shannon Labs",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.07",
+            "Name": "Audible computer displays"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "updated": "2011-02-28T23:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b658d8ee6",
+      "_rev": "1-c32c2ecc99302d9601a856ccee03a8a6",
+      "source": "unified",
+      "sid": "1421059432812-223498558",
+      "uid": "1421059432812-223498558",
+      "status": "new",
+      "name": "Vergrößerungssoftware GTX 32",
+      "description": "PRODUCT<br />- Large Font Software<br /><br />APPLICATION<br />- for visually impaired persons<br />- enlarged representation of graphic<br />- enlarged representation of text<br /><br />CONTENTS<br />With the GTX 32 everything can be displayed on the computer 1-32 times larger. Intermediates times at smaller magnifications 1.5. There are four different ways. Full screen, field, Eckbild and slow play. The control is effected with a trackball or Trackman. Resolution 640 x 480, 800 x 600, 1024 x 768 256 colors, High Color or True Color. Font smoothing. The enlarged representation can be combined with speech output and / or Jaws.<br /><br />PRICE (NO GUARANTEE)<br />Price on request<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "manufacturer": {
+        "name": "B&M Ingenieurbüro GmbH",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39",
+              "Name": "Output devices for computers"
+            }
+          ]
+        }
+      },
+      "updated": "2011-07-28T22:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b658e056a",
+      "_rev": "1-29815b338c15ff762cb6d8bde8afd8af",
+      "source": "unified",
+      "sid": "1421059432812-507336420",
+      "uid": "1421059432812-507336420",
+      "status": "new",
+      "name": "Lesephon USB",
+      "description": "PRODUCT<br />- reader with voice output<br />- reader with automatic text recognition<br />- Reading System with Scanner<br />Computer Complete System<br /><br />APPLICATION<br />- blind people<br />- visually impaired persons<br />- Stationary use<br /><br />DESCRIPTION<br />- hardware components: memory stick / MP3 Player 2 GB<br />with USB port,<br />headphone jack and built-in speaker, screen reader NVDA,<br />Cases with clip headphones - Used Scanner: No scanner<br />- Used OCR: not specified<br />- default used speech: AT & T Natural Voices Klara<br />- Page Detection : page orientation detection, column detection<br />- All components in one casing: no<br />- Dimensions Overall device in cm (W x D x H): no overall device<br /><br />PRICE (NO GUARANTEE)<br />(basic) model 499,00 EUR including VAT (recommended retail price)<br /><br />The translation of the content is performed by the external website Google™ Translate.<br />The service provides automated computer translations. <br />REHADAT assumes no reponsibility or liability for the complete accuracy of the content.<br/>",
+      "manufacturer": {
+        "name": "Novotech GmbH\r\n     Intelligente Kommunikations- u. Informationssysteme",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.30.21",
+            "Name": "Character-reading machines"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.30",
+              "Name": "Assistive products for reading"
+            }
+          ]
+        }
+      },
+      "updated": "2011-02-23T23:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b6595f8ea",
+      "_rev": "1-b519344dacfa83a9b3971da2868e182c",
+      "source": "unified",
+      "sid": "1421059432813-789376486",
+      "uid": "1421059432813-789376486",
+      "status": "new",
+      "name": "NV ACCESS - NVDA",
+      "description": "Open source screen reader for windows<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+      "manufacturer": {
+        "name": "NV ACCESS",
+        "address": "",
+        "postalCode": "",
+        "cityTown": "Robina",
+        "country": "AUSTRALIA",
+        "phone": "+61 7 5667 8372",
+        "email": "admin@nvaccess.org",
+        "url": "http://www.nvaccess.org"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.39.12",
+            "Name": "Special output software"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "updated": "2012-03-12T15:04:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65977ffd",
+      "_rev": "1-be9ffbb600b21cf52a7d3c4da9eafd78",
+      "source": "unified",
+      "sid": "1421059432813-866596636",
+      "uid": "1421059432813-866596636",
+      "status": "new",
+      "name": "NGT - J-SAY",
+      "description": "J-Say Pro brings together Dragon NaturallySpeaking Professional version 11, from Nuance, and JAWS For Windows version 12, from Freedom Scientific. This product enables users of JAWS for Windows to talk to the computer and obtain speech feedback of their dictation and other related on-screen activity.<br /><br />Technical details:<br />REPORTED WITHIN THE RESEARCH PROJECT<br />Cloud4All",
+      "manufacturer": {
+        "name": "NEXT GENERATION TECHNOLOGIES INC",
+        "address": "",
+        "postalCode": "",
+        "cityTown": "Lynnwood",
+        "country": "UNITED STATES",
+        "phone": "",
+        "email": "edward@ngtvoice.com",
+        "url": "http://www.ngtvoice.com"
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.36.12",
+            "Name": "Alternate input devices"
+          },
+          "IsoCodesOptional": []
+        }
+      },
+      "updated": "2012-04-23T11:55:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65a04806",
+      "_rev": "1-0b4e599991382210f6561ff0e2b5bf84",
+      "source": "unified",
+      "sid": "1421059432814-552781295",
+      "uid": "1421059432814-552781295",
+      "status": "new",
+      "name": "Esys 40",
+      "description": "-Machine translation-\nesys 40 is a portable Braille reading line by 40 cells and integrated Braille keyboard. Multifunction and a design for desktop and for portable use. Has a slot for an SD card for more text files to save. Thanks to Bluetooth technology and communications software, the device also connected to a mobile phone or PDA. You can esys 40 to your IT equipment to fill.\nThe Braille keyboard with 10 keys, gives you the ability to reproduce all the standard keyboard shortcuts for both types and navigate to your computer, Windows applications, mobile phone and PDA just to use.\nUse two joysticks to easily through menus to navigate Microsoft Windows. Use the scroll wheel for faster scrolling through information.\nThanks to the automatic sleep mode esys 40, the autonomy of the battery several days.\n\nTECHNICAL CHARACTERISTICS:\n- 40 Braille cells\n- 40 cursor routing keys\n- Braille keyboard with 10 keys\n- 2 navigatiejoysticks\n- 4 scroll wheels\n- Mini USB\n- Bluetooth\n- Slot for mini SD card\n- Lithium-ion battery\n- 20 hours autonomy\n- Also rechargeable via compatible Nokia phone charger (5.7 V)\n- Bag\n- Size: 32.5 cm x 8.6 cm x 2 cm\n- Weight: 500 g\n\nAPPLICATIONS\n* Bluetooth\nConnect your esys 40 with any PC, mobile phone and pocket PC equipped with a Bluetooth adapter. In the Bluetooth main menu you can set connection parameters and the device name and PIN change.\n\n* USB\nConnect your esys 40 with any PC with a USB port and screen reader. Activate the esys 40 USB mode for the first connection. Make sure the external device a corresponding driver is installed. Scroll through your mini SD card as a removable disk.\n\n* Notepad\nCreate and edit simple text files. Use basic functions such as &quot;find and replace&quot;. Maintain your documents and create an advanced tree of folders. Use the &quot;read&quot; a book or document to read more.\n\n* Calculator\nFor simple operations and accounting currency. Use the memory to store results.\n\n* Alarm clock\nSet different weker sin for each day of the week\n\n* Agenda\nPlan meetings, check your schedule in your Week, select a date or event you want bewerken.Informatie will be stored in a text file that you can transfer to your PC.\n\n* Tools\nCheck the correct operation of your esys 40, test the battery level, the keyboard and braillcelstatus, select an additional language for the software interface, update to the latest software version, ...\n\nCOMPATIBILITY\n- Jaws for Windows\n- Supernova\n- Windows Eyes\n- BRLTTY - Linux (Bluetooth only)\n- Mobile Speak\n- Mobile Speak Pocket\n- Talks\n- Pocket Hal",
+      "manufacturer": {
+        "name": "Eurobraille",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.12.21",
+            "Name": "Portable note-taking devices for Braille"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.24.21",
+              "Name": "Accessories for telephoning"
+            },
+            {
+              "Code": "22.36.03",
+              "Name": "Keyboards"
+            },
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "updated": "2013-10-16T22:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65a39f54",
+      "_rev": "1-875268d93feb9080cd9cf1a78a00c0de",
+      "source": "unified",
+      "sid": "1421059432814-124551522",
+      "uid": "1421059432814-124551522",
+      "status": "new",
+      "name": "Euroscope Apex BT",
+      "description": "-Machine translation-\nBasic Features\n-Voice Playback: Dutch, French, English and German\n-Braille Display: 0, 18 or 32 Braille cells\n-Keyboard: braille\n-Braille display for PC: yes (for BT18 & BT32)\n-Voice Playback for PC: Yes\nAdditional information\n-The Euroscope Apex is the successor to the Euroscope CE. The BT version always has a Braille keyboard and is available in three versions: without braille cells, with 18 Braille cells or with 32 Braille cells.\n-The Euroscope Apex uses Microsoft Windows CE 6.0 operating system.\n-The Braille keyboard can both six-and eight-point braille written.\n-The following applications are provided: word processing, file management, scientific calculator, clock, calendar, database, address book, e-mail, web browser, media player, audio recorder, player and daisy contextual help function.\n-Bluetooth & WiFi built in for wireless connection to peripherals and the Internet.\n-Speed ??and volume of speech output are adjustable.\n-The Euroscope Apex has built-in stereo speakers and omnidirectional microphone.\n-The BT18 and BT32 are useful as Braille with screen reader's Jaws, Supernova and VoiceOver.\n-The system settings are user adjustable.\n-The device has a cursor routing and navigation buttons for faster operation, the BT has topped a navigation wheel to quickly browse lists and menus.\n-Memory: 8 GB hard drive, three USB ports and a SDHC port for memory cards.\n-Besides the standard built-in languages ??and voices (Nuance Vocalizer) additional languages ??and voices are optional.\n-The device has a real-time clock with 30 days battery backup.\n-Optional LCD display (109 x 65 x 20 mm) is available so that a sighted can watch (4 lines of 20 characters).\n-Connections: Ethernet network, USB, SD memory slot, external speakers, headphones or earphones (3.5 mm)\n-Power supply: rechargeable and user replaceable lithium-ion battery and charger / adapter\n-Dimensions: 244 x 143 x 19 mm\n-Weight: 612 to 812 gr",
+      "manufacturer": {
+        "name": "Sensotec NV",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.12.21",
+            "Name": "Portable note-taking devices for Braille"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.36.03",
+              "Name": "Keyboards"
+            },
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "updated": "2012-06-19T22:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65a3a970",
+      "_rev": "1-0632dcbf4a3f1d3630e68becb10ecee1",
+      "source": "unified",
+      "sid": "1421059432814-712184219",
+      "uid": "1421059432814-712184219",
+      "status": "new",
+      "name": "Euroscope Apex QT",
+      "description": "-Machine translation-\nBasic Features\n-Voice Playback: Dutch, French, English and German\n-Braille Display: 0, 18 or 32 Braille cells\n-Keyboard: QWERTY layout\n-Braille display for PC: yes (for QT18 & QT32)\n-Voice Playback for PC: Yes\nAdditional information\n-The Euroscope Apex is the successor to the Euroscope CE. The QT version always has a standard keyboard and is available in three versions: without braille cells, with 18 Braille cells or with 32 Braille cells.\n-The Euroscope Apex uses Microsoft Windows CE 6.0 operating system.\n-The following applications are provided: word processing, file management, scientific calculator, clock, calendar, database, address book, e-mail, web browser, media player, audio recorder, player and daisy contextual help function.\n-Bluetooth & WiFi built in for wireless connection to peripherals and the Internet.\n-Speed ??and volume of speech output are adjustable.\n-The Euroscope Apex has built-in stereo speakers and omnidirectional microphone.\n-The QT18 and QT32 are useful as Braille with screen reader's Jaws, Supernova and VoiceOver.\n-The system settings are user adjustable.\n-The device has a cursor routing and navigation buttons for faster operation.\n-Memory: 8 GB hard drive, three USB ports and a SDHC port for memory cards.\n-Besides the standard built-in languages ??and voices (Nuance Vocalizer) additional languages ??and voices are optional.\n-The device has a real-time clock with 30 days battery backup.\n-Optional LCD display (109 x 65 x 20 mm) available so that a sighted can watch (4 lines of 20 characters).\n-Connections: Ethernet network, USB, SD memory slot, external speakers, headphones or earphones (3.5 mm)\n-Power supply: rechargeable and user replaceable lithium-ion battery and charger / adapter\n-Dimensions: 244 x 143 x 19 mm\n-Weight: 612 to 812 gr",
+      "manufacturer": {
+        "name": "Sensotec NV",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.12.21",
+            "Name": "Portable note-taking devices for Braille"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.36.03",
+              "Name": "Keyboards"
+            },
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "updated": "2012-06-19T22:00:00.000Z"
+    },
+    {
+      "_id": "fbdd0dc173069786223f628b65a69032",
+      "_rev": "1-3eb523c88f8c872dd23ab91f79007886",
+      "source": "unified",
+      "sid": "1421059432814-622816753",
+      "uid": "1421059432814-622816753",
+      "status": "new",
+      "name": "BraillePen 12",
+      "description": "-Machine translation-\nBasic Features:\n- Number of braille cells : 12\n- Area under braille cells : flat\n- Braille Keyboard: yes\n- Battery operation: yes\n- Bluetooth: yes\n\nAdditional Information :\n- The BraillePen 12 is a compact Braille display with 12 Braille cells and a 6 - point Braille keyboard .\n- In the middle is a mini - joystick for navigation .\n- The connection to the laptop , tablet or smartphone is realized via a wireless Bluetooth connection .\n- The BraillePen 12 is compatible with various control software for various operating systems: Mobile Peak , Talks & Zoom, Mobile Accessibility , Braille Back, VoiceOver in OS X 10.6 ( Snow Leopard ) and above, VoiceOver in iOS version 4 and higher , Dolphin Pen , Supernova , Window-Eyes and Jaws .\n- In addition to the Braille keys and mini - joystick there are various control buttons on the top: shift , space , control and 2 round keys ( keys Pan ) left and right of the Braille cells .\n- The device has a built-in rechargeable battery that provides approximately 12 hours of autonomy .\n- The BraillePen 12 comes with leather case and battery charger.\n- Dimensions : 151 x 96 x 21 mm\n- Weight : 260 g",
+      "manufacturer": {
+        "name": "Harpo Sp.z o.o.",
+        "address": null,
+        "postalCode": null,
+        "cityTown": null,
+        "country": null,
+        "phone": null,
+        "email": null,
+        "url": null
+      },
+      "ontologies": {
+        "iso9999": {
+          "IsoCodePrimary": {
+            "Code": "22.36.03",
+            "Name": "Keyboards"
+          },
+          "IsoCodesOptional": [
+            {
+              "Code": "22.39.05",
+              "Name": "Tactile computer displays"
+            }
+          ]
+        }
+      },
+      "updated": "2013-10-20T22:00:00.000Z"
     }
   ]
 }
