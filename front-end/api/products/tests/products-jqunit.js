@@ -256,11 +256,44 @@ productsTests.runTests = function() {
         });
     });
 
-    // TODO: Test the remaining query parameters once we have a sane approach for offsetting and limiting "unified" records
-    /*
-     offset (optional, string) ... The number of records to skip in the list of results. Used for pagination.
-     limit (optional, string) ... The number of records to return. Used for pagination.
-     */
+    jqUnit.asyncTest("Test offset and limit parameters (get the same record as part of two overlapping sets)...", function() {
+        var options = {
+            "url": productsTests.config.express.baseUrl + "products",
+            "qs": { offset: 0, limit: 3 }
+        };
+        request.get(options, function(error, response, body) {
+            jqUnit.start();
+
+            testUtils.isSaneResponse(jqUnit, error, response, body);
+            var jsonData = JSON.parse(body);
+
+            jqUnit.assertNotUndefined("A list of records should have been returned...", jsonData.records);
+            if (jsonData.records) {
+                jqUnit.assertTrue("The list of records should not be empty...", jsonData.records.length > 0);
+                var lastRecord = jsonData.records[2];
+
+                jqUnit.stop();
+
+                var limitedOptions = {
+                    "url": productsTests.config.express.baseUrl + "products",
+                    "qs": { offset: 2, limit: 1 }
+                };
+                request.get(limitedOptions, function(error, response, body) {
+                    jqUnit.start();
+                    testUtils.isSaneResponse(jqUnit, error, response, body);
+
+                    var jsonData = JSON.parse(body);
+
+                    jqUnit.assertNotUndefined("A list of records should have been returned...", jsonData.records);
+                    if (jsonData.records) {
+                        jqUnit.assertTrue("The list of records should not be empty...", jsonData.records.length > 0);
+                        var firstRecord = jsonData.records[0];
+                        jqUnit.assertDeepEq("The last record of set 1-3 should equal the first record of set 3-3...", lastRecord, firstRecord);
+                    }
+                });
+            }
+        });
+    });
 };
 
 productsTests.loadPouch();
