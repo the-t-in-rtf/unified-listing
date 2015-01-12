@@ -15,6 +15,25 @@ module.exports=function(config){
     // TODO: add support for versions
     // TODO: add support for comments/annotation
 
+    products.applyLimits = function(array, params) {
+        if (!Array.isArray(array)) {
+            return array;
+        }
+
+        var start  = 0;
+        if (params.offset >=0 ) {
+            start = params.offset;
+        }
+
+        var end = array.length - start;
+
+        if (params.limit > 0) {
+            end = start + params.limit;
+        }
+
+        return array.slice(start, end);
+    };
+
     products.router.use("/",function(req, res) {
         var myRes = res;
 
@@ -26,7 +45,7 @@ module.exports=function(config){
         var dateFields    = ["updated"];
         products.queryHelper.parseDateFields(params, req, dateFields);
 
-        var booleanFields = ["versions"];
+        var booleanFields = ["versions", "sources"];
         products.queryHelper.parseBooleanFields(params, req, booleanFields);
 
         var numberFields  = ["offset", "limit"];
@@ -53,7 +72,7 @@ module.exports=function(config){
                     var includeRecord = true;
 
                     // Exclude anything that doesn't match the selected status(es)
-                    if (params.status && params.status.indexOf(record.status)) {
+                    if (params.status && params.status.indexOf(record.status) === -1) {
                         includeRecord = false;
                     }
 
@@ -73,35 +92,32 @@ module.exports=function(config){
                 });
             }
 
-            // TODO:  Figure out how to limit the upstream results by multiple parameters (including date) and pass along offset and limit instead of getting everything, then filtering and slicing the results.
-            //
-            // One approach is to make a view per combination of fields, keyed by field and use the "keys" parameter to limit resutls.  If we have three fields, we would 7 views keyed by fields:
-            //
-            // * 1
-            // * 1,2
-            // * 1,3
-            // * 1,2,3
-            // * 2
-            // * 2,3
-            // * 3
-            //
-            // You would have to use multiple startKey and endKey ranges to accomplish this, as in:
-            // https://issues.apache.org/jira/browse/COUCHDB-523?focusedCommentId=14060097&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-14060097
-            var start  = 0;
-            if (params.offset >=0 ) {
-                start = params.offset;
+            if (params.sources) {
+                var uniqueKeyMap = {};
+                matchingProducts.map(function(entry){ uniqueKeyMap[entry.uid] = true; });
+                var keys = Object.keys(uniqueKeyMap);
+
+                // Since we are making a second upstream request to get the unified view, we can apply our offset and limits to the list of keys and use that for the total count
+                var sourceRequestOptions = {
+                    url:  config.couch.url + "_design/ul/_list/unified/unified",
+                    qs: { "keys": JSON.stringify(products.applyLimits(keys, params)) }
+                };
+
+                var sourceRequest = require("request");
+                sourceRequest(sourceRequestOptions, function(error2, response2, body2){
+                    if (error2) {
+                        myRes.status(500).send({ "ok": false, "message": body2.error});
+                        return;
+                    }
+                    var records = JSON.parse(body2);
+                    products.schemaHelper.setHeaders(myRes, "records");
+                    myRes.status(200).send({ "ok": true, params: params, total_rows: keys.length, records: products.applyLimits(records, params) });
+                });
             }
-
-            var end = matchingProducts.length - start;
-
-            if (params.limit > 0) {
-                end = start + params.limit;
+            else {
+                products.schemaHelper.setHeaders(myRes, "records");
+                myRes.status(200).send({ "ok": "true", "total_rows": matchingProducts.length, "params": params, "records": products.applyLimits(matchingProducts, params)});
             }
-
-            var records = matchingProducts.slice(start, end);
-
-            products.schemaHelper.setHeaders(myRes, "records");
-            myRes.status(200).send({ "ok": "true", "total_rows": matchingProducts.length, "params": params, "records": records});
         });
 
 

@@ -172,7 +172,6 @@ productsTests.runTests = function() {
             jqUnit.assertNotUndefined("A list of records should have been returned...", jsonData.records);
             if (jsonData.records) {
                 var deletedRecordCount = jsonData.records.length;
-                jqUnit.assertTrue("The list of records should not be empty...", deletedRecordCount > 0);
 
                 jqUnit.stop();
                 var options = {
@@ -188,16 +187,77 @@ productsTests.runTests = function() {
                     jqUnit.assertNotUndefined("A list of records should have been returned...", jsonData.records);
                     if (jsonData.records) {
                         var combinedRecordCount = jsonData.records.length;
-                        debugger;
                         jqUnit.assertTrue("There should be more records from multiple statuses than from just one...", deletedRecordCount < combinedRecordCount);
                     }
                 });
             }
         });
     });
-    // TODO: Test the remaining query parameters
+
+    jqUnit.asyncTest("Present unified records from all sources...", function() {
+        var options = {
+            "url": productsTests.config.express.baseUrl + "products",
+            "qs": { sources: true }
+        };
+        request.get(options, function(error, response, body) {
+            jqUnit.start();
+
+            testUtils.isSaneResponse(jqUnit, error, response, body);
+            var jsonData = JSON.parse(body);
+
+            jqUnit.assertNotUndefined("A list of records should have been returned...", jsonData.records);
+            if (jsonData.records) {
+                jqUnit.assertTrue("The list of records should not be empty...", jsonData.records.length > 0);
+
+                jsonData.records.forEach(function(record){
+                    jqUnit.assertEquals("Only 'unified' records should be returned when sources=true", "unified", record.source);
+                    jqUnit.assertNotUndefined("All records should include sources when sources=true", record.sources);
+                    if (record.sources){
+                        jqUnit.assertTrue("There should be at least one source record for each record when sources=true", record.sources.length >= 1);
+                    }
+                });
+            }
+        });
+    });
+
+    jqUnit.asyncTest("Present unified records limited by source...", function() {
+        var options = {
+            "url": productsTests.config.express.baseUrl + "products",
+            "qs": { sources: true }
+        };
+        request.get(options, function(error, response, body) {
+            jqUnit.start();
+
+            testUtils.isSaneResponse(jqUnit, error, response, body);
+            var jsonData = JSON.parse(body);
+
+            jqUnit.assertNotUndefined("A list of records should have been returned...", jsonData.records);
+            if (jsonData.records) {
+                var unlimitedRecordCount = jsonData.records.length;
+                jqUnit.assertTrue("The list of records should not be empty...", unlimitedRecordCount > 0);
+
+                jqUnit.stop();
+
+                var limitedOptions = {
+                    "url": productsTests.config.express.baseUrl + "products",
+                    "qs": { sources: true, source: "Vlibank" }
+                };
+                request.get(limitedOptions, function(error, response, body) {
+                    jqUnit.start();
+                    testUtils.isSaneResponse(jqUnit, error, response, body);
+
+                    var jsonData = JSON.parse(body);
+
+                    jqUnit.assertNotUndefined("A list of records should have been returned...", jsonData.records);
+                    var limitedRecordCount = jsonData.records.length;
+                    jqUnit.assertTrue("There should be fewer records return when we limit the results by source...", limitedRecordCount < unlimitedRecordCount);
+                });
+            }
+        });
+    });
+
+    // TODO: Test the remaining query parameters once we have a sane approach for offsetting and limiting "unified" records
     /*
-     status (optional, string) ... The product statuses to return (defaults to everything but 'deleted' records). Can be repeated to include multiple statuses.
      offset (optional, string) ... The number of records to skip in the list of results. Used for pagination.
      limit (optional, string) ... The number of records to return. Used for pagination.
      */

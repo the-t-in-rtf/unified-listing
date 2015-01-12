@@ -455,7 +455,7 @@ Returns a single product identified by its `source` and `sid`.  Only the latest 
         ```
 
 
-## GET /api/products{?source,status,updated,offset,limit,versions}
+## GET /api/products{?source,status,updated,offset,limit,versions,sources}
 
 Return the list of products, optionally filtered by source, status, or date of last update.
 
@@ -466,6 +466,7 @@ Return the list of products, optionally filtered by source, status, or date of l
     + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
     + limit (optional, string) ... The number of records to return.  Used for pagination.
     + versions (optional, boolean) ... Whether or not to display the full version history for this record (including any unpublished drafts).  Defaults to "false".
+    + sources (optional, boolean) ... If this is set to true, combine all records according to their "unified" grouping.  If ``source`` values are specified, only unified records associated with records from the given source(s) will be included in the resutls.  Defaults to "false".
 
 + Response 200 (application/headers+json)
     + Headers
@@ -516,7 +517,7 @@ Return the list of products, optionally filtered by source, status, or date of l
         }
         ```
 
-## GET /api/search{?q,source,status,sort,offset,limit,versions}
+## GET /api/search{?q,source,status,sort,offset,limit,versions,sources}
  Performs a full text search of all data, returns matching products.
 
  + Parameters
@@ -582,7 +583,7 @@ Return the list of products, optionally filtered by source, status, or date of l
          }
          ```
 
- ## GET /api/suggest/{?q,source,status,sort,versions}
+ ## GET /api/suggest/{?q,source,status,sort,versions,sources}
  Suggest a short list of records matching the search terms.  Performs a search as in /api/search, but only returns 5 results and does not support paging.  Equivalent to `/api/search?q=search&results=5`.  Used to suggest related records when building a "unified" record.
 
  + Parameters
@@ -591,6 +592,7 @@ Return the list of products, optionally filtered by source, status, or date of l
      + status (optional, string) ... The record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
      + sort (optional,string) ... The sort order to use when displaying records.  Conforms to [lucene's query syntax][1].
      + versions (optional, boolean) ... Whether or not to display the full version history for each record (including any unpublished drafts).  Defaults to "false".
+     + sources (optional, boolean) ... If this is set to true, combine all search results according to their "unified" grouping.  Defaults to "false".
 
  + Response 200 (application/search+json)
      + Headers
