@@ -17,7 +17,7 @@
         output.addClass("loading");
 
         var settings = {
-            url:     that.options.baseUrl + "/api/updates",
+            url:     that.options.baseUrl + "api/updates",
             success: that.displayResults,
             error:   that.displayError,
             data:    {
@@ -45,7 +45,7 @@
             }
         }
 
-        history.pushState(null, null, that.options.baseUrl + "/updates" + queryString);
+        history.pushState(null, null, that.options.baseUrl + "updates" + queryString);
 
         $.ajax(settings);
     };
