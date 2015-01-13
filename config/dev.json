@@ -4,6 +4,7 @@
     "baseUrl":        "http://localhost:4896",
     "session": {
       "secret": "Printer, printer take a hint-ter."
-    }
+    },
+    "safeCookies": []
   }
 }

@@ -2,7 +2,7 @@
 module.exports = function(config) {
     "use strict";
     var fluid = require('infusion');
-    var data = fluid.registerNamespace("gpii.ctr.lib.data");
+    var data = fluid.registerNamespace("gpii.ul.lib.data");
 
     data.exposeRequestData = function (req,options) {
         if (req.originalUrl) { options.path    = req.originalUrl;}
@@ -11,7 +11,7 @@ module.exports = function(config) {
         if (req.query)       { options.query   = req.query;}
         if (req.cookies)     {
             var safeCookies = {};
-            config.safeCookies.forEach(function(key){
+            config.express.safeCookies.forEach(function(key){
                 if (req.cookies[key]) {
                     var value = "";
                     try {

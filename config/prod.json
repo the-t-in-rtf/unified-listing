@@ -4,6 +4,7 @@
     "baseUrl":        "http://ul.gpii.net/",
     "session": {
       "secret": "Printer, printer take a hint-ter."
-    }
+    },
+    "safeCookies": []
   }
 }

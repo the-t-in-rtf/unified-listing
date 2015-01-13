@@ -30,8 +30,25 @@ app.set("view engine", "handlebars");
 app.set("port", config.express.port || process.env.PORT || 4896);
 app.set("views", path.join(__dirname, "views"));
 
+// express-user-couchdb requires body parsing support.
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+var cookieParser = require('cookie-parser');
+app.use(cookieParser()); // Required for session storage, must be called before session()
+
+// Required for user management, must be included for all modules
+var session      = require('express-session');
+app.use(session({ secret: config.express.session.secret}));
+
+
 // Mount the JSON schemas separately so that we have the option to decompose them into a separate module later, and so that the doc links and web links match
 app.use("/schema",express.static(__dirname + "/schema/schemas")); // jshint ignore:line
+
+// /api/user, provided by express-couchuser
+var user = require("./api/user")(config);
+app.use("/", user.router);
 
 // REST APIs
 var api = require("./api")(config);
