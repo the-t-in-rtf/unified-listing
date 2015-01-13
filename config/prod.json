@@ -2,6 +2,7 @@
   "express": {
     "port" :           4896,
     "baseUrl":        "http://ul.gpii.net/",
+    "apiPath":        "/api/",
     "session": {
       "secret": "Printer, printer take a hint-ter."
     },

@@ -4,8 +4,9 @@
     "luceneUrl": "http://localhost:5984/_fti/local/ul/_design/lucene/by_content"
   },
   "express": {
-    "port" :           4896,
+    "port" :          4896,
     "baseUrl":        "https://ul.gpii.net",
+    "apiPath":        "/api/",
     "session": {
       "secret": "Printer, printer take a hint-ter."
     },

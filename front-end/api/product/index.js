@@ -14,12 +14,12 @@ module.exports = function(config) {
 
     // TODO:  Implement "write" functions
 
-    //var put = require("./put")(config);
-    //product.router.use("/", put.router);
-    //
-    //var post = require("./post")(config);
-    //product.router.use("/", post.router);
-    //
+    var put = require("./put")(config);
+    product.router.use("/", put.router);
+
+    var post = require("./post")(config);
+    product.router.use("/", post.router);
+
     //var del = require("./delete")(config);
     //product.router.use("/", del.router);
 

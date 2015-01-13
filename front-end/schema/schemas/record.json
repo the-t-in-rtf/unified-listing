@@ -99,5 +99,5 @@
             "$ref": "record#/definitions/updated"
         }
     },
-   "required": ["source","sid","name","description", "manufacturer", "status", "updated"]
+   "required": ["source","sid","name","description", "manufacturer", "status"]
 }

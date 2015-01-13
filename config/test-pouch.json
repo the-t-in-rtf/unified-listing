@@ -8,6 +8,7 @@
   "express": {
     "port" :           5972,
     "baseUrl":        "http://localhost:5972/",
+    "apiPath":        "api/",
     "session": {
       "secret": "Printer, printer take a hint-ter."
     },
