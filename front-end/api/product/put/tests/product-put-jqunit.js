@@ -18,11 +18,6 @@ putTests.request       = require("request");
 
 putTests.validRecord   = require("../../../../../test/data/product/product-sample.json");
 
-putTests.validRecordGeneric = JSON.parse(JSON.stringify(putTests.validRecord));
-delete putTests.validRecord._id;
-delete putTests.validRecord.updated;
-delete putTests.validRecord._rev;
-
 // We need to remove this to assist with deep comparisons, as "updated" will always be different.
 
 // TODO: For now we use an empty record for our 'invalid' tests.  Eventually we should use a range of mistakes...
@@ -198,7 +193,6 @@ putTests.runTests = function() {
                 "jar":  putTests.loginHelper.jar
             };
             putTests.request.put(options, function(e,r,b) {
-                debugger;
                 jqUnit.start();
                 jqUnit.assertNull("There should be no raw errors returned", e);
                 jqUnit.assertTrue("There should be validation errors returned", b.errors && Object.keys(b.errors).length > 0);
@@ -221,7 +215,7 @@ putTests.runTests = function() {
                 "json": newRecord,
                 "jar":  putTests.loginHelper.jar
             };
-            putTests.request.put(options, function(e,r,b) {
+            putTests.request.put(options, function(e,r) {
                 jqUnit.start();
                 jqUnit.assertNull("There should be no raw errors returned", e);
                 jqUnit.assertEquals("The status code should be '400'", 400, r.statusCode);
