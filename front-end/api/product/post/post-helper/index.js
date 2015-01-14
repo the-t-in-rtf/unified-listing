@@ -59,7 +59,6 @@ module.exports = function(config) {
                 "headers": {"Content-Type": "application/json"}
             };
             writeRequest.post(writeOptions, function(writeError, writeResponse, writeBody) {
-                debugger;
                 var jsonData = JSON.parse(writeBody);
                 if (writeError) {
                     schemaHelper.setHeaders(res, "message");
