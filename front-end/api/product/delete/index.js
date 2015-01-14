@@ -98,17 +98,17 @@ module.exports=function(config){
         });
     });
 
-    // TODO:  Investigate why this hijacks GET calls if it's loaded before the GET module
-    del.router.delete("/*",function(req, res) { // jshint ignore:line
-        if (!req.session || !req.session.user) {
-            del.schemaHelper.setHeaders(res, "message");
-            res.status(401).send(JSON.stringify({ok:false, message: "You must be logged in to use this function."}));
-            return;
-        }
-
-        del.schemaHelper.setHeaders(res, "message");
-        res.status(403).send(JSON.stringify({ "ok": false, "message": "You must provide both a source (database) and source id to use this interface."}));
-    });
+    //// TODO:  Investigate why this hijacks GET calls if it's loaded before the GET module
+    //del.router.delete("/*",function(req, res) { // jshint ignore:line
+    //    if (!req.session || !req.session.user) {
+    //        del.schemaHelper.setHeaders(res, "message");
+    //        res.status(401).send(JSON.stringify({ok:false, message: "You must be logged in to use this function."}));
+    //        return;
+    //    }
+    //
+    //    del.schemaHelper.setHeaders(res, "message");
+    //    res.status(403).send(JSON.stringify({ "ok": false, "message": "You must provide both a source (database) and source id to use this interface."}));
+    //});
 
     return del;
 };
