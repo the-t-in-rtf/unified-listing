@@ -54,14 +54,8 @@ putTests.startExpress = function() {
         var user = require("../../../user")(putTests.config);
         putTests.express.app.use("/", user.router);
 
-        // Now load the PUT code
-        var put = require("../index.js")(putTests.config);
-        putTests.express.app.use("/api/product", put.router);
-
-        // We need GET /api/product/:source/:sid to be available.
-        // This must be loaded after any other calls to avoid hijacking URLs
-        var get = require("../../get")(putTests.config);
-        putTests.express.app.use("/api/product", get.router);
+        var product = require("../../index.js")(putTests.config);
+        putTests.express.app.use(putTests.config.express.apiPath + "product", product.router);
 
         putTests.runTests();
     });

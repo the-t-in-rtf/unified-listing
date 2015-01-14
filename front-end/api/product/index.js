@@ -19,9 +19,8 @@ module.exports = function(config) {
     var get = require("./get")(config);
     product.router.use("/", get.router);
 
-    // FIXME:  This appears to match requests overly broadly and delete when PUT requests are made.  Test locally and fix.
-    //var del = require("./delete")(config);
-    //product.router.use("/", del.router);
+    var del = require("./delete")(config);
+    product.router.use("/", del.router);
 
     return product;
 };

@@ -53,14 +53,8 @@ postTests.startExpress = function() {
         var user = require("../../../user")(postTests.config);
         postTests.express.app.use("/", user.router);
 
-        // Now load the POST code
-        var post = require("../index.js")(postTests.config);
-        postTests.express.app.use("/api/product", post.router);
-
-        // We need GET /api/product/:source/:sid to be available.
-        // This must be loaded after any other calls to avoid hijacking URLs
-        var get = require("../../get")(postTests.config);
-        postTests.express.app.use("/api/product", get.router);
+        var product = require("../../index.js")(postTests.config);
+        postTests.express.app.use(postTests.config.express.apiPath + "product", product.router);
 
         postTests.runTests();
     });
