@@ -8,7 +8,7 @@ module.exports = function(config) {
     express.app = express.express();
     express.app.set("port", config.express.port);
 
-    // These are required for all permission checks and user management calls
+    // These are required across all services for all permission checks and user management calls
     var cookieParser = require("cookie-parser");
     express.app.use(cookieParser());
     // Required for session storage, must be called before session()
