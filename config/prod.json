@@ -1,4 +1,8 @@
 {
+  "app": {
+    "name": "Unified Listing",
+    "url": "http://ul.gpii.net/"
+  },
   "express": {
     "port" :           4896,
     "baseUrl":        "http://ul.gpii.net/",
