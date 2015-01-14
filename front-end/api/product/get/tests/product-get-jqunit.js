@@ -1,42 +1,43 @@
 // tests for all read methods
 "use strict";
 var fluid = require("infusion");
-var namespace = "gpii.ul.api.product.get.tests";
-var get = fluid.registerNamespace(namespace);
+var namespace = "gpii.ul.api.product.getTests.tests";
+var getTests = fluid.registerNamespace(namespace);
 
 var loader = require("../../../../../config/lib/config-loader");
-get.config = loader.loadConfig(require("../../../../../config/test-pouch.json"));
+getTests.config = loader.loadConfig(require("../../../../../config/test-pouch.json"));
+getTests.getUrl = getTests.config.express.baseUrl + getTests.config.express.apiPath + "product";
 
-var testUtils = require("../../../tests/lib/testUtils")(get.config);
+var testUtils = require("../../../tests/lib/testUtils")(getTests.config);
 
-get.loadPouch = function() {
-    get.pouch = require("../../../tests/lib/pouch")(get.config);
+getTests.loadPouch = function() {
+    getTests.pouch = require("../../../tests/lib/pouch")(getTests.config);
 
-    get.pouch.start(function() {
-        get.startExpress();
+    getTests.pouch.start(function() {
+        getTests.startExpress();
     });
 };
 
 // Spin up an express instance
-get.startExpress = function() {
-    get.express = require("../../../tests/lib/express")(get.config);
+getTests.startExpress = function() {
+    getTests.express = require("../../../tests/lib/express")(getTests.config);
 
-    get.express.start(function() {
-        // Mount the module being tested
-        var product = require("../index.js")(get.config);
-        get.express.app.use("/product", product.router);
+    getTests.express.start(function() {
+        // Mount all modules to look for problems with the order in which they are loaded
+        var product = require("../../index.js")(getTests.config);
+        getTests.express.app.use(getTests.config.express.apiPath + "product", product.router);
 
-        get.runTests();
+        getTests.runTests();
     });
 };
 
-get.runTests = function() {
+getTests.runTests = function() {
     var jqUnit = fluid.require("jqUnit");
     var request = require("request");
-    jqUnit.module("Tests for GET /api/product");
+    jqUnit.module("Tests for GET /api/product/:source/:sid");
 
     jqUnit.asyncTest("Call the interface with no parameters...", function() {
-        request.get(get.config.express.baseUrl + "product", function(error, response, body) {
+        request.get(getTests.getUrl, function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -47,18 +48,22 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Call the interface with only one parameter...", function() {
-        request.get(get.config.express.baseUrl + "product/foo", function(error, response, body) {
+        request.get(getTests.getUrl + "/foo", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
-            var jsonData = JSON.parse(body);
-
-            jqUnit.assertUndefined("A record should not have been returned...", jsonData.record);
+            try{
+                var jsonData = JSON.parse(body);
+                jqUnit.assertUndefined("A record should not have been returned...", jsonData.record);
+            }
+            catch(e) {
+                jqUnit.assertUndefined("There should be no parsing errors:\n" + body, e);
+            }
         });
     });
 
     jqUnit.asyncTest("Looking for a record that doesn't exist...", function() {
-        request.get(get.config.express.baseUrl + "product/foo/bar", function(error, response, body) {
+        request.get(getTests.getUrl + "/foo/bar", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -69,7 +74,7 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Looking for a record that exists...", function() {
-        request.get(get.config.express.baseUrl + "product/Vlibank/B812", function(error, response, body) {
+        request.get(getTests.getUrl + "/Vlibank/B812", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -80,7 +85,7 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Looking for a unified record without sources ...", function() {
-        request.get(get.config.express.baseUrl + "product/unified/1421059432812-144583330", function(error, response, body) {
+        request.get(getTests.getUrl + "/unified/1421059432812-144583330", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -88,13 +93,13 @@ get.runTests = function() {
 
             jqUnit.assertNotUndefined("A record should have been returned...", jsonData.record);
             if (jsonData.record) {
-              jqUnit.assertUndefined("There should notbe 'sources' data for the record...", jsonData.record.sources);
+              jqUnit.assertUndefined("There should not be 'sources' data for the record...", jsonData.record.sources);
             }
         });
     });
 
     jqUnit.asyncTest("Retrieving a unified record with sources=true ...", function() {
-        request.get(get.config.express.baseUrl + "product/unified/1421059432812-144583330?sources=true", function(error, response, body) {
+        request.get(getTests.getUrl + "/unified/1421059432812-144583330?sources=true", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -109,7 +114,7 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Retrieving a source record with sources=true ...", function() {
-        request.get(get.config.express.baseUrl + "product/Vlibank/B812?sources=true", function(error, response, body) {
+        request.get(getTests.getUrl + "/Vlibank/B812?sources=true", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -123,7 +128,7 @@ get.runTests = function() {
     });
 
     jqUnit.asyncTest("Retrieving a source record with a space in the source name ...", function() {
-        request.get(get.config.express.baseUrl + "product/Dlf data/0110204", function(error, response, body) {
+        request.get(getTests.getUrl + "/Dlf data/0110204", function(error, response, body) {
             jqUnit.start();
 
             testUtils.isSaneResponse(jqUnit, error, response, body);
@@ -134,4 +139,4 @@ get.runTests = function() {
     });
 };
 
-get.loadPouch();
+getTests.loadPouch();

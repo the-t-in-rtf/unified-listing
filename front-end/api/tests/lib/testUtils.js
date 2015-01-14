@@ -45,8 +45,13 @@ module.exports = function(config) {
             jqUnit.assertTrue("The 'Link' header should indicate that the link describes the record format...", linkHeader.indexOf("describedBy") !== -1);
         }
 
-        var jsonData = JSON.parse(body);
-        jqUnit.assertNotNull("The 'ok' variable should always be set...", jsonData.ok);
+        try {
+            var jsonData = JSON.parse(body);
+            jqUnit.assertNotNull("The 'ok' variable should always be set...", jsonData.ok);
+        }
+        catch (e) {
+            jqUnit.assertEquals("There should be no errors parsing the body:\n" + body, null, e);
+        }
     };
 
     return testUtils;

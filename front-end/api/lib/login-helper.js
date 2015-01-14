@@ -34,6 +34,8 @@ module.exports=function(config) {
             myJqUnit.start();
             myJqUnit.assertNull("There should be no login errors returned",e);
             myJqUnit.assertTrue("The login should have been successful.", b.ok);
+            var cookieString = loginHelper.jar.getCookieString("http://localhost/connect.sid");
+            myJqUnit.assertTrue("There should now be a session cookie:", cookieString && cookieString.indexOf("connect.sid") !== -1);
             myJqUnit.stop();
 
             if (callback) {
@@ -48,7 +50,6 @@ module.exports=function(config) {
         loginHelper.request.post(logoutOptions, function(e,r,b) {
             myJqUnit.start();
             myJqUnit.assertNull("There should be no logout errors returned", e);
-
             if (callback) {
                 callback(e,r,b);
             }

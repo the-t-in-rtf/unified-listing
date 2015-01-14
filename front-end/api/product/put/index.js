@@ -27,18 +27,18 @@ module.exports = function(config) {
         // Make sure the current record has at least a uniqueId
         if (!putRecord) {
             put.schemaHelper.setHeaders(res, "message");
-            return res.status(400).send({"ok": false, "message": "You must supply the JSON content for the product you wish to update." });
+            return res.status(400).send(JSON.stringify({"ok": false, "message": "You must supply the JSON content for the product you wish to update." }));
         }
 
         var errors = put.schemaHelper.validate("record", putRecord);
         if (errors) {
             put.schemaHelper.setHeaders(res, "message");
-            return res.status(400).send({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors});
+            return res.status(400).send(JSON.stringify({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors}));
         }
 
         if (putRecord.source === "unified" && putRecord.sid !== putRecord.uid) {
             put.schemaHelper.setHeaders(res, "message");
-            return res.status(400).send({"ok": false, "message": "Unified records should always have their uid set to the same value as the sid."});
+            return res.status(400).send(JSON.stringify({"ok": false, "message": "Unified records should always have their uid set to the same value as the sid."}));
         }
 
         // TODO:  Confirm that the "uid" value is set to a record that exists
@@ -53,10 +53,9 @@ module.exports = function(config) {
             if (readError) {
                 console.log(readError);
                 put.schemaHelper.setHeaders(res, "message");
-                return res.status(500).send({"ok": false, "message": "There was an error retrieving the current product record..."});
+                return res.status(500).send(JSON.stringify({"ok": false, "message": "There was an error retrieving the current product record..."}));
             }
 
-            debugger;
             var jsonData = JSON.parse(readBody);
 
             var existingRecord = jsonData.record;
@@ -71,7 +70,7 @@ module.exports = function(config) {
             // TODO:  This may be confused by the "sources" option.  Construct a meaningful test.
             if (_.isEqual(putRecord, existingRecord)) {
                 put.schemaHelper.setHeaders(res, "message");
-                return res.status(200).send({"ok": true, "message": "The content you supplied is the same as the existing record, no changes needed to be made.", "record": existingRecord });
+                return res.status(200).send(JSON.stringify({"ok": true, "message": "The content you supplied is the same as the existing record, no changes needed to be made.", "record": existingRecord }));
             }
 
 
@@ -97,16 +96,15 @@ module.exports = function(config) {
             writeRequest.put(writeOptions, function(writeError, writeResponse, writeBody){
                 if (writeError) {
                     console.log(writeError);
-                    return res.status(500).send({"ok": false, "message": "There was an error saving the product data..."});
+                    return res.status(500).send(JSON.stringify({"ok": false, "message": "There was an error saving the product data..."}));
                 }
 
                 if (writeResponse.statusCode === 201) {
-                    var data = JSON.parse(writeBody);
-                    res.status(200).send({"ok":true,"message": "Product information updated.", "record": data.record});
+                    res.status(200).send(JSON.stringify({"ok":true,"message": "Product information updated.", "record": newRecord}));
                 }
                 else {
                     var jsonData = JSON.parse(writeBody);
-                    res.status(writeResponse.statusCode).send({"ok": false, "message": "There were one or more problems that prevented your update from taking place.", "errors": jsonData.reason.errors });
+                    res.status(writeResponse.statusCode).send(JSON.stringify({"ok": false, "message": "There were one or more problems that prevented your update from taking place.", "errors": jsonData.reason.errors }));
                 }
             });
         });
