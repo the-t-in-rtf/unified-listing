@@ -7,7 +7,7 @@ This directory contains a script that is used to pull data from [GARI](http://ww
 
 ## GARI's data format
 
-GARI provides an RSS feed that represents their current device data at: [http://www.mobileaccessibility.info/download-gari-db.cfm]
+GARI provides [an RSS feed](http://www.mobileaccessibility.info/download-gari-db.cfm) that represents their current device data.
 
 ### Overall Structure
 
