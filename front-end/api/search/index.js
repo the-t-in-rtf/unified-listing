@@ -34,7 +34,6 @@ module.exports=function(config, quick){
             var numberFields  = ["offset", "limit"];
             search.queryHelper.parseNumberFields(params, req, numberFields);
         }
-        debugger;
         var booleanFields = ["versions", "sources"];
         search.queryHelper.parseBooleanFields(params, req, booleanFields);
 
@@ -80,10 +79,10 @@ module.exports=function(config, quick){
                 var uids = data.rows.map(function(value){
                     return value.fields.uid;
                 });
-                var keys = search.arrayHelper.applyLimits(uids, params);
+                var sourceKeys = search.arrayHelper.applyLimits(uids, params);
                 var sourcesOptions =  {
                     url:  config.couch.url + "_design/ul/_list/unified/unified",
-                    qs: { "keys": JSON.stringify(keys) }
+                    qs: { "keys": JSON.stringify(sourceKeys) }
                 };
                 var sourceRequest = require("request");
                 sourceRequest(sourcesOptions, function(error, response, body){
@@ -102,7 +101,6 @@ module.exports=function(config, quick){
                     return [value.fields.source, value.fields.sid];
                 });
                 var limitedKeys = search.arrayHelper.applyLimits(keys, params);
-                debugger;
                 var recordOptions =  {
                     url:  config.couch.url + "_design/ul/_view/records",
                     qs: { "keys": JSON.stringify(limitedKeys) }
