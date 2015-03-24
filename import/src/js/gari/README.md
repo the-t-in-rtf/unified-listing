@@ -1,13 +1,17 @@
 # GARI import script.
 
-This directory contains a script that is used to pull data from [GARI](http://www.mobileaccessibility.info/).  They store both device and app data.
+This directory contains a script that is used to pull data from [GARI](http://www.mobileaccessibility.info/).  GARI is a database that includes information about mobile devices and what (if any) features they have that are relevant to Assistive Technology users.
+
+They also have data about AT mobile apps (which is not currently available for download or processing).
 
 
 # The data and conversion process
 
+We will convert from their format to the standard format used in the Unified Listing.  To do this, we must first understand the structure of the data exported from GARI.
+
 ## GARI's data format
 
-GARI provides [an RSS feed](http://www.mobileaccessibility.info/download-gari-db.cfm) that represents their current device data.
+GARI provides [an RSS feed](http://mobileaccessibility.info/xml/mobile-accessibility-phones.xml) that represents their current device data.
 
 ### Overall Structure
 
@@ -36,9 +40,7 @@ The main structure of their feed is roughly:
  </rss>
 ```
 
-The `FeatureCategories` data will largely be ignored for now, but it does represent a dictionary of the features GARI tracks.  This information corresponds to the `<item>` elements in a given [product](#product-record-structure).
-
-It may be useful in providing updates to GARI or comparing the GARI ontology to that used by EASTIN.
+The `FeatureCategories` data will largely be ignored for now, but it does represent a dictionary of the features GARI tracks.  This information corresponds to the `<item>` elements in a given [product](#product-record-structure).  It may be useful later on in providing updates to GARI or comparing the GARI ontology to that used by EASTIN.
 
 ## Product record structure
 

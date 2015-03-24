@@ -1,0 +1,179 @@
+// Test the "transforms" we use with our import scripts
+"use strict";
+var fluid = fluid || require("infusion");
+var gpii = fluid.registerNamespace("gpii");
+fluid.registerNamespace("gpii.ul.imports.tests.transforms");
+
+require("../../src/js/transforms");
+
+var jqUnit = require("jqUnit");
+
+fluid.defaults("gpii.ul.imports.tests.transforms", {
+    gradeNames: ["fluid.littleComponent", "autoInit"],
+    rawValues: {
+        dates: {
+            goodDate: "Oct-10-2014",
+            badDate: "foobar"
+        },
+        strings: {
+            upperCase: "UPPER",
+            lowerCase: "lower",
+            titleCase: "Title",
+            untrimmed: "\n space is all around us \n"
+        },
+        versions: {
+            semver:           "0.1.2",
+            embeddedSemver:   "this software is version 0.1.2 and is awesome.",
+            twoPoint:         "2.5",
+            embeddedTwoPoint: "this software is version 2.5 and is also awesome.",
+            malformed:        "There is no version at all in this string."
+        }
+    },
+    transformed: {
+        expander: {
+            funcName: "fluid.model.transformWithRules",
+            args: ["{that}.options.rawValues", "{that}.options.rules"]
+        }
+    },
+    expected: {
+        dates: {
+            dateFromGood:      "2014-10-09T22:00:00.000Z",
+            dateFromBad:       "foobar",
+            dateFromUndefined: undefined
+        },
+        strings: {
+            upperToLower:       "upper",
+            lowerToLower:       "lower",
+            titleToLower:       "title",
+            undefinedToLower:   undefined,
+            untrimmedToTrimmed: "space is all around us",
+            trimmedToTrimmed:   "lower",
+            undefinedToTrimmed: undefined
+        },
+        versions: {
+            fromExistingSemver:   "0.1.2",
+            fromEmbeddedSemver:   "0.1.2",
+            fromTwoPoint:         "2.5",
+            fromEmbeddedTwoPoint: "2.5",
+            fromMalformed:        "There is no version at all in this string.",
+            fromUndefined:        undefined
+        }
+    },
+    rules: {
+        dates: {
+            dateFromGood: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.dateToISOString",
+                    input: "{that}.options.rawValues.dates.goodDate"
+                }
+            },
+            dateFromBad: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.dateToISOString",
+                    input: "{that}.options.rawValues.dates.badDate"
+                }
+            },
+            dateFromUndefined: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.dateToISOString",
+                    input: "{that}.options.rawValues.notDefined"
+                }
+            }
+        },
+        strings: {
+            upperToLower: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.toLowerCase",
+                    input: "{that}.options.rawValues.strings.upperCase"
+                }
+            },
+            lowerToLower: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.toLowerCase",
+                    input: "{that}.options.rawValues.strings.lowerCase"
+                }
+            },
+            titleToLower: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.toLowerCase",
+                    input: "{that}.options.rawValues.strings.titleCase"
+                }
+            },
+            undefinedToLower: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.toLowerCase",
+                    input: "{that}.options.rawValues.NotDefined"
+                }
+            },
+            untrimmedToTrimmed: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.trim",
+                    input: "{that}.options.rawValues.strings.untrimmed"
+                }
+            },
+            trimmedToTrimmed: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.trim",
+                    input: "{that}.options.rawValues.strings.lowerCase"
+                }
+            },
+            undefinedToTrimmed: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.trim",
+                    input: "{that}.options.rawValues.NotDefined"
+                }
+            }
+        },
+        versions: {
+            fromExistingSemver: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.extractSemver",
+                    input: "{that}.options.rawValues.versions.semver"
+                }
+
+            },
+            fromEmbeddedSemver: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.extractSemver",
+                    input: "{that}.options.rawValues.versions.embeddedSemver"
+                }
+            },
+            fromTwoPoint: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.extractSemver",
+                    input: "{that}.options.rawValues.versions.twoPoint"
+                }
+            },
+            fromEmbeddedTwoPoint: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.extractSemver",
+                    input: "{that}.options.rawValues.versions.embeddedTwoPoint"
+                }
+            },
+            fromMalformed: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.extractSemver",
+                    input: "{that}.options.rawValues.versions.malformed"
+                }
+            },
+            fromUndefined: {
+                transform: {
+                    type: "gpii.ul.imports.transforms.extractSemver",
+                    input: "{that}.options.rawValues.NotDefined"
+                }
+            }
+        }
+    }
+});
+
+var transformed = gpii.ul.imports.tests.transforms();
+
+jqUnit.module("Testing transforms used by the unified listing import scripts...");
+
+jqUnit.test("The transformed values should match the expected values...", function() {
+    // We could have just compared everything, but this will yield clearer output in the event that something fails.
+    jqUnit.assertDeepEq("The transformed string values should be as expected...", transformed.options.expected.strings, transformed.options.transformed.strings);
+    jqUnit.assertDeepEq("The transformed date values should be as expected...", transformed.options.expected.dates, transformed.options.transformed.dates);
+    jqUnit.assertDeepEq("The transformed version values should be as expected...", transformed.options.expected.versions, transformed.options.transformed.versions);
+});
+
