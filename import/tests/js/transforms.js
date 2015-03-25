@@ -8,6 +8,26 @@ require("../../src/js/transforms");
 
 var jqUnit = require("jqUnit");
 
+// Given XML like:
+// ``
+//
+// It would produce a JSON object like:
+// {
+//   foo: {
+//     bar: {
+//       $t: "text",
+//       baz: {
+//         $t: "more text"
+//       }
+//     }
+//   }
+// }
+//
+// This transformer checks to see if $t is the only property at this level, and if so, collapses it.
+//
+// Given the JSON above, it would produce:
+//
+
 fluid.defaults("gpii.ul.imports.tests.transforms", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
     semverRegexp: "([0-9]+(\\.[0-9]+){0,2})",
@@ -28,6 +48,12 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
             twoPoint:         "2.5",
             embeddedTwoPoint: "this software is version 2.5 and is also awesome.",
             malformed:        "There is no version at all in this string."
+        },
+        unflattenedJson: {
+            expander: {
+                funcName: "gpii.settingsHandlers.XMLHandler.parser.parse",
+                args: [ "<?xml version=\"1.0\"?><foo><bar>text<baz>more text</baz></bar></foo>", { rules: { foo: "foo" } } ]
+            }
         }
     },
     transformed: {
@@ -63,6 +89,14 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
             pathedRegexp:    "0.1.2",
             pathedToLower:   "upper",
             pathedToTrimmed: "space is all around us"
+        },
+        flattened: {
+            foo: {
+                bar: {
+                    $t: "text",
+                    baz: "more text"
+                }
+            }
         }
     },
     rules: {
@@ -195,9 +229,22 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
                     inputPath: "strings.untrimmed"
                 }
             }
+        },
+        flattened: {
+            transform: {
+                type:      "gpii.ul.imports.transforms.flatten",
+                inputPath: "unflattenedJson"
+            }
         }
     }
 });
+
+/*
+     expander: {
+         funcName: "gpii.settingsHandlers.XMLHandler.parser.parse",
+         args: ["{that}.xml", "{that}.options.xml"]
+     }
+ */
 
 var transformed = gpii.ul.imports.tests.transforms();
 
@@ -208,5 +255,6 @@ jqUnit.test("The transformed values should match the expected values...", functi
     jqUnit.assertDeepEq("The transformed string values should be as expected...", transformed.options.expected.strings, transformed.options.transformed.strings);
     jqUnit.assertDeepEq("The transformed date values should be as expected...", transformed.options.expected.dates, transformed.options.transformed.dates);
     jqUnit.assertDeepEq("The transformed version values should be as expected...", transformed.options.expected.versions, transformed.options.transformed.versions);
+    jqUnit.assertDeepEq("The flattened JSONized XML should be as expected...", transformed.options.expected.flattened, transformed.options.transformed.flattened);
 });
 

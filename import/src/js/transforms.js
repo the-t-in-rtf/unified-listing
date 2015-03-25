@@ -5,6 +5,8 @@ var gpii = fluid.registerNamespace("gpii");
 
 fluid.registerNamespace("gpii.ul.imports.transforms");
 
+require("../../../node_modules/universal/gpii/node_modules/settingsHandlers/index");
+
 // These functions have no configuration available, so we are fine with the implied `fluid.standardTransformFunction` grade
 
 gpii.ul.imports.transforms.toLowerCase = function (rawValue) {
@@ -41,4 +43,60 @@ gpii.ul.imports.transforms.regexp = function (value, transformSpec) {
 
     // If we find no matches, return the original content
     return value;
+};
+
+// The output of gpii.settingsHandlers.XMLHandler.parser.parse() attempts to handle XML with both text and child values.
+//
+// Given XML like:
+// `<?xml version=1.0><foo><bar>text<baz>more text</baz></bar></foo>`
+//
+// It would produce a JSON object like:
+// {
+//   foo: {
+//     bar: {
+//       $t: "text",
+//       baz: {
+//         $t: "more text"
+//       }
+//     }
+//   }
+// }
+//
+// This transformer checks to see if $t is the only property at this level, and if so, collapses it.
+//
+// Given the JSON above, it would produce:
+//
+// {
+//   foo: {
+//     bar: {
+//       $t: "text",
+//       baz: "more text"
+//     }
+//   }
+// }
+//
+// It will err on the side of preserving existing child data, when both $t and other properties are found, it will keep both.
+gpii.ul.imports.transforms.flatten = function (value) {
+    if (typeof value === "object") {
+        var hasT = value.hasOwnProperty("$t");
+        var otherProperties = {};
+        Object.keys(value).forEach(function(property){
+            if (value.hasOwnProperty(property) && property !== "$t") {
+                var flattened = gpii.ul.imports.transforms.flatten(value[property]);
+                otherProperties[property] = flattened;
+            }
+        });
+
+        if (hasT && Object.keys(otherProperties).length === 0) {
+            return value.$t;
+        }
+        else if (hasT) {
+            otherProperties.$t = value.$t;
+        }
+
+        return otherProperties;
+    }
+    else {
+        return value;
+    }
 };
