@@ -5,28 +5,15 @@ var gpii = fluid.registerNamespace("gpii");
 
 fluid.registerNamespace("gpii.ul.imports.transforms");
 
-// TODO:  If I uncomment this, the function is run with the options instead of the value.  Talk with Antranig.
-//fluid.defaults("gpii.ul.imports.transforms.toLowerCase", {
-//    gradeNames: "fluid.standardOutputTransformFunction"
-//});
+// These functions have no configuration available, so we are fine with the implied `fluid.standardTransformFunction` grade
 
 gpii.ul.imports.transforms.toLowerCase = function (rawValue) {
     return (typeof rawValue === "string") ? rawValue.toLowerCase() : rawValue;
 };
 
-// TODO:  If I uncomment this, the function is run with the options instead of the value.  Talk with Antranig.
-//fluid.defaults("gpii.ul.imports.transforms.trim", {
-//    gradeNames: "fluid.standardOutputTransformFunction"
-//});
-
 gpii.ul.imports.transforms.trim = function (rawValue) {
     return (typeof rawValue === "string") ? rawValue.trim() : rawValue;
 };
-
-// TODO:  If I uncomment this, the function is run with the options instead of the value.  Talk with Antranig.
-//fluid.defaults("gpii.ul.imports.transforms.dateToISOString", {
-//    gradeNames: "fluid.standardOutputTransformFunction"
-//});
 
 // An transformation function to remap shorter date strings to ISO 8601 values
 gpii.ul.imports.transforms.dateToISOString = function(rawValue) {
@@ -34,16 +21,24 @@ gpii.ul.imports.transforms.dateToISOString = function(rawValue) {
     return (!isNaN(date.getTime())) ? date.toISOString() : rawValue;
 };
 
-// TODO:  If I uncomment this, the function is run with the options instead of the value.  Talk with Antranig.
-//fluid.defaults("gpii.ul.imports.transforms.extractSemver", {
-//    gradeNames: "fluid.standardOutputTransformFunction"
-//});
+// A generic transformer to extract matches for a given regexp.  Expects to be configured with `options.regexp`
+fluid.registerNamespace("gpii.ul.imports.transforms.regexp");
 
-// A transformer to extract a semver where available.  Used with version strings in other formats.
-gpii.ul.imports.transforms.extractSemver = function (string) {
-    var regexp = new RegExp("([0-9]+(\\.[0-9]+){0,2})");
-    var matches = string.match(regexp);
+gpii.ul.imports.transforms.regexp = function (value, transformSpec) {
+    if (!transformSpec.regexp) {
+        fluid.fail("You must pass a regexp option to use the regexp transformer");
+    }
 
-    // If we found a match, return it.  Otherwise, return the original string.
-    return matches ? matches[0] : string;
+    var regexp = new RegExp(transformSpec.regexp);
+    if (value) {
+        var matches = value.match(regexp);
+
+        if (matches) {
+            // Returns the first (greediest) match
+            return matches[0];
+        }
+    }
+
+    // If we find no matches, return the original content
+    return value;
 };

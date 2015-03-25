@@ -4,7 +4,6 @@
 
 "use strict";
 var fs      = require("fs");
-var request = require("request");
 var fluid   = require("infusion");
 var gpii    = fluid.registerNamespace("gpii");
 
@@ -16,24 +15,22 @@ fluid.registerNamespace("gpii.ul.importers.gari.transformer");
 // Load and return the text content of a named file.
 gpii.ul.importers.gari.transformer.loadData = function(that) {
     that.applier.change("xml", fs.readFileSync(that.options.cacheFile, { encoding: "utf8" }));
-    that.events.afterDataLoaded.fire(that);
 };
 
 // Parse the XML data we already have
 gpii.ul.importers.gari.transformer.parseXml = function(that) {
     that.applier.change("rawJson", gpii.settingsHandlers.XMLHandler.parser.parse(that.model.xml, that.options.xmlParserRules));
-    that.events.afterXmlParsed.fire(that);
 };
 
 // Remap the data
 gpii.ul.importers.gari.transformer.remapData = function(that) {
     that.applier.change("remappedJson", fluid.transform(that.model.rawJson.products, that.transformData));
-    that.events.afterDataRemapped.fire(that);
 };
 
 fluid.defaults("gpii.ul.importers.gari.transformer", {
     gradeNames: ["fluid.modelRelayComponent", "autoInit"],
     cacheFile:   "/tmp/gari.xml",
+    semverRegexp: "([0-9]+(\\.[0-9]+){0,2})",
     xmlParserRules: {
         rules: {
             products: "rss.channel.product" // Drill down to only the objects we care about to simplify the transform paths
@@ -43,47 +40,22 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
         source: {
             literalValue: "{that}.options.defaults.source"
         },
-        sid: {
-            transform: {
-                type:  "fluid.transforms.value",
-                inputPath: "objectid.$t"
-            }
-        },
-        name: {
-            transform: {
-                type: "fluid.transforms.value",
-                inputPath: "Model.$t"
-            }
-        },
+        sid: "objectid.$t",
+        name: "Model.$t",
         description: {
             literalValue: "{that}.options.defaults.description"
         },
         manufacturer: {
-            name: {
-                transform: {
-                    type: "fluid.transforms.value",
-                    inputPath: "ProductBrand.$t"
-                }
-            },
-            url: {
-                transform: {
-                    type: "fluid.transforms.value",
-                    inputPath: "Website.$t"
-                }
-            },
-            country: {
-                transform: {
-                    type: "fluid.transforms.value",
-                    inputPath: "Countries.$t"
-                }
-            }
+            name:    "ProductBrand.$t",
+            url:     "Website.$t",
+            country: "Countries.$t"
         },
         language: {
             literalValue: "{that}.options.defaults.language"
         },
         updated: {
             transform: {
-                type: "gpii.ul.imports.transforms.dateToISOString", // Why doesn't this work?  Review with Ant.
+                type: "gpii.ul.imports.transforms.dateToISOString",
                 value: {
                     transform: {
                         type: "fluid.transforms.value",
@@ -107,8 +79,9 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
                 },
                 version: {
                     transform: {
-                        type: "gpii.ul.imports.transforms.extractSemver",
-                        inputPath: "PlatformVersion.$t"
+                        type: "gpii.ul.imports.transforms.regexp",
+                        inputPath: "PlatformVersion.$t",
+                        regexp: "{that}.options.semverRegexp"
                     }
                 }
             }
@@ -142,16 +115,11 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
             args: ["{arguments}.0", "{that}.options.mapRules"]
         }
     },
-    events: {
-        afterDataLoaded: null,
-        afterXmlParsed:  null,
-        afterDataRemapped: null
-    },
-    listeners: {
-        afterDataLoaded: {
+    modelListeners: {
+        xml: {
             func: "{that}.parseXml"
         },
-        afterXmlParsed: {
+        rawJson: {
             func: "{that}.remapData"
         }
     }

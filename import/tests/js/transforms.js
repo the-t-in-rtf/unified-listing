@@ -10,6 +10,7 @@ var jqUnit = require("jqUnit");
 
 fluid.defaults("gpii.ul.imports.tests.transforms", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
+    semverRegexp: "([0-9]+(\\.[0-9]+){0,2})",
     rawValues: {
         dates: {
             goodDate: "Oct-10-2014",
@@ -57,6 +58,11 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
             fromEmbeddedTwoPoint: "2.5",
             fromMalformed:        "There is no version at all in this string.",
             fromUndefined:        undefined
+        },
+        pathed: {
+            pathedRegexp:    "0.1.2",
+            pathedToLower:   "upper",
+            pathedToTrimmed: "space is all around us"
         }
     },
     rules: {
@@ -127,39 +133,66 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
         versions: {
             fromExistingSemver: {
                 transform: {
-                    type: "gpii.ul.imports.transforms.extractSemver",
-                    input: "{that}.options.rawValues.versions.semver"
+                    type: "gpii.ul.imports.transforms.regexp",
+                    input: "{that}.options.rawValues.versions.semver",
+                    regexp: "{that}.options.semverRegexp"
                 }
 
             },
             fromEmbeddedSemver: {
                 transform: {
-                    type: "gpii.ul.imports.transforms.extractSemver",
-                    input: "{that}.options.rawValues.versions.embeddedSemver"
+                    type: "gpii.ul.imports.transforms.regexp",
+                    input: "{that}.options.rawValues.versions.embeddedSemver",
+                    regexp: "{that}.options.semverRegexp"
                 }
             },
             fromTwoPoint: {
                 transform: {
-                    type: "gpii.ul.imports.transforms.extractSemver",
-                    input: "{that}.options.rawValues.versions.twoPoint"
+                    type: "gpii.ul.imports.transforms.regexp",
+                    input: "{that}.options.rawValues.versions.twoPoint",
+                    regexp: "{that}.options.semverRegexp"
                 }
             },
             fromEmbeddedTwoPoint: {
                 transform: {
-                    type: "gpii.ul.imports.transforms.extractSemver",
-                    input: "{that}.options.rawValues.versions.embeddedTwoPoint"
+                    type: "gpii.ul.imports.transforms.regexp",
+                    input: "{that}.options.rawValues.versions.embeddedTwoPoint",
+                    regexp: "{that}.options.semverRegexp"
                 }
             },
             fromMalformed: {
                 transform: {
-                    type: "gpii.ul.imports.transforms.extractSemver",
-                    input: "{that}.options.rawValues.versions.malformed"
+                    type: "gpii.ul.imports.transforms.regexp",
+                    input: "{that}.options.rawValues.versions.malformed",
+                    regexp: "{that}.options.semverRegexp"
                 }
             },
             fromUndefined: {
                 transform: {
-                    type: "gpii.ul.imports.transforms.extractSemver",
-                    input: "{that}.options.rawValues.NotDefined"
+                    type: "gpii.ul.imports.transforms.regexp",
+                    input: "{that}.options.rawValues.NotDefined",
+                    regexp: "{that}.options.semverRegexp"
+                }
+            }
+        },
+        pathed: {
+            pathedRegexp: {
+                transform: {
+                    type:      "gpii.ul.imports.transforms.regexp",
+                    inputPath: "versions.embeddedSemver",
+                    regexp:    "{that}.options.semverRegexp"
+                }
+            },
+            pathedToLower: {
+                transform: {
+                    type:      "gpii.ul.imports.transforms.toLowerCase",
+                    inputPath: "strings.upperCase"
+                }
+            },
+            pathedToTrimmed: {
+                transform: {
+                    type:      "gpii.ul.imports.transforms.trim",
+                    inputPath: "strings.untrimmed"
                 }
             }
         }
