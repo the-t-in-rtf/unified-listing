@@ -239,13 +239,6 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
     }
 });
 
-/*
-     expander: {
-         funcName: "gpii.settingsHandlers.XMLHandler.parser.parse",
-         args: ["{that}.xml", "{that}.options.xml"]
-     }
- */
-
 var transformed = gpii.ul.imports.tests.transforms();
 
 jqUnit.module("Testing transforms used by the unified listing import scripts...");
