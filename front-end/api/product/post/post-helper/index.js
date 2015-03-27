@@ -14,6 +14,9 @@ module.exports = function(config) {
 
         var postRecord = req.body;
 
+        // This function is only called when working with new records, so we can set the status before validating.
+        postRecord.status = "new";
+
         var errors = schemaHelper.validate("record", postRecord);
         if (errors) {
             schemaHelper.setHeaders(res, "message");
@@ -45,7 +48,10 @@ module.exports = function(config) {
             }
 
             var updatedRecord = JSON.parse(JSON.stringify(postRecord));
-            updatedRecord.updated = new Date().toISOString();
+            // Preserve the supplied "updated" data if available.
+            if (!updatedRecord.updated) {
+                updatedRecord.updated = new Date().toISOString();
+            }
             if (updatedRecord.sources) {
                 delete updatedRecord.sources;
             }
@@ -71,7 +77,11 @@ module.exports = function(config) {
                 }
                 else {
                     schemaHelper.setHeaders(res, "message");
-                    res.status(writeResponse.statusCode).send({"ok": false, "message": "There were one or more problems that prevented your update from taking place.", "errors": JSON.stringify(jsonData.reason.errors) });
+                    var errors = [];
+                    var writeBodyData = typeof writeBody === "string" ? JSON.parse(writeBody) : writeBody;
+                    if (writeBodyData && writeBodyData.reason && writeBody.reason.summary) { errors.push(writeBody.reason.summary); }
+                    if (jsonData.reason.errors) { errors.push(JSON.stringify(jsonData.reason.errors)); }
+                    res.status(writeResponse.statusCode).send({"ok": false, "message": "There were one or more problems that prevented a new record from being created.", "errors": errors });
                 }
 
                 // TODO:  Add support for version control

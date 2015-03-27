@@ -30,12 +30,6 @@ module.exports = function(config) {
             return res.status(400).send(JSON.stringify({"ok": false, "message": "You must supply the JSON content for the product you wish to update." }));
         }
 
-        var errors = put.schemaHelper.validate("record", putRecord);
-        if (errors) {
-            put.schemaHelper.setHeaders(res, "message");
-            return res.status(400).send(JSON.stringify({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors}));
-        }
-
         if (putRecord.source === "unified" && putRecord.sid !== putRecord.uid) {
             put.schemaHelper.setHeaders(res, "message");
             return res.status(400).send(JSON.stringify({"ok": false, "message": "Unified records should always have their uid set to the same value as the sid."}));
@@ -66,21 +60,35 @@ module.exports = function(config) {
                 return postHelper(req, res);
             }
 
-            // If the record has not changed, display an appropriate message and exit
-            // TODO:  This may be confused by the "sources" option.  Construct a meaningful test.
-            if (_.isEqual(putRecord, existingRecord)) {
-                put.schemaHelper.setHeaders(res, "message");
-                return res.status(200).send(JSON.stringify({"ok": true, "message": "The content you supplied is the same as the existing record, no changes needed to be made.", "record": existingRecord }));
-            }
-
-
             var newRecord     = JSON.parse(JSON.stringify(putRecord));
             // TODO: This assumes that we are silently and privately passing around _id and _rev variables, which may need to be revisited...
             newRecord._id     = existingRecord._id;
             newRecord._rev    = existingRecord._rev;
-            newRecord.updated = new Date().toISOString();
+
+            // If a status wasn't supplied, we will use the existing status
+            if (!newRecord.status) {
+                newRecord.status = existingRecord.status;
+            }
             if (newRecord.sources) {
                 delete newRecord.sources;
+            }
+
+            var errors = put.schemaHelper.validate("record", newRecord);
+            if (errors) {
+                put.schemaHelper.setHeaders(res, "message");
+                return res.status(400).send(JSON.stringify({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors}));
+            }
+
+            // If the record has not changed, display an appropriate message and exit
+            // TODO:  This may be confused by the "sources" option.  Construct a meaningful test.
+            if (_.isEqual(newRecord, existingRecord)) {
+                put.schemaHelper.setHeaders(res, "message");
+                return res.status(200).send(JSON.stringify({"ok": true, "message": "The content you supplied is the same as the existing record, no changes needed to be made.", "record": existingRecord }));
+            }
+
+            // Preserve the supplied "updated" data if available.
+            if (!newRecord.updated) {
+                newRecord.updated = new Date().toISOString();
             }
 
             // TODO: Set the "author" field to the current user
