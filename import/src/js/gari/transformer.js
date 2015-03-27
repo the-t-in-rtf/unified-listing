@@ -14,21 +14,30 @@ fluid.registerNamespace("gpii.ul.importers.gari.transformer");
 
 // Load and return the text content of a named file.
 gpii.ul.importers.gari.transformer.loadData = function(that) {
-    that.applier.change("xml", fs.readFileSync(that.options.cacheFile, { encoding: "utf8" }));
+    var xmlData = fs.readFileSync(that.options.cacheFile, { encoding: "utf8" });
+    that.applier.change("xml", xmlData);
 };
 
 // Parse the XML data we already have
 gpii.ul.importers.gari.transformer.parseXml = function(that) {
-    that.applier.change("rawJson", gpii.settingsHandlers.XMLHandler.parser.parse(that.model.xml, that.options.xmlParserRules));
+    var parsedXml = gpii.settingsHandlers.XMLHandler.parser.parse(that.model.xml, that.options.xmlParserRules);
+    var flattenedJson = gpii.ul.imports.transforms.flatten(parsedXml);
+    that.applier.change("rawJson", flattenedJson);
 };
 
 // Remap the data
 gpii.ul.importers.gari.transformer.remapData = function(that) {
-    that.applier.change("remappedJson", fluid.transform(that.model.rawJson.products, that.transformData));
+    var remappedJson = fluid.transform(that.model.rawJson.products, that.transformData);
+    that.applier.change("remappedJson", remappedJson);
 };
 
 fluid.defaults("gpii.ul.importers.gari.transformer", {
     gradeNames: ["fluid.modelRelayComponent", "autoInit"],
+    model: {
+        xml:          {},
+        rawJson:      {},
+        remappedJson: {}
+    },
     cacheFile:   "/tmp/gari.xml",
     semverRegexp: "([0-9]+(\\.[0-9]+){0,2})",
     xmlParserRules: {
@@ -40,15 +49,15 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
         source: {
             literalValue: "{that}.options.defaults.source"
         },
-        sid: "objectid.$t",
-        name: "Model.$t",
+        sid: "objectid",
+        name: "Model",
         description: {
             literalValue: "{that}.options.defaults.description"
         },
         manufacturer: {
-            name:    "ProductBrand.$t",
-            url:     "Website.$t",
-            country: "Countries.$t"
+            name:    "ProductBrand",
+            url:     "Website",
+            country: "Countries"
         },
         language: {
             literalValue: "{that}.options.defaults.language"
@@ -59,7 +68,7 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
                 value: {
                     transform: {
                         type: "fluid.transforms.value",
-                        inputPath: "DateCompleted.$t"
+                        inputPath: "DateCompleted"
                     }
                 }
             }
@@ -72,7 +81,7 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
                         value: {
                             transform: {
                                 type: "fluid.transforms.value",
-                                inputPath: "Platform.$t"
+                                inputPath: "Platform"
                             }
                         }
                     }
@@ -80,22 +89,18 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
                 version: {
                     transform: {
                         type: "gpii.ul.imports.transforms.regexp",
-                        inputPath: "PlatformVersion.$t",
+                        inputPath: "PlatformVersion",
                         regexp: "{that}.options.semverRegexp"
                     }
                 }
             }
-        }
+        },
+        sourceData: ""
     },
     defaults: {
         description: "No description available.", // There is no description data, but the field is required, so we set it to a predefined string.
         language:    "en_us", // Their data only contains English language content
         source:      "gari"
-    },
-    model: {
-        xml:          {},
-        rawJson:      {},
-        remappedJson: {}
     },
     invokers: {
         loadData: {
@@ -117,10 +122,12 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
     },
     modelListeners: {
         xml: {
-            func: "{that}.parseXml"
+            func: "{that}.parseXml",
+            excludeSource: "init"
         },
         rawJson: {
-            func: "{that}.remapData"
+            func: "{that}.remapData",
+            excludeSource: "init"
         }
     }
 });
