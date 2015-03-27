@@ -77,7 +77,14 @@ gpii.ul.imports.transforms.regexp = function (value, transformSpec) {
 //
 // It will err on the side of preserving existing child data, when both $t and other properties are found, it will keep both.
 gpii.ul.imports.transforms.flatten = function (value) {
-    if (typeof value === "object") {
+    if (Array.isArray(value)) {
+        var otherArray = [];
+        value.forEach(function(arrayValue){
+            otherArray.push(gpii.ul.imports.transforms.flatten(arrayValue));
+        });
+        return otherArray;
+    }
+    else if (typeof value === "object") {
         var hasT = value.hasOwnProperty("$t");
         var otherProperties = {};
         Object.keys(value).forEach(function(property){

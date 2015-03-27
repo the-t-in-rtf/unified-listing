@@ -8,26 +8,6 @@ require("../../src/js/transforms");
 
 var jqUnit = require("jqUnit");
 
-// Given XML like:
-// ``
-//
-// It would produce a JSON object like:
-// {
-//   foo: {
-//     bar: {
-//       $t: "text",
-//       baz: {
-//         $t: "more text"
-//       }
-//     }
-//   }
-// }
-//
-// This transformer checks to see if $t is the only property at this level, and if so, collapses it.
-//
-// Given the JSON above, it would produce:
-//
-
 fluid.defaults("gpii.ul.imports.tests.transforms", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
     semverRegexp: "([0-9]+(\\.[0-9]+){0,2})",
@@ -52,7 +32,7 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
         unflattenedJson: {
             expander: {
                 funcName: "gpii.settingsHandlers.XMLHandler.parser.parse",
-                args: [ "<?xml version=\"1.0\"?><foo><bar>text<baz>more text</baz></bar></foo>", { rules: { foo: "foo" } } ]
+                args: [ "<?xml version=\"1.0\"?><foo><bar>text<baz>more text</baz></bar><array><qux>array root text</qux></array><array><quux>more array root text<child>array child text</child></quux></array></foo>", { rules: { foo: "foo" } } ]
             }
         }
     },
@@ -95,7 +75,8 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
                 bar: {
                     $t: "text",
                     baz: "more text"
-                }
+                },
+                array: [ { qux: "array root text" }, { quux: { $t: "more array root text", child: "array child text" } } ]
             }
         }
     },
