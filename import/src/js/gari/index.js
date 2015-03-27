@@ -40,10 +40,18 @@ fluid.defaults("gpii.ul.imports.gari.runner", {
                     "{downloader}.events.onCacheReady": "{transformer}.loadData"
                 }
             }
+        },
+        syncer: {
+            type: "gpii.ul.importers.syncer",
+            options: {
+                model: {
+                    data: "{transformer}.model.remappedJson"
+                }
+            }
         }
     },
     listeners: {
-        "onCreate": {
+        "onCreate.retrieveData": {
             funcName: "{downloader}.retrieveData"
         }
     }
