@@ -32,7 +32,7 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
         unflattenedJson: {
             expander: {
                 funcName: "gpii.settingsHandlers.XMLHandler.parser.parse",
-                args: [ "<?xml version=\"1.0\"?><foo><bar>text<baz>more text</baz></bar><array><qux>array root text</qux></array><array><quux>more array root text<child>array child text</child></quux></array></foo>", { rules: { foo: "foo" } } ]
+                args: [ "<?xml version=\"1.0\"?><foo><bar>text<baz>more text</baz></bar><array><qux>array root text</qux></array><array><quux>more array root text<child>array child text</child></quux></array><empty></empty></foo>", { rules: { foo: "foo" } } ]
             }
         }
     },

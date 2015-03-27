@@ -48,7 +48,7 @@ gpii.ul.imports.transforms.regexp = function (value, transformSpec) {
 // The output of gpii.settingsHandlers.XMLHandler.parser.parse() attempts to handle XML with both text and child values.
 //
 // Given XML like:
-// `<?xml version=1.0><foo><bar>text<baz>more text</baz></bar></foo>`
+// `<?xml version=1.0><foo><bar>text<baz>more text</baz></bar><qux></qux></foo>`
 //
 // It would produce a JSON object like:
 // {
@@ -58,11 +58,15 @@ gpii.ul.imports.transforms.regexp = function (value, transformSpec) {
 //       baz: {
 //         $t: "more text"
 //       }
+//     },
+//     qux: {
 //     }
 //   }
 // }
 //
 // This transformer checks to see if $t is the only property at this level, and if so, collapses it.
+//
+// It also treats empty properties as undefined.
 //
 // Given the JSON above, it would produce:
 //
@@ -99,6 +103,10 @@ gpii.ul.imports.transforms.flatten = function (value) {
         }
         else if (hasT) {
             otherProperties.$t = value.$t;
+        }
+        // Empty braces are treated as "undefined"
+        else if (Object.keys(otherProperties).length === 0) {
+            return undefined;
         }
 
         return otherProperties;
