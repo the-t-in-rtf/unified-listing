@@ -5,7 +5,6 @@ var gpii = fluid.registerNamespace("gpii");
 fluid.registerNamespace("gpii.ul.imports.tests.transforms");
 
 require("../../src/js/transforms");
-
 var jqUnit = require("jqUnit");
 
 fluid.defaults("gpii.ul.imports.tests.transforms", {
