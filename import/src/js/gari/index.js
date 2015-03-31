@@ -26,14 +26,14 @@ fluid.defaults("gpii.ul.imports.gari.runner", {
     },
     components: {
         downloader: {
-            type: "gpii.ul.importers.downloader",
+            type: "gpii.ul.imports.downloader",
             options: {
                 url: "http://mobileaccessibility.info/xml/mobile-accessibility-phones.xml",
                 cacheFile: cacheFile
             }
         },
         transformer: {
-            type: "gpii.ul.importers.gari.transformer",
+            type: "gpii.ul.imports.gari.transformer",
             options: {
                 cacheFile: cacheFile,
                 listeners: {
@@ -42,7 +42,7 @@ fluid.defaults("gpii.ul.imports.gari.runner", {
             }
         },
         syncer: {
-            type: "gpii.ul.importers.syncer",
+            type: "gpii.ul.imports.syncer",
             options: {
                 model: {
                     data: "{transformer}.model.remappedJson"
@@ -58,9 +58,3 @@ fluid.defaults("gpii.ul.imports.gari.runner", {
 });
 
 var runner = gpii.ul.imports.gari.runner();
-console.log("Data loaded, see sample record:\n" + JSON.stringify(runner.model.gariData[0], null, 2));
-
-// TODO: Write the component that does the syncing and wire it in
-
-// Then attempt to sync the data with CouchDb and report on the results
-//gpii.ul.importers.gari.syncer();

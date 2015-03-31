@@ -5,16 +5,15 @@ var request = require("request");
 var fluid   = require("infusion");
 var gpii    = fluid.registerNamespace("gpii");
 
-fluid.registerNamespace("gpii.ul.importers.downloader");
+fluid.registerNamespace("gpii.ul.imports.downloader");
 
 var os    = require("os");
 var path  = require("path");
 
-gpii.ul.importers.downloader.retrieveData = function(that) {
+gpii.ul.imports.downloader.retrieveData = function(that) {
     if (!fs.existsSync(that.options.cacheFile) || that.options.forceLoad) {
-        var options = {};
         if (that.options.url) {
-            request.get(that.options.url, options, that.saveData);
+            request(that.options.url, that.saveData);
         }
         else {
             fluid.fail("You must configure a URL in this component's options for it to download and cache content.");
@@ -26,13 +25,14 @@ gpii.ul.importers.downloader.retrieveData = function(that) {
     }
 };
 
-gpii.ul.importers.downloader.saveData = function(that, error, response, body) {
+gpii.ul.imports.downloader.saveData = function(that, error, response, body) {
+    debugger;
     fs.writeFileSync(that.options.cacheFile, body);
     that.events.onCacheReady.fire(that);
 };
 
 var cacheFile = path.join(os.tmpdir(), "downloaderCache");
-fluid.defaults("gpii.ul.importers.downloader", {
+fluid.defaults("gpii.ul.imports.downloader", {
     gradeNames: ["fluid.eventedComponent", "autoInit"],
     url:         undefined,
     cacheFile:   cacheFile,
@@ -42,11 +42,11 @@ fluid.defaults("gpii.ul.importers.downloader", {
     },
     invokers: {
         retrieveData: {
-            funcName: "gpii.ul.importers.downloader.retrieveData",
+            funcName: "gpii.ul.imports.downloader.retrieveData",
             args: ["{that}"]
         },
         saveData: {
-            funcName: "gpii.ul.importers.downloader.saveData",
+            funcName: "gpii.ul.imports.downloader.saveData",
             args: ["{that}", "{arguments}.0", "{arguments}.1", "{arguments}.2"]
         }
     }

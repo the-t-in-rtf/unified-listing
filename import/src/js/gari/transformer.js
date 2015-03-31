@@ -8,30 +8,32 @@ var fluid   = require("infusion");
 var gpii    = fluid.registerNamespace("gpii");
 
 require("../../../../node_modules/universal/gpii/node_modules/settingsHandlers/index");
-require("./../transforms");
+require("../transforms");
+require("../helpers");
 
-fluid.registerNamespace("gpii.ul.importers.gari.transformer");
+fluid.registerNamespace("gpii.ul.imports.gari.transformer");
 
 // Load and return the text content of a named file.
-gpii.ul.importers.gari.transformer.loadData = function(that) {
+gpii.ul.imports.gari.transformer.loadData = function(that) {
     var xmlData = fs.readFileSync(that.options.cacheFile, { encoding: "utf8" });
     that.applier.change("xml", xmlData);
 };
 
 // Parse the XML data we already have
-gpii.ul.importers.gari.transformer.parseXml = function(that) {
+gpii.ul.imports.gari.transformer.parseXml = function(that) {
     var parsedXml = gpii.settingsHandlers.XMLHandler.parser.parse(that.model.xml, that.options.xmlParserRules);
     var flattenedJson = gpii.ul.imports.transforms.flatten(parsedXml);
     that.applier.change("rawJson", flattenedJson);
 };
 
 // Remap the data
-gpii.ul.importers.gari.transformer.remapData = function(that) {
+gpii.ul.imports.gari.transformer.remapData = function(that) {
     var remappedJson = fluid.transform(that.model.rawJson.products, that.transformData);
     that.applier.change("remappedJson", remappedJson);
 };
 
-fluid.defaults("gpii.ul.importers.gari.transformer", {
+
+fluid.defaults("gpii.ul.imports.gari.transformer", {
     gradeNames: ["fluid.modelRelayComponent", "autoInit"],
     model: {
         xml:          {},
@@ -51,9 +53,7 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
         },
         sid: "objectid",
         name: "Model",
-        description: {
-            literalValue: "{that}.options.defaults.description"
-        },
+        description: { literalValue: "{that}.options.defaults.description" },
         manufacturer: {
             name:    "ProductBrand",
             url:     "Website",
@@ -62,6 +62,12 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
         language: {
             literalValue: "{that}.options.defaults.language"
         },
+        images: [
+            {
+                url:         "productpic",
+                description: "Model"
+            }
+        ],
         updated: {
             transform: {
                 type: "gpii.ul.imports.transforms.dateToISOString",
@@ -104,15 +110,15 @@ fluid.defaults("gpii.ul.importers.gari.transformer", {
     },
     invokers: {
         loadData: {
-            funcName: "gpii.ul.importers.gari.transformer.loadData",
+            funcName: "gpii.ul.imports.gari.transformer.loadData",
             args: ["{that}"]
         },
         parseXml: {
-            funcName: "gpii.ul.importers.gari.transformer.parseXml",
+            funcName: "gpii.ul.imports.gari.transformer.parseXml",
             args: ["{that}"]
         },
         remapData: {
-            funcName: "gpii.ul.importers.gari.transformer.remapData",
+            funcName: "gpii.ul.imports.gari.transformer.remapData",
             args: ["{that}"]
         },
         transformData: {

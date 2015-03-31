@@ -6,9 +6,9 @@ var gpii    = fluid.registerNamespace("gpii");
 
 var request = require("request");
 
-fluid.registerNamespace("gpii.ul.importers.syncer");
+fluid.registerNamespace("gpii.ul.imports.syncer");
 
-gpii.ul.importers.syncer.LoginAndStartSync = function(that) {
+gpii.ul.imports.syncer.LoginAndStartSync = function(that) {
     var options = {
         jar: true,
         json: true,
@@ -31,7 +31,7 @@ gpii.ul.importers.syncer.LoginAndStartSync = function(that) {
     });
 };
 
-gpii.ul.importers.syncer.syncViaREST = function (that) {
+gpii.ul.imports.syncer.syncViaREST = function (that) {
     var checkTasks = [];
 
     // Iterate through each record
@@ -50,7 +50,7 @@ gpii.ul.importers.syncer.syncViaREST = function (that) {
 };
 
 // generate a response parser for an individual record
-gpii.ul.importers.syncer.getRecordUpdatePromise = function(that, updatedRecord) {
+gpii.ul.imports.syncer.getRecordUpdatePromise = function(that, updatedRecord) {
     return function() {
         var promise = fluid.promise();
 
@@ -79,7 +79,7 @@ gpii.ul.importers.syncer.getRecordUpdatePromise = function(that, updatedRecord) 
     };
 };
 
-fluid.defaults("gpii.ul.importers.syncer", {
+fluid.defaults("gpii.ul.imports.syncer", {
     loginUsername: "admin",
     loginPassword: "admin",
     loginUrl:      "http://localhost:4896/api/user/signin",
@@ -87,11 +87,11 @@ fluid.defaults("gpii.ul.importers.syncer", {
     gradeNames:    ["fluid.modelRelayComponent", "autoInit"],
     invokers: {
         getRecordUpdatePromise: {
-            funcName: "gpii.ul.importers.syncer.getRecordUpdatePromise",
+            funcName: "gpii.ul.imports.syncer.getRecordUpdatePromise",
             args: ["{that}", "{arguments}.0"]
         },
         syncViaREST: {
-            funcName: "gpii.ul.importers.syncer.syncViaREST",
+            funcName: "gpii.ul.imports.syncer.syncViaREST",
             args: ["{that}"]
         }
     },
@@ -103,7 +103,7 @@ fluid.defaults("gpii.ul.importers.syncer", {
     },
     modelListeners: {
         "data": {
-            funcName:      "gpii.ul.importers.syncer.LoginAndStartSync",
+            funcName:      "gpii.ul.imports.syncer.LoginAndStartSync",
             args:          ["{that}"],
             excludeSource: "init"
         }

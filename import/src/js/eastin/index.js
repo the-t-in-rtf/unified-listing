@@ -1,6 +1,6 @@
 "use strict";
 var fluid  = require("infusion");
-var eastin = fluid.registerNamespace("gpii.ul.importers.eastin");
+var eastin = fluid.registerNamespace("gpii.ul.imports.eastin");
 
 /* TODO: Only look up records newer than the cache using the new lastUpdateMin parameter
  and the maximum LastUpdateDate value stored in the cache */
