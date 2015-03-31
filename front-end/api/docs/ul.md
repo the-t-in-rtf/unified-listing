@@ -24,6 +24,7 @@ All products in the Unified Listing have the following common fields:
 |description|A description of the product.|Y|
 |manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#manufacturers) below).|Y|
 |status|The status of this record.  Current supported values are listed below under ["Statuses"](#statuses).|Y|
+|images|Images of the product, if available (see ["Images"](#images) below).|N|
 |language|The language used in the text of this record, expressed using a two letter language, code, an underscore, and a two letter country code, as in `en_us` or `it_it`.  If this is not specified, `en_us` is assumed.|N|
 |updated|The date at which the record was last updated.|Y|
 
@@ -219,6 +220,15 @@ The company or individual that produces a product is called a "manufacturer" in 
     }
 
 [View JSON Schema for manufacturers](../../schema/manufacturer.json)
+
+## Images
+
+Many of the databases we federate include pictures with a product listing.  If available, we store this information in the `images` field of a source record.  This field is an array, there can be multiple images for a single product.  We need two pieces of information about each image. First, we need a URL where the image can be found.  Second, we need text we can use to describe the image for screen readers.  Each entry looks roughly like:
+
+    {
+      "url": "http://www.vlibank.be/scan.jsp?PID=A10149&TYPE=jpg&RANG=A&SIZE=medium",
+      "description": "Mini Joystick with Push - / USB"
+    }
 
 ## Ontologies
 
