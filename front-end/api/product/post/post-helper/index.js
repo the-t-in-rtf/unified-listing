@@ -20,7 +20,7 @@ module.exports = function(config) {
         var errors = schemaHelper.validate("record", postRecord);
         if (errors) {
             schemaHelper.setHeaders(res, "message");
-            return res.status(400).send({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors});
+            return res.status(400).send({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors, "record": postRecord });
         }
 
 
@@ -81,7 +81,7 @@ module.exports = function(config) {
                     var writeBodyData = typeof writeBody === "string" ? JSON.parse(writeBody) : writeBody;
                     if (writeBodyData && writeBodyData.reason && writeBody.reason.summary) { errors.push(writeBody.reason.summary); }
                     if (jsonData.reason.errors) { errors.push(JSON.stringify(jsonData.reason.errors)); }
-                    res.status(writeResponse.statusCode).send({"ok": false, "message": "There were one or more problems that prevented a new record from being created.", "errors": errors });
+                    res.status(writeResponse.statusCode).send({"ok": false, "message": "There were one or more problems that prevented a new record from being created.", "errors": errors, "record": jsonData.record });
                 }
 
                 // TODO:  Add support for version control

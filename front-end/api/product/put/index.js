@@ -76,7 +76,7 @@ module.exports = function(config) {
             var errors = put.schemaHelper.validate("record", newRecord);
             if (errors) {
                 put.schemaHelper.setHeaders(res, "message");
-                return res.status(400).send(JSON.stringify({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors}));
+                return res.status(400).send(JSON.stringify({"ok": false, "message": "The data you have entered is not valid.  Please review.", "errors": errors, "record": newRecord }));
             }
 
             // If the record has not changed, display an appropriate message and exit
@@ -112,7 +112,7 @@ module.exports = function(config) {
                 }
                 else {
                     var jsonData = JSON.parse(writeBody);
-                    res.status(writeResponse.statusCode).send(JSON.stringify({"ok": false, "message": "There were one or more problems that prevented your update from taking place.", "errors": jsonData.reason.errors }));
+                    res.status(writeResponse.statusCode).send(JSON.stringify({"ok": false, "message": "There were one or more problems that prevented your update from taking place.", "errors": jsonData.reason.errors, "record": newRecord }));
                 }
             });
         });
