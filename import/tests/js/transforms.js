@@ -33,6 +33,14 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
                 funcName: "gpii.settingsHandlers.XMLHandler.parser.parse",
                 args: [ "<?xml version=\"1.0\"?><foo><bar>text<baz>more text</baz></bar><array><qux>array root text</qux></array><array><quux>more array root text<child>array child text</child></quux></array><empty></empty></foo>", { rules: { foo: "foo" } } ]
             }
+        },
+        deeplyNull: {
+            foo: null,
+            bar: {
+                baz: undefined,
+                qux: "not null"
+            },
+            quux: ""
         }
     },
     transformed: {
@@ -77,6 +85,12 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
                 },
                 array: [ { qux: "array root text" }, { quux: { $t: "more array root text", child: "array child text" } } ]
             }
+        },
+        stripped: {
+            bar: {
+                qux: "not null"
+            },
+            quux: ""
         }
     },
     rules: {
@@ -215,6 +229,12 @@ fluid.defaults("gpii.ul.imports.tests.transforms", {
                 type:      "gpii.ul.imports.transforms.flatten",
                 inputPath: "unflattenedJson"
             }
+        },
+        stripped: {
+            transform: {
+                type:      "gpii.ul.imports.transforms.stripNonValues",
+                inputPath: "deeplyNull"
+            }
         }
     }
 });
@@ -226,8 +246,13 @@ jqUnit.module("Testing transforms used by the unified listing import scripts..."
 jqUnit.test("The transformed values should match the expected values...", function() {
     // We could have just compared everything, but this will yield clearer output in the event that something fails.
     jqUnit.assertDeepEq("The transformed string values should be as expected...", transformed.options.expected.strings, transformed.options.transformed.strings);
+
     jqUnit.assertDeepEq("The transformed date values should be as expected...", transformed.options.expected.dates, transformed.options.transformed.dates);
+
     jqUnit.assertDeepEq("The transformed version values should be as expected...", transformed.options.expected.versions, transformed.options.transformed.versions);
+
     jqUnit.assertDeepEq("The flattened JSONized XML should be as expected...", transformed.options.expected.flattened, transformed.options.transformed.flattened);
+
+    jqUnit.assertDeepEq("The stripped JSON should be as expected...", transformed.options.expected.stripped, transformed.options.transformed.stripped);
 });
 

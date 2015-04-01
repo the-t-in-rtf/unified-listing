@@ -36,8 +36,10 @@ gpii.ul.imports.syncer.syncViaREST = function (that) {
 
     // Iterate through each record
     for (var a = 0; a < that.model.data.length; a++) {
+        var record = typeof that.model.data[a] === "string" ? JSON.parse(that.model.data[a]) : that.model.data[a];
+
         // Add our task to the stack
-        checkTasks.push(that.getRecordUpdatePromise(that.model.data[a]));
+        checkTasks.push(that.getRecordUpdatePromise(record));
     }
 
     // Process the stack of tasks
@@ -106,6 +108,12 @@ fluid.defaults("gpii.ul.imports.syncer", {
             funcName:      "gpii.ul.imports.syncer.LoginAndStartSync",
             args:          ["{that}"],
             excludeSource: "init"
+        }
+    },
+    listeners: {
+        "onSyncComplete.log": {
+            funcName: "console.log",
+            args: ["Synchronization complete..."]
         }
     }
 });

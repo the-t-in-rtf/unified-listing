@@ -1,7 +1,4 @@
-// This script is designed to (optionally) download data from GARI and get it ready to import into the Unified Listing.
-//
-// For full details, see the README.md file in this directory
-
+// A component to transform GARI's data into the format required by the Unified Listing.
 "use strict";
 var fs      = require("fs");
 var fluid   = require("infusion");

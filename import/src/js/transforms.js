@@ -115,3 +115,38 @@ gpii.ul.imports.transforms.flatten = function (value) {
         return value;
     }
 };
+
+// Strip null values from an Object.
+//
+// An object like: `{ foo: null, bar: "not null", baz: undefined }`
+//
+// Would become: `{ bar: "not null" }`
+//
+// Notably, this should not strip empty strings.
+gpii.ul.imports.transforms.stripNonValues = function (value) {
+    if (value === undefined || value === null) {
+        return undefined;
+    }
+    else if (Array.isArray(value)) {
+        var strippedArray = [];
+        value.forEach(function(arrayValue){
+            strippedArray.push(gpii.ul.imports.transforms.stripNonValues(arrayValue));
+        });
+        return strippedArray;
+    }
+    else if (typeof value === "object") {
+        var strippedObject = {};
+        Object.keys(value).forEach(function(property){
+            if (value.hasOwnProperty(property)) {
+                var stripped = gpii.ul.imports.transforms.stripNonValues(value[property]);
+                if (stripped !== null && stripped !== undefined) {
+                    strippedObject[property] = stripped;
+                }
+            }
+        });
+
+        return strippedObject;
+    }
+
+    return value;
+};

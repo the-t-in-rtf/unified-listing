@@ -26,7 +26,6 @@ gpii.ul.imports.downloader.retrieveData = function(that) {
 };
 
 gpii.ul.imports.downloader.saveData = function(that, error, response, body) {
-    debugger;
     fs.writeFileSync(that.options.cacheFile, body);
     that.events.onCacheReady.fire(that);
 };
