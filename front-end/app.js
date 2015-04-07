@@ -35,11 +35,11 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var cookieParser = require('cookie-parser');
+var cookieParser = require("cookie-parser");
 app.use(cookieParser()); // Required for session storage, must be called before session()
 
 // Required for user management, must be included for all modules
-var session      = require('express-session');
+var session      = require("express-session");
 app.use(session({ secret: config.express.session.secret}));
 
 
