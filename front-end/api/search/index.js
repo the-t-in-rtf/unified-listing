@@ -53,7 +53,8 @@ module.exports=function(config, quick){
         }
 
         var queryParams = {
-            "q": query
+            "q":     query,
+            "limit": 100  // Hard-coded limit to avoid crashes when we have more than 7500 bytes of key data.
         };
 
         if (params.sort) {
@@ -61,8 +62,8 @@ module.exports=function(config, quick){
         }
 
         var options = {
-            url: config.couch.luceneUrl,
-            qs:  queryParams
+            url:     config.couch.luceneUrl,
+            qs:      queryParams
         };
 
         var request = require("request");
@@ -79,7 +80,8 @@ module.exports=function(config, quick){
                 var uids = data.rows.map(function(value){
                     return value.fields.uid;
                 });
-                var sourceKeys = search.arrayHelper.applyLimits(uids, params);
+                var distinctUids = search.arrayHelper.getDistinctEntries(uids);
+                var sourceKeys = search.arrayHelper.applyLimits(distinctUids, params);
                 var sourcesOptions =  {
                     url:  config.couch.url + "_design/ul/_list/unified/unified",
                     qs: { "keys": JSON.stringify(sourceKeys) }
@@ -88,7 +90,7 @@ module.exports=function(config, quick){
                 sourceRequest(sourcesOptions, function(error, response, body){
                     if (error) {
                         search.schemaHelper.setHeaders(myRes, "message");
-                        myRes.status(500).send({ "ok": false, "message": body.error});
+                        myRes.status(500).send({ "ok": false, "message": (body && body.error) ? body.error : error });
                         return;
                     }
                     var records = JSON.parse(body);
@@ -100,16 +102,20 @@ module.exports=function(config, quick){
                 var keys = data.rows.map(function(value){
                     return [value.fields.source, value.fields.sid];
                 });
-                var limitedKeys = search.arrayHelper.applyLimits(keys, params);
+
+                var distinctKeys = search.arrayHelper.getDistinctEntries(keys);
+
+                var limitedKeys = search.arrayHelper.applyLimits(distinctKeys, params);
+                var keysString = JSON.stringify(limitedKeys);
                 var recordOptions =  {
                     url:  config.couch.url + "_design/ul/_view/records",
-                    qs: { "keys": JSON.stringify(limitedKeys) }
+                    qs: { "keys": keysString }
                 };
                 var recordRequest = require("request");
                 recordRequest(recordOptions, function(error, response, body){
                     if (error) {
                         search.schemaHelper.setHeaders(myRes, "message");
-                        myRes.status(500).send({ "ok": false, "message": body.error});
+                        myRes.status(500).send({ "ok": false, "message": (body && body.error) ? body.error : error});
                         return;
                     }
                     var data = JSON.parse(body);
