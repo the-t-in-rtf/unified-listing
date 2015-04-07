@@ -536,7 +536,7 @@ Return the list of products, optionally filtered by source, status, or date of l
     + status (optional, string) ... The record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
     + sort (optional,string) ... The sort order to use when displaying records.  Conforms to [lucene's query syntax][1].
     + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
-    + limit (optional, string) ... The number of records to return.  Used for pagination.
+    + limit (optional, string) ... The number of records to return.  Used for pagination.  A maximum of 100 search results are returned, anything higher is silently ignored.
     + versions (optional, boolean) ... Whether or not to display the full version history for each record (including any unpublished drafts).  Defaults to "false".
     + sources (optional, boolean) ... If this is set to true, combine all search results according to their "unified" grouping.  Defaults to "false".
 
