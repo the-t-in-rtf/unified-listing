@@ -5,8 +5,8 @@
   },
   "express": {
     "port" :          4896,
-    "baseUrl":        "https://ul.gpii.net",
-    "apiPath":        "/api/",
+    "baseUrl":        "https://ul.gpii.net/",
+    "apiPath":        "api/",
     "session": {
       "secret": "Printer, printer take a hint-ter."
     },

@@ -4,8 +4,8 @@
     "url": "http://localhost:4896/"
   },  "express": {
     "port" :           4896,
-    "baseUrl":        "http://localhost:4896",
-    "apiPath":        "/api/",
+    "baseUrl":        "http://localhost:4896/",
+    "apiPath":        "api/",
     "session": {
       "secret": "Printer, printer take a hint-ter."
     },
