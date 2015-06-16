@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Reset Your Password</title>
+
+        {{>common-includes}}
+
+        <!-- Bring in client library being tested -->
+        <script type="text/javascript" src="/gpii-ecu/passwordCheckingForm.js"></script>
+        <script type="text/javascript" src="/gpii-ecu/reset.js"></script>
+    </head>
+    <body>
+        <!-- Sample reset form with all required markup -->
+
+        <div class="row">
+            <div class="reset-viewport"></div>
+        </div>
+
+        <!-- configure and instantiate our module -->
+        <script type="text/javascript">
+            var reset = gpii.express.couchuser.frontend.reset(".reset-viewport");
+        </script>
+    </body>
+</html>
+
+
+
+

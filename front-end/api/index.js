@@ -1,31 +1,56 @@
+// The API that powers the Unified Listing
+//
+// TODO:  Transition this to use pure `gpii.express.router` components and gradually remove legacy content from `init`.
 "use strict";
-module.exports = function(config) {
-    var fluid = require("infusion");
-    var namespace    = "gpii.ul.api";
-    var api         = fluid.registerNamespace(namespace);
+var fluid = require("infusion");
+var gpii  = fluid.registerNamespace("gpii");
 
-    var express = require("express");
-    api.router = express.Router();
+require("gpii-express");
 
-    var updates = require("./updates")(config);
-    api.router.use("/updates", updates.router);
+var express = require("../../node_modules/gpii-express/node_modules/express");
 
-    var products = require("./products")(config);
-    api.router.use("/products", products.router);
+fluid.registerNamespace("gpii.ul.api");
+gpii.ul.api.init = function (that) {
+    that.router = express.Router();
 
-    var product = require("./product")(config);
-    api.router.use("/product", product.router);
+    var updates = require("./updates")(that.options.config);
+    that.router.use("/updates", updates.router);
 
-    var search = require("./search")(config);
-    api.router.use("/search", search.router);
+    var products = require("./products")(that.options.config);
+    that.router.use("/products", products.router);
+
+    var product = require("./product")(that.options.config);
+    that.router.use("/product", product.router);
+
+    var search = require("./search")(that.options.config);
+    that.router.use("/search", search.router);
 
 
-    var suggest = require("./search")(config, true);
-    api.router.use("/suggest", suggest.router);
+    var suggest = require("./search")(that.options.config, true);
+    that.router.use("/suggest", suggest.router);
 
-    var docs = require("./docs")(config);
-    api.router.use("/docs", docs.router);
-
-    return api;
+    var docs = require("./docs")(that.options.config);
+    that.router.use("/docs", docs.router);
 };
 
+gpii.ul.api.getRouter = function (that) {
+    return that.router;
+};
+
+fluid.defaults("gpii.ul.api", {
+    gradeNames: ["gpii.express.router", "autoInit"],
+    router:     null,
+    config:     "{expressConfigHolder}.options.config",
+    invokers: {
+        getRouter: {
+            funcName: "gpii.ul.api.getRouter",
+            args:     ["{that}"]
+        }
+    },
+    listeners: {
+        "onCreate.init": {
+            funcName: "gpii.ul.api.init",
+            args:     ["{that}"]
+        }
+    }
+});

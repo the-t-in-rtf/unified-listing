@@ -17,12 +17,31 @@
 <script type="text/javascript" src="/infusion/framework/core/js/ModelTransformation.js"></script>
 <script type="text/javascript" src="/infusion/framework/core/js/ModelTransformationTransforms.js"></script>
 
+<!-- Bring in Handlebars dependency -->
+<script type="text/javascript" src="/bc/handlebars/handlebars.js"></script>
+
+<!-- Bring in Pagedown dependency -->
+<script type="text/javascript" src="/bc/pagedown/Markdown.Converter.js"></script>
+<script type="text/javascript" src="/bc/pagedown/Markdown.Sanitizer.js"></script>
+
+<!-- Bring in template handling -->
+<script type="text/javascript" src="/gpii-handlebars/common/helper.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/common/jsonify.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/common/equals.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/common/md-common.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/md-client.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/handlebars.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/binder.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/templateAware.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/templateMessage.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/multiTemplateAware.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/templateFormControl.js"></script>
+
 <!-- moment.js is required for our date handling -->
 <script src="/bc/moment/moment.js"></script>
 
+<!-- TODO:  Remove this if possible -->
 <script src="/js/components/root.js"></script>
-<script src="/js/components/templates.js"></script>
-<script src="/js/components/binder.js"></script>
 
 <!-- include foundation and its dependencies -->
 <script src="/bc/foundation/js/foundation/foundation.js"></script>

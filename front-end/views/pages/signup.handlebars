@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Sign Up for a Unified Listing Account</title>
+
+        {{>common-includes}}
+
+        <!-- Bring in client library being tested -->
+        <script type="text/javascript" src="/gpii-ecu/passwordCheckingForm.js"></script>
+        <script type="text/javascript" src="/gpii-ecu/signup.js"></script>
+    </head>
+    <body>
+        <!-- Sample signup form with all required markup -->
+
+        <div class="body">
+            <div class="signup-viewport"></div>
+        </div>
+
+        <!-- configure and instantiate our module -->
+        <script type="text/javascript">
+            var signup = gpii.express.couchuser.frontend.signup(".signup-viewport", {});
+        </script>
+    </body>
+</html>
+
+
