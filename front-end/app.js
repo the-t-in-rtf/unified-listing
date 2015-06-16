@@ -1,99 +1,117 @@
-// TODO:  Fix all paths so that this script can be run from any directory (currently  must be launched from this directory).
+// The main `gpii.express` instance that provides the front end and API for the Unified Listing.
 "use strict";
+var fluid  = require("infusion");
+var gpii   = fluid.registerNamespace("gpii");
 
-var express      = require("express");
-var http         = require("http");
-var path         = require("path");
-var exphbs       = require("express-handlebars");
-var logger       = require("morgan");
-var app          = express();
-
+var path   = require("path");
 var config = {};
 
+require("gpii-express");
+require("gpii-handlebars");
+require("../node_modules/gpii-express-couchuser/src/js/server");
+require("./api");
+
 var loader = require("../config/lib/config-loader");
-if ("development" === app.get("env")) {
+if ("development" === process.env.NODE_ENV) {
     config = loader.loadConfig(require("../config/dev.json"));
-    app.use(logger("dev"));
+    fluid.setLogging(true);
 }
 else {
     config = loader.loadConfig(require("../config/prod.json"));
-    app.use(logger("dev"));
 }
 
-config.viewTemplateDir   = path.join(__dirname, "views");
+config.express.views = path.join(__dirname, "views");
 
-var data     = require("./lib/data-helper")(config);
-var hbHelper = require("./lib/hb-helper")(config);
+var schemaDir           = path.resolve(__dirname, "./schema/schemas");
+var publicDir           = path.resolve(__dirname, "./public");
+var infusionDir         = path.resolve(__dirname, "../node_modules/infusion/src");
+var gpiiHandlebarsDir   = path.resolve(__dirname, "../node_modules/gpii-handlebars/src/js");
+var expressCouchUserDir = path.resolve(__dirname, "../node_modules/gpii-express-couchuser/src/js/client");
 
-app.engine("handlebars", exphbs({defaultLayout: "main", helpers: hbHelper.getHelpers()}));
-app.set("view engine", "handlebars");
-app.set("port", config.express.port || process.env.PORT || 4896);
-app.set("views", path.join(__dirname, "views"));
-
-// express-user-couchdb requires body parsing support.
-var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-var cookieParser = require("cookie-parser");
-app.use(cookieParser()); // Required for session storage, must be called before session()
-
-// Required for user management, must be included for all modules
-var session      = require("express-session");
-app.use(session({ secret: config.express.session.secret}));
-
-
-// Mount the JSON schemas separately so that we have the option to decompose them into a separate module later, and so that the doc links and web links match
-app.use("/schema",express.static(__dirname + "/schema/schemas")); // jshint ignore:line
-
-// /api/user, provided by express-couchuser
-var user = require("./api/user")(config);
-app.use("/", user.router);
-
-// REST APIs
-var api = require("./api")(config);
-app.use("/api", api.router);
-
-
-app.use(express.static(path.join(__dirname, "public")));  // jshint ignore:line
-
-// The infusion client-side libraries
-app.use("/infusion", express.static(__dirname + "/../node_modules/infusion/src")); // jshint ignore:line
-
-// Mount the handlebars templates as a single dynamically generated source file
-app.use("/hbs",require("./views/client.js")(config));
-
-// Most static content including root page
-app.use(express.static(__dirname + "/public")); // jshint ignore:line
-
-// Many templates simply require user information.  Those can all be loaded by a common function that:
-// 1. Uses views/layouts/PATH.handlebars as the layout if it exists, "page" if it doesn"t.
-// 2. Uses views/pages/PATH.handlebars for the body if it exists
-// 3. Displays an error if a nonsense path is passed in.
-app.use("/",function(req,res) {
-    var fs = require("fs");
-
-    var options = { config: { "baseUrl": config.express.baseUrl, "sources": config.sources}};
-    data.exposeRequestData(req,options);
-
-    var path = req.path === "/" ? "index" : req.path.substring(1);
-    if (fs.existsSync(__dirname + "/views/pages/" + path + ".handlebars")) {
-        options.layout = fs.existsSync(__dirname + "/views/layouts/" + path + ".handlebars") ? path : "main";
-        res.render("pages/" + path, options);
-    }
-    else {
-        res.status(404).render("pages/error", {message: "The page you requested was not found."});
+fluid.defaults("gpii.ptd.frontend.express", {
+    config:     config,
+    gradeNames: ["gpii.express", "autoInit"],
+    components: {
+        json: {
+            type: "gpii.express.middleware.bodyparser.json"
+        },
+        urlencoded: {
+            type: "gpii.express.middleware.bodyparser.urlencoded"
+        },
+        cookieparser: {
+            type: "gpii.express.middleware.cookieparser"
+        },
+        session: {
+            type: "gpii.express.middleware.session"
+        },
+        // Server side handlebars
+        handlebars: {
+            type: "gpii.express.hb"
+        },
+        // Mount the JSON schemas for client-side verification and as a form of documentation.
+        schemas: {
+            type: "gpii.express.router.static",
+            options: {
+                path:    "/schema",
+                content: schemaDir
+            }
+        },
+        // The infusion client-side libraries
+        infusion: {
+            type: "gpii.express.router.static",
+            options: {
+                path:    "/infusion",
+                content: infusionDir
+            }
+        },
+        inline: {
+            type: "gpii.express.hb.inline",
+            options: {
+                path: "/hbs"
+            }
+        },
+        // Expose the client-side user management components from the installed package
+        expressCouchUser: {
+            type: "gpii.express.router.static",
+            options: {
+                path:    "/gpii-ecu",
+                content: expressCouchUserDir
+            }
+        },
+        // Expose the client-side handlebars components from the installed package
+        gpiiHandlebars: {
+            type: "gpii.express.router.static",
+            options: {
+                path:    "/gpii-handlebars",
+                content: gpiiHandlebarsDir
+            }
+        },
+        // The API component that acts as the back end for most client interactions
+        api: {
+            type: "gpii.ul.api",
+            options: {
+                path: "/api"
+            }
+        },
+        // Our root includes all static content, including bower components.
+        root: {
+            type: "gpii.express.router.static",
+            options: {
+                path:    "/",
+                content: publicDir
+            }
+        },
+        // Paths like /login, /verify, /search are handled using a handlebars template
+        dispatcher: {
+            type: "gpii.express.hb.dispatcher",
+            options: {
+                path: "/:template"
+            }
+        },
+        // User management portion of the API, must be loaded here for now
+        user: {
+            type: "gpii.express.couchuser.server"
+        }
     }
 });
-
-// Error handling has to be added last
-function logErrors(err, req, res, next) {
-    console.error(err.stack);
-    next(err);
-}
-
-app.use(logErrors);
-
-http.createServer(app).listen(app.get("port"), function(){
-    console.log("Express server listening on port " + app.get("port"));
-});
+gpii.ptd.frontend.express();

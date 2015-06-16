@@ -1,3 +1,5 @@
+/* global fluid */
+"use strict";
 fluid.defaults("ul.config.root", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
     distributeOptions: [

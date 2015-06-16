@@ -9,11 +9,11 @@ module.exports = function(config) {
     put.error        = require("../../lib/error")(config);
     put.schemaHelper = require("../../../schema/lib/schema-helper")(config);
 
-    var express      = require("express");
+    var express      = require("../../../../node_modules/gpii-express/node_modules/express");
     var _            = require("underscore-node");
 
     put.router       = express.Router();
-    var bodyParser   = require("body-parser");
+    var bodyParser   = require("../../../../node_modules/gpii-express/node_modules/body-parser");
     put.router.use(bodyParser.urlencoded());
     put.router.use(bodyParser.json());
 

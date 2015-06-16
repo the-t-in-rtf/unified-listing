@@ -1,5 +1,5 @@
-// The main search module that allows users to view the Preference Terms Dictionary
-
+// The "updates" report for database vendors
+/* global fluid, moment, escape, history, document, jQuery */
 (function ($) {
     "use strict";
     var updates   = fluid.registerNamespace("ul.components.updates");
@@ -51,7 +51,7 @@
     };
 
     // We use the foundation "accordion" control, which needs to be rebound when the markup is reloaded...
-    updates.rebindFoundation = function(that) {
+    updates.rebindFoundation = function () {
         $(document).foundation();
         $(document).foundation("accordion", "reflow");
     };
@@ -89,7 +89,7 @@
         }
     };
 
-    updates.displayResults = function(that, data, textStatus, jqXHR) {
+    updates.displayResults = function(that, data) {
         var output = that.locate("output");
         if (data && data.records && data.records.length > 0) {
             templates.replaceWith(output, "updates-records", data);

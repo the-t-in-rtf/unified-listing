@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Ask to Reset Your Unified Listing Password</title>
+
+        {{>common-includes}}
+
+        <!-- Bring in client library being tested -->
+        <script type="text/javascript" src="/gpii-ecu/forgot.js"></script>
+    </head>
+    <body>
+        <!-- Sample "forgot password" form with all required markup -->
+        <div class="row">
+            <div class="forgot-viewport"/>
+        </div>
+
+        <!-- configure and instantiate our module -->
+        <script type="text/javascript">
+            var forgot = gpii.express.couchuser.frontend.forgot(".forgot-viewport");
+        </script>
+    </body>
+</html>
+
+
+

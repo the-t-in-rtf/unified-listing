@@ -6,7 +6,7 @@ module.exports=function(config, quick){
     var namespace       = "gpii.ul.api." + mode;
     var search          = fluid.registerNamespace(namespace);
 
-    var express         = require("express");
+    var express = require("../../../node_modules/gpii-express/node_modules/express");
     search.arrayHelper  = require("../lib/array-helper")(config);
     search.queryHelper  = require("../lib/query-helper")(config);
     search.router       = express.Router();
