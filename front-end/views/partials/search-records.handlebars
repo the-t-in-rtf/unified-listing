@@ -1,0 +1,9 @@
+{{#if pagedRecords.length}}
+  <ul>
+    {{#each pagedRecords}}
+      <li>{{name}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No records found.  Please update your search terms.</p>
+{{/if}}

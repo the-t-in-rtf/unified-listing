@@ -12,9 +12,9 @@ require("../node_modules/gpii-express-couchuser/src/js/server");
 require("./api");
 
 var loader = require("../config/lib/config-loader");
+fluid.setLogging(true);
 if ("development" === process.env.NODE_ENV) {
     config = loader.loadConfig(require("../config/dev.json"));
-    fluid.setLogging(true);
 }
 else {
     config = loader.loadConfig(require("../config/prod.json"));
