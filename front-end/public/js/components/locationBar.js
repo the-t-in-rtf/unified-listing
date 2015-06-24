@@ -134,7 +134,6 @@ For examples of this component in action, check out the tests included with this
 
     // Ensure that any data we have added is removed when we go back to the previous stage of history.
     gpii.locationBar.flagNewEntries = function (that, newData) {
-        // TODO:  Test this with all browsers and use something like History.js if needed
         var state      = history.state ? fluid.copy(history.state) : {};
         var hasChanges = false;
         fluid.each(newData, function (value, key) {
@@ -144,7 +143,7 @@ For examples of this component in action, check out the tests included with this
             }
         });
 
-        if (hasChanges) {
+        if (hasChanges && window.history && window.history.replaceState) {
             window.history.replaceState(state, document.title, window.location.href);
         }
     };
@@ -164,15 +163,19 @@ For examples of this component in action, check out the tests included with this
         var stateData = that.options.modelToState ? fluid.model.transformWithRules(that.model, that.options.rules.modelToState) : {};
 
         // Add a new history entry
-        if (that.options.addNewHistoryEntry) {
-            // Make the current state aware of any new entries so that they will be removed when we go "back"
-            gpii.locationBar.flagNewEntries(that, stateData);
+        if (window.history) {
+            if (that.options.addNewHistoryEntry) {
+                // Make the current state aware of any new entries so that they will be removed when we go "back"
+                gpii.locationBar.flagNewEntries(that, stateData);
 
-            window.history.pushState(stateData, document.title, updatedURL);
-        }
-        // Update the existing location
-        else {
-            window.history.replaceState(stateData, document.title, updatedURL);
+                if (window.history.pushState) {
+                    window.history.pushState(stateData, document.title, updatedURL);
+                }
+            }
+            // Update the existing location
+            else if (window.history.replaceState) {
+                window.history.replaceState(stateData, document.title, updatedURL);
+            }
         }
     };
 
@@ -205,22 +208,17 @@ For examples of this component in action, check out the tests included with this
     gpii.locationBar.handleStateChange = function (that, event) {
         var newModelData = fluid.model.transformWithRules(event.state, that.options.rules.stateToModel);
 
-        that.loadingState = true;
         gpii.locationBar.batchChanges(that, newModelData);
-        that.loadingState = false;
     };
 
     // The base component for `locationBar` grades, without the default wiring.
     fluid.defaults("gpii.locationBar", {
-        gradeNames: ["fluid.standardComponent", "autoInit"],
+        gradeNames: ["fluid.standardRelayComponent", "autoInit"],
         addNewHistoryEntry: false,
         modelToQuery:       true,
         queryToModel:       false,
         modelToState:       false,
         stateToModel:       false,
-        members: {
-            loadingState: false
-        },
         invokers: {
             handleStateChange: {
                 funcName: "gpii.locationBar.handleStateChange",
