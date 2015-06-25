@@ -1,7 +1,3 @@
-.row {
-    max-width: 90rem;
-}
-
 .loading {
     border:     1px solid #cccccc;
     opacity:    .25;
@@ -11,31 +7,21 @@
     min-height: 10em;
     padding-top: 10%;
 }
-.ul-updates-output.loading {
-    padding-top: 10%;
+
+.top-bar {
+    margin-bottom: 1em;
 }
 
-.ul-updates-records:nth-child(even) {
-    background-color: #cccccc;
+.user-controls {
+    color: #ffffff;
 }
 
-.ul-updates-records:nth-child(even) .ul-updates-record {
-    background-color: #cccccc;
-    border-color: white;
+.left-off-canvas-menu {
+    background: inherit;
 }
 
-.ul-updates-record {
-    padding-left: .5em;
-    margin-top: .25em;
-    border:1px solid #cccccc;
-}
-
-.accordion {
-    background-color: inherit;
-    border:1px solid #cccccc;
-    margin-top: .5em;
-}
-
-.accordion:first-of-type {
-    margin-top: 0px;
+.search-options {
+    margin-top:  .5em;
+    padding-top: .5em;
+    border-top:  1px dashed #e9e9e9;
 }

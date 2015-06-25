@@ -5,13 +5,11 @@
     {{>common-includes}}
   </head>
   <body>
-    <!-- include the header -->
-    {{> common-header}}
-
-    <div>
-        {{{body}}}
-    </div>
+    {{{body}}}
 
     {{> common-footer}}
+    <script type="text/javascript">
+        $(document).foundation();
+    </script>
   </body>
 </html>

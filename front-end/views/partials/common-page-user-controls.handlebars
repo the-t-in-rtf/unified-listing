@@ -1,0 +1,9 @@
+<!-- Javascript to wire in the user controls for pages that do not have a component of their own -->
+<script type="text/javascript">
+    var controls = gpii.ul.hasUserControls({
+        container: "body",
+        model: {
+            user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
+        }
+    });
+</script>

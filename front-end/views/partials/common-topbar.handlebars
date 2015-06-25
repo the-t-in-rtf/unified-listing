@@ -1,0 +1,18 @@
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+        <li class="name{{#equals . "index"}} active{{/equals}}">
+            <h1><a href="/">Unified Listing</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <ul class="center">
+            <li {{#equals . "search"}} class="active"{{/equals}}><a href="/search">Search</a></li>
+            <li{{#equals . "manufacturers"}} class="active"{{/equals}}><a href="/manufacturers">For Manufacturers</a></li>
+            <li{{#equals . "updates"}} class="active"{{/equals}}><a href="/updates">For Database Administrators</a></li>
+        </ul>
+        <ul class="right controls-viewport"></ul>
+    </section>
+</nav>

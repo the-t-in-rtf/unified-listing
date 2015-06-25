@@ -1,3 +1,5 @@
+{{>common-topbar "updates"}}
+
 <div class="row">
     <div class="column medium-12">
         <p>This form allows you to see records in the Unified Listing that have been updated after one or more source records.</p>
@@ -20,6 +22,7 @@
 <script type="text/javascript">
     {{>json-data}}
 
+
     var root = ul.config.root({
         serverConfig: ul.config.server,
         query:        ul.config.query,
@@ -32,3 +35,5 @@
     });
     root.updates.init();
 </script>
+
+{{>common-page-user-controls}}

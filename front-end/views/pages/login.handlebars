@@ -1,26 +1,17 @@
-<html>
-    <head>
-        <title>Log in to the Unified Listing</title>
+{{>common-topbar "login"}}
 
-        {{>common-includes}}
+<div class="login-viewport"></div>
 
-        <!-- Bring in client libraries being tested -->
-        <script type="text/javascript" src="/gpii-ecu/login.js"></script>
-        <script type="text/javascript" src="/gpii-ecu/controls.js"></script>
-        <script type="text/javascript" src="/gpii-ecu/loginWithControls.js"></script>
-    </head>
-    <body>
-        <div class="controls-viewport"></div>
-        <div class="login-viewport"></div>
+<!-- Bring in out client libraries -->
+<script type="text/javascript" src="/gpii-ecu/login.js"></script>
+<script type="text/javascript" src="/gpii-ecu/loginWithControls.js"></script>
 
-        <!-- configure and instantiate our module -->
-        <script type="text/javascript">
-            var login = gpii.express.couchuser.frontend.loginWithControls({
-                container: "body",
-                model: {
-                user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
-                }
-            });
-        </script>
-    </body>
-</html>
+<!-- configure and instantiate our module -->
+<script type="text/javascript">
+    var login = gpii.express.couchuser.frontend.loginWithControls({
+        container: "body",
+        model: {
+            user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
+        }
+    });
+</script>
