@@ -129,6 +129,8 @@ For examples of this component in action, check out the tests included with this
             var newModelData = fluid.model.transformWithRules(queryData, that.options.rules.queryToModel);
 
             gpii.locationBar.batchChanges(that, newModelData, false);
+
+            that.events.queryDataLoaded.fire(that);
         }
     };
 
@@ -219,14 +221,18 @@ For examples of this component in action, check out the tests included with this
         }
     });
 
+    fluid.registerNamespace("gpii.locationBar.syncAll");
     // A preconfigured instance of `gpii.locationBar` that syncs all data possible.
     fluid.defaults("gpii.locationBar.syncAll", {
-        gradeNames: ["gpii.locationBar"],
+        gradeNames: ["gpii.locationBar", "autoInit"],
         addNewHistoryEntry: true,
         modelToQuery:       true,
         queryToModel:       true,
         modelToState:       true,
         stateToModel:       true,
+        events: {
+            queryDataLoaded: null
+        },
         rules: {
             modelToQuery: { "": "" },
             queryToModel: { "": "" },

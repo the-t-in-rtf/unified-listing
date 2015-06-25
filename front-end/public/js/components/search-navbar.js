@@ -12,14 +12,12 @@
 
     fluid.registerNamespace("gpii.ul.search.navbar");
 
-    // TODO: Write the generic handler for all events
     gpii.ul.search.navbar.changeOffset = function (that, event) {
         event.preventDefault();
         var newOffset = Number.parseInt(event.target.getAttribute("offset"));
         that.applier.change("offset", newOffset);
     };
 
-    // TODO: Write the wrapper for keyboard events
     gpii.ul.search.navbar.checkKey = function (that, event) {
         if (event.keyCode === 13) {
             that.changeOffset(event);

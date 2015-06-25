@@ -1,24 +1,27 @@
-<html>
-    <head>
-        <title>Search the Unified Listing</title>
+{{>common-topbar "search"}}
 
-        {{>common-includes}}
+<section role="main" class="scroll-container">
+    <div class="row">
+        <div class="search-viewport column small-12 medium-12"/>
+    </div>
+</section>
 
-        <!-- Bring in client library being tested -->
-        <script type="text/javascript" src="/js/components/search-navbar.js"></script>
-        <script type="text/javascript" src="/js/components/search.js"></script>
-    </head>
-    <body>
-        <div class="row">
-            <div class="search-viewport column medium-12"/>
-        </div>
+<!-- Bring in client libraries-->
+<script type="text/javascript" src="/js/components/select.js"></script>
+<script type="text/javascript" src="/js/components/toggle.js"></script>
+<script type="text/javascript" src="/js/components/locationBar.js"></script>
+<script type="text/javascript" src="/js/components/search-navbar.js"></script>
+<script type="text/javascript" src="/js/components/search.js"></script>
 
-        <!-- configure and instantiate our module -->
-        <script type="text/javascript">
-            var search = gpii.ul.search(".search-viewport");
-        </script>
-    </body>
-</html>
-
+<!-- configure and instantiate our module -->
+<script type="text/javascript">
+    var search = gpii.ul.search(".search-viewport", {
+        gradeNames: ["gpii.ul.hasUserControls"],
+        model: {
+            user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
+        }
+    });
+    $(document).foundation();
+</script>
 
 
