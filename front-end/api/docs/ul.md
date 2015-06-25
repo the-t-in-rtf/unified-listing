@@ -19,7 +19,7 @@ All products in the Unified Listing have the following common fields:
 | --- | --- | --- |
 |source|The source of this record.  If the record is provided by a source database, this field will be set to a unique string identifying the source.  If this record is unique to the Unified Listing, this field will be set to "ul".|Y|
 |sid|The unique identifier to identify this record in the source database.|Y|
-|uid|The Universal ID ("uid") is an id that is unique in the Unified listing and which is constant for different editions of a product (see ["editions"](#editions)).  "Source" records use this field to indicate which "unified" record they are associated with (if any).|N|
+|uid|The Universal ID ("uid") is an id that is unique in the Unified listing and which is constant for different editions of a product (see ["editions"](#editions)).  "Source" records use this field to indicate which "unified" record they are associated with (if any).|Y|
 |name|The name of the product.|Y|
 |description|A description of the product.|Y|
 |manufacturer|A JSON object describing the manufacturer (see ["Manufacturer"](#manufacturers) below).|Y|
@@ -531,10 +531,10 @@ Return the list of products, optionally filtered by source, status, or date of l
  Performs a full text search of all data, returns matching products.
 
  + Parameters
-    + q (required, string) ... The query string to match.  Can either consist of a word or phrase as plain text, or can use [lucene's query syntax][1] to construct more complex searches.
+    + q (required, string) ... The query string to match.  Can either consist of a word or phrase as plain text, or can use [lucene's query syntax](http://lucene.apache.org/core/3_6_2/queryparsersyntax.html) to construct more complex searches.
     + source (optional, string) ... Only display products from a particular source.  Can be repeated to return products from multiple sources.
     + status (optional, string) ... The record statuses to return (defaults to everything but 'deleted' records).  Can be repeated to include multiple statuses.
-    + sort (optional,string) ... The sort order to use when displaying records.  Conforms to [lucene's query syntax][1].
+    + sort (optional,string) ... The sort order to use when displaying records.  Conforms to [lucene's query syntax](http://lucene.apache.org/core/3_6_2/queryparsersyntax.html).
     + offset (optional, string) ... The number of records to skip in the list of results.  Used for pagination.
     + limit (optional, string) ... The number of records to return.  Used for pagination.  A maximum of 100 search results are returned, anything higher is silently ignored.
     + versions (optional, boolean) ... Whether or not to display the full version history for each record (including any unpublished drafts).  Defaults to "false".
