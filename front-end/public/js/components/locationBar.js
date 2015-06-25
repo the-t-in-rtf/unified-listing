@@ -128,33 +128,12 @@ For examples of this component in action, check out the tests included with this
             var queryData = gpii.locationBar.queryToJson(window.location.search);
             var newModelData = fluid.model.transformWithRules(queryData, that.options.rules.queryToModel);
 
-            gpii.locationBar.batchChanges(that, newModelData);
-        }
-    };
-
-    // Ensure that any data we have added is removed when we go back to the previous stage of history.
-    gpii.locationBar.flagNewEntries = function (that, newData) {
-        var state      = history.state ? fluid.copy(history.state) : {};
-        var hasChanges = false;
-        fluid.each(newData, function (value, key) {
-            if (state[key] === undefined || state[key] === null) {
-                state[key] = null;
-                hasChanges = true;
-            }
-        });
-
-        if (hasChanges && window.history && window.history.replaceState) {
-            window.history.replaceState(state, document.title, window.location.href);
+            gpii.locationBar.batchChanges(that, newModelData, false);
         }
     };
 
     // Listen for any model changes and update the query string to include the current model state.
     gpii.locationBar.update = function (that) {
-        // Ignore changes while we're in the process of loading a new state from our history.
-        if (that.loadingState) {
-            return;
-        }
-
         var queryData = fluid.model.transformWithRules(that.model, that.options.rules.modelToQuery);
         var queryString = gpii.locationBar.jsonToQuery(queryData);
 
@@ -165,9 +144,6 @@ For examples of this component in action, check out the tests included with this
         // Add a new history entry
         if (window.history) {
             if (that.options.addNewHistoryEntry) {
-                // Make the current state aware of any new entries so that they will be removed when we go "back"
-                gpii.locationBar.flagNewEntries(that, stateData);
-
                 if (window.history.pushState) {
                     window.history.pushState(stateData, document.title, updatedURL);
                 }
@@ -180,8 +156,14 @@ For examples of this component in action, check out the tests included with this
     };
 
     // Apply all changes in a single transaction.  Also ensures that values flagged with `null` are deleted from the model.
-    gpii.locationBar.batchChanges = function (that, changeSet) {
+    gpii.locationBar.batchChanges = function (that, changeSet, deleteExisting) {
         var myTransaction = that.applier.initiate();
+
+        if (deleteExisting) {
+            // If we are loading the entire model from the state, we must clear out existing values to avoid revealing
+            // data from the future (Spoilers!)
+            myTransaction.fireChangeRequest({ path: "", type: "DELETE"});
+        }
 
         fluid.each(changeSet, function(value, key) {
             var change = { path: key };
@@ -208,7 +190,7 @@ For examples of this component in action, check out the tests included with this
     gpii.locationBar.handleStateChange = function (that, event) {
         var newModelData = fluid.model.transformWithRules(event.state, that.options.rules.stateToModel);
 
-        gpii.locationBar.batchChanges(that, newModelData);
+        gpii.locationBar.batchChanges(that, newModelData, true);
     };
 
     // The base component for `locationBar` grades, without the default wiring.
