@@ -7,10 +7,12 @@
     fluid.defaults("gpii.tests.locationBar.syncAll", {
         gradeNames: ["gpii.locationBar.syncAll", "autoInit"],
         model: {
-            setInModel:   true,
-            setFromModel: false,
-            setFromQuery: false,
-            setFromState: false
+            setInModel:      true,
+            setFromModel:    false,
+            setFromQuery:    false,
+            setFromState:    false,
+            iCanEatUnicode:  "\u6211\u80FD\u541E\u4E0B\u73BB\u7483\u800C\u4E0D\u50B7\u8EAB\u9AD4",
+            iCanEatSpecials: "[(?:+&=])"
         }
     });
 })();

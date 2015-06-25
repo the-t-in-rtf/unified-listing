@@ -56,22 +56,14 @@ gpii.tests.locationBar.testModelToQuery = function (that, browser) {
 
 // Apply several changes and confirm that the model is preserved as expected at each transition.  Must go all the way back.
 gpii.tests.locationBar.testForthAndBack = function (that, browser) {
-    var firstStepExpected = {
-        setInModel:   true,
-        setFromModel: false,
-        setFromQuery: true,
-        setFromState: false,
-        firstStep:    true
-    };
+    // The baseline data should match the defaults
+    var baseExpected      = fluid.copy(that.options.expectedBaseModel);
 
-    var secondStepExpected = {
-        setInModel:   true,
-        setFromModel: false,
-        setFromQuery: true,
-        setFromState: false,
-        firstStep:    true,
-        secondStep:   true
-    };
+    var firstStepExpected = fluid.copy(baseExpected);
+    firstStepExpected.firstStep = true;
+
+    var secondStepExpected = fluid.copy(firstStepExpected);
+    secondStepExpected.secondStep = true;
 
     var component = browser.window[that.options.componentName];
     component.applier.change("firstStep", true);
@@ -104,11 +96,63 @@ gpii.tests.locationBar.testForthAndBack = function (that, browser) {
     });
 };
 
+gpii.tests.locationBar.testUnicode = function (that, browser) {
+    // The baseline data should match the defaults
+    var baseExpected      = fluid.copy(that.options.expectedBaseModel);
+
+    var firstStepExpected = fluid.copy(baseExpected);
+    var iCanEatUnicode = "and it doesn't hurt me...";
+    firstStepExpected.iCanEatUnicode = iCanEatUnicode;
+
+    var component = browser.window[that.options.componentName];
+    component.applier.change("iCanEatUnicode", iCanEatUnicode);
+
+    jqUnit.assertDeepEq("The model changes should have taken effect...", firstStepExpected, component.model);
+
+    jqUnit.stop();
+    browser.back(function(){
+        jqUnit.start();
+
+        var baseComponent = browser.window[that.options.componentName];
+        jqUnit.assertDeepEq("We should be back at the baseline...", baseExpected, baseComponent.model);
+    });
+};
+
+gpii.tests.locationBar.testSpecials = function (that, browser) {
+    // The baseline data should match the defaults
+    var baseExpected      = fluid.copy(that.options.expectedBaseModel);
+
+    var firstStepExpected = fluid.copy(baseExpected);
+    var iCanEatSpecials   = "and it doesn't hurt me...";
+    firstStepExpected.iCanEatSpecials = iCanEatSpecials;
+
+    var component = browser.window[that.options.componentName];
+    component.applier.change("iCanEatSpecials", iCanEatSpecials);
+
+    jqUnit.assertDeepEq("The model changes should have taken effect...", firstStepExpected, component.model);
+
+    jqUnit.stop();
+    browser.back(function(){
+        jqUnit.start();
+
+        var baseComponent = browser.window[that.options.componentName];
+        jqUnit.assertDeepEq("We should be back at the baseline...", baseExpected, baseComponent.model);
+    });
+};
+
 fluid.defaults("gpii.tests.locationBar", {
     gradeNames:    ["fluid.eventedComponent", "autoInit"],
     moduleMessage: "Testing location bar using Zombie.js...",
     harnessUrl:     harnessUrl,
     componentName:  "locationBar",
+    expectedBaseModel: {
+        setInModel:      true,
+        setFromModel:    false,
+        setFromQuery:    true,
+        setFromState:    false,
+        iCanEatUnicode:  "\u6211\u80FD\u541E\u4E0B\u73BB\u7483\u800C\u4E0D\u50B7\u8EAB\u9AD4",
+        iCanEatSpecials: "[(?:+&=])"
+    },
     testCases: {
         queryData: {
             message:  "Confirm that initial query data is added to the model...",
@@ -121,6 +165,14 @@ fluid.defaults("gpii.tests.locationBar", {
         forthAndBack: {
             message:  "Confirm that multiple model changes are preserved in sequence...",
             callback: gpii.tests.locationBar.testForthAndBack
+        },
+        unicode: {
+            message:  "Confirm that unicode characters are correctly encoded and decoded...",
+            callback: gpii.tests.locationBar.testUnicode
+        },
+        specials: {
+            message:  "Confirm that special characters are correctly encoded and decoded...",
+            callback: gpii.tests.locationBar.testSpecials
         }
     },
     listeners: {
