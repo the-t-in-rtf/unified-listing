@@ -105,7 +105,7 @@ fluid.defaults("gpii.ptd.frontend.express", {
         dispatcher: {
             type: "gpii.express.hb.dispatcher",
             options: {
-                path: "/:template"
+                path: ["/:template", "/"]
             }
         },
         // User management portion of the API, must be loaded here for now
