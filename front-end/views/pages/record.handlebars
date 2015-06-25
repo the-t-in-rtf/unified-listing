@@ -1,0 +1,29 @@
+<!-- TODO: Migrate this to a "content aware" part of the API when this feature is complete:  https://github.com/GPII/gpii-express/pull/6 -->
+{{>common-topbar "search"}}
+
+
+<section role="main" class="scroll-container">
+    <div class="row">
+        <div class="record-viewport column small-12 medium-12"/>
+    </div>
+</section>
+
+<!-- Bring in client libraries-->
+<script type="text/javascript" src="/js/components/record.js"></script>
+
+<!-- configure and instantiate our module -->
+<script type="text/javascript">
+    var record = gpii.ul.record("body", {
+//        gradeNames: ["gpii.ul.hasUserControls"],
+        ajaxOptions: {
+            url:    "/api/product/{{req.query.source}}/{{req.query.sid}}"
+        },
+        model: {
+          user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
+        }
+    });
+    $(document).foundation();
+</script>
+
+
+

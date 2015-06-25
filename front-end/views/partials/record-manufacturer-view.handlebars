@@ -1,0 +1,39 @@
+<ul class="vcard">
+  <li class="fn">
+    {{#if name}}
+      {{name}}
+    {{else}}
+        No manufacturer information available.
+    {{/if}}
+  </li>
+
+  {{#if address}}
+      <li class="street-address">{{address}}</li>
+  {{/if}}
+
+  {{#if cityTown}}
+    <li class="locality">{{cityTown}}</li>
+  {{/if}}
+
+  <li>
+      {{#if provinceRegion}}
+        <span class="state">{{provinceRegion}}</span>
+      {{/if}}
+      {{#if provinceRegion}}{{#if postalCode}}, {{/if}}{{/if}}
+      {{#if postalCode}}
+        <span class="zip">{{postalCode}}</span>
+      {{/if}}
+  </li>
+
+  {{#if email}}
+    <li class="email">
+        <a href="mailto:{{email}}">{{email}}</a>
+    </li>
+  {{/if}}
+
+  {{#if country}}<li>{{country}}</li>{{/if}}
+
+  {{#if phone}}<li>{{phone}}</li>{{/if}}
+
+  {{#if url}}<li>{{url}}</li>{{/if}}
+</ul>

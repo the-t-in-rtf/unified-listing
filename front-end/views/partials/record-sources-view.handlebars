@@ -1,0 +1,9 @@
+{{#if .}}
+  <ul>
+    {{#each .}}
+      <li>
+          <a href="/record?source={{source}}&sid={{sid}}" target="_blank">{{source}} ({{sid}})</a>
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}
