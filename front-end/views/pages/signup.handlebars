@@ -1,19 +1,11 @@
 {{>common-topbar "signup"}}
 
 <div class="body">
-    <div class="signup-viewport"></div>
+    <div class="signup-viewport" role="main" id="main" tabindex="0"></div>
 </div>
 
 <!-- Bring in client libraries -->
-<script type="text/javascript" src="/gpii-ecu/passwordCheckingForm.js"></script>
-<script type="text/javascript" src="/gpii-ecu/signup.js"></script>
+<script type="text/javascript" src="/gpii-ecu/js/client/passwordCheckingForm.js"></script>
+<script type="text/javascript" src="/gpii-ecu/js/client/signup.js"></script>
 
-<!-- configure and instantiate our module -->
-<script type="text/javascript">
-    var signup = gpii.express.couchuser.frontend.signup(".signup-viewport", {
-        gradeNames: ["gpii.ul.hasUserControls"],
-        model: {
-        user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
-        }
-    });
-</script>
+{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.express.couchuser.frontend.signup"}}}

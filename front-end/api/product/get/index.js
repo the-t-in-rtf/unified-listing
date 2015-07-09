@@ -1,4 +1,11 @@
-// API Support for GET /api/product/:source:/:sid
+// Respond to requests like GET /api/product/:source:/:sid based on the requested content type.
+//
+// If the request content-type is "application/json", respond with the JSON source of the record.
+//
+// Otherwise, serve up an HTML version of the content.
+var fluid = fluid || require("infusion");
+var gpii  = fluid.registerNamespace("gpii");
+
 "use strict";
 module.exports=function(config){
     var fluid        = require("infusion");

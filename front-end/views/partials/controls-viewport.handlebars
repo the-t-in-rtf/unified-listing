@@ -1,24 +1,23 @@
-<!-- User controls -->
-<li class="has-dropdown not-click">
-    <a href="#">
+<a class="user-controls-toggle" tabindex="0">
+    <div class="button secondary expand small">
         <span class="user-icon-user"></span>
         {{#if user}}
             {{#if user.displayName}}{{user.displayName}}{{else}}{{user.name}}{{/if}}
         {{else}}
             Not Logged In
         {{/if}}
-    </a>
-    <ul class="dropdown">
+    </div>
+</a>
+
+<div class="user-menu" tabindex="0" style="display: none;">
+    <div class="controls-message"></div>
+    <ul>
         {{#if user}}
-            <li><a href="/logout" tabindex="0">Log Out</a></li>
-            <li><a href="/profile" tabindex="0">Profile</a></li>
+            <li><a href="#" class="user-menu-logout"  tabindex="0">Log Out</a></li>
+            <li><a href="/profile" class="user-menu-profile" tabindex="0">Profile</a></li>
         {{else}}
-            <li><a href="/login" tabindex="0">Log In</a></li>
-            <li><a href="/signup" tabindex="0">Create an Account</a></li>
+            <li><a href="/login{{#if path}}?source={{path}}{{/if}}" tabindex="0">Log in</a></li>
+            <li><a href="/signup{{#if path}}?source={{path}}{{/if}}" tabindex="0">Create an account</a></li>
         {{/if}}
     </ul>
-</li>
-
-<!-- dummy block to allow us to work with the standard component -->
-<div class="user-controls-toggle controls-message user-controls user-menu user-menu-logout user-controls-toggle hide"></div>
-
+</div>

@@ -26,7 +26,7 @@ var schemaDir           = path.resolve(__dirname, "./schema/schemas");
 var publicDir           = path.resolve(__dirname, "./public");
 var infusionDir         = path.resolve(__dirname, "../node_modules/infusion/src");
 var gpiiHandlebarsDir   = path.resolve(__dirname, "../node_modules/gpii-handlebars/src/js");
-var expressCouchUserDir = path.resolve(__dirname, "../node_modules/gpii-express-couchuser/src/js/client");
+var expressCouchUserDir = path.resolve(__dirname, "../node_modules/gpii-express-couchuser/src");
 
 fluid.defaults("gpii.ptd.frontend.express", {
     config:     config,
@@ -46,7 +46,21 @@ fluid.defaults("gpii.ptd.frontend.express", {
         },
         // Server side handlebars
         handlebars: {
-            type: "gpii.express.hb"
+            type: "gpii.express.hb",
+            options: {
+                components: {
+                    initBlock: {
+                        options: {
+                            contextToOptionsRules: {
+                                req: "req",
+                                model: {
+                                    user: "user"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         // Mount the JSON schemas for client-side verification and as a form of documentation.
         schemas: {
@@ -65,7 +79,7 @@ fluid.defaults("gpii.ptd.frontend.express", {
             }
         },
         inline: {
-            type: "gpii.express.hb.inline",
+            type: "gpii.express.inline",
             options: {
                 path: "/hbs"
             }
@@ -103,9 +117,16 @@ fluid.defaults("gpii.ptd.frontend.express", {
         },
         // Paths like /login, /verify, /search are handled using a handlebars template
         dispatcher: {
-            type: "gpii.express.hb.dispatcher",
+            type: "gpii.express.dispatcher",
             options: {
-                path: ["/:template", "/"]
+                path: ["/:template", "/"],
+                rules: {
+                    contextToExpose: {
+                        // All of our `initBlock` generated components care about the user.
+                        user: "req.session.user",
+                        req:   { params: "req.params", query: "req.query"}
+                    }
+                }
             }
         },
         // User management portion of the API, must be loaded here for now

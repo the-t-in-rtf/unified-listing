@@ -1,21 +1,11 @@
 {{>common-topbar "reset"}}
 
 <div class="row">
-    <div class="reset-viewport"></div>
+    <div class="reset-viewport" role="main" id="main" tabindex="0"></div>
 </div>
 
 <!-- Bring in client library being tested -->
-<script type="text/javascript" src="/gpii-ecu/passwordCheckingForm.js"></script>
-<script type="text/javascript" src="/gpii-ecu/reset.js"></script>
+<script type="text/javascript" src="/gpii-ecu/js/client/passwordCheckingForm.js"></script>
+<script type="text/javascript" src="/gpii-ecu/js/client/reset.js"></script>
 
-<!-- configure and instantiate our module -->
-<script type="text/javascript">
-    var reset = gpii.express.couchuser.frontend.reset(".reset-viewport", {
-        gradeNames: ["gpii.ul.hasUserControls"],
-        model: {
-        user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
-        }
-    });
-</script>
-
-
+{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.express.couchuser.frontend.reset"}}}

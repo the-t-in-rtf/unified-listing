@@ -20,7 +20,7 @@
     };
 
     fluid.defaults("gpii.ul.search.query", {
-        gradeNames: ["gpii.templates.hb.client.templateFormControl", "autoInit"],
+        gradeNames: ["gpii.templates.templateFormControl", "autoInit"],
         ajaxOptions: {
             url:      "/api/search",
             method:   "GET",
@@ -29,7 +29,16 @@
         hideOnSuccess: false,
         hideOnError:   false,
         rules: {
-            submission: {
+            successResponseToModel: {
+                "":           "notfound",
+                records:      "responseJSON.records", // The "records" component will handle displaying records.
+                totalRows:    "responseJSON.total_rows",
+                errorMessage: { literalValue: null }
+            },
+            errorResponseToModel: {
+                successMessage: { literalValue: null }
+            },
+            modelToRequestPayload: {
                 "":       "notfound",
                 q:        "q",
                 source:   "source",
@@ -37,13 +46,6 @@
                 sort:     "sort",
                 versions: "versions",
                 sources:  "sources"
-            },
-            model: {
-                "":      "notfound",
-                records: "responseJSON.records" // The "records" component will handle displaying records.
-            },
-            success: {
-                "": "notfound" // We are not going to refresh anything on "success", so make sure there is nothing to work with.
             }
         },
         selectors: {
@@ -64,7 +66,7 @@
         },
         invokers: {
             submitForm: {
-                funcName: "gpii.templates.hb.client.templateFormControl.submitForm",
+                funcName: "gpii.templates.templateFormControl.submitForm",
                 args:     ["{that}", "{arguments}.0"]
             }
         },
@@ -118,7 +120,7 @@
 
 
     fluid.defaults("gpii.ul.search.records", {
-        gradeNames: ["gpii.templates.hb.client.templateAware", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware", "autoInit"],
         model: {
             records:  [],
         },
@@ -128,14 +130,8 @@
         template: "search-records",
         invokers: {
             renderInitialMarkup: {
-                funcName: "gpii.templates.hb.client.templateAware.renderMarkup",
-                args:      [
-                    "{that}",
-                    "results",
-                    "{that}.options.template",
-                    "{that}.model",
-                    "html"
-                ]
+                func: "{that}.renderMarkup",
+                args: ["results", "{that}.options.template", "{that}.model"]
             },
             pageAndRender: {
                 funcName: "gpii.ul.search.records.pageAndRender",
@@ -182,31 +178,9 @@
 
     // The "status" control that updates the sort values based on a predefined list of possible settings.
     fluid.defaults("gpii.ul.search.status", {
-        gradeNames: ["gpii.ul.select", "autoInit"],
-        template:   "search-status",
+        gradeNames: ["gpii.ul.status", "autoInit"],
         selectors:  {
-            initial: "",
             select:  ".search-status-option"
-        },
-        select: {
-            options: {
-                "new": {
-                    label: "New",
-                    value: "new"
-                },
-                active: {
-                    label: "Active",
-                    value: "active"
-                },
-                discontinued: {
-                    label: "Discontinued",
-                    value: "discontinued"
-                },
-                deleted: {
-                    label: "Deleted",
-                    value: "deleted"
-                }
-            }
         }
     });
 
@@ -239,17 +213,18 @@
 
     // The wrapper component that wires together all controls.
     fluid.defaults("gpii.ul.search", {
-        gradeNames: ["gpii.templates.hb.client.templateAware", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware", "autoInit"],
         model: {
-            q:        "",
-            source:   [],
-            status:   [ "new", "active", "discontinued"],
-            sort:     "/name",
-            offset:   0,
-            limit:    25,
-            versions: false,
-            sources:  true,
-            records:  []
+            q:         "",
+            source:    [],
+            status:    [ "new", "active", "discontinued"],
+            sort:      "/name",
+            offset:    0,
+            limit:     25,
+            totalRows: 0,
+            versions:  false,
+            sources:   true,
+            records:   []
         },
         components: {
             // Sync our search settings with the queryString and history, so that bookmarking and back/forward buttons
@@ -305,23 +280,23 @@
                 container:     "{search}.dom.topnav",
                 options: {
                     model: {
-                        records: "{search}.model.records",
-                        offset:  "{search}.model.offset",
-                        limit:   "{search}.model.limit"
+                        totalRows: "{search}.model.totalRows",
+                        offset:    "{search}.model.offset",
+                        limit:     "{search}.model.limit"
                     }
                 }
             },
+            // TODO:  Try drawing both controls with a single selector and component
             // The bottom pagination bar
             bottomnav: {
                 type:          "gpii.ul.search.navbar",
                 createOnEvent: "{locationBar}.events.onReady",
                 container:     "{search}.dom.bottomnav",
                 options: {
-                    template: "search-bottomnav",
                     model: {
-                        records: "{search}.model.records",
-                        offset:  "{search}.model.offset",
-                        limit:   "{search}.model.limit"
+                        totalRows: "{search}.model.totalRows",
+                        offset:    "{search}.model.offset",
+                        limit:     "{search}.model.limit"
                     }
                 }
             },
@@ -367,12 +342,18 @@
                     selectors: {
                         toggle:    ".search-options-toggle",
                         container: ".search-options"
+                    },
+                    toggles: {
+                        container: true
+                    },
+                    listeners: {
+                        "onCreate.applyBindings": "{that}.events.onRefresh"
                     }
                 }
             }
         },
         selectors: {
-            initial:   "",
+            initial:   ".search-viewport",
             success:   ".search-success",
             error:     ".search-error",
             form:      ".search-query",
@@ -388,11 +369,13 @@
         },
         invokers: {
             renderInitialMarkup: {
-                funcName: "gpii.templates.hb.client.templateAware.renderMarkup",
-                args: [
-                    "{that}", "initial", "{that}.options.templates.initial", "{that}.model", "html"
-                ]
+                func: "{that}.renderMarkup",
+                args: [ "initial", "{that}.options.templates.initial", "{that}.model"]
             }
         }
+    });
+
+    fluid.defaults("gpii.ul.search.hasUserControls", {
+        gradeNames: ["gpii.ul.search", "gpii.ul.hasUserControls"]
     });
 })();

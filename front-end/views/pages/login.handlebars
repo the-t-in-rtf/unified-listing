@@ -1,17 +1,8 @@
 {{>common-topbar "login"}}
 
-<div class="login-viewport"></div>
+<div class="login-viewport" role="main" id="main" tabindex="0"></div>
 
 <!-- Bring in out client libraries -->
-<script type="text/javascript" src="/gpii-ecu/login.js"></script>
-<script type="text/javascript" src="/gpii-ecu/loginWithControls.js"></script>
+<script type="text/javascript" src="/gpii-ecu/js/client/login.js"></script>
 
-<!-- configure and instantiate our module -->
-<script type="text/javascript">
-    var login = gpii.express.couchuser.frontend.loginWithControls({
-        container: "body",
-        model: {
-            user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
-        }
-    });
-</script>
+{{{initBlock "gpii.ul.hasSkipNavLink"  "gpii.ul.hasUserControls" "gpii.express.couchuser.frontend.login"}}}

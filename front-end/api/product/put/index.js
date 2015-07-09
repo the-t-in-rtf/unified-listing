@@ -1,11 +1,30 @@
+// TODO: refactor the PUT api.
 // handle PUT /api/product
 "use strict";
+var fluid        = require("infusion");
+var gpii         = fluid.registerNamespace("gpii");
+var namespace    = "gpii.ul.product.put";
+
+var put          = fluid.registerNamespace(namespace);
+
+gpii.ul.product.put.removeEmptyEntries = function (node) {
+    var strippedNode = {};
+    fluid.each(node, function(value, key){
+        if (typeof value === "object") {
+            var strippedValue = gpii.ul.product.put.removeEmptyEntries(value);
+            if (strippedValue !== null && strippedValue !== undefined) {
+                strippedNode[key] = strippedValue;
+            }
+        }
+        else if (value !== undefined && value !== null) {
+            strippedNode[key] = value;
+        }
+    });
+
+    return Object.keys(strippedNode).length > 0 ? strippedNode : null;
+};
 
 module.exports = function(config) {
-    var fluid        = require("infusion");
-    var namespace    = "gpii.ul.product.put";
-
-    var put          = fluid.registerNamespace(namespace);
     put.error        = require("../../lib/error")(config);
     put.schemaHelper = require("../../../schema/lib/schema-helper")(config);
 
@@ -23,11 +42,21 @@ module.exports = function(config) {
             return res.status(401).send(JSON.stringify({ok:false, message: "You must be logged in to use this function."}));
         }
 
-        var putRecord = req.body;
+        var putRecord = gpii.ul.product.put.removeEmptyEntries(req.body);
+
+        // TODO:  Replace all sanity checks with JSON Schemas validation
         // Make sure the current record has at least a uniqueId
         if (!putRecord) {
             put.schemaHelper.setHeaders(res, "message");
             return res.status(400).send(JSON.stringify({"ok": false, "message": "You must supply the JSON content for the product you wish to update." }));
+        }
+
+        // TODO:  Replace with permission rules.
+        if (putRecord.source === "unified" && req.session.user.roles.indexOf("admin") === -1) {
+            return res.status(403).send(JSON.stringify({ok:false, message: "Only admins can create unified records."}));
+        }
+        else if (putRecord.source !== req.session.user.name) {
+            return res.status(403).send(JSON.stringify({ok:false, message: "You can only contribute records on your own behalf (i.e. where you are the source)."}));
         }
 
         if (putRecord.source === "unified" && putRecord.sid !== putRecord.uid) {

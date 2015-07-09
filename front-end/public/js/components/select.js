@@ -3,7 +3,7 @@
 /* global fluid */
 (function () {
     fluid.defaults("gpii.ul.select", {
-        gradeNames: ["gpii.templates.hb.client.templateAware", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware", "autoInit"],
         selectors:  {
             initial: ""
         },
@@ -12,14 +12,8 @@
         },
         invokers: {
             renderInitialMarkup: {
-                funcName: "gpii.templates.hb.client.templateAware.renderMarkup",
-                args: [
-                    "{that}",
-                    "initial",
-                    "{that}.options.template",
-                    "{that}.options.select",
-                    "html"
-                ]
+                func: "{that}.renderMarkup",
+                args: ["initial", "{that}.options.template", "{that}.options.select"]
             }
         },
         modelListeners: {

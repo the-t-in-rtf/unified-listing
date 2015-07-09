@@ -19,8 +19,8 @@
   "dependencies": {
     "email-templates":           "^1.1.2",
     "gpii-express":              "git://github.com/the-t-in-rtf/gpii-express.git#4111993c0f2a9fce76b50752adbb6a140dcc5c4d",
-    "gpii-express-couchuser":    "git://github.com/the-t-in-rtf/gpii-express-couchuser.git#53400fbe7927d62b22172227a4ca1724a4780902",
-    "gpii-handlebars":           "git://github.com/the-t-in-rtf/gpii-handlebars.git#b558fd46c9192efb250bb3021cf4f7b7aa06be2e",
+    "gpii-express-couchuser":    "git://github.com/the-t-in-rtf/gpii-express-couchuser.git#21b5fea6697554c4c82c380a721b737e9580e905",
+    "gpii-handlebars":           "git://github.com/the-t-in-rtf/gpii-handlebars.git#87cbf538dec8e4ee0d957b96b2cf646198664785",
     "infusion":                  "git://github.com/fluid-project/infusion.git#605b0bcfaedf6193c31456236d3aa4e42cf36a96",
     "marked":                    "^0.3.2",
     "moment":                    "^2.8.3",

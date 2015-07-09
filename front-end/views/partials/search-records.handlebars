@@ -1,10 +1,15 @@
 <!-- TODO: Migrate this to a "content aware" part of the API when this feature is complete:  https://github.com/GPII/gpii-express/pull/6 -->
 {{#if pagedRecords.length}}
-  <ul>
-    {{#each pagedRecords}}
-      <li><a href="/record?source={{source}}&sid={{sid}}">{{name}}</a></li>
-    {{/each}}
-  </ul>
+  {{#each pagedRecords}}
+    <div class="row">
+        <div class="column medium-4 small-12 search-product">
+          <a href="/record?source={{source}}&sid={{sid}}">{{name}}</a>
+        </div>
+        <div class="column medium-8 small-12">
+            <div class="search-product-description">{{{description}}}</div>
+        </div>
+    </div>
+  {{/each}}
 {{else}}
   <p>No records found.  Please update your search terms.</p>
 {{/if}}

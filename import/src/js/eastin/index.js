@@ -198,9 +198,13 @@ if (cacheExists()) {
 }
 else {
     // TODO: As none of these functions are variable, collapse them down one level
-    getRetrieveAllRecordsByIsoCodeFunction()()
-        .then(getRetrieveIndividualRecordsFunction())
-        .then(getCacheSaveFunction())
-        .then(getTransformAndSyncFunction());
+    var retrieveIdsByIso = getRetrieveAllRecordsByIsoCodeFunction();
+    var retrieveIndividualRecords = getRetrieveIndividualRecordsFunction();
+    var cacheAndSave = getCacheSaveFunction();
+    var transformAndSync = getTransformAndSyncFunction();
+    retrieveIdsByIso()
+        .then(retrieveIndividualRecords)
+        .then(cacheAndSave)
+        .then(transformAndSync);
 }
 

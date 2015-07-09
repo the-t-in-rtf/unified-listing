@@ -1,19 +1,7 @@
 {{>common-topbar "verify"}}
 
 <div class="row">
-    <div class="verify-viewport"></div>
+    <div class="verify-viewport" role="main" id="main" tabindex="0"></div>
 </div>
 
-<!-- Bring in client libraries-->
-<script type="text/javascript" src="/gpii-ecu/verify.js"></script>
-
-<!-- instantiate our component(s) -->
-<script type="text/javascript">
-    var verify = gpii.express.couchuser.frontend.verify(".verify-viewport", {
-        gradeNames: ["gpii.ul.hasUserControls"],
-        model: {
-        user: {{#if req.session.user}}{{{jsonify req.session.user }}}{{else}}null{{/if}}
-        }
-    });
-</script>
-
+{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.express.couchuser.frontend.verify"}}}
