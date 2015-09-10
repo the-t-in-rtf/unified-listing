@@ -4,15 +4,15 @@ var fluid  = require("infusion");
 var gpii = fluid.registerNamespace("gpii");
 fluid.registerNamespace("gpii.ul.imports.stats");
 
-gpii.ul.imports.stats.count = function(that) {
+gpii.ul.imports.stats.count = function (that) {
     that.applier.change("stats.count", that.model.data.length);
 };
 
-gpii.ul.imports.stats.countBySource = function(that) {
+gpii.ul.imports.stats.countBySource = function (that) {
     if (that.model.data && that.model.data.length > 0) {
 
         var sourceCount = {};
-        for (var a=0; a<that.model.data.length; a++) {
+        for (var a = 0; a < that.model.data.length; a++) {
             var value = that.model.data[a];
             var key = value.source;
             if (sourceCount[key]) {
@@ -28,7 +28,7 @@ gpii.ul.imports.stats.countBySource = function(that) {
 };
 
 fluid.defaults("gpii.ul.imports.stats", {
-    gradeNames: ["fluid.modelRelayComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         data: [],
         stats: {
@@ -57,14 +57,14 @@ fluid.defaults("gpii.ul.imports.stats", {
     invokers: {
         displayStats: {
             funcName: "console.log",
-            args: [ "Displaying stats for this run:\n",
+            args: [
+                "Displaying stats for this run:\n",
                 {
                     expander: {
                         funcName: "JSON.stringify",
                         args: [ "{that}.model.stats", null, 2]
                     }
                 }
-
             ]
         }
     }

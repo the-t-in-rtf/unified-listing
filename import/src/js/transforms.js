@@ -18,7 +18,7 @@ gpii.ul.imports.transforms.trim = function (rawValue) {
 };
 
 // An transformation function to remap shorter date strings to ISO 8601 values
-gpii.ul.imports.transforms.dateToISOString = function(rawValue) {
+gpii.ul.imports.transforms.dateToISOString = function (rawValue) {
     var date = new Date(rawValue);
     return (!isNaN(date.getTime())) ? date.toISOString() : rawValue;
 };
@@ -83,7 +83,7 @@ gpii.ul.imports.transforms.regexp = function (value, transformSpec) {
 gpii.ul.imports.transforms.flatten = function (value) {
     if (Array.isArray(value)) {
         var otherArray = [];
-        value.forEach(function(arrayValue){
+        value.forEach(function (arrayValue) {
             otherArray.push(gpii.ul.imports.transforms.flatten(arrayValue));
         });
         return otherArray;
@@ -91,7 +91,7 @@ gpii.ul.imports.transforms.flatten = function (value) {
     else if (typeof value === "object") {
         var hasT = value.hasOwnProperty("$t");
         var otherProperties = {};
-        Object.keys(value).forEach(function(property){
+        Object.keys(value).forEach(function (property) {
             if (value.hasOwnProperty(property) && property !== "$t") {
                 var flattened = gpii.ul.imports.transforms.flatten(value[property]);
                 otherProperties[property] = flattened;
@@ -129,14 +129,14 @@ gpii.ul.imports.transforms.stripNonValues = function (value) {
     }
     else if (Array.isArray(value)) {
         var strippedArray = [];
-        value.forEach(function(arrayValue){
+        value.forEach(function (arrayValue) {
             strippedArray.push(gpii.ul.imports.transforms.stripNonValues(arrayValue));
         });
         return strippedArray;
     }
     else if (typeof value === "object") {
         var strippedObject = {};
-        Object.keys(value).forEach(function(property){
+        Object.keys(value).forEach(function (property) {
             if (value.hasOwnProperty(property)) {
                 var stripped = gpii.ul.imports.transforms.stripNonValues(value[property]);
                 if (stripped !== null && stripped !== undefined) {

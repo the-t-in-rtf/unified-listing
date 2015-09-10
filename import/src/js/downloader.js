@@ -1,4 +1,4 @@
-// Download a single url and save it to the configured cacheFile
+// Download a single url and save it to the configured cache file.
 "use strict";
 var fs      = require("fs");
 var request = require("request");
@@ -10,7 +10,7 @@ fluid.registerNamespace("gpii.ul.imports.downloader");
 var os    = require("os");
 var path  = require("path");
 
-gpii.ul.imports.downloader.retrieveData = function(that) {
+gpii.ul.imports.downloader.retrieveData = function (that) {
     if (!fs.existsSync(that.options.cacheFile) || that.options.forceLoad) {
         if (that.options.url) {
             request(that.options.url, that.saveData);
@@ -25,7 +25,7 @@ gpii.ul.imports.downloader.retrieveData = function(that) {
     }
 };
 
-gpii.ul.imports.downloader.saveData = function(that, error, response, body) {
+gpii.ul.imports.downloader.saveData = function (that, error, response, body) {
     fs.writeFileSync(that.options.cacheFile, body);
     that.events.onCacheReady.fire(that);
 };
