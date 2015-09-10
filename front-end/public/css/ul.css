@@ -89,6 +89,10 @@ label.required:after {
     max-width: inherit;
 }
 
+select.ul-updates-sources-control {
+    height: inherit;
+}
+
 .user-controls-toggle::after {
     border-color: #ffffff transparent transparent transparent;
 }

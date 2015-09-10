@@ -25,10 +25,6 @@
       "port": 25
     }
   },
-  "verify": true,
-  "safeUserFields": "name email displayName",
-  "adminRoles": [ "admin"],
-  "sources": [ "Handicat", "Vlibank", "Siva", "EASTIN Admin", "Hjælpemiddelbasen","Rehadat","Hulpmiddelenwijzer", "Oaeg", "Dlf data" ],
   "eastin": {
     "databases": {
       "Handicat":           { "language": "es_es"},

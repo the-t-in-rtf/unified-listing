@@ -1,3 +1,4 @@
+// TODO: Remove this once all API modules are converted to use `gpii.express`
 // Mocked implementation of couch's _session functionality.
 "use strict";
 

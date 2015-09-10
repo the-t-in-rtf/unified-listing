@@ -1,0 +1,36 @@
+{
+    "Handicat": {
+        "view": ["admin", "eastin"]
+    },
+    "Vlibank": {
+        "view": ["admin", "eastin"]
+    },
+    "Siva": {
+        "view": ["admin", "eastin"]
+    },
+    "EASTIN Admin": {
+        "view": ["admin", "eastin"]
+    },
+    "Hjælpemiddelbasen": {
+        "view": ["admin", "eastin"]
+    },
+    "Rehadat": {
+        "view": ["admin", "eastin"]
+    },
+    "Hulpmiddelenwijzer": {
+        "view": ["admin", "eastin"]
+    },
+    "Oaeg": {
+        "view": ["admin", "eastin"]
+    },
+    "Dlf data": {
+        "view": ["admin", "eastin"]
+    },
+    "unified": {
+        "view": ["*"],
+        "edit": ["admin"]
+    },
+    "~": {
+        "view": ["~", "admin"]
+    }
+}

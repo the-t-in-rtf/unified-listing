@@ -1,3 +1,4 @@
+// TODO: Remove this once all API modules are converted to use `gpii.express` and its associated pouch module.
 // Utility functions to spin up pouch.
 "use strict";
 

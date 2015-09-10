@@ -30,7 +30,7 @@ var expressCouchUserDir = path.resolve(__dirname, "../node_modules/gpii-express-
 
 fluid.defaults("gpii.ptd.frontend.express", {
     config:     config,
-    gradeNames: ["gpii.express", "autoInit"],
+    gradeNames: ["gpii.express"],
     components: {
         json: {
             type: "gpii.express.middleware.bodyparser.json"
@@ -79,7 +79,7 @@ fluid.defaults("gpii.ptd.frontend.express", {
             }
         },
         inline: {
-            type: "gpii.express.inline",
+            type: "gpii.express.hb.inline",
             options: {
                 path: "/hbs"
             }
@@ -131,7 +131,10 @@ fluid.defaults("gpii.ptd.frontend.express", {
         },
         // User management portion of the API, must be loaded here for now
         user: {
-            type: "gpii.express.couchuser.server"
+            type: "gpii.express.couchuser.server",
+            options: {
+                config: "{expressConfigHolder}.options.config"
+            }
         }
     }
 });

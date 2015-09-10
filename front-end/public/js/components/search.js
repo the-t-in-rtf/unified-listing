@@ -122,7 +122,7 @@
     fluid.defaults("gpii.ul.search.records", {
         gradeNames: ["gpii.templates.templateAware", "autoInit"],
         model: {
-            records:  [],
+            records:  []
         },
         selectors: {
             results: ""

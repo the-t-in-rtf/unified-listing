@@ -1,4 +1,4 @@
-<div class="ul-updates-output">
+{{#if records}}
     {{#each records}}
         <dl class="accordion" data-accordion>
             <dd class="accordion-navigation">
@@ -11,7 +11,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            {{>updates-unified-record}}
+                        {{>updates-unified-record}}
                         </tbody>
                     </table>
                 </a>
@@ -24,14 +24,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                            {{#each sources}}
-                                {{>updates-source-record}}
-                            {{/each}}
+                        {{#each sources}}
+                            {{>updates-source-record}}
+                        {{/each}}
                         </tbody>
                     </table>
                 </div>
             </dd>
         </dl>
     {{/each}}
-</div>
-
+{{else}}
+    <div class="panel">
+        No records were found.  Check your search criteria and the filters you have chosen.
+    </div>
+{{/if}}
