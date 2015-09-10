@@ -1,205 +1,175 @@
 // The "updates" report for database vendors
-/* global fluid, moment, escape, history, document, jQuery */
+/* global fluid, document, jQuery */
+"use strict";
 (function ($) {
-    "use strict";
-    var updates   = fluid.registerNamespace("ul.components.updates");
-    var templates = fluid.registerNamespace("ul.components.templates");
+    var gpii = fluid.registerNamespace("gpii");
 
-    updates.loadControls = function(that) {
-        var controls = that.locate("controls");
-        templates.replaceWith(controls, "updates-controls", { "sources": that.data.options.sources });
-        that.events.markupLoaded.fire();
+    // Transform function to strip "unified" from the list, as we cannot compare unified to itself.
+    fluid.registerNamespace("gpii.ul.updates.controls");
+    gpii.ul.updates.controls.excludeUnifiedSource = function (sources) {
+        return sources.filter(function(value){ if (value !== "unified") { return true; }});
     };
 
-    updates.applySettingsChanges = function(that) {
-        var output = that.locate("output");
-        output.html("Loading...");
-        output.addClass("loading");
-
-        var settings = {
-            url:     that.options.baseUrl + "api/updates",
-            success: that.displayResults,
-            error:   that.displayError,
-            data:    {
-                source:  that.model.settings.sources
+    // The "source picker", which is also responsible for getting the list of valid sources.
+    fluid.defaults("gpii.ul.updates.controls", {
+        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable", "autoInit"],
+        template:   "updates-controls",
+        ajaxOptions: {
+            method: "GET",
+            url:    "/api/sources"
+        },
+        rules: {
+            successResponseToModel: {
+                "sources": {
+                    transform: {
+                        type:      "gpii.ul.updates.controls.excludeUnifiedSource",
+                        inputPath: "responseJSON.sources"
+                    }
+                }
+            },
+            errorResponseToModel: {
+                "":             "notfound",
+                "errorMessage": { literalValue: "Error loading the list of allowed sources." }
+            },
+            modelToRequestPayload: {
+                "": "notfound"
             }
-        };
-
-        var updated = moment(that.model.settings.updated).toDate();
-        if (!isNaN(updated.getTime)) {
-            settings.data.updated = updated;
-        }
-
-        // Update the browser location bar so that bookmarking and reloads will work as expected
-        var queryString = "";
-        if (that.model.settings.sources || !isNaN(updated)) {
-            queryString += "?";
-            if (that.model.settings.sources) {
-                that.model.settings.sources.forEach(function(source){
-                    queryString += "source=" + escape(source) + "&";
-                });
+        },
+        invokers: {
+            renderInitialMarkup: {
+                func: "{that}.renderMarkup",
+                args: ["{that}.container", "{that}.options.template", "{that}.model"]
             }
-
-            if (!isNaN(updated)) {
-                queryString += "updated=" + updated.toISOString();
+        },
+        listeners: {
+            "onCreate.getAvailableSources": {
+                func: "{that}.makeRequest"
+            },
+            "requestReceived.refresh": {
+                func: "{that}.renderInitialMarkup"
             }
-        }
-
-        history.pushState(null, null, that.options.baseUrl + "updates" + queryString);
-
-        $.ajax(settings);
-    };
-
-    // We use the foundation "accordion" control, which needs to be rebound when the markup is reloaded...
-    updates.rebindFoundation = function () {
-        $(document).foundation();
-        $(document).foundation("accordion", "reflow");
-    };
-
-    updates.displayError = function(that, jqXHR, textStatus, errorThrown) {
-        var output = that.locate("output");
-        output.removeClass("loading");
-
-        var message = errorThrown;
-        try {
-            var jsonData = JSON.parse(jqXHR.responseText);
-            if (jsonData.message) { message = jsonData.message; }
-        }
-        catch (e) {
-            console.log("jQuery.ajax call returned meaningless jqXHR.responseText payload. Using 'errorThrown' instead.");
-        }
-
-        templates.prepend(output,"common-error", message);
-        that.events.markupLoaded.fire();
-    };
-
-    updates.loadQueryData = function(that) {
-        // TODO:  Queue up changes and only fire one update...
-
-        if (that.data.options.query) {
-            var updated = that.data.options.query.updated;
-            if (updated) {
-                that.applier.change("settings.updated", updated);
+        },
+        modelListeners: {
+            user: {
+                func: "{that}.makeRequest"
             }
-
-            var sources = Array.isArray(that.data.options.query.source) ? that.data.options.query.source : [that.data.options.query.source];
-            if (sources) {
-                that.applier.change("settings.sources", sources);
-            }
-        }
-    };
-
-    updates.displayResults = function(that, data) {
-        var output = that.locate("output");
-        if (data && data.records && data.records.length > 0) {
-            templates.replaceWith(output, "updates-records", data);
-        }
-        else {
-            templates.replaceWith(output, "updates-norecord");
-        }
-        that.events.markupLoaded.fire();
-    };
-
-    // We have to do this because templates need to be loaded before we initialize our own code.
-    updates.init = function(that) {
-        updates.loadQueryData(that);
-        templates.loadTemplates(function() { updates.loadControls(that); });
-    };
-
-    // TODO:  Simplify all self references to {updates} and test
-    fluid.defaults("ul.components.updates", {
-        gradeNames: ["fluid.viewRelayComponent", "baseUrlAware", "autoInit"],
+        },
         selectors: {
-            "controls": ".ul-updates-controls",
             "updated":  ".ul-updates-updated-control",
-            "source":   ".ul-updates-source-control",
-            "output":   ".ul-updates-output"
+            "sources":  ".ul-updates-sources-control"
         },
         bindings: [
             {
                 selector:    "updated",
-                path:        "settings.updated",
+                path:        "updated",
                 elementType: "date"
             },
             {
-                selector:    "source",
-                path:        "settings.sources",
+                selector:    "sources",
+                path:        "sources",
                 elementType: "select"
             }
-        ],
+        ]
+    });
+
+    fluid.registerNamespace("gpii.ul.updates");
+
+    // We use the foundation "accordion" control, which needs to be rebound when the markup is reloaded...
+    gpii.ul.updates.rebindFoundation = function () {
+        $(document).foundation();
+        $(document).foundation("accordion", "reflow");
+    };
+
+    fluid.defaults("gpii.ul.updates", {
+        gradeNames: ["gpii.templates.templateFormControl", "autoInit"],
+        hideOnSuccess: false,
+        hideOnError:   false,
+        ajaxOptions: {
+            method:      "GET",
+            url:         "/api/updates",
+            traditional: true // We are passing array data, whose variable name jQuery will mangle without this option.
+        },
+        templates: {
+            "initial": "updates-viewport"
+        },
+        rules: {
+            // Rules to control how a successful response is applied to the model.
+            successResponseToModel: {
+                "":           "notfound",
+                records:      "responseJSON.records",
+                errorMessage: { literalValue: null }
+            },
+
+            // Rules to control how an error is applied to the model
+            errorResponseToModel: {
+                "":             "notfound",
+                errorMessage:   "responseJSON.message",
+                successMessage: { literalValue: null },
+                records:        { literalValue: null }
+            },
+
+            // Rules to control how our model is parsed before making a request
+            modelToRequestPayload: {
+                "":      "notfound",
+                source:  "sources",
+                updated: "updated"
+            }
+        },
+        selectors: {
+            "initial":  ".ul-updates-viewport",
+            "error":    ".ul-updates-error",
+            "controls": ".ul-updates-controls",
+            "output":   ".ul-updates-output"
+        },
         components: {
-            data:    {
-                type: "ul.components.data",
+            // Disable the built-in success message, as we only ever display errors.
+            success: {
+                type: "fluid.identity"
+            },
+            fieldControls: {
+                type:          "gpii.ul.updates.controls",
+                container:     "{updates}.dom.controls",
+                createOnEvent: "{updates}.events.onMarkupRendered",
                 options: {
                     model: {
-                        settings: {
-                            updated: null,
-                            sources: "{data}.options.sources"
-                        }
+                        sources:      "{updates}.model.sources",
+                        updated:      "{updates}.model.updated",
+                        user:         "{updates}.model.user",
+                        errorMessage: "{updates}.model.errorMessage"  // Allow this component to display error messages if there are problems.
+                    }
+                }
+            },
+            output: {
+                type: "gpii.templates.templateMessage",
+                container: "{updates}.options.selectors.output",
+                createOnEvent: "{updates}.events.onMarkupRendered",
+                options: {
+                    template: "updates-records",
+                    model: {
+                        message: "{updates}.dom.records"
                     }
                 }
             }
         },
-        model: "{data}.model",
-        events: {
-            "refresh":           "preventable",
-            "markupLoaded":      "preventable"
+        model: {
+            sources:      [],
+            errorMessage: null
         },
-        invokers: {
-            "init": {
-                funcName: "ul.components.updates.init",
-                args: ["{that}"]
-            },
-            "loadQueryData": {
-                funcName: "ul.components.updates.loadQueryData",
-                args: ["{that}"]
-            },
-            "rebindFoundation": {
-                funcName: "ul.components.updates.rebindFoundation",
-                args: ["{that}"]
-            },
-            "displayError": {
-                funcName: "ul.components.updates.displayError",
-                args: ["{that}", "{arguments}.0", "{arguments}.1", "{arguments}.2"]
-            },
-            "displayResults": {
-                funcName: "ul.components.updates.displayResults",
-                args: ["{that}", "{arguments}.0", "{arguments}.1", "{arguments}.2"]
+        listeners: {
+            "onMarkupRendered.rebindFoundation": {
+                "funcName": "gpii.ul.updates.rebindFoundation",
+                "args":     "{that}"
             }
         },
         modelListeners: {
-            "settings.sources":    [
-                {
-                    funcName: "ul.components.updates.applySettingsChanges",
-                    excludeSource: "init",
-                    args: ["{that}"]
-                }
-            ],
-            "settings.updated":    [
-                {
-                    funcName: "ul.components.updates.applySettingsChanges",
-                    excludeSource: "init",
-                    args: ["{that}"]
-                }
-            ]
-        },
-        listeners: {
-            onCreate: [
-                {
-                    "funcName": "ul.components.updates.init",
-                    "args":     "{that}"
-                }
-            ],
-            markupLoaded: [
-                {
-                    "funcName": "ul.components.binder.applyBinding",
-                    "args":     "{that}"
-                },
-                {
-                    "funcName": "ul.components.updates.rebindFoundation",
-                    "args":     "{that}"
-                }
-            ]
+            sources: {
+                func:          "{that}.makeRequest",
+                excludeSource: "init"
+            },
+            updated: {
+                func:          "{that}.makeRequest",
+                excludeSource: "init"
+            }
         }
     });
 })(jQuery);

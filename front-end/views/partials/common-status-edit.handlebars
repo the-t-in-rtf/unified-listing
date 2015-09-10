@@ -1,0 +1,7 @@
+{{#if options}}
+  <label>Filter by status:</label>
+  {{#each options}}
+    <input type="checkbox" class="search-status-option" id="search-status-{{@index}}" value="{{value}}">
+    <label for="search-status-{{@index}}">{{label}}</label>
+  {{/each}}
+{{/if}}

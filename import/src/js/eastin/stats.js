@@ -6,7 +6,7 @@ fluid.registerNamespace("gpii.ul.imports.eastin.stats");
 
 require("../stats");
 
-gpii.ul.imports.eastin.stats.tallySingleIsoCode = function(entry, map) {
+gpii.ul.imports.eastin.stats.tallySingleIsoCode = function (entry, map) {
     var code = entry.Code;
     if (map[code]) {
         map[code]++;
@@ -16,18 +16,18 @@ gpii.ul.imports.eastin.stats.tallySingleIsoCode = function(entry, map) {
     }
 };
 
-gpii.ul.imports.eastin.stats.tallyIsoCodeArray = function(array, map) {
-    for (var a=0; a < array.length; a++) {
+gpii.ul.imports.eastin.stats.tallyIsoCodeArray = function (array, map) {
+    for (var a = 0; a < array.length; a++) {
         gpii.ul.imports.eastin.stats.tallySingleIsoCode(array[a], map);
     }
 };
 
-gpii.ul.imports.eastin.stats.countByIsoCode = function(that) {
+gpii.ul.imports.eastin.stats.countByIsoCode = function (that) {
     if (that.model.data && that.model.data.length > 0) {
 
         var isoCount = {};
 
-        for (var a=0; a < that.model.data.length; a++) {
+        for (var a = 0; a < that.model.data.length; a++) {
             var record = that.model.data[a];
             if (record.ontologies && record.ontologies.iso9999) {
                 if (record.ontologies.iso9999.IsoCodePrimary) {

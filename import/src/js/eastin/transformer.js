@@ -8,12 +8,8 @@ require("../helpers");
 
 fluid.registerNamespace("gpii.ul.imports.eastin.transformer");
 
-// TODO:  Replace the existing config wiring with something saner
-var loader = require("../../../../config/lib/config-loader");
-var config = loader.loadConfig({});
-
 // Remap the data
-gpii.ul.imports.eastin.transformer.remapData = function(that) {
+gpii.ul.imports.eastin.transformer.remapData = function (that) {
     var remappedJson = fluid.transform(that.model.rawJson, that.transformData);
     var strippedJson = gpii.ul.imports.transforms.stripNonValues(remappedJson);
     that.applier.change("remappedJson", strippedJson);
@@ -21,14 +17,14 @@ gpii.ul.imports.eastin.transformer.remapData = function(that) {
 
 // Transform to look up the predefined language for each EASTIN data source
 fluid.registerNamespace("gpii.ul.imports.eastin.transforms");
-gpii.ul.imports.eastin.transforms.lookupLanguage = function(rawValue, transformSpec) {
+gpii.ul.imports.eastin.transformer.lookupLanguage = function (rawValue, transformSpec) {
     if (!transformSpec.databases) {
         fluid.fail("You must pass a databases option to use this transform.");
     }
 
     // TODO:  Remove this once we are sure we are no longer storing null records when communication fails.
     if (!transformSpec.databases[rawValue]) {
-        fluid.log("No configuration found for database '" + rawValue + "', defaulting to US english...");
+         fluid.log("No configuration found for database '" + rawValue + "', defaulting to US english...");
         return null;
     }
 
@@ -45,8 +41,7 @@ gpii.ul.imports.eastin.transformer.standardizeIsoCode = function (code) {
 };
 
 fluid.defaults("gpii.ul.imports.eastin.transformer", {
-    gradeNames: ["fluid.modelRelayComponent", "autoInit"],
-    config:     config,
+    gradeNames: ["fluid.modelComponent"],
     defaultValues: {
         description: "No description available."
     },
@@ -84,14 +79,14 @@ fluid.defaults("gpii.ul.imports.eastin.transformer", {
         },
         language: {
             transform: {
-                type:      "gpii.ul.imports.eastin.transforms.lookupLanguage",
+                type:      "gpii.ul.imports.eastin.transformer.lookupLanguage",
                 value: {
                     transform: {
                         type:      "fluid.transforms.value",
                         inputPath: "Database"
                     }
                 },
-                databases: "{that}.options.config.eastin.databases"
+                databases: "{that}.options.databases"
             }
         },
         images: [

@@ -1,0 +1,20 @@
+<!-- TODO: Migrate this to a "content aware" part of the API when this feature is complete:  https://github.com/GPII/gpii-express/pull/6 -->
+{{>common-topbar "search"}}
+
+
+<section role="main" id="main" tabindex="0" class="scroll-container">
+    <div class="row">
+        <div class="record-viewport column small-12 medium-12"/>
+    </div>
+</section>
+
+<!-- Bring in client libraries-->
+<script type="text/javascript" src="/js/components/toggle.js"></script>
+<script type="text/javascript" src="/js/components/stringTemplate.js"></script>
+<script type="text/javascript" src="/js/components/select.js"></script>
+<script type="text/javascript" src="/js/components/status.js"></script>
+<script type="text/javascript" src="/js/components/record.js"></script>
+
+
+{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.ul.record"}}}
+

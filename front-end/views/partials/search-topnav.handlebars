@@ -1,0 +1,11 @@
+{{#if showNavBar}}
+  <div class="pagination-centered">
+    <ul class="pagination" role="menubar" aria-label="Pagination">
+      {{>search-navbar-previous}}
+      {{#each pages}}
+        <li class="{{#if current}}current{{/if}}"><a class="search-nav-link search-nav-num-link" offset="{{offset}}" href="#">{{label}}</a></li>
+      {{/each}}
+      {{>search-navbar-next}}
+    </ul>
+  </div>
+{{/if}}

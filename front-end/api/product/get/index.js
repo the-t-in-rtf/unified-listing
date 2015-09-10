@@ -1,6 +1,12 @@
-// API Support for GET /api/product/:source:/:sid
+// Respond to requests like GET /api/product/:source:/:sid based on the requested content type.
+//
+// If the request content-type is "application/json", respond with the JSON source of the record.
+//
+// Otherwise, serve up an HTML version of the content.
 "use strict";
-module.exports=function(config){
+var fluid = fluid || require("infusion");
+
+module.exports = function (config) {
     var fluid        = require("infusion");
     var namespace    = "gpii.ul.api.products.get";
     var get          = fluid.registerNamespace(namespace);
@@ -12,7 +18,7 @@ module.exports=function(config){
     get.schemaHelper = require("../../../schema/lib/schema-helper")(config);
 
     // TODO: add support for versions
-    get.router.get("/:source/:sid",function(req, res) {
+    get.router.get("/:source/:sid", function (req, res) {
         var myRes = res;
 
         var params = {};
@@ -30,11 +36,11 @@ module.exports=function(config){
         get.queryHelper.parseBooleanFields(params, req, booleanFields);
 
         var options = {
-            url: config.couch.url + "_design/ul/_view/records",
+            url: config.couch.url + "/_design/ul/_view/records",
             qs: { "key": JSON.stringify([ params.source, params.sid]) }
         };
         var request = require("request");
-        request(options, function(error, response, body){
+        request(options, function (error, response, body) {
             if (error) {
                 get.schemaHelper.setHeaders(myRes, "message");
                 myRes.status(500).send(JSON.stringify({ "ok": false, "message": body.error}));
@@ -68,7 +74,7 @@ module.exports=function(config){
                     url: config.couch.url + "_design/ul/_list/unified/unified",
                     qs: { "key": JSON.stringify(record.uid) }
                 };
-                sourceRequest(sourceOptions, function(error, response, body) {
+                sourceRequest(sourceOptions, function (error, response, body) {
                     if (error) {
                         get.schemaHelper.setHeaders(myRes, "message");
                         myRes.status(500).send(JSON.stringify({ "ok": false, "message": body.error}));
@@ -78,7 +84,7 @@ module.exports=function(config){
                     var data = JSON.parse(body);
                     if (!data || data.length === 0) {
                         get.schemaHelper.setHeaders(myRes, "message");
-                        myRes.status(404).send(JSON.stringify({ "ok": false, "message": "No unified record found for uid '" + record.uid+ "'..."}));
+                        myRes.status(404).send(JSON.stringify({ "ok": false, "message": "No unified record found for uid '" + record.uid + "'..."}));
                         return;
                     }
 
@@ -95,7 +101,7 @@ module.exports=function(config){
         });
     });
 
-    get.router.get("/*",function(req, res) {
+    get.router.get("/*", function (req, res) {
         get.schemaHelper.setHeaders(res, "message");
         res.status(403).send(JSON.stringify({ "ok": false, "message": "You must provide both a source (database) and source id to use this interface."}));
     });

@@ -1,25 +1,11 @@
-<html>
-    <head>
-        <title>Sign Up for a Unified Listing Account</title>
+{{>common-topbar "signup"}}
 
-        {{>common-includes}}
+<div class="body">
+    <div class="signup-viewport" role="main" id="main" tabindex="0"></div>
+</div>
 
-        <!-- Bring in client library being tested -->
-        <script type="text/javascript" src="/gpii-ecu/passwordCheckingForm.js"></script>
-        <script type="text/javascript" src="/gpii-ecu/signup.js"></script>
-    </head>
-    <body>
-        <!-- Sample signup form with all required markup -->
+<!-- Bring in client libraries -->
+<script type="text/javascript" src="/gpii-ecu/js/client/passwordCheckingForm.js"></script>
+<script type="text/javascript" src="/gpii-ecu/js/client/signup.js"></script>
 
-        <div class="body">
-            <div class="signup-viewport"></div>
-        </div>
-
-        <!-- configure and instantiate our module -->
-        <script type="text/javascript">
-            var signup = gpii.express.couchuser.frontend.signup(".signup-viewport", {});
-        </script>
-    </body>
-</html>
-
-
+{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.express.couchuser.frontend.signup"}}}

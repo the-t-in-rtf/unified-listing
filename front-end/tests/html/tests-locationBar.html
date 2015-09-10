@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>locationBar Test Harness...</title>
+
+        <script type="text/javascript" src="../../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
+
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/lib/fastXmlPull/js/fastXmlPull.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/renderer/js/fluidParser.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/renderer/js/fluidRenderer.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/FluidRequests.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="../../../node_modules/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
+
+        <script type="text/javascript" src="../../public/js/components/locationBar.js"></script>
+
+        <script type="text/javascript" src="../js/client/tests-locationBar.js"></script>
+    </head>
+    <body>
+        <p>This test page is meant to be opened directly as a file.</p>
+
+        <script type="text/javascript">
+            var locationBar = gpii.tests.locationBar.syncAll();
+        </script>
+    </body>
+</html>

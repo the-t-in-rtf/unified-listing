@@ -1,3 +1,4 @@
+// TODO: Remove this once all API modules are converted to use `gpii.express`
 // Utility functions for common sanity checks in unit tests
 "use strict";
 

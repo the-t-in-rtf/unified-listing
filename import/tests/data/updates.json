@@ -1,0 +1,5 @@
+[
+  { "name": "existing with updates", "description": "existing record with updates", "status": "active", "source": "admin", "sid": "existing", "manufacturer": { "name": "Acme Inc."} },
+  { "name": "slashes with updates", "description":  "existing record with slashes in its sid and updates", "status": "active", "source": "admin", "sid": "s/l/a/s/h", "manufacturer": { "name": "Acme Inc."} },
+  { "name": "new", "description": "new record", "source": "admin", "sid": "new", "manufacturer": { "name": "Acme Inc."} }
+]

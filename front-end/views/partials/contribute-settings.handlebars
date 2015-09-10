@@ -1,0 +1,14 @@
+<h3>Configuration and Settings</h3>
+
+<p><a href="http://gpii.net/About.html">The GPII</a> configures software automatically to meet user needs.  If this product has settings that users can change, please take a moment to tell us about them.</p>
+
+<label for="contribute-form-settings-description">What user settings does this product offer?</label>
+<textarea id="contribute-form-settings-description" class="contribute-form-settings-description" rows="5">{{record.sourceData.settings.description}}</textarea>
+
+<label for="contribute-form-settings-storage">Where are this product's settings stored?</label>
+<textarea id="contribute-form-settings-storage"  class="contribute-form-settings-storage" rows="5" placeholder="Please add details about the mechanism(s) used to store user settings for this product.">{{record.sourceData.settings.storage}}</textarea>
+
+<label for="contribute-form-settings-restart">Can this product's settings be changed without a restart?  If so, how?</label>
+<textarea id="contribute-form-settings-restart" class="contribute-form-settings-restart" rows="3">{{record.sourceData.settings.restart}}</textarea>
+
+<input type="submit" value="Save" class="button contribute-form-submit"/>

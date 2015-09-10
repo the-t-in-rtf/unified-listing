@@ -7,3 +7,32 @@
 .ul-updates-output table tr {
     vertical-align: top;
 }
+
+.ul-updates-output.loading {
+    padding-top: 10%;
+}
+
+.ul-updates-records:nth-child(even) {
+    background-color: #cccccc;
+}
+
+.ul-updates-records:nth-child(even) .ul-updates-record {
+    background-color: #cccccc;
+    border-color: white;
+}
+
+.ul-updates-record {
+    padding-left: .5em;
+    margin-top: .25em;
+    border:1px solid #cccccc;
+}
+
+.accordion {
+    background-color: inherit;
+    border:1px solid #cccccc;
+    margin-top: .5em;
+}
+
+.accordion:first-of-type {
+    margin-top: 0px;
+}

@@ -8,7 +8,7 @@ var request = require("request");
 
 fluid.registerNamespace("gpii.ul.imports.syncer");
 
-gpii.ul.imports.syncer.LoginAndStartSync = function(that) {
+gpii.ul.imports.syncer.LoginAndStartSync = function (that) {
     var options = {
         jar: true,
         json: true,
@@ -17,15 +17,15 @@ gpii.ul.imports.syncer.LoginAndStartSync = function(that) {
             password: that.options.loginPassword
         }
     };
-    request.post(that.options.loginUrl, options, function(error, response, body) {
+    request.post(that.options.loginUrl, options, function (error, response, body) {
         if (error) {
-            console.log("Login returned an error:" + error);
+            fluid.log("Login returned an error:" + error);
         }
         else if (response.statusCode !== 200) {
-            console.log("Login returned an error message:\n" + JSON.stringify(body, null, 2));
+            fluid.log("Login returned an error message:\n" + JSON.stringify(body, null, 2));
         }
         else {
-            console.log("Logged in, starting synchronization...");
+            fluid.log("Logged in, starting synchronization...");
             that.syncViaREST();
         }
     });
@@ -43,8 +43,8 @@ gpii.ul.imports.syncer.syncViaREST = function (that) {
     }
 
     // Process the stack of tasks
-    fluid.promise.sequence(checkTasks).then(function(){
-        console.log("Finished synchronizing data...");
+    fluid.promise.sequence(checkTasks).then(function () {
+        fluid.log("Finished synchronizing data...");
 
         // Fire an event so that we can chain in the "unifier" and other services
         that.events.onSyncComplete.fire(that);
@@ -52,8 +52,8 @@ gpii.ul.imports.syncer.syncViaREST = function (that) {
 };
 
 // generate a response parser for an individual record
-gpii.ul.imports.syncer.getRecordUpdatePromise = function(that, updatedRecord) {
-    return function() {
+gpii.ul.imports.syncer.getRecordUpdatePromise = function (that, updatedRecord) {
+    return function () {
         var promise = fluid.promise();
 
         var requestOptions = {
@@ -62,19 +62,22 @@ gpii.ul.imports.syncer.getRecordUpdatePromise = function(that, updatedRecord) {
             body:   updatedRecord
         };
 
-        request.put(that.options.putApiUrl, requestOptions, function(error, response, body) {
+        request.put(that.options.putApiUrl, requestOptions, function (error, response, body) {
             if (error) {
-                console.log("Record update returned an error:\n" + error);
-                promise.reject(error);
+                fluid.log("Record update returned an error:\n" + error);
+            }
+            else if (response.statusCode === 200) {
+                fluid.log("Record updated...");
+            }
+            else if (response.statusCode === 201) {
+                fluid.log("Record created...");
             }
             // There was an error processing our request
-            else if (response.statusCode !== 200 && response.statusCode !== 201) {
-                console.log("Record update returned an error message:\n" + JSON.stringify(body, null, 2));
-                promise.reject(body);
-            }
             else {
-                promise.resolve(body.record);
+                fluid.log("Record update returned an error message:\n" + JSON.stringify(body, null, 2));
             }
+
+            promise.resolve();
         });
 
         return promise;
@@ -82,11 +85,11 @@ gpii.ul.imports.syncer.getRecordUpdatePromise = function(that, updatedRecord) {
 };
 
 fluid.defaults("gpii.ul.imports.syncer", {
+    gradeNames:    ["fluid.modelComponent"],
     loginUsername: "admin",
     loginPassword: "admin",
     loginUrl:      "http://localhost:4896/api/user/signin",
     putApiUrl:     "http://localhost:4896/api/product/",
-    gradeNames:    ["fluid.modelRelayComponent", "autoInit"],
     invokers: {
         getRecordUpdatePromise: {
             funcName: "gpii.ul.imports.syncer.getRecordUpdatePromise",
@@ -112,7 +115,7 @@ fluid.defaults("gpii.ul.imports.syncer", {
     },
     listeners: {
         "onSyncComplete.log": {
-            funcName: "console.log",
+            funcName: "fluid.log",
             args: ["Synchronization complete..."]
         }
     }

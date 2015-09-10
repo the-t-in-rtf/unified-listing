@@ -1,7 +1,3 @@
-.row {
-    max-width: 90rem;
-}
-
 .loading {
     border:     1px solid #cccccc;
     opacity:    .25;
@@ -11,31 +7,116 @@
     min-height: 10em;
     padding-top: 10%;
 }
-.ul-updates-output.loading {
-    padding-top: 10%;
+
+.top-bar {
+    margin-bottom: 1em;
 }
 
-.ul-updates-records:nth-child(even) {
-    background-color: #cccccc;
+label.required:after {
+    content: "*";
+    color:   red;
 }
 
-.ul-updates-records:nth-child(even) .ul-updates-record {
-    background-color: #cccccc;
-    border-color: white;
+/* Adapted from: http://websiteaccessibility.donaldevans.com/?p=1020 */
+.topbar-skip-link {
+    position: absolute;
+    clip:     rect(1px 1px 1px 1px);
+    clip:     rect(1px, 1px, 1px, 1px);
+    margin:   -1px;
+    border:   0;
+    padding:  0;
+    width:    1px;;
+    height:   1px;
+    overflow: hidden;
 }
 
-.ul-updates-record {
-    padding-left: .5em;
-    margin-top: .25em;
-    border:1px solid #cccccc;
+.topbar-skip-link:active,
+.topbar-skip-link:focus {
+    clip:     auto;
+    height:   auto;
+    margin:   0;
+    overflow: visible;
+    position: static;
+    width:    auto;
 }
 
-.accordion {
-    background-color: inherit;
-    border:1px solid #cccccc;
-    margin-top: .5em;
+.user-menu {
+    width: 100%;
 }
 
-.accordion:first-of-type {
-    margin-top: 0px;
+.user-menu li:nth-child(odd) {
+    background-color: #fff;
 }
+
+.user-menu li {
+    width: 100%;
+}
+
+.user-controls {
+    /*color: #ffffff;*/
+    width: 100%;
+}
+
+.user-controls-toggle {
+    width: 100%;
+}
+
+.user-controls-toggle .button {
+    /*background-color: #333;*/
+    /*color: #fff;*/
+    padding-bottom: 1rem;
+}
+
+
+.left-off-canvas-menu {
+    background: inherit;
+}
+
+.search-options {
+    margin-top:  .5em;
+    padding-top: .5em;
+    border-top:  1px dashed #e9e9e9;
+}
+
+.search-product-description {
+    text-overflow: ellipsis;
+    white-space:   nowrap;
+    overflow:      hidden;
+    height:        1.5em;
+}
+
+.row.ul-topbar {
+    max-width: inherit;
+}
+
+select.ul-updates-sources-control {
+    height: inherit;
+}
+
+.user-controls-toggle::after {
+    border-color: #ffffff transparent transparent transparent;
+}
+
+
+.top-bar {
+    margin-bottom: 0.1em;
+}
+
+.search-topnav .pagination-centered {
+    border-bottom: 1px dashed #e9e9e9;
+}
+
+.search-topnav ul {
+    margin-top:    .5em;
+    margin-bottom: .5em;
+}
+
+.search-bottomnav .pagination-centered {
+    border-top: 1px dashed #e9e9e9;
+}
+
+.search-bottomnav ul {
+    margin-top:    .5em;
+    margin-bottom: .5em;
+}
+

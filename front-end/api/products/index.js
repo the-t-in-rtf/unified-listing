@@ -1,7 +1,9 @@
 // API Support for GET /api/products
 "use strict";
-module.exports=function(config){
+require("../lib/url");
+module.exports = function (config) {
     var fluid             = require("infusion");
+    var gpii              = fluid.registerNamespace("gpii");
     var namespace         = "gpii.ul.api.products";
     var products          = fluid.registerNamespace(namespace);
 
@@ -16,7 +18,7 @@ module.exports=function(config){
     // TODO: add support for versions
     // TODO: add support for comments/annotation
 
-    products.router.use("/",function(req, res) {
+    products.router.use("/", function (req, res) {
         var myRes = res;
 
         var params = {};
@@ -33,12 +35,13 @@ module.exports=function(config){
         var numberFields  = ["offset", "limit"];
         products.queryHelper.parseNumberFields(params, req, numberFields);
 
+        // TODO:  Convert this to an option that uses an expander.
         var options = {
-            url: config.couch.url + "_design/ul/_view/records"
+            url: gpii.ul.api.url.assembleUrl(config.couch.url, "/ul/_design/ul/_view/records")
         };
 
         var request = require("request");
-        request(options, function(error, response, body){
+        request(options, function (error, response, body) {
             if (error) {
                 products.schemaHelper.setHeaders(myRes, "message");
                 res.status(500).send({ "ok": false, "message": body.error});
@@ -49,7 +52,7 @@ module.exports=function(config){
 
             var data = JSON.parse(body);
             if (data.rows) {
-                data.rows.forEach(function(row){
+                data.rows.forEach(function (row) {
                     var record = row.value;
                     var includeRecord = true;
 
@@ -76,17 +79,18 @@ module.exports=function(config){
 
             if (params.sources) {
                 var uniqueKeyMap = {};
-                matchingProducts.map(function(entry){ uniqueKeyMap[entry.uid] = true; });
+                matchingProducts.map(function (entry) { uniqueKeyMap[entry.uid] = true; });
                 var keys = Object.keys(uniqueKeyMap);
 
+                // TODO:  Convert this to an option that uses an expander.
                 // Since we are making a second upstream request to get the unified view, we can apply our offset and limits to the list of keys and use that for the total count
                 var sourceRequestOptions = {
-                    url:  config.couch.url + "_design/ul/_list/unified/unified",
+                    url:  gpii.ul.api.url.assembleUrl(config.couch.url, "/ul/_design/ul/_list/unified/unified"),
                     qs: { "keys": JSON.stringify(products.arrayHelper.applyLimits(keys, params)) }
                 };
 
                 var sourceRequest = require("request");
-                sourceRequest(sourceRequestOptions, function(error2, response2, body2){
+                sourceRequest(sourceRequestOptions, function (error2, response2, body2) {
                     if (error2) {
                         myRes.status(500).send({ "ok": false, "message": body2.error});
                         return;

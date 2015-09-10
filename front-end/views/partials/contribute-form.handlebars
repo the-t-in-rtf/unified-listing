@@ -1,0 +1,23 @@
+<form action="#" class="record-edit-form">
+  <input type="hidden" class="contribute-form-source"/>
+  <h3>Product Details</h3>
+  <label for="contribute-form-name" class="required">Name</label>
+  <input type="text" class="contribute-form-name" placeholder="Please enter the name of this product." id="contribute-form-name" value="{{{record.name}}}"/>
+
+
+  <label for="contribute-form-description"  class="required">Description</label>
+  <textarea class="contribute-form-description" rows="10" placeholder="Please enter a description of this product." id="contribute-form-description">{{{record.description}}}</textarea>
+
+  <label for="contribute-form-pricing">Pricing</label>
+  <textarea class="contribute-form-pricing" rows="5" placeholder="Please provide details about how much the product costs in the countries where it is sold." id="contribute-form-pricing">{{{record.sourceData.pricing}}}</textarea>
+
+  <input type="submit" value="Save" class="button contribute-form-submit"/>
+
+  <hr/>
+
+  {{>contribute-manufacturer record.manufacturer}}
+
+  <hr/>
+
+  {{>contribute-settings}}
+</form>

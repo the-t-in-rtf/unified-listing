@@ -6,15 +6,14 @@ var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
 
 require("gpii-express");
+require("./updates");
+require("./sources");
 
 var express = require("../../node_modules/gpii-express/node_modules/express");
 
 fluid.registerNamespace("gpii.ul.api");
 gpii.ul.api.init = function (that) {
     that.router = express.Router();
-
-    var updates = require("./updates")(that.options.config);
-    that.router.use("/updates", updates.router);
 
     var products = require("./products")(that.options.config);
     that.router.use("/products", products.router);
@@ -24,7 +23,6 @@ gpii.ul.api.init = function (that) {
 
     var search = require("./search")(that.options.config);
     that.router.use("/search", search.router);
-
 
     var suggest = require("./search")(that.options.config, true);
     that.router.use("/suggest", suggest.router);
@@ -42,7 +40,7 @@ fluid.defaults("gpii.ul.api", {
     router:     null,
     config:     "{expressConfigHolder}.options.config",
     invokers: {
-        getRouter: {
+        getHandler: {
             funcName: "gpii.ul.api.getRouter",
             args:     ["{that}"]
         }
@@ -51,6 +49,20 @@ fluid.defaults("gpii.ul.api", {
         "onCreate.init": {
             funcName: "gpii.ul.api.init",
             args:     ["{that}"]
+        }
+    },
+    components: {
+        sources: {
+            type: "gpii.ul.api.sources.router",
+            options: {
+                path: "/sources"
+            }
+        },
+        updates: {
+            type: "gpii.ul.api.updates.router",
+            options: {
+                path: "/updates"
+            }
         }
     }
 });

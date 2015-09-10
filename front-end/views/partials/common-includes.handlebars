@@ -30,23 +30,38 @@
 <script type="text/javascript" src="/gpii-handlebars/common/equals.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/common/md-common.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/md-client.js"></script>
-<script type="text/javascript" src="/gpii-handlebars/client/handlebars.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/renderer.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/binder.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/templateManager.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/templateAware.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/hasRequiredOptions.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/ajaxCapable.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/templateAware.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/templateMessage.js"></script>
-<script type="text/javascript" src="/gpii-handlebars/client/multiTemplateAware.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/templateFormControl.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/templateRequestAndRender.js"></script>
 
 <!-- moment.js is required for our date handling -->
 <script src="/bc/moment/moment.js"></script>
 
-<!-- TODO:  Remove this if possible -->
+<!-- Bring in common grades used to build multiple components in the Unified Listing -->
+<script src="/js/components/hasSkipNavLink.js"></script>
+
+<!-- TODO:  Remove this once "updates" is updated -->
 <script src="/js/components/root.js"></script>
+
+<!-- bring in javascript and styles from the gpii-express-couchuser module -->
+<script type="text/javascript" src="/gpii-ecu/js/client/controls.js"></script>
+<link rel="stylesheet" href="/gpii-ecu/css/user-controls.css"/>
+
 
 <!-- include foundation and its dependencies -->
 <script src="/bc/foundation/js/foundation/foundation.js"></script>
 <script src="/bc/foundation/js/foundation/foundation.alert.js"></script>
+<script src="/bc/foundation/js/foundation/foundation.topbar.js"></script>
+<script src="/bc/foundation/js/foundation/foundation.dropdown.js"></script>
 <script src="/bc/foundation/js/foundation/foundation.accordion.js"></script>
+
 <link rel="stylesheet" href="/bc/foundation/css/normalize.css">
 <link rel="stylesheet" href="/bc/foundation/css/foundation.css">
 <link rel="stylesheet" href="/bc/foundation-icons-sets/foundation_icons_general/stylesheets/general_foundicons.css">

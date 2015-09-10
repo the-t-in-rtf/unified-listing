@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>Unified Listing</title>
     {{>common-includes}}
   </head>
   <body>
-    <!-- include the header -->
-    {{> common-header}}
+    <a class="topbar-skip-link" href="#main" tabindex="0">Skip to Main Content</a>
 
-    <div>
-        {{{body}}}
-    </div>
+    {{{body}}}
 
     {{> common-footer}}
+
+    <script type="text/javascript">
+        $(document).foundation();
+    </script>
   </body>
 </html>

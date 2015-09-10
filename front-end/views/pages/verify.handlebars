@@ -1,21 +1,7 @@
-<html>
-    <head>
-        <title>Verify your Unified Listing account.</title>
+{{>common-topbar "verify"}}
 
-        {{>common-includes}}
+<div class="row">
+    <div class="verify-viewport" role="main" id="main" tabindex="0"></div>
+</div>
 
-        <!-- Bring in client library being tested -->
-        <script type="text/javascript" src="/gpii-ecu/verify.js"></script>
-    </head>
-    <body>
-        <div class="row">
-            <div class="verify-viewport"></div>
-        </div>
-
-        <script type="text/javascript">
-            var verify = gpii.express.couchuser.frontend.verify(".verify-viewport");
-        </script>
-    </body>
-</html>
-
-
+{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.express.couchuser.frontend.verify"}}}

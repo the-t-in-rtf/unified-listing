@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="column medium-6 small-12">
+      <h3>{{#if record.name}}{{record.name}}{{else}}No Product Name Listed{{/if}}</h3>
+    </div>
+    <div class="column medium-6 small-12">
+      Status: {{record.status}}
+    </div>
+</div>
+
+
+<div class="panel">
+  <h3>Description</h3>
+
+  {{{record.description}}}
+</div>
+
+<h3>Manufacturer</h3>
+
+{{>record-manufacturer-view record.manufacturer}}
+
+{{#equals record.source "unified"}}
+  {{#if record.sources}}
+      <h3>Sources</h3>
+
+      {{>record-sources-view record.sources}}
+  {{/if}}
+{{else}}
+  <p><a href="/record?source=unified&sid={{record.uid}}">View the unified record related to this product.</a></p>
+{{/equals}}
+
+<div class="row record-edit-control-panel" style="display:none;">
+    <div class="column medium-offset-9 medium-3 small-12 right">
+        <button class="record-toggle expand">Edit Record</button>
+    </div>
+</div>
+
+
+<div class="row record-suggest-control-panel" style="display:none;">
+  <div class="column medium-offset-9 medium-3 small-12 right">
+    {{#if user}}
+      <a href="/contribute?uid={{record.uid}}" class="button expand">Contribute a Change</a>
+    {{else}}
+      <a href="/login" class="button expand">Log in to Contribute a Change</a>
+    {{/if}}
+  </div>
+</div>

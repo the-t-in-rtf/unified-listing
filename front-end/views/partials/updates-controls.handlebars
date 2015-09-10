@@ -1,11 +1,19 @@
-<form action="#" class="ul-updates-controls side-nav">
-    <!-- date picker -->
-    Show records updated since:
-    <input type="date" name="updated" class="ul-updates-updated-control"/>
+{{#if sources}}
+    <form>
+        <!-- date picker -->
+        Show records updated since:
+        <input type="date" class="ul-updates-updated-control"/>
 
-    <!-- choose databases -->
-    Show differences between unified record and the following sources:
-    <select multiple="true" name="source" class="ul-updates-source-control">
-        {{#each sources}}<option value="{{.}}" selected="true">{{.}}</option>{{/each}}
-    </select>
-</form>
+        <!-- choose databases -->
+        Show differences between unified record and the following sources:
+        <select multiple="true" class="ul-updates-sources-control" size="{{sources.length}}">
+            {{#each sources}}<option value="{{.}}" selected="true">{{.}}</option>{{/each}}
+        </select>
+    </form>
+{{else}}
+    <div class="ul-updates-updated-control"/>
+    <div class="ul-updates-sources-control"/>
+    <div class="panel">
+        You must be logged in to compare data sources.
+    </div>
+{{/if}}
