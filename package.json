@@ -19,9 +19,9 @@
   "homepage": "https://github.com/the-t-in-rtf/unified-listing",
   "dependencies": {
     "email-templates":           "^1.1.2",
-    "gpii-express":              "git://github.com/the-t-in-rtf/gpii-express.git#72850f74cd05229216467b3e9af3c7364f4beee5",
-    "gpii-express-couchuser":    "git://github.com/the-t-in-rtf/gpii-express-couchuser.git#0b3eb19d20ee6123d2b170cf249cdd583e06509e",
-    "gpii-handlebars":           "git://github.com/the-t-in-rtf/gpii-handlebars.git#b5ff92fe90e399ca73a620f5d431119cdd923570",
+    "gpii-express":              "git://github.com/the-t-in-rtf/gpii-express#8730441601db239870046c796b85c0f020a302a1",
+    "gpii-express-couchuser":    "git://github.com/the-t-in-rtf/gpii-express-couchuser.git#c5265996397b3367c293fe148a1c3b260d6ad234",
+    "gpii-handlebars":           "git://github.com/the-t-in-rtf/gpii-handlebars.git#136266a1e762bb9d1fc332256ee8eed44d869562",
     "grunt":                     "~0.4.4",
     "grunt-shell":               "0.6.4",
     "grunt-contrib-jshint":      "~0.9.0",
@@ -40,7 +40,7 @@
     "when":                      "^3.5.2"
   },
   "devDependencies": {
-    "gpii-pouch": "git://github.com/the-t-in-rtf/gpii-pouchdb.git#7dac450a5efb73968313eb671e03de38ffc5a0bc",
+    "gpii-pouch": "git://github.com/the-t-in-rtf/gpii-pouchdb.git#f56fca6cf89c6092a37169504c44b0aedf12f580",
     "jqUnit":     "git://github.com/fluid-project/node-jqUnit.git#b7ef53aac1ca365bf23d35d255fae874faa88b70",
     "kettle":     "git://github.com/amb26/kettle.git#33e2826e78315c6d29b13c8ba810f54fef29e8ac",
     "z-schema":   "^3.2.0",

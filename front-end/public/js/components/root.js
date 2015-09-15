@@ -1,7 +1,7 @@
 /* global fluid */
 "use strict";
 fluid.defaults("ul.config.root", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component"],
     distributeOptions: [
         {
             target: "{that queryAware}.options.query",

@@ -62,7 +62,7 @@
 
 /* global fluid */
 "use strict";
-(function() {
+(function () {
     var gpii = fluid.registerNamespace("gpii");
     fluid.registerNamespace("gpii.ul.toggle");
 
@@ -71,7 +71,7 @@
             event.preventDefault();
         }
 
-        fluid.each(that.options.toggles, function(value, key){
+        fluid.each(that.options.toggles, function (value, key) {
             var valueIsObject = typeof value === "object";
             var selector = valueIsObject ? value.selector : key;
             var toToggle = that.locate(selector);
@@ -88,7 +88,7 @@
     gpii.ul.toggle.filterKeyPress = function (that, event) {
         if (event) {
             var handled = false;
-            fluid.each(that.options.boundKeyCodes, function(value) {
+            fluid.each(that.options.boundKeyCodes, function (value) {
                 if (!handled && event.keyCode === value) {
                     that.performToggle(event);
                     handled = true;
@@ -98,7 +98,7 @@
     };
 
     fluid.defaults("gpii.ul.toggle", {
-        gradeNames: ["fluid.viewComponent", "autoInit"],
+        gradeNames: ["fluid.viewComponent"],
         selectors: {
             toggle:    ".toggle-default"
         },

@@ -16,7 +16,7 @@
 //
 "use strict";
 /* global fluid */
-(function (){
+(function () {
     var gpii = fluid.registerNamespace("gpii");
 
     fluid.defaults("gpii.ul.stringTemplate", {

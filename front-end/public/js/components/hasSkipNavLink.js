@@ -11,16 +11,16 @@
 //
 "use strict";
 /* global fluid */
-(function (){
+(function () {
     var gpii = fluid.registerNamespace("gpii");
 
-fluid.registerNamespace("gpii.ul.hasSkipNavLink");
+    fluid.registerNamespace("gpii.ul.hasSkipNavLink");
 
     // TODO:  This pattern is used here and in `toggle.js`.  Harden it up and make a common grade.
     gpii.ul.hasSkipNavLink.handleKeyPress = function (that, event) {
         if (event) {
             var handled = false;
-            fluid.each(that.options.boundKeyCodes, function(value) {
+            fluid.each(that.options.boundKeyCodes, function (value) {
                 if (!handled && event.keyCode === value) {
                     that.focusOnMain(event);
                     handled = true;
@@ -36,7 +36,7 @@ fluid.registerNamespace("gpii.ul.hasSkipNavLink");
         var mainElement = that.locate("main");
         mainElement.focus();
 
-        fluid.each(mainElement.get(), function(element){ element.scrollIntoView();});
+        fluid.each(mainElement.get(), function (element) { element.scrollIntoView(); });
     };
 
     fluid.defaults("gpii.ul.hasSkipNavLink", {

@@ -141,7 +141,7 @@ gpii.tests.locationBar.testSpecials = function (that, browser) {
 };
 
 fluid.defaults("gpii.tests.locationBar", {
-    gradeNames:    ["fluid.eventedComponent", "autoInit"],
+    gradeNames:    ["fluid.eventedComponent"],
     moduleMessage: "Testing location bar using Zombie.js...",
     harnessUrl:     harnessUrl,
     componentName:  "locationBar",

@@ -9,7 +9,7 @@
 /* global fluid */
 (function () {
     var gpii = fluid.registerNamespace("gpii");
-    var jQuery = fluid.registerNamespace("jQuery");
+    fluid.registerNamespace("jQuery");
 
     fluid.registerNamespace("gpii.ul.search.navbar");
 
@@ -47,8 +47,8 @@
             // We are working with one of our numbered navigation links
             else if (classList.indexOf("search-nav-num-link") !== -1) {
                 var focused = false;
-                fluid.each (that.locate("navNumLink"), function (link) {
-                    var linkOffset = parseInt(link.getAttribute("offset"),10);
+                fluid.each(that.locate("navNumLink"), function (link) {
+                    var linkOffset = parseInt(link.getAttribute("offset"), 10);
                     if (!focused && linkOffset === that.model.offset) {
                         link.focus();
                         focused = true;
@@ -77,11 +77,11 @@
             if (numPages > 1) {
                 showNavBar = true;
 
-                for (var a=0; a< numPages; a++) {
+                for (var a = 0; a < numPages; a++) {
                     var offset = a * that.model.limit;
                     var current = offset === that.model.offset;
                     newPagingData.push({
-                        label:   a+1,
+                        label:   a + 1,
                         offset:  offset,
                         current: current
                     });
@@ -101,7 +101,7 @@
     };
 
     fluid.defaults("gpii.ul.search.navbar", {
-        gradeNames: ["gpii.templates.templateAware", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware"],
         template:   "search-topnav",
         members: {
             oldFocus: undefined

@@ -129,11 +129,14 @@ fluid.defaults("gpii.ptd.frontend.express", {
                 }
             }
         },
-        // User management portion of the API, must be loaded here for now
+        //User management portion of the API, must be loaded here for now
         user: {
             type: "gpii.express.couchuser.server",
+            // TODO:  Disentangle the shared configuration further.
             options: {
-                config: "{expressConfigHolder}.options.config"
+                app: "{expressConfigHolder}.options.config.app",
+                users: "{expressConfigHolder}.options.config.users",
+                email: "{expressConfigHolder}.options.config.email"
             }
         }
     }

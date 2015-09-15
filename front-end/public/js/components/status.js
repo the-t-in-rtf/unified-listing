@@ -3,7 +3,7 @@
 "use strict";
 (function () {
     fluid.defaults("gpii.ul.status", {
-        gradeNames: ["gpii.ul.select", "autoInit"],
+        gradeNames: ["gpii.ul.select"],
         template:   "common-status-edit",
         selectors:  {
             initial: "",

@@ -20,7 +20,7 @@
     };
 
     fluid.defaults("gpii.ul.search.query", {
-        gradeNames: ["gpii.templates.templateFormControl", "autoInit"],
+        gradeNames: ["gpii.templates.templateFormControl"],
         ajaxOptions: {
             url:      "/api/search",
             method:   "GET",
@@ -120,7 +120,7 @@
 
 
     fluid.defaults("gpii.ul.search.records", {
-        gradeNames: ["gpii.templates.templateAware", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware"],
         model: {
             records:  []
         },
@@ -156,7 +156,7 @@
 
     // The "sort" control that updates the sort values based on a predefined list of possible settings.
     fluid.defaults("gpii.ul.search.sort", {
-        gradeNames: ["gpii.ul.select", "autoInit"],
+        gradeNames: ["gpii.ul.select"],
         template:   "search-sort",
         selectors:  {
             initial: "",
@@ -178,7 +178,7 @@
 
     // The "status" control that updates the sort values based on a predefined list of possible settings.
     fluid.defaults("gpii.ul.search.status", {
-        gradeNames: ["gpii.ul.status", "autoInit"],
+        gradeNames: ["gpii.ul.status"],
         selectors:  {
             select:  ".search-status-option"
         }
@@ -186,7 +186,7 @@
 
     // The "limit" control that updates the number of records per page based on a predefined list of possible settings.
     fluid.defaults("gpii.ul.search.limit", {
-        gradeNames: ["gpii.ul.select", "autoInit"],
+        gradeNames: ["gpii.ul.select"],
         template:   "search-limit",
         selectors:  {
             initial: "",
@@ -213,7 +213,7 @@
 
     // The wrapper component that wires together all controls.
     fluid.defaults("gpii.ul.search", {
-        gradeNames: ["gpii.templates.templateAware", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware"],
         model: {
             q:         "",
             source:    [],

@@ -107,10 +107,10 @@ fluid.defaults("gpii.ul.api.updates.request", {
 });
 
 fluid.defaults("gpii.ul.api.updates.router", {
-    gradeNames:         ["gpii.express.requestAware.router", "autoInit"],
-    path:               "/updates",
-    timeout:            30000, // TODO:  Profile this and figure out why the live version takes so long.
-    requestAwareGrades: "gpii.ul.api.updates.request",
+    gradeNames:    ["gpii.express.requestAware.router"],
+    path:          "/updates",
+    timeout:       30000, // TODO:  Profile this and figure out why the live version takes so long.
+    handlerGrades: "gpii.ul.api.updates.request",
     dynamicComponents: {
         requestHandler: {
             options: {

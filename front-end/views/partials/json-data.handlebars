@@ -3,6 +3,6 @@ ul.config.server = {{#if config}}{{#jsonify config}}{{/jsonify}}{{else}}{}{{/if}
 ul.config.query  = {{#if query}}{{#jsonify query}}{{/jsonify}}{{else}}{}{{/if}};
 
 fluid.defaults("ul.components.data", {
-    gradeNames: ["fluid.modelRelayComponent", "sourceAware", "queryAware", "autoInit"]
+    gradeNames: ["fluid.modelComponent", "sourceAware", "queryAware"]
 });
 var data = ul.components.data();

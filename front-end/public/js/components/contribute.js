@@ -8,7 +8,7 @@
 
     // The component that handles data entry, including saving changes.
     fluid.defaults("gpii.ul.contribute.form", {
-        gradeNames:    ["gpii.templates.templateFormControl", "autoInit"],
+        gradeNames:    ["gpii.templates.templateFormControl"],
         hideOnSuccess: false,
         hideOnError:   false,
         ajaxOptions: {
@@ -106,7 +106,7 @@
     // The component that loads the record content and controls the initial rendering.  Subcomponents
     // listen for this component to give the go ahead, and then take over parts of the interface.
     fluid.defaults("gpii.ul.contribute", {
-        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable"],
         baseUrl:    "/api/product/",
         messages: {
             loginRequired: "You must log in to contribute to the Unified Listing."

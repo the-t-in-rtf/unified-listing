@@ -76,7 +76,7 @@ fluid.defaults("gpii.ul.api.sources.request", {
 });
 
 fluid.defaults("gpii.ul.api.sources.router", {
-    gradeNames:    ["gpii.express.requestAware.router", "autoInit"],
+    gradeNames:    ["gpii.express.requestAware.router"],
     path:          "/sources",
     handlerGrades: "gpii.ul.api.sources.request",
     sources:       sources,

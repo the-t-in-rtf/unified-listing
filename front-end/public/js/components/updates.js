@@ -7,12 +7,12 @@
     // Transform function to strip "unified" from the list, as we cannot compare unified to itself.
     fluid.registerNamespace("gpii.ul.updates.controls");
     gpii.ul.updates.controls.excludeUnifiedSource = function (sources) {
-        return sources.filter(function(value){ if (value !== "unified") { return true; }});
+        return sources.filter(function (value) { if (value !== "unified") { return true; }});
     };
 
     // The "source picker", which is also responsible for getting the list of valid sources.
     fluid.defaults("gpii.ul.updates.controls", {
-        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable", "autoInit"],
+        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable"],
         template:   "updates-controls",
         ajaxOptions: {
             method: "GET",
@@ -81,7 +81,7 @@
     };
 
     fluid.defaults("gpii.ul.updates", {
-        gradeNames: ["gpii.templates.templateFormControl", "autoInit"],
+        gradeNames: ["gpii.templates.templateFormControl"],
         hideOnSuccess: false,
         hideOnError:   false,
         ajaxOptions: {
