@@ -21,7 +21,7 @@
     "email-templates":           "^1.1.2",
     "gpii-express":              "git://github.com/the-t-in-rtf/gpii-express#8730441601db239870046c796b85c0f020a302a1",
     "gpii-express-couchuser":    "git://github.com/the-t-in-rtf/gpii-express-couchuser.git#c5265996397b3367c293fe148a1c3b260d6ad234",
-    "gpii-handlebars":           "git://github.com/the-t-in-rtf/gpii-handlebars.git#136266a1e762bb9d1fc332256ee8eed44d869562",
+    "gpii-handlebars":           "git://github.com/the-t-in-rtf/gpii-handlebars.git#1f0409f51ce749a85c5e753c376faf16bf381720",
     "grunt":                     "~0.4.4",
     "grunt-shell":               "0.6.4",
     "grunt-contrib-jshint":      "~0.9.0",
