@@ -24,7 +24,7 @@ fluid.registerNamespace("gpii.ul.api.sources");
 fluid.registerNamespace("gpii.ul.api.sources.request");
 gpii.ul.api.sources.request.handleRequest = function (that) {
 
-    var user = that.request && that.request.session && that.request.session.user ? that.request.session.user : null;
+    var user = that.request && that.request.session && that.request.session._gpii_user ? that.request.session._gpii_user : null;
     var visibleSources = gpii.ul.api.sources.request.listAllowedSources(that.options.sources, user);
 
     that.sendResponse(200, { sources: visibleSources });
@@ -39,7 +39,7 @@ gpii.ul.api.sources.request.listAllowedSources = function (sources, user) {
         // power the "contribute" functionality for both manufacturer and general users.
         //
         if (source === "~" && user) {
-            visibleSources.push(user.name);
+            visibleSources.push(user.username);
         }
         else {
             var hasPermission = false;

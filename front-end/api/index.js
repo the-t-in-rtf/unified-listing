@@ -8,6 +8,7 @@ var gpii  = fluid.registerNamespace("gpii");
 require("gpii-express");
 require("./updates");
 require("./sources");
+require("gpii-express-user");
 
 var express = require("../../node_modules/gpii-express/node_modules/express");
 
@@ -39,6 +40,10 @@ fluid.defaults("gpii.ul.api", {
     gradeNames: ["gpii.express.router"],
     router:     null,
     config:     "{expressConfigHolder}.options.config",
+    distributeOptions: {
+        source: "{that}.options.config.express.views",
+        target: "{that gpii.handlebars.standaloneRenderer}.options.templateDir"
+    },
     invokers: {
         route: {
             funcName: "gpii.ul.api.route",
@@ -61,7 +66,15 @@ fluid.defaults("gpii.ul.api", {
         updates: {
             type: "gpii.ul.api.updates.router",
             options: {
-                path: "/updates"
+                path: "/updates",
+                couch: "{gpii.express}.options.config.couch"
+            }
+        },
+        user: {
+            type: "gpii.express.user.api",
+            options: {
+                couch: "{gpii.express}.options.config.couch",
+                app:   "{gpii.express}.options.config.app"
             }
         }
     }

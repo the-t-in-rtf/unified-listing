@@ -13,7 +13,7 @@ gpii.ul.imports.syncer.LoginAndStartSync = function (that) {
         jar: true,
         json: true,
         body: {
-            name:     that.options.loginUsername,
+            username: that.options.loginUsername,
             password: that.options.loginPassword
         }
     };
@@ -88,7 +88,7 @@ fluid.defaults("gpii.ul.imports.syncer", {
     gradeNames:    ["fluid.modelComponent"],
     loginUsername: "admin",
     loginPassword: "admin",
-    loginUrl:      "http://localhost:4896/api/user/signin",
+    loginUrl:      "http://localhost:4896/api/user/login",
     putApiUrl:     "http://localhost:4896/api/product/",
     invokers: {
         getRecordUpdatePromise: {

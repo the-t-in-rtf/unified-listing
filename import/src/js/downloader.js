@@ -32,7 +32,7 @@ gpii.ul.imports.downloader.saveData = function (that, error, response, body) {
 
 var cacheFile = path.join(os.tmpdir(), "downloaderCache");
 fluid.defaults("gpii.ul.imports.downloader", {
-    gradeNames: ["fluid.eventedComponent", "autoInit"],
+    gradeNames: ["fluid.component"],
     url:         undefined,
     cacheFile:   cacheFile,
     forceLoad:   false,

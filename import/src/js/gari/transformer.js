@@ -31,7 +31,7 @@ gpii.ul.imports.gari.transformer.remapData = function(that) {
 
 
 fluid.defaults("gpii.ul.imports.gari.transformer", {
-    gradeNames: ["fluid.modelRelayComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         xml:          {},
         rawJson:      {},

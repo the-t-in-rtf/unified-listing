@@ -1,19 +1,19 @@
 // Helper library to make query handling consistent
 "use strict";
-module.exports=function(config) {
+module.exports = function () {
     var fluid       = require("infusion");
     var namespace   = "gpii.ul.api.lib.queryHelper";
     var queryHelper = fluid.registerNamespace(namespace);
     var moment      = require("moment");
 
     var fieldTypes  = ["Date", "Number", "Simple", "Array", "Boolean"];
-    fieldTypes.forEach(function(key){
+    fieldTypes.forEach(function (key) {
         queryHelper["parse" + key + "Fields"] = function(hash, req, fields) {
-            fields.forEach(function(field) { queryHelper["parse"+ key + "Field"](hash, req, field); });
+            fields.forEach(function (field) { queryHelper["parse" + key + "Field"](hash, req, field); });
         };
     });
 
-    queryHelper.parseDateField = function(hash, req, field) {
+    queryHelper.parseDateField = function (hash, req, field) {
         var value = queryHelper.getFieldValue(req, field);
         if (value) {
             var myMoment = moment(value);
@@ -21,14 +21,14 @@ module.exports=function(config) {
         }
     };
 
-    queryHelper.parseSimpleField = function(hash, req, field) {
+    queryHelper.parseSimpleField = function (hash, req, field) {
         var value = queryHelper.getFieldValue(req, field);
         if (value) {
             hash[field] = value;
         }
     };
 
-    queryHelper.parseNumberField = function(hash, req, field) {
+    queryHelper.parseNumberField = function (hash, req, field) {
         var value = queryHelper.getFieldValue(req, field);
         if (value) {
             var intValue = parseInt(value, 10);
@@ -38,21 +38,21 @@ module.exports=function(config) {
         }
     };
 
-    queryHelper.parseArrayField = function(hash, req, field) {
+    queryHelper.parseArrayField = function (hash, req, field) {
         var value = queryHelper.getFieldArrayValue(req, field);
         if (value) {
             hash[field] = value;
         }
     };
 
-    queryHelper.parseBooleanField = function(hash, req, field) {
+    queryHelper.parseBooleanField = function (hash, req, field) {
         var value = queryHelper.getFieldArrayValue(req, field);
         if (value) {
             hash[field] = true;
         }
     };
 
-    queryHelper.getFieldArrayValue = function(req, field) {
+    queryHelper.getFieldArrayValue = function (req, field) {
         var value = queryHelper.getFieldValue(req, field);
         if (value) {
             return Array.isArray(value) ? value : [value];
@@ -61,7 +61,7 @@ module.exports=function(config) {
         return null;
     };
 
-    queryHelper.getFieldValue = function(req, field) {
+    queryHelper.getFieldValue = function (req, field) {
         if (req.params[field]) {
             return req.params[field];
         }

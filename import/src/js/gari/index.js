@@ -6,6 +6,7 @@
 
 "use strict";
 var fluid = require("infusion");
+fluid.setLogging(true);
 var gpii  = fluid.registerNamespace("gpii");
 
 require("./runner");

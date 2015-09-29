@@ -19,7 +19,8 @@
         },
         rules: {
             modelToRequestPayload: {
-                "": "record"
+                "":       "record",
+                "source": "user.username"
             },
             successResponseToModel: {
                 "":             "notfound",
@@ -52,7 +53,7 @@
             settingsRestart:  ".contribute-form-settings-restart"
         },
         bindings: {
-            source:           "user.name",
+            source:           "user.username",
             name:             "record.name",
             description:      "record.description",
             manufacturerName: "record.manufacturer.name",
@@ -72,10 +73,13 @@
         templates: {
             initial: "contribute-form"
         },
+        events: {
+            never: null
+        },
         components: {
             // We defer to the parent's feedback components and disable those included in `templateFormControl` by default.
-            error:   { type: "fluid.identity"},
-            success: { type: "fluid.identity"}
+            error:   { createOnEvent: "never"},
+            success: { createOnEvent: "never"}
         }
     });
 
@@ -91,7 +95,7 @@
 
     gpii.ul.contribute.onlyDrawFormIfLoggedIn = function (that) {
         var form = that.locate("form");
-        if (that.model.user && that.model.user.name) {
+        if (that.model.user && that.model.user.username) {
             form.show();
 
             // The form will be created the first time this is fired and will be ignored after that.
@@ -106,7 +110,7 @@
     // The component that loads the record content and controls the initial rendering.  Subcomponents
     // listen for this component to give the go ahead, and then take over parts of the interface.
     fluid.defaults("gpii.ul.contribute", {
-        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable"],
+        gradeNames: ["gpii.templates.ajaxCapable", "gpii.templates.templateAware"],
         baseUrl:    "/api/product/",
         messages: {
             loginRequired: "You must log in to contribute to the Unified Listing."

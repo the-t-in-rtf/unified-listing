@@ -32,7 +32,7 @@ module.exports = function (config) {
     }
 
     return function (req, res) {
-        if (!req.session || !req.session.user) {
+        if (!req.session || !req.session._gpii_user) {
             schemaHelper.setHeaders(res, "message");
             return res.status(401).send(JSON.stringify({ok: false, message: "You must be logged in to use this function."}));
         }
@@ -44,10 +44,10 @@ module.exports = function (config) {
 
         // TODO: Replace this with proper permission handling
         if (!postRecord.source) {
-            postRecord.source = req.session.user.name;
+            postRecord.source = req.session._gpii_user.name;
         }
 
-        var allowedSources = gpii.ul.api.sources.request.listAllowedSources(sources, req.session.user);
+        var allowedSources = gpii.ul.api.sources.request.listAllowedSources(sources, req.session._gpii_user);
         if (allowedSources.indexOf(postRecord.source) === -1) {
             return res.status(403).send(JSON.stringify({ok: false, message: "You are not allowed to edit records with the given source."}));
         }
@@ -97,7 +97,7 @@ module.exports = function (config) {
                 delete updatedRecord.sources;
             }
 
-            // TODO: Set the "author" field to the current user (use req.session.user)
+            // TODO: Set the "author" field to the current user (use req.session._gpii_user)
 
             var writeRequest = require("request");
             var writeOptions = {

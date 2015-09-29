@@ -19,7 +19,7 @@ var _ = require("underscore-node");
 // gpii.ul.helpers.hash.omit(map, [key1, key2]);
 //
 // This allows easier usage within invokers, as you are not required to pass a variable list of arguments.
-gpii.ul.api.helpers.hash.omit = function() {
+gpii.ul.api.helpers.hash.omit = function () {
     return _.omit.apply(this, arguments);
 };
 
@@ -27,17 +27,17 @@ gpii.ul.api.helpers.hash.omit = function() {
 // supports an array of exclusions, so that we can add a final argument to control whether this is a "deep" scrub.
 //
 // If the third argument is passed, any child objects will also be scrubbed.
-gpii.ul.api.helpers.hash.omitFromObject = function(original, exclusions, deep) {
+gpii.ul.api.helpers.hash.omitFromObject = function (original, exclusions, deep) {
     if (deep) {
         if (typeof original === "object") {
-            if (Array.isArray(original)){
-                return original.map(function (value){
+            if (Array.isArray(original)) {
+                return original.map(function (value) {
                     return gpii.ul.api.helpers.hash.omitFromObject(value, exclusions, deep);
                 });
             }
             else {
                 var scrubbedObject = {};
-                Object.keys(original).forEach(function(key){
+                Object.keys(original).forEach(function (key) {
                     if (exclusions.indexOf(key) === -1) {
                         scrubbedObject[key] = gpii.ul.api.helpers.hash.omitFromObject(original[key], exclusions, deep);
                     }
@@ -49,7 +49,7 @@ gpii.ul.api.helpers.hash.omitFromObject = function(original, exclusions, deep) {
             return original;
         }
     } else {
-        var scrubbedArray = original.map(function (value){
+        var scrubbedArray = original.map(function (value) {
             return gpii.ul.api.helpers.hash.omit(value, exclusions);
         });
         return scrubbedArray;

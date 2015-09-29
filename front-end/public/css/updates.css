@@ -27,6 +27,13 @@
     border:1px solid #cccccc;
 }
 
+.ul-updates-record-description {
+    font-style:    italic;
+    overflow:      hidden;
+    text-overflow: ellipsis;
+    height:        1.5em;
+}
+
 .accordion {
     background-color: inherit;
     border:1px solid #cccccc;

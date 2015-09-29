@@ -19,10 +19,10 @@
 {{>record-manufacturer-view record.manufacturer}}
 
 {{#equals record.source "unified"}}
-  {{#if record.sources}}
+    {{#if record.sources}}
       <h3>Sources</h3>
 
-      {{>record-sources-view record.sources}}
+      {{>record-sources-view record}}
   {{/if}}
 {{else}}
   <p><a href="/record?source=unified&sid={{record.uid}}">View the unified record related to this product.</a></p>
