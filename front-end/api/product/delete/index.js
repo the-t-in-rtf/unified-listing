@@ -17,7 +17,7 @@ module.exports=function(config){
     del.router.use("/:source/:sid",function(req, res) {
         var myRes = res;
 
-        if (!req.session || !req.session.user) {
+        if (!req.session || !req.session._gpii_user) {
             del.schemaHelper.setHeaders(res, "message");
             myRes.status(401).send(JSON.stringify({ok:false, message: "You must be logged in to use this function."}));
             return;
@@ -100,7 +100,7 @@ module.exports=function(config){
 
     //// TODO:  Investigate why this hijacks GET calls if it's loaded before the GET module
     //del.router.delete("/*",function(req, res) { // jshint ignore:line
-    //    if (!req.session || !req.session.user) {
+    //    if (!req.session || !req.session._gpii_user) {
     //        del.schemaHelper.setHeaders(res, "message");
     //        res.status(401).send(JSON.stringify({ok:false, message: "You must be logged in to use this function."}));
     //        return;

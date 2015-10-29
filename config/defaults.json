@@ -1,7 +1,20 @@
 {
   "couch": {
-    "url":       "http://admin:admin@localhost:5984/ul/",
-    "luceneUrl": "http://admin:admin@localhost:5984/_fti/local/ul/_design/lucene/by_content"
+    "port":       5984,
+    "dbName":     "ul",
+    "userDbName": "users",
+    "url":       {
+        "expander": {
+            "funcName": "fluid.stringTemplate",
+            "args": ["http://admin:admin@localhost:%port/%dbName/", "{gpii.express}.options.config.couch"]
+        }
+    },
+    "luceneUrl":       {
+      "expander": {
+        "funcName": "fluid.stringTemplate",
+        "args": ["http://admin:admin@localhost:%port/_fti/local/%dbName/_design/lucene/by_content", "{gpii.express}.options.config.couch"]
+      }
+    }
   },
   "express": {
     "port" :          4896,
@@ -16,7 +29,6 @@
     "name": "Unified Listing",
     "url": "http://localhost:4896/"
   },
-  "users": "http://admin:admin@localhost:5984/_users",
   "email":  {
     "from": "no-reply@ul.gpii.net",
     "service": "SMTP",

@@ -8,6 +8,7 @@ var gpii  = fluid.registerNamespace("gpii");
 require("gpii-express");
 require("./updates");
 require("./sources");
+require("gpii-express-user");
 
 var express = require("../../node_modules/gpii-express/node_modules/express");
 
@@ -31,18 +32,22 @@ gpii.ul.api.init = function (that) {
     that.router.use("/docs", docs.router);
 };
 
-gpii.ul.api.getRouter = function (that) {
-    return that.router;
+gpii.ul.api.route = function (that, req, res) {
+    that.router(req, res);
 };
 
 fluid.defaults("gpii.ul.api", {
-    gradeNames: ["gpii.express.router", "autoInit"],
+    gradeNames: ["gpii.express.router"],
     router:     null,
     config:     "{expressConfigHolder}.options.config",
+    distributeOptions: {
+        source: "{that}.options.config.express.views",
+        target: "{that gpii.handlebars.standaloneRenderer}.options.templateDir"
+    },
     invokers: {
-        getHandler: {
-            funcName: "gpii.ul.api.getRouter",
-            args:     ["{that}"]
+        route: {
+            funcName: "gpii.ul.api.route",
+            args:     ["{that}", "{arguments}.0", "{arguments}.1"]
         }
     },
     listeners: {
@@ -61,7 +66,16 @@ fluid.defaults("gpii.ul.api", {
         updates: {
             type: "gpii.ul.api.updates.router",
             options: {
-                path: "/updates"
+                path: "/updates",
+                couch: "{gpii.express}.options.config.couch"
+            }
+        },
+        user: {
+            type: "gpii.express.user.api",
+            options: {
+                path:  "/user",
+                couch: "{gpii.express}.options.config.couch",
+                app:   "{gpii.express}.options.config.app"
             }
         }
     }

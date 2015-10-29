@@ -1,6 +1,6 @@
 // API Support for GET /api/product/:source:/:id
 "use strict";
-module.exports=function(config, quick){
+module.exports = function (config, quick) {
     var fluid           = require("infusion");
     var mode            = quick ? "suggest" : "search";
     var namespace       = "gpii.ul.api." + mode;
@@ -15,7 +15,7 @@ module.exports=function(config, quick){
     // TODO: add support for versions
     // TODO: test and fix sorting for "sources=true"
 
-    search.router.use("/",function(req, res) {
+    search.router.use("/", function (req, res) {
         var myRes = res;
 
         var params = {};
@@ -44,7 +44,7 @@ module.exports=function(config, quick){
         }
 
 
-        var query = "("+params.q+")";
+        var query = "(" + params.q + ")";
         if (params.source) {
             query += " AND (source:" + params.source.join(" OR source:") + ") ";
         }
@@ -67,7 +67,7 @@ module.exports=function(config, quick){
         };
 
         var request = require("request");
-        request(options, function(error, response, body){
+        request(options, function (error, response, body) {
             if (error) {
                 search.schemaHelper.setHeaders(myRes, "message");
                 myRes.status(500).send({ "ok": false, "message": (body && body.error) ? body.error : error });
@@ -77,7 +77,7 @@ module.exports=function(config, quick){
             var data = JSON.parse(body);
 
             if (params.sources) {
-                var uids = data.rows.map(function(value){
+                var uids = data.rows.map(function (value) {
                     return value.fields.uid;
                 });
                 var distinctUids = search.arrayHelper.getDistinctEntries(uids);
@@ -87,7 +87,7 @@ module.exports=function(config, quick){
                     qs: { "keys": JSON.stringify(sourceKeys) }
                 };
                 var sourceRequest = require("request");
-                sourceRequest(sourcesOptions, function(error, response, body){
+                sourceRequest(sourcesOptions, function (error, response, body) {
                     if (error) {
                         search.schemaHelper.setHeaders(myRes, "message");
                         myRes.status(500).send({ "ok": false, "message": (body && body.error) ? body.error : error });
@@ -99,7 +99,7 @@ module.exports=function(config, quick){
                 });
             }
             else {
-                var keys = data.rows.map(function(value){
+                var keys = data.rows.map(function (value) {
                     return [value.fields.source, value.fields.sid];
                 });
 
@@ -112,14 +112,14 @@ module.exports=function(config, quick){
                     qs: { "keys": keysString }
                 };
                 var recordRequest = require("request");
-                recordRequest(recordOptions, function(error, response, body){
+                recordRequest(recordOptions, function (error, response, body) {
                     if (error) {
                         search.schemaHelper.setHeaders(myRes, "message");
                         myRes.status(500).send({ "ok": false, "message": (body && body.error) ? body.error : error});
                         return;
                     }
                     var data = JSON.parse(body);
-                    var records = (data && data.rows) ? data.rows.map(function(row){ return row.value; }) : [];
+                    var records = (data && data.rows) ? data.rows.map(function (row) { return row.value; }) : [];
                     search.schemaHelper.setHeaders(myRes, "search");
                     myRes.status(200).send({ "ok": true, params: params, total_rows: records.length, records: records });
                 });

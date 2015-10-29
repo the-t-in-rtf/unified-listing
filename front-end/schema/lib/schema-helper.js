@@ -1,5 +1,6 @@
+// TODO:  Remove this helper altogether in favor of gpii-json-schema
 "use strict";
-module.exports = function(config) {
+module.exports = function (config) {
     var fluid = require("infusion");
     var helper = fluid.registerNamespace("gpii.ul.schema.helper");
     helper.config = config;
@@ -11,12 +12,17 @@ module.exports = function(config) {
 
     // We load the schemas on instantiation, as they are common to all requests and should not change in real time.
     helper.schemaContents = {};
-    helper.config.schemas.names.forEach(function(schemaName){
-        var schemaContent = require("../schemas/" + schemaName + ".json");
-        helper.schemaContents[schemaName] = schemaContent;
-    });
+    if (helper.config && helper.config.schemas) {
+        fluid.each(helper.config.schemas.names, function (schemaName) {
+            var schemaContent = require("../schemas/" + schemaName + ".json");
+            helper.schemaContents[schemaName] = schemaContent;
+        });
+    }
+    else {
+        fluid.log("You have not configured any schemas in your helper.  Please check your configuration");
+    }
 
-    helper.setHeaders = function setHeaders (res, schemaKey) {
+    helper.setHeaders = function setHeaders(res, schemaKey) {
         var schemaUrl = helper.config.express.baseUrl + "/schema/" + schemaKey + ".json#";
 
         if (res.headersSent) {
@@ -28,12 +34,12 @@ module.exports = function(config) {
         }
     };
 
-    helper.validate = function(key,content) {
+    helper.validate = function (key, content) {
         // We instantiate a new validator each time to avoid detecting errors from previous runs or from other sessions.
         var validator = new ZSchema(options);
 
         // We have to validate all schemas at once to a) confirm that we have usable schemas and b) handle dependencies between schemas correctly for all record types.
-        var schemasValid = validator.validateSchema(Object.keys(helper.schemaContents).map(function(v) { return helper.schemaContents[v]; }));
+        var schemasValid = validator.validateSchema(Object.keys(helper.schemaContents).map(function (v) { return helper.schemaContents[v]; }));
         if (!schemasValid) {
             return (helper.sanitizeValidationErrors(validator.getLastErrors()));
         }
@@ -46,7 +52,7 @@ module.exports = function(config) {
         return undefined;
     };
 
-    helper.sanitizeValidationErrors = function(errors) {
+    helper.sanitizeValidationErrors = function (errors) {
         /*
          z-schema gives us output like:
 
@@ -74,15 +80,15 @@ module.exports = function(config) {
          */
         var saneErrors = {};
 
-        errors.forEach(function(error){
+        errors.forEach(function (error) {
             // Errors with fields that contain data are already associated with the field based on the path
-            var field = error.path.replace("#/","");
+            var field = error.path.replace("#/", "");
 
             // Document-level failures about missing fields need to associated with the field based on the params
             if (error.code === "OBJECT_MISSING_REQUIRED_PROPERTY") { field = error.params[0]; }
 
             // We could have multiple validation errors for a single field, so we need to allow arrays
-            if (!saneErrors[field]) { saneErrors[field]=[];}
+            if (!saneErrors[field]) { saneErrors[field] = []; }
             saneErrors[field].push(error.message);
         });
 

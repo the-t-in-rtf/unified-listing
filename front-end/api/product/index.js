@@ -1,7 +1,7 @@
 "use strict";
 
 // All handlers for /api/record
-module.exports = function(config) {
+module.exports = function (config) {
     var fluid           = require("infusion");
     var namespace       = "gpii.ul.api.product";
     var product         = fluid.registerNamespace(namespace);

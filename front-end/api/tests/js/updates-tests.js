@@ -16,7 +16,7 @@ require("../lib/saneresponse");
 
 // Each test has a request instance of `kettle.test.request.http` or `kettle.test.request.httpCookie`, and a test module that wires the request to the listener that handles its results.
 fluid.defaults("gpii.ul.api.tests.updates.caseHolder", {
-    gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+    gradeNames: ["fluid.test.testCaseHolder"],
     expected: {
         unifiedNewer: {
             "ok": "true",
@@ -224,7 +224,7 @@ fluid.defaults("gpii.ul.api.tests.updates.caseHolder", {
 });
 
 fluid.defaults("gpii.ul.api.tests.updates.environment", {
-    gradeNames:  ["fluid.test.testEnvironment", "autoInit"],
+    gradeNames:  ["fluid.test.testEnvironment"],
     expressPort: 9786,
     baseUrl:     "http://localhost:9786",
     pouchPort:   6879,

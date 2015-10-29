@@ -121,19 +121,6 @@ fluid.defaults("gpii.ul.api.tests.harness", {
                             path:   "/api/updates",
                             config: "{express}.options.config"
                         }
-                    },
-
-                    // For some reason, we need to load "user" relatively late so that all the middleware upstream (notably body parsing) is in place
-                    user: {
-                        type: "gpii.express.couchuser.server",
-                        options: {
-                            config: {
-                                "verify":         true,
-                                "safeUserFields": "name email displayName",
-                                "adminRoles":     ["admin"],
-                                users: "{harness}.options.usersUrl"
-                            }
-                        }
                     }
                 }
             }

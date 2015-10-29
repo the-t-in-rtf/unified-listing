@@ -2,7 +2,7 @@
     <div class="button secondary expand small">
         <span class="user-icon-user"></span>
         {{#if user}}
-            {{#if user.displayName}}{{user.displayName}}{{else}}{{user.name}}{{/if}}
+            {{user.username}}
         {{else}}
             Not Logged In
         {{/if}}
@@ -14,10 +14,9 @@
     <ul>
         {{#if user}}
             <li><a href="#" class="user-menu-logout"  tabindex="0">Log Out</a></li>
-            <li><a href="/profile" class="user-menu-profile" tabindex="0">Profile</a></li>
         {{else}}
-            <li><a href="/login{{#if path}}?source={{path}}{{/if}}" tabindex="0">Log in</a></li>
-            <li><a href="/signup{{#if path}}?source={{path}}{{/if}}" tabindex="0">Create an account</a></li>
+            <li><a href="/api/user/login{{#if path}}?source={{path}}{{/if}}" tabindex="0">Log in</a></li>
+            <li><a href="/api/user/signup{{#if path}}?source={{path}}{{/if}}" tabindex="0">Create an account</a></li>
         {{/if}}
     </ul>
 </div>

@@ -5,14 +5,30 @@
         <input type="date" class="ul-updates-updated-control"/>
 
         <!-- choose databases -->
-        Show differences between unified record and the following sources:
+        Show differences between unified record and these sources:
         <select multiple="true" class="ul-updates-sources-control" size="{{sources.length}}">
             {{#each sources}}<option value="{{.}}" selected="true">{{.}}</option>{{/each}}
         </select>
+
+        <!-- Whether to show records newer or older than the source -->
+        Show unified records:
+        <div>
+            <input type="radio" id="source-newer-true" name="ul-updates-sourceNewer-control" value="true"/>
+            <label for="source-newer-true">
+                older than my contributions
+            </label>
+
+            <input type="radio" id="source-newer-false" name="ul-updates-sourceNewer-control" value="false"/>
+            <label for="source-newer-false">
+                newer than my contributions
+            </label>
+        </div>
+
     </form>
 {{else}}
     <div class="ul-updates-updated-control"/>
     <div class="ul-updates-sources-control"/>
+    <input type="hidden" name="ul-updates-sourceNewer-control"/>
     <div class="panel">
         You must be logged in to compare data sources.
     </div>

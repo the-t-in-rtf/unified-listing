@@ -1,6 +1,4 @@
-<script src="/bc/handlebars/handlebars.js"></script>
-<script src="/bc/jquery/dist/jquery.js"></script>
-<script src="/bc/foundation/js/vendor/modernizr.js"></script>
+<!--<script src="/bc/jquery/dist/jquery.js"></script>-->
 
 <script type="text/javascript" src="/infusion/lib/jquery/core/js/jquery.js"></script>
 
@@ -10,6 +8,7 @@
 <script type="text/javascript" src="/infusion/framework/core/js/FluidIoC.js"></script>
 <script type="text/javascript" src="/infusion/framework/core/js/DataBinding.js"></script>
 <script type="text/javascript" src="/infusion/framework/core/js/FluidView.js"></script>
+<script type="text/javascript" src="/infusion/framework/preferences/js/URLUtilities.js"></script>
 <script type="text/javascript" src="/infusion/lib/fastXmlPull/js/fastXmlPull.js"></script>
 <script type="text/javascript" src="/infusion/framework/renderer/js/fluidParser.js"></script>
 <script type="text/javascript" src="/infusion/framework/renderer/js/fluidRenderer.js"></script>
@@ -32,10 +31,9 @@
 <script type="text/javascript" src="/gpii-handlebars/client/md-client.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/renderer.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/binder.js"></script>
-<script type="text/javascript" src="/gpii-handlebars/client/templateManager.js"></script>
-<script type="text/javascript" src="/gpii-handlebars/client/templateAware.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/hasRequiredOptions.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/ajaxCapable.js"></script>
+<script type="text/javascript" src="/gpii-handlebars/client/templateManager.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/templateAware.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/templateMessage.js"></script>
 <script type="text/javascript" src="/gpii-handlebars/client/templateFormControl.js"></script>
@@ -50,12 +48,15 @@
 <!-- TODO:  Remove this once "updates" is updated -->
 <script src="/js/components/root.js"></script>
 
-<!-- bring in javascript and styles from the gpii-express-couchuser module -->
-<script type="text/javascript" src="/gpii-ecu/js/client/controls.js"></script>
-<link rel="stylesheet" href="/gpii-ecu/css/user-controls.css"/>
+<!-- bring in javascript and styles from the gpii-express-user module -->
+<script type="text/javascript" src="/gpii-eu/js/client/canHandleStrings.js"></script>
+<script type="text/javascript" src="/gpii-eu/js/client/controls.js"></script>
+<link rel="stylesheet" href="/gpii-eu/css/user-controls.css"/>
+<link rel="stylesheet" href="/gpii-eu/css/user-icons.css"/>
 
 
 <!-- include foundation and its dependencies -->
+<script src="/bc/foundation/js/vendor/modernizr.js"></script>
 <script src="/bc/foundation/js/foundation/foundation.js"></script>
 <script src="/bc/foundation/js/foundation/foundation.alert.js"></script>
 <script src="/bc/foundation/js/foundation/foundation.topbar.js"></script>

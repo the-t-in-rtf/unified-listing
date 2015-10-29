@@ -7,12 +7,12 @@
     // Transform function to strip "unified" from the list, as we cannot compare unified to itself.
     fluid.registerNamespace("gpii.ul.updates.controls");
     gpii.ul.updates.controls.excludeUnifiedSource = function (sources) {
-        return sources.filter(function(value){ if (value !== "unified") { return true; }});
+        return sources.filter(function (value) { if (value !== "unified") { return true; }});
     };
 
     // The "source picker", which is also responsible for getting the list of valid sources.
     fluid.defaults("gpii.ul.updates.controls", {
-        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable", "autoInit"],
+        gradeNames: ["gpii.templates.ajaxCapable", "gpii.templates.templateAware"],
         template:   "updates-controls",
         ajaxOptions: {
             method: "GET",
@@ -55,8 +55,9 @@
             }
         },
         selectors: {
-            "updated":  ".ul-updates-updated-control",
-            "sources":  ".ul-updates-sources-control"
+            "updated":      ".ul-updates-updated-control",
+            "sources":      ".ul-updates-sources-control",
+            "sourceNewer":  "input[name='ul-updates-sourceNewer-control']"
         },
         bindings: [
             {
@@ -68,6 +69,11 @@
                 selector:    "sources",
                 path:        "sources",
                 elementType: "select"
+            },
+            {
+                selector:    "sourceNewer",
+                path:        "sourceNewer",
+                elementType: "radio"
             }
         ]
     });
@@ -81,7 +87,7 @@
     };
 
     fluid.defaults("gpii.ul.updates", {
-        gradeNames: ["gpii.templates.templateFormControl", "autoInit"],
+        gradeNames: ["gpii.templates.templateFormControl"],
         hideOnSuccess: false,
         hideOnError:   false,
         ajaxOptions: {
@@ -105,14 +111,15 @@
                 "":             "notfound",
                 errorMessage:   "responseJSON.message",
                 successMessage: { literalValue: null },
-                records:        { literalValue: null }
+                records:        { literalValue: false }
             },
 
             // Rules to control how our model is parsed before making a request
             modelToRequestPayload: {
-                "":      "notfound",
-                source:  "sources",
-                updated: "updated"
+                "":          "notfound",
+                source:      "sources",
+                updated:     "updated",
+                sourceNewer: "sourceNewer"
             }
         },
         selectors: {
@@ -124,7 +131,7 @@
         components: {
             // Disable the built-in success message, as we only ever display errors.
             success: {
-                type: "fluid.identity"
+                type: "fluid.emptySubcomponent"
             },
             fieldControls: {
                 type:          "gpii.ul.updates.controls",
@@ -134,6 +141,7 @@
                     model: {
                         sources:      "{updates}.model.sources",
                         updated:      "{updates}.model.updated",
+                        sourceNewer:  "{updates}.model.sourceNewer",
                         user:         "{updates}.model.user",
                         errorMessage: "{updates}.model.errorMessage"  // Allow this component to display error messages if there are problems.
                     }
@@ -146,14 +154,16 @@
                 options: {
                     template: "updates-records",
                     model: {
-                        message: "{updates}.dom.records"
+                        message: "{updates}.model.records"
                     }
                 }
             }
         },
         model: {
             sources:      [],
-            errorMessage: null
+            records:      false,
+            errorMessage: null,
+            sourceNewer:  true
         },
         listeners: {
             "onMarkupRendered.rebindFoundation": {
@@ -167,6 +177,10 @@
                 excludeSource: "init"
             },
             updated: {
+                func:          "{that}.makeRequest",
+                excludeSource: "init"
+            },
+            sourceNewer: {
                 func:          "{that}.makeRequest",
                 excludeSource: "init"
             }

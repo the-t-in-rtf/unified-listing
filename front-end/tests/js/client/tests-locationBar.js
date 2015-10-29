@@ -5,7 +5,7 @@
 (function(){
     //fluid.registerNamespace("gpii.tests.locationBar.syncAll");
     fluid.defaults("gpii.tests.locationBar.syncAll", {
-        gradeNames: ["gpii.locationBar.syncAll", "autoInit"],
+        gradeNames: ["gpii.locationBar.syncAll"],
         model: {
             setInModel:      true,
             setFromModel:    false,

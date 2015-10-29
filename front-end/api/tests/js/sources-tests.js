@@ -140,7 +140,7 @@ fluid.defaults("gpii.ul.api.tests.sources.caseHolder", {
 });
 
 fluid.defaults("gpii.ul.api.tests.sources.environment", {
-    gradeNames:  ["fluid.test.testEnvironment", "autoInit"],
+    gradeNames:  ["fluid.test.testEnvironment"],
     expressPort: 9786,
     baseUrl:     "http://localhost:9786",
     pouchPort:   6879,

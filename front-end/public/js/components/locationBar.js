@@ -62,7 +62,7 @@ For examples of this component in action, check out the tests included with this
 
 // TODO:  Add support for IE using https://github.com/devote/HTML5-History-API or similar polyfill.
 "use strict";
-/* global fluid, window, history, document */
+/* global fluid, window, document */
 
 (function () {
     var gpii = fluid.registerNamespace("gpii");
@@ -100,7 +100,7 @@ For examples of this component in action, check out the tests included with this
 
         // Split by ampersands
         var queryParts = queryString.split("&");
-        queryParts.forEach(function (queryPart){
+        queryParts.forEach(function (queryPart) {
             var matches = queryPart.match(/^([^=]+)=(.+)$/);
             if (matches) {
                 var key   = matches[1];
@@ -108,8 +108,7 @@ For examples of this component in action, check out the tests included with this
                 var stringValue = decodeURIComponent(matches[2]);
                 var value = stringValue;
                 try {
-                    var jsonData = JSON.parse(stringValue);
-                    value        = jsonData;
+                    value = JSON.parse(stringValue);
                 }
                 catch (e) {
                     // Do nothing
@@ -167,7 +166,7 @@ For examples of this component in action, check out the tests included with this
             myTransaction.fireChangeRequest({ path: "", type: "DELETE"});
         }
 
-        fluid.each(changeSet, function(value, key) {
+        fluid.each(changeSet, function (value, key) {
             var change = { path: key };
             if (value === undefined || value === null) {
                 change.type = "DELETE";
@@ -182,7 +181,7 @@ For examples of this component in action, check out the tests included with this
     };
 
     // Enable our browser back/forward listener.
-    gpii.locationBar.bindStateToModel = function(that) {
+    gpii.locationBar.bindStateToModel = function (that) {
         if (that.options.stateToModel) {
             window.onpopstate = that.handleStateChange;
         }
@@ -197,7 +196,7 @@ For examples of this component in action, check out the tests included with this
 
     // The base component for `locationBar` grades, without the default wiring.
     fluid.defaults("gpii.locationBar", {
-        gradeNames: ["fluid.standardRelayComponent", "autoInit"],
+        gradeNames: ["fluid.modelComponent"],
         addNewHistoryEntry: false,
         modelToQuery:       true,
         queryToModel:       false,
@@ -224,7 +223,7 @@ For examples of this component in action, check out the tests included with this
     fluid.registerNamespace("gpii.locationBar.syncAll");
     // A preconfigured instance of `gpii.locationBar` that syncs all data possible.
     fluid.defaults("gpii.locationBar.syncAll", {
-        gradeNames: ["gpii.locationBar", "autoInit"],
+        gradeNames: ["gpii.locationBar"],
         addNewHistoryEntry: true,
         modelToQuery:       true,
         queryToModel:       true,

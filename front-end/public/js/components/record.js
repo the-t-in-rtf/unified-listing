@@ -9,7 +9,8 @@
     // TODO:  Fix this to enable reviewer editing of the "status" field.
     // The sub-component that handles editing the "status" field.
     fluid.defaults("gpii.ul.record.edit.status", {
-        gradeNames: ["gpii.ul.status", "autoInit"],
+        gradeNames: ["gpii.ul.status"],
+        template: "record-edit-status",
         selectors:  {
             select:  ""
         }
@@ -17,7 +18,7 @@
 
     // The component that handles the binding, etc. for the "Edit" form.
     fluid.defaults("gpii.ul.record.edit", {
-        gradeNames: ["gpii.templates.templateFormControl", "autoInit"],
+        gradeNames: ["gpii.templates.templateFormControl"],
         ajaxOptions: {
             url:         "/api/product",
             method:      "PUT",
@@ -80,8 +81,8 @@
         components: {
             // This component is not responsible for displaying success or error messages on its own, so we replace
             // the built-in success and error components from the base grade with dummy `fluid.identity` components.
-            success: { type: "fluid.identity" },
-            error:   { type: "fluid.identity" },
+            //success: { type: "fluid.identity" },
+            //error:   { type: "fluid.identity" },
             // The "status" controls.
             status: {
                 type:          "gpii.ul.record.edit.status",
@@ -89,7 +90,7 @@
                 container:     "{edit}.dom.status",
                 options: {
                     model: {
-                        select:   "{edit}.model.status"
+                        select:   "{edit}.model.record.status"
                     }
                 }
             }
@@ -105,7 +106,7 @@
         var editControls    = that.locate("editControls");
         var suggestControls = that.locate("suggestControls");
 
-        if (that.model.record && that.model.record.source === "unified" && that.model.user && that.model.user.roles && that.model.user.roles.indexOf("admin") !== -1) {
+        if (that.model.record && that.model.record.source === "unified" && that.model.user && that.model.user.roles && that.model.user.roles.indexOf("reviewers") !== -1) {
             editControls.show();
             suggestControls.hide();
             that.events.onReadyForEdit.fire(that);
@@ -118,7 +119,7 @@
 
     // Convenience grade to avoid repeating the common toggle options for all three toggles (see below).
     fluid.defaults("gpii.ul.record.toggle", {
-        gradeNames: ["gpii.ul.toggle", "autoInit"],
+        gradeNames: ["gpii.ul.toggle"],
         selectors: {
             editForm: ".record-edit",
             viewForm: ".record-view"
@@ -131,14 +132,14 @@
 
     // Grade to handle the special case of hiding the edit form when the record is saved successfully
     fluid.registerNamespace("gpii.ul.record.toggle.onSave");
-    gpii.ul.record.toggle.onSave.hideOnSuccess = function(that, success) {
+    gpii.ul.record.toggle.onSave.hideOnSuccess = function (that, success) {
         if (success) {
             that.performToggle();
         }
     };
 
     fluid.defaults("gpii.ul.record.toggle.onSave", {
-        gradeNames: ["gpii.ul.record.toggle", "autoInit"],
+        gradeNames: ["gpii.ul.record.toggle"],
         invokers: {
             hideOnSuccess: {
                 funcName: "gpii.ul.record.toggle.onSave.hideOnSuccess",
@@ -149,8 +150,10 @@
 
     // The component that loads the record content and controls the initial rendering.  Subcomponents
     // listen for this component to give the go ahead, and then take over parts of the interface.
-    fluid.defaults("gpii.ul.record", {
-        gradeNames: ["gpii.templates.templateAware", "gpii.templates.ajaxCapable", "autoInit"],
+    var rebind = {
+
+    };fluid.defaults("gpii.ul.record", {
+        gradeNames: ["gpii.templates.ajaxCapable", "gpii.templates.templateAware"],
         baseUrl:    "/api/product/",
         selectors: {
             viewport:        ".record-viewport",
@@ -227,7 +230,7 @@
                             func: "{record}.checkReadyToEdit"
                         }
                     }
-                },
+                }
             },
             edit: {
                 type:          "gpii.ul.record.edit",
@@ -251,8 +254,14 @@
                         // Our view may be redrawn over and over again, and we have to make sure our bindings work each time.
                         onRefresh: {
                             events: {
-                                onParentMarkupRendered: "{view}.events.onMarkupRendered"
+                                parentReady: "{view}.events.onMarkupRendered"
                             }
+                        }
+                    },
+                    // We need to refresh on startup because the view may already have been rendered.
+                    listeners: {
+                        "onCreate.refresh": {
+                            func: "{that}.events.onRefresh.fire"
                         }
                     }
                 }

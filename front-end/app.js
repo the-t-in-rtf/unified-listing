@@ -8,7 +8,6 @@ var config = {};
 
 require("gpii-express");
 require("gpii-handlebars");
-require("../node_modules/gpii-express-couchuser/src/js/server");
 require("./api");
 
 var loader = require("../config/lib/config-loader");
@@ -26,7 +25,7 @@ var schemaDir           = path.resolve(__dirname, "./schema/schemas");
 var publicDir           = path.resolve(__dirname, "./public");
 var infusionDir         = path.resolve(__dirname, "../node_modules/infusion/src");
 var gpiiHandlebarsDir   = path.resolve(__dirname, "../node_modules/gpii-handlebars/src/js");
-var expressCouchUserDir = path.resolve(__dirname, "../node_modules/gpii-express-couchuser/src");
+var expressUserDir      = path.resolve(__dirname, "../node_modules/gpii-express-user/src");
 
 fluid.defaults("gpii.ptd.frontend.express", {
     config:     config,
@@ -85,11 +84,11 @@ fluid.defaults("gpii.ptd.frontend.express", {
             }
         },
         // Expose the client-side user management components from the installed package
-        expressCouchUser: {
+        expressUserContent: {
             type: "gpii.express.router.static",
             options: {
-                path:    "/gpii-ecu",
-                content: expressCouchUserDir
+                path:    "/gpii-eu",
+                content: expressUserDir
             }
         },
         // Expose the client-side handlebars components from the installed package
@@ -104,7 +103,8 @@ fluid.defaults("gpii.ptd.frontend.express", {
         api: {
             type: "gpii.ul.api",
             options: {
-                path: "/api"
+                path: "/api",
+                config: config // TODO:  Sanitize this when we convert this to a launcher.
             }
         },
         // Our root includes all static content, including bower components.
@@ -123,17 +123,10 @@ fluid.defaults("gpii.ptd.frontend.express", {
                 rules: {
                     contextToExpose: {
                         // All of our `initBlock` generated components care about the user.
-                        user: "req.session.user",
+                        user: "req.session._gpii_user",
                         req:   { params: "req.params", query: "req.query"}
                     }
                 }
-            }
-        },
-        // User management portion of the API, must be loaded here for now
-        user: {
-            type: "gpii.express.couchuser.server",
-            options: {
-                config: "{expressConfigHolder}.options.config"
             }
         }
     }

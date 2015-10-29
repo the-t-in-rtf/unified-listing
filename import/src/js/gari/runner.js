@@ -12,7 +12,7 @@ var cacheFile = path.join(os.tmpdir(), "gari.xml");
 
 fluid.registerNamespace("gpii.ul.imports.gari.runner");
 fluid.defaults("gpii.ul.imports.gari.runner", {
-    gradeNames: ["fluid.modelRelayComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         gariData: "{transformer}.model.remappedJson"
     },
@@ -36,6 +36,8 @@ fluid.defaults("gpii.ul.imports.gari.runner", {
         syncer: {
             type: "gpii.ul.imports.syncer",
             options: {
+                loginUsername: "gari",
+                loginPassword: "gari",
                 model: {
                     data: "{transformer}.model.remappedJson"
                 }

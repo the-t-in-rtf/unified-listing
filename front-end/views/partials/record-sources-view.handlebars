@@ -1,8 +1,14 @@
-{{#if .}}
+{{#if sources}}
   <ul>
-    {{#each .}}
+    {{#each sources}}
       <li>
-          <a href="/record?source={{source}}&sid={{sid}}" target="_blank">{{source}} ({{sid}})</a>
+          <a href="/record?source={{source}}&sid={{sid}}" target="_blank">
+              {{#equals source @root.user.username}}
+                  View your suggested updates to this record.
+              {{else}}
+                  {{source}}
+              {{/equals}}
+          </a>
       </li>
     {{/each}}
   </ul>
