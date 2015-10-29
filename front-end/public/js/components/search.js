@@ -241,14 +241,15 @@
                             }
                         }
                     },
-                    model: {
-                        offset:  "{search}.model.offset",
-                        limit:   "{search}.model.limit",
-                        q:       "{search}.model.q",
-                        sort:    "{search}.model.sort",
-                        source:  "{search}.model.source",
-                        status:  "{search}.model.status"
-                    }
+                    // TODO:  Add detailed tests to prevent this component from blowing away the existing model data.
+                    //model: {
+                    //    offset:  "{search}.model.offset",
+                    //    limit:   "{search}.model.limit",
+                    //    q:       "{search}.model.q",
+                    //    sort:    "{search}.model.sort",
+                    //    source:  "{search}.model.source",
+                    //    status:  "{search}.model.status"
+                    //}
                 }
             },
             // The main query form
@@ -318,7 +319,7 @@
                 container:     "{search}.dom.status",
                 options: {
                     model: {
-                        select:   "{search}.model.status"
+                        select: "{search}.model.status"
                     }
                 }
             },
