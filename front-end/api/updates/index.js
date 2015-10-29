@@ -94,9 +94,9 @@ gpii.ul.api.updates.handler.makeDeliverResultsPromise = function (that) {
                 if (that.request.matchingSources.indexOf(sourceRecord.source) !== -1) {
                     // If neither record is new enough to meet our filter criteria, we don't need to make a further comparison.
                     var maxDate = gpii.ul.api.updates.handler.maxDate([cluster.updated, sourceRecord.updated]);
-                    if (maxDate >= that.request.updatedSince) {
+                    if (!that.request.updatedSince || maxDate >= that.request.updatedSince) {
                         // filter for clusters where the source data is newer (used to track suggested changes, for example)
-                        if (that.request.query.sourceNewer) {
+                        if (that.request.sourceNewer) {
                             if (sourceRecord.updated > cluster.updated) {
                                 includeCluster = true;
                             }
@@ -142,6 +142,7 @@ gpii.ul.api.updates.handler.handleRequest = function (that) {
     // We should be able to work with either a single or multiple "source" parameters
     that.request.matchingSources = Array.isArray(that.request.query.source) ? that.request.query.source : [that.request.query.source];
     that.request.updatedSince    = that.request.query.updated ? new Date(that.request.query.updated) : null;
+    that.request.sourceNewer     = that.request.query.sourceNewer && that.request.query.sourceNewer === "true" ? true : false;
 
     // "unified" is not a meaningful choice, return an error if it's included in the list
     if (that.request.matchingSources.indexOf("unified") !== -1) {

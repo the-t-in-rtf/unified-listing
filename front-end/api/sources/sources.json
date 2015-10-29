@@ -1,36 +1,40 @@
 {
     "Handicat": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "Vlibank": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "Siva": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "EASTIN Admin": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "Hjælpemiddelbasen": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "Rehadat": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "Hulpmiddelenwijzer": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "Oaeg": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "Dlf data": {
-        "view": ["admin", "eastin"]
+        "view": ["reviewers", "eastin"]
     },
     "unified": {
         "view": ["*"],
-        "edit": ["admin"]
+        "edit": ["reviewers"]
+    },
+    "SolutionsOntologyFinal": {
+      "view": ["reviewers", "sat"],
+      "edit": ["sat"]
     },
     "~": {
-        "view": ["~", "admin"]
+        "view": ["~", "reviewers"]
     }
 }

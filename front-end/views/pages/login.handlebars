@@ -1,8 +1,17 @@
-{{>common-topbar "login"}}
+<html>
+    <head>
+        <title>Login Form (used for client-side tests)</title>
 
-<div class="login-viewport" role="main" id="main" tabindex="0"></div>
+        {{>common-includes}}
 
-<!-- Bring in out client libraries -->
-<script type="text/javascript" src="/gpii-ecu/js/client/login.js"></script>
+        <!-- Bring in client libraries being tested -->
+        <script type="text/javascript" src="/gpii-eu/js/client/login.js"></script>
+    </head>
+    <body>
+        {{>common-topbar}}
 
-{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.express.user.frontend.login"}}}
+        <div class="login-viewport"></div>
+
+        {{{initBlock "gpii.ul.hasUserControls" "gpii.express.user.frontend.login"}}}
+    </body>
+</html>

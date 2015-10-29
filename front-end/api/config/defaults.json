@@ -10,7 +10,6 @@
     },
     "verify": true,
     "safeUserFields": "name email displayName",
-    "adminRoles": [ "admin"],
     "eastin": {
         "databases": {
             "Handicat":           { "language": "es_es"},

@@ -69,7 +69,7 @@ fluid.defaults("gpii.ul.imports.eastin.runner", {
             type: "gpii.ul.imports.syncer",
             options: {
                 loginUsername: "eastin",
-                loginPassword: "eastin",
+                loginPassword: "yeAw9If4vos2ghe",
                 model: {
                     data: "{transformer}.model.remappedJson"
                 }

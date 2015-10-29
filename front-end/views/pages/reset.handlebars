@@ -1,11 +1,26 @@
-{{>common-topbar "reset"}}
+<html>
+    <head>
+        <title>Reset Form (used for client-side tests)</title>
 
-<div class="row">
-    <div class="reset-viewport" role="main" id="main" tabindex="0"></div>
-</div>
+        {{>common-includes}}
 
-<!-- Bring in client library being tested -->
-<script type="text/javascript" src="/gpii-ecu/js/client/passwordCheckingForm.js"></script>
-<script type="text/javascript" src="/gpii-ecu/js/client/reset.js"></script>
+        <!-- Bring in client library being tested -->
+        <script type="text/javascript" src="/gpii-eu/js/client/passwordCheckingForm.js"></script>
+        <script type="text/javascript" src="/gpii-eu/js/client/reset.js"></script>
+    </head>
+    <body>
+        {{>common-topbar}}
+        <!-- Sample reset form with all required markup -->
 
-{{{initBlock "gpii.ul.hasSkipNavLink" "gpii.ul.hasUserControls" "gpii.express.couchuser.frontend.reset"}}}
+        <div class="row">
+            <div class="reset-viewport"></div>
+        </div>
+
+
+        {{{initBlock "gpii.ul.hasUserControls" "gpii.express.user.frontend.reset"}}}
+    </body>
+</html>
+
+
+
+

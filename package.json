@@ -20,7 +20,7 @@
   "dependencies": {
     "email-templates":           "^1.1.2",
     "gpii-express":              "git://github.com/the-t-in-rtf/gpii-express#102d082ec36ef46875670079abeb022d07ae3bcd",
-    "gpii-express-user":         "git://github.com/the-t-in-rtf/gpii-express-user.git#316012c725c503054edb3a1ee758e25f25d300b2",
+    "gpii-express-user":         "git://github.com/the-t-in-rtf/gpii-express-user.git#570765f07f87df134b302cd34c62df54a9f9c7c4",
     "gpii-handlebars":           "git://github.com/the-t-in-rtf/gpii-handlebars.git#4912292d3ebd4e0dc50b9ebb69e10fd85bb45e6c",
     "grunt":                     "~0.4.4",
     "grunt-shell":               "0.6.4",

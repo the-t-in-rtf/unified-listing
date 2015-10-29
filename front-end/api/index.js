@@ -73,6 +73,7 @@ fluid.defaults("gpii.ul.api", {
         user: {
             type: "gpii.express.user.api",
             options: {
+                path:  "/user",
                 couch: "{gpii.express}.options.config.couch",
                 app:   "{gpii.express}.options.config.app"
             }

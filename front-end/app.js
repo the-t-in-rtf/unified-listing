@@ -84,10 +84,10 @@ fluid.defaults("gpii.ptd.frontend.express", {
             }
         },
         // Expose the client-side user management components from the installed package
-        expressCouchUser: {
+        expressUserContent: {
             type: "gpii.express.router.static",
             options: {
-                path:    "/gpii-ecu",
+                path:    "/gpii-eu",
                 content: expressUserDir
             }
         },
