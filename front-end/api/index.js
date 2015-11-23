@@ -38,6 +38,7 @@ gpii.ul.api.route = function (that, req, res) {
 
 fluid.defaults("gpii.ul.api", {
     gradeNames: ["gpii.express.router"],
+    path:       "/api",
     router:     null,
     config:     "{expressConfigHolder}.options.config",
     distributeOptions: {
@@ -73,7 +74,6 @@ fluid.defaults("gpii.ul.api", {
         user: {
             type: "gpii.express.user.api",
             options: {
-                path:  "/user",
                 couch: "{gpii.express}.options.config.couch",
                 app:   "{gpii.express}.options.config.app"
             }

@@ -19,7 +19,10 @@ else {
     config = loader.loadConfig(require("../config/prod.json"));
 }
 
-config.express.views = path.join(__dirname, "views");
+config.express.views = [
+    path.resolve(__dirname, "./views"),
+    path.resolve(__dirname, "../node_modules/gpii-express-user/src/templates")
+];
 
 var schemaDir           = path.resolve(__dirname, "./schema/schemas");
 var publicDir           = path.resolve(__dirname, "./public");
@@ -103,7 +106,6 @@ fluid.defaults("gpii.ptd.frontend.express", {
         api: {
             type: "gpii.ul.api",
             options: {
-                path: "/api",
                 config: config // TODO:  Sanitize this when we convert this to a launcher.
             }
         },

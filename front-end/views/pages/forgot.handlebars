@@ -1,23 +1,10 @@
-<html>
-    <head>
-        <title>"Forgot Password" Form (used for client-side tests)</title>
+{{> common-topbar}}
 
-        {{>common-includes}}
+<div class="row body" role="main" id="main" tabindex="0">
+    <div class="column small-12">
+        <div class="forgot-viewport"/>
+    </div>
+</div>
 
-        <!-- Bring in client library being tested -->
-        <script type="text/javascript" src="/gpii-eu/js/client/forgot.js"></script>
-    </head>
-    <body>
-        {{>common-topbar}}
-
-        <!-- Sample "forgot password" form with all required markup -->
-        <div class="row">
-            <div class="forgot-viewport"/>
-        </div>
-
-        {{{initBlock "gpii.ul.hasUserControls" "gpii.express.user.frontend.forgot"}}}
-    </body>
-</html>
-
-
+{{{initBlock "gpii.ul.hasUserControls" "gpii.express.user.frontend.forgot"}}}
 
